@@ -184,17 +184,17 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="nameTextField1" min="-2" pref="275" max="-2" attributes="0"/>
+                                  <Component id="editNameTextField" min="-2" pref="275" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="phoneTextField1" min="-2" pref="275" max="-2" attributes="0"/>
+                                  <Component id="editPhoneTextField" min="-2" pref="275" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="emailTextField1" min="-2" pref="275" max="-2" attributes="0"/>
+                                  <Component id="editEmailTextField" min="-2" pref="275" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -208,17 +208,17 @@
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nameTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="phoneTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="editEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="saveEditMemberButton" min="-2" max="-2" attributes="0"/>
@@ -251,11 +251,11 @@
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="nameTextField1">
+            <Component class="javax.swing.JTextField" name="editNameTextField">
             </Component>
-            <Component class="javax.swing.JTextField" name="phoneTextField1">
+            <Component class="javax.swing.JTextField" name="editPhoneTextField">
             </Component>
-            <Component class="javax.swing.JTextField" name="emailTextField1">
+            <Component class="javax.swing.JTextField" name="editEmailTextField">
             </Component>
           </SubComponents>
         </Container>
@@ -443,6 +443,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit Member"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editMemberButtonActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="teamTableScrollPane">
               <AuxValues>

@@ -4,6 +4,7 @@
  */
 package collaboration;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartPanel;
@@ -54,9 +55,9 @@ public class mainView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        nameTextField1 = new javax.swing.JTextField();
-        phoneTextField1 = new javax.swing.JTextField();
-        emailTextField1 = new javax.swing.JTextField();
+        editNameTextField = new javax.swing.JTextField();
+        editPhoneTextField = new javax.swing.JTextField();
+        editEmailTextField = new javax.swing.JTextField();
         projectComboBox = new javax.swing.JComboBox();
         signOutButton = new javax.swing.JButton();
         newProjectButton = new javax.swing.JButton();
@@ -87,10 +88,8 @@ public class mainView extends javax.swing.JFrame {
         addMemberJFrame.setTitle("Add Member");
         addMemberJFrame.setAlwaysOnTop(true);
         addMemberJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
-        addMemberJFrame.setMaximumSize(new java.awt.Dimension(400, 200));
         addMemberJFrame.setMinimumSize(new java.awt.Dimension(400, 200));
         addMemberJFrame.setName("Add Member"); // NOI18N
-        addMemberJFrame.setPreferredSize(new java.awt.Dimension(400, 200));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(400, 200));
         jPanel1.setMinimumSize(new java.awt.Dimension(400, 200));
@@ -169,10 +168,8 @@ public class mainView extends javax.swing.JFrame {
         editMemberJFrame.setTitle("Add Member");
         editMemberJFrame.setAlwaysOnTop(true);
         editMemberJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
-        editMemberJFrame.setMaximumSize(new java.awt.Dimension(400, 200));
         editMemberJFrame.setMinimumSize(new java.awt.Dimension(400, 200));
         editMemberJFrame.setName("Add Member"); // NOI18N
-        editMemberJFrame.setPreferredSize(new java.awt.Dimension(400, 200));
 
         jPanel2.setMaximumSize(new java.awt.Dimension(400, 200));
         jPanel2.setMinimumSize(new java.awt.Dimension(400, 200));
@@ -204,15 +201,15 @@ public class mainView extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(phoneTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addGap(32, 32, 32)
-                            .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(editEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(23, 37, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -221,15 +218,15 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(nameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(phoneTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(saveEditMemberButton)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -287,6 +284,11 @@ public class mainView extends javax.swing.JFrame {
         });
 
         editMemberButton.setText("Edit Member");
+        editMemberButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editMemberButtonActionPerformed(evt);
+            }
+        });
 
         teamTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -518,10 +520,19 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_removeTaskButtonActionPerformed
 
     private void removeMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMemberButtonActionPerformed
-        DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
-        try {
+        boolean isAnyRowSelected = false;
+        for (int i = 0; i < teamTable.getRowCount(); i++) {
+            if (teamTable.isRowSelected(i)) {
+                isAnyRowSelected = true;
+            }
+        }
+        if (isAnyRowSelected) {
+            DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
             model.removeRow(teamTable.getSelectedRow());
-        } catch (Exception e) {
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "No Member Selected",
+                    "No Member Selected", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_removeMemberButtonActionPerformed
 
@@ -543,15 +554,31 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void saveEditMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEditMemberButtonActionPerformed
-        //DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
-        //model.addRow(new Object[]{nameTextField.getText(), phoneTextField.getText(), emailTextField.getText()});
-        teamTable.editCellAt(teamTable.getSelectedRow(), 0);
-        nameTextField.setText("");
-        phoneTextField.setText("");
-        emailTextField.setText("");
-        addMemberJFrame.setVisible(false);
-        
+        DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
+        model.setValueAt(editNameTextField.getText(), teamTable.getSelectedRow(), 0);
+        model.setValueAt(editPhoneTextField.getText(), teamTable.getSelectedRow(), 1);
+        model.setValueAt(editEmailTextField.getText(), teamTable.getSelectedRow(), 2);
+        editMemberJFrame.setVisible(false);
     }//GEN-LAST:event_saveEditMemberButtonActionPerformed
+
+    private void editMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberButtonActionPerformed
+        boolean isAnyRowSelected = false;
+        for (int i = 0; i < teamTable.getRowCount(); i++) {
+            if (teamTable.isRowSelected(i)) {
+                isAnyRowSelected = true;
+            }
+        }
+        if (isAnyRowSelected) {
+            editNameTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
+            editPhoneTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 1).toString());
+            editEmailTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 2).toString());
+            editMemberJFrame.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "No Member Selected",
+                    "No Member Selected", JOptionPane.DEFAULT_OPTION);
+        }
+    }//GEN-LAST:event_editMemberButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -616,11 +643,13 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton addMemberButton;
     private javax.swing.JFrame addMemberJFrame;
     private javax.swing.JButton addTasksButton;
+    private javax.swing.JTextField editEmailTextField;
     private javax.swing.JButton editMemberButton;
     private javax.swing.JFrame editMemberJFrame;
+    private javax.swing.JTextField editNameTextField;
+    private javax.swing.JTextField editPhoneTextField;
     private javax.swing.JButton editTaskButton;
     private javax.swing.JTextField emailTextField;
-    private javax.swing.JTextField emailTextField1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -631,10 +660,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField nameTextField1;
     private javax.swing.JButton newProjectButton;
     private javax.swing.JTextField phoneTextField;
-    private javax.swing.JTextField phoneTextField1;
     private javax.swing.JPanel progressPanel;
     private javax.swing.JComboBox projectComboBox;
     private javax.swing.JButton refreshButton;
