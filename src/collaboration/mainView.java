@@ -4,6 +4,7 @@
  */
 package collaboration;
 
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,7 @@ public class mainView extends javax.swing.JFrame {
      */
     public mainView() {
         initComponents();
+        loginJFrame.setVisible(true);
     }
 
     /**
@@ -88,10 +90,24 @@ public class mainView extends javax.swing.JFrame {
         editTasksStatusTextField = new javax.swing.JTextField();
         editTasksEstimatedTextField = new javax.swing.JTextField();
         editTasksActualTextField = new javax.swing.JTextField();
+        editProjectJFrame = new javax.swing.JFrame();
+        editProjectJPanel = new javax.swing.JPanel();
+        editProjectSaveButton = new javax.swing.JButton();
+        editProjectTextField = new javax.swing.JTextField();
+        editProjectDeleteJLabel = new javax.swing.JLabel();
+        editProjectRenameJLabel = new javax.swing.JLabel();
+        loginJFrame = new javax.swing.JFrame();
+        loginJPanel = new javax.swing.JPanel();
+        usernameJLabel = new javax.swing.JLabel();
+        passwordJLabel = new javax.swing.JLabel();
+        usernameTextField = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
+        spaceJlabel = new javax.swing.JLabel();
+        passwordTextField = new javax.swing.JPasswordField();
         projectComboBox = new javax.swing.JComboBox();
         signOutButton = new javax.swing.JButton();
         newProjectButton = new javax.swing.JButton();
-        refreshButton = new javax.swing.JButton();
+        editProjectButton = new javax.swing.JButton();
         settingsButton = new javax.swing.JButton();
         aboutButton = new javax.swing.JButton();
         tabbedPane = new javax.swing.JTabbedPane();
@@ -279,7 +295,6 @@ public class mainView extends javax.swing.JFrame {
         addTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         addTasksJFrame.setMinimumSize(new java.awt.Dimension(450, 400));
         addTasksJFrame.setName("Add Member"); // NOI18N
-        addTasksJFrame.setPreferredSize(new java.awt.Dimension(400, 600));
 
         addTasksJPanel.setPreferredSize(new java.awt.Dimension(400, 400));
 
@@ -377,7 +392,6 @@ public class mainView extends javax.swing.JFrame {
         editTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         editTasksJFrame.setMinimumSize(new java.awt.Dimension(450, 400));
         editTasksJFrame.setName("Add Member"); // NOI18N
-        editTasksJFrame.setPreferredSize(new java.awt.Dimension(400, 600));
 
         editTasksJPanel.setPreferredSize(new java.awt.Dimension(400, 400));
 
@@ -471,10 +485,155 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(0, 44, Short.MAX_VALUE))
         );
 
+        editProjectJFrame.setAlwaysOnTop(true);
+        editProjectJFrame.setBounds(new java.awt.Rectangle(50, 50, 210, 150));
+        editProjectJFrame.setMinimumSize(new java.awt.Dimension(230, 104));
+        editProjectJFrame.setResizable(false);
+
+        editProjectJPanel.setMinimumSize(new java.awt.Dimension(210, 104));
+
+        editProjectSaveButton.setText("Save");
+        editProjectSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editProjectSaveButtonActionPerformed(evt);
+            }
+        });
+
+        editProjectDeleteJLabel.setText("To delete this project type DELETE");
+
+        editProjectRenameJLabel.setText("Rename Project:");
+
+        javax.swing.GroupLayout editProjectJPanelLayout = new javax.swing.GroupLayout(editProjectJPanel);
+        editProjectJPanel.setLayout(editProjectJPanelLayout);
+        editProjectJPanelLayout.setHorizontalGroup(
+            editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editProjectJPanelLayout.createSequentialGroup()
+                .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editProjectJPanelLayout.createSequentialGroup()
+                        .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(editProjectJPanelLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(editProjectDeleteJLabel))
+                            .addGroup(editProjectJPanelLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(editProjectRenameJLabel)))
+                        .addGap(0, 16, Short.MAX_VALUE))
+                    .addGroup(editProjectJPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(editProjectTextField)))
+                .addContainerGap())
+            .addGroup(editProjectJPanelLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(editProjectSaveButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        editProjectJPanelLayout.setVerticalGroup(
+            editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editProjectJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(editProjectRenameJLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(editProjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editProjectDeleteJLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(editProjectSaveButton)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout editProjectJFrameLayout = new javax.swing.GroupLayout(editProjectJFrame.getContentPane());
+        editProjectJFrame.getContentPane().setLayout(editProjectJFrameLayout);
+        editProjectJFrameLayout.setHorizontalGroup(
+            editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 212, Short.MAX_VALUE)
+            .addGroup(editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(editProjectJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        editProjectJFrameLayout.setVerticalGroup(
+            editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 129, Short.MAX_VALUE)
+            .addGroup(editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(editProjectJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        loginJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        loginJFrame.setTitle("Login");
+        loginJFrame.setAlwaysOnTop(true);
+        loginJFrame.setBounds(new java.awt.Rectangle(50, 50, 0, 0));
+        loginJFrame.setMinimumSize(new java.awt.Dimension(400, 300));
+        loginJFrame.setResizable(false);
+
+        usernameJLabel.setText("Username:");
+
+        passwordJLabel.setText("Password:");
+
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
+        spaceJlabel.setText("Space for app logo");
+
+        javax.swing.GroupLayout loginJPanelLayout = new javax.swing.GroupLayout(loginJPanel);
+        loginJPanel.setLayout(loginJPanelLayout);
+        loginJPanelLayout.setHorizontalGroup(
+            loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginJPanelLayout.createSequentialGroup()
+                .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginJPanelLayout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(loginButton))
+                    .addGroup(loginJPanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(loginJPanelLayout.createSequentialGroup()
+                                .addComponent(passwordJLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(loginJPanelLayout.createSequentialGroup()
+                                .addComponent(usernameJLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginJPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(spaceJlabel)
+                .addGap(136, 136, 136))
+        );
+        loginJPanelLayout.setVerticalGroup(
+            loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginJPanelLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(spaceJlabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameJLabel)
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordJLabel)
+                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(loginButton)
+                .addGap(29, 29, 29))
+        );
+
+        javax.swing.GroupLayout loginJFrameLayout = new javax.swing.GroupLayout(loginJFrame.getContentPane());
+        loginJFrame.getContentPane().setLayout(loginJFrameLayout);
+        loginJFrameLayout.setHorizontalGroup(
+            loginJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        loginJFrameLayout.setVerticalGroup(
+            loginJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Project Collaboration Tool");
-
-        projectComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Collaboration Tool", "Football Picks" }));
+        setEnabled(false);
 
         signOutButton.setText("Sign Out");
         signOutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -484,12 +643,27 @@ public class mainView extends javax.swing.JFrame {
         });
 
         newProjectButton.setText("New Project");
+        newProjectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newProjectButtonActionPerformed(evt);
+            }
+        });
 
-        refreshButton.setText("Refresh");
+        editProjectButton.setText("Edit Project");
+        editProjectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editProjectButtonActionPerformed(evt);
+            }
+        });
 
         settingsButton.setText("Settings");
 
         aboutButton.setText("About");
+        aboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutButtonActionPerformed(evt);
+            }
+        });
 
         tabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -699,7 +873,7 @@ public class mainView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(newProjectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editProjectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -719,7 +893,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(settingsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(aboutButton)
                     .addComponent(signOutButton)
-                    .addComponent(refreshButton))
+                    .addComponent(editProjectButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tabbedPane)
                 .addContainerGap())
@@ -729,7 +903,9 @@ public class mainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
-        System.exit(0);
+        this.setEnabled(false);
+        passwordTextField.setText("");
+        loginJFrame.setVisible(true);
     }//GEN-LAST:event_signOutButtonActionPerformed
 
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
@@ -781,6 +957,10 @@ public class mainView extends javax.swing.JFrame {
         progressJFreeChart progressChart = new progressJFreeChart();
         JPanel chartPanel = new ChartPanel(progressChart.createChart());
         chartPanel.setSize(progressPanel.getSize());
+        try {
+            progressPanel.remove(progressPanel.getComponent(0));
+        } catch (Exception e) { //if no graph on progressPanel do nothing
+        }
         progressPanel.add(chartPanel);
         progressPanel.getParent().validate();
     }//GEN-LAST:event_tabbedPaneMouseClicked
@@ -842,7 +1022,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void addTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTasksDialogButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-        model.addRow(new Object[]{addTasksLeadTextField.getText(), addTasksUserStoryTextField.getText(), addTasksTaskTextField.getText(),addTasksStatusTextField.getText(), addTasksEstimatedTextField.getText(), addTasksActualTextField.getText()});
+        model.addRow(new Object[]{addTasksLeadTextField.getText(), addTasksUserStoryTextField.getText(), addTasksTaskTextField.getText(), addTasksStatusTextField.getText(), addTasksEstimatedTextField.getText(), addTasksActualTextField.getText()});
         addTasksJFrame.setVisible(false);
     }//GEN-LAST:event_addTasksDialogButtonActionPerformed
 
@@ -856,6 +1036,67 @@ public class mainView extends javax.swing.JFrame {
         model.setValueAt(editTasksActualTextField.getText(), tasksTable.getSelectedRow(), 5);
         editTasksJFrame.setVisible(false);
     }//GEN-LAST:event_editTasksDialogButtonActionPerformed
+
+    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
+        JOptionPane.showMessageDialog(this,
+                "ProjectTracker is an open source project of six GVSU students for CIS 467\n"
+                + "Please direct comments and suggestions to ProjectTrackerApp@gmail.com\n"
+                + "Credits:\n"
+                + "Eric Ashley - GUI and Graph integration\n"
+                + "Eric Munson - Android GUI port\n"
+                + "Cam Warner - Client backend and gCal, Toggl integration\n"
+                + "Tommy Rankin - Testing and documentation\n"
+                + "Mike Vokes - Client/Server Backend\n"
+                + "Zach Burnside - Object Oriented Database/Server Back End",
+                "About ProjectTracker", JOptionPane.DEFAULT_OPTION);
+    }//GEN-LAST:event_aboutButtonActionPerformed
+
+    private void newProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProjectButtonActionPerformed
+        try {
+            String projectTitle = JOptionPane.showInputDialog("Project Title");
+            if (!projectTitle.isEmpty()) {
+                projectComboBox.addItem(projectTitle);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Project title is required to create a new project",
+                        "Title Required", JOptionPane.DEFAULT_OPTION);
+            }
+        } catch (Exception e) {//do nothing if canceled
+        }
+    }//GEN-LAST:event_newProjectButtonActionPerformed
+
+    private void editProjectSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectSaveButtonActionPerformed
+        String edittedProjectName = editProjectTextField.getText();
+        if (edittedProjectName.equals("DELETE")) {
+            projectComboBox.removeItemAt(projectComboBox.getSelectedIndex());
+            projectComboBox.setSelectedItem(null);
+        } else {
+            projectComboBox.getModel().setSelectedItem(editProjectTextField.getText());
+        }
+        editProjectJFrame.setVisible(false);
+    }//GEN-LAST:event_editProjectSaveButtonActionPerformed
+
+    private void editProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectButtonActionPerformed
+        editProjectJFrame.setVisible(true);
+        Object selectedProject = projectComboBox.getSelectedItem();
+        if (selectedProject != null) {
+            editProjectTextField.setText(selectedProject.toString());
+        }
+    }//GEN-LAST:event_editProjectButtonActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        boolean validCredentials = false;
+        //code to set validCredentials to true given valid credentials are entered will need to be added here
+        //for testing sake validCredentials will be set to true until implemented
+        validCredentials = true;
+        if (validCredentials) {
+            loginJFrame.setVisible(false);
+            this.setEnabled(true);
+            this.toFront();
+        } else {
+            //code for what happens given bad login creds
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -952,6 +1193,13 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel editMemberPhoneJLabel;
     private javax.swing.JTextField editNameTextField;
     private javax.swing.JTextField editPhoneTextField;
+    private javax.swing.JButton editProjectButton;
+    private javax.swing.JLabel editProjectDeleteJLabel;
+    private javax.swing.JFrame editProjectJFrame;
+    private javax.swing.JPanel editProjectJPanel;
+    private javax.swing.JLabel editProjectRenameJLabel;
+    private javax.swing.JButton editProjectSaveButton;
+    private javax.swing.JTextField editProjectTextField;
     private javax.swing.JButton editTaskButton;
     private javax.swing.JLabel editTasksActualJLabel;
     private javax.swing.JTextField editTasksActualTextField;
@@ -968,16 +1216,21 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTextField editTasksTaskTextField;
     private javax.swing.JLabel editTasksUserStoryJLabel;
     private javax.swing.JTextField editTasksUserStoryTextField;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JFrame loginJFrame;
+    private javax.swing.JPanel loginJPanel;
     private javax.swing.JButton newProjectButton;
+    private javax.swing.JLabel passwordJLabel;
+    private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JPanel progressPanel;
     private javax.swing.JComboBox projectComboBox;
-    private javax.swing.JButton refreshButton;
     private javax.swing.JButton removeMemberButton;
     private javax.swing.JButton removeTaskButton;
     private javax.swing.JButton saveEditMemberButton;
     private javax.swing.JPanel schedulePanel;
     private javax.swing.JButton settingsButton;
     private javax.swing.JButton signOutButton;
+    private javax.swing.JLabel spaceJlabel;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JButton tasksFilterButton;
     private javax.swing.JTextField tasksFilterTextField;
@@ -989,5 +1242,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPanel teamPanel;
     private javax.swing.JTable teamTable;
     private javax.swing.JScrollPane teamTableScrollPane;
+    private javax.swing.JLabel usernameJLabel;
+    private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
