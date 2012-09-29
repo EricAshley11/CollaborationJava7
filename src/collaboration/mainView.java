@@ -5,9 +5,14 @@
 package collaboration;
 
 import java.awt.Component;
+import javax.swing.DefaultRowSorter;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
+import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import org.jfree.chart.ChartPanel;
 
 //google calendar API imports
@@ -24,6 +29,8 @@ import org.jfree.chart.ChartPanel;
  * @author Eric
  */
 public class mainView extends javax.swing.JFrame {
+
+    mainEngine engine = new mainEngine();
 
     /**
      * Creates new form mainView
@@ -129,6 +136,9 @@ public class mainView extends javax.swing.JFrame {
         tasksTable = new javax.swing.JTable();
         schedulePanel = new javax.swing.JPanel();
         progressPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
 
         addMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMemberJFrame.setTitle("Add Member");
@@ -558,10 +568,14 @@ public class mainView extends javax.swing.JFrame {
 
         loginJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         loginJFrame.setTitle("Login");
-        loginJFrame.setAlwaysOnTop(true);
         loginJFrame.setBounds(new java.awt.Rectangle(50, 50, 0, 0));
         loginJFrame.setMinimumSize(new java.awt.Dimension(400, 300));
         loginJFrame.setResizable(false);
+        loginJFrame.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                loginJFrameComponentShown(evt);
+            }
+        });
 
         usernameJLabel.setText("Username:");
 
@@ -633,7 +647,6 @@ public class mainView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Project Collaboration Tool");
-        setEnabled(false);
 
         signOutButton.setText("Sign Out");
         signOutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -692,6 +705,7 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
+        teamTable.setAutoCreateRowSorter(true);
         teamTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -718,6 +732,11 @@ public class mainView extends javax.swing.JFrame {
         teamTableScrollPane.setViewportView(teamTable);
 
         teamFilterButton.setText("Filter");
+        teamFilterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teamFilterButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout teamPanelLayout = new javax.swing.GroupLayout(teamPanel);
         teamPanel.setLayout(teamPanelLayout);
@@ -733,7 +752,7 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 112, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                         .addComponent(teamFilterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -750,7 +769,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(teamFilterButton)
                     .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -778,7 +797,13 @@ public class mainView extends javax.swing.JFrame {
         });
 
         tasksFilterButton.setText("Filter");
+        tasksFilterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tasksFilterButtonActionPerformed(evt);
+            }
+        });
 
+        tasksTable.setAutoCreateRowSorter(true);
         tasksTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -828,7 +853,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tasksFilterButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -842,7 +867,7 @@ public class mainView extends javax.swing.JFrame {
         );
         schedulePanelLayout.setVerticalGroup(
             schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
+            .addGap(0, 344, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Schedule", schedulePanel);
@@ -855,10 +880,51 @@ public class mainView extends javax.swing.JFrame {
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
+            .addGap(0, 344, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Progress", progressPanel);
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Project");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Team");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Eric Ashley");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cam Warner");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Mike Vokes");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Eric Munson");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Zach Burnside");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Thomas Rankin");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Tasks");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("User Story 1");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("User Story 2");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("User Story 3");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("User Story 4");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(jTree1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("Project Overview", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -903,7 +969,6 @@ public class mainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
-        this.setEnabled(false);
         passwordTextField.setText("");
         loginJFrame.setVisible(true);
     }//GEN-LAST:event_signOutButtonActionPerformed
@@ -1091,12 +1156,29 @@ public class mainView extends javax.swing.JFrame {
         validCredentials = true;
         if (validCredentials) {
             loginJFrame.setVisible(false);
-            this.setEnabled(true);
+            this.setVisible(true);
             this.toFront();
         } else {
-            //code for what happens given bad login creds
+            loginJFrame.setVisible(false);
+            passwordTextField.setText("");
+            JOptionPane.showMessageDialog(this,
+                    "Invalid Credentials",
+                    "Invalid Credentials", JOptionPane.DEFAULT_OPTION);
+            loginJFrame.setVisible(true);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void teamFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamFilterButtonActionPerformed
+        engine.filterTable(teamTable, teamFilterTextField.getText());
+    }//GEN-LAST:event_teamFilterButtonActionPerformed
+
+    private void tasksFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tasksFilterButtonActionPerformed
+        engine.filterTable(tasksTable, tasksFilterTextField.getText());
+    }//GEN-LAST:event_tasksFilterButtonActionPerformed
+
+    private void loginJFrameComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_loginJFrameComponentShown
+        this.setVisible(false);
+    }//GEN-LAST:event_loginJFrameComponentShown
 
     /**
      * @param args the command line arguments
@@ -1216,6 +1298,9 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTextField editTasksTaskTextField;
     private javax.swing.JLabel editTasksUserStoryJLabel;
     private javax.swing.JTextField editTasksUserStoryTextField;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
     private javax.swing.JButton loginButton;
     private javax.swing.JFrame loginJFrame;
     private javax.swing.JPanel loginJPanel;
