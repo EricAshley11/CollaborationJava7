@@ -10,8 +10,12 @@ import java.util.Collection;
  *
  * @author Cam
  */
-class Team {
+@Entity
+class Team implements Serializable {
 
+	@ID
+	private int TeamID;
+	
     private Collection<User> users;
     private Collection<Project> projects;
     private Schedule schedule;

@@ -8,8 +8,12 @@ package collaboration;
  *
  * @author Cam
  */
+@Entity
 class Task {
 
+	@ID
+	private int TaskID;
+	
     private int storyPointsEstimate, storyPointsActual;
     private User user;
     private String description, name;

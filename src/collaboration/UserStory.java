@@ -10,8 +10,12 @@ import java.util.Collection;
  *
  * @author Cam
  */
-class UserStory {
+@Entity
+class UserStory implements Serializable{
     
+	@ID
+	private int UserStoryID;
+	
     private Collection<Task> tasks;
     private Project project;
     private State state;
