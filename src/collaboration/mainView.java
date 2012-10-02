@@ -2,7 +2,6 @@
 package collaboration;
 
 import com.alee.laf.WebLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
 import java.awt.Component;
 import java.awt.Frame;
 import java.awt.Window;
@@ -214,7 +213,7 @@ public class mainView extends javax.swing.JFrame {
         jTree1 = new javax.swing.JTree();
 
         addMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addMemberJFrame.setTitle("Add Member");
+        addMemberJFrame.setTitle("Add Member - ProjectTracker");
         addMemberJFrame.setAlwaysOnTop(true);
         addMemberJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         addMemberJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
@@ -295,7 +294,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         editMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        editMemberJFrame.setTitle("Add Member");
+        editMemberJFrame.setTitle("Add Member - ProjectTracker");
         editMemberJFrame.setAlwaysOnTop(true);
         editMemberJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         editMemberJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
@@ -375,7 +374,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         addTasksJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addTasksJFrame.setTitle("Add Member");
+        addTasksJFrame.setTitle("Add Tasks - ProjectTracker");
         addTasksJFrame.setAlwaysOnTop(true);
         addTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         addTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
@@ -473,7 +472,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         editTasksJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        editTasksJFrame.setTitle("Add Member");
+        editTasksJFrame.setTitle("Edit Tasks - ProjectTracker");
         editTasksJFrame.setAlwaysOnTop(true);
         editTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         editTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
@@ -572,6 +571,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(0, 44, Short.MAX_VALUE))
         );
 
+        editProjectJFrame.setTitle("Edit Project - ProjectTracker");
         editProjectJFrame.setAlwaysOnTop(true);
         editProjectJFrame.setBounds(new java.awt.Rectangle(50, 50, 210, 150));
         editProjectJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
@@ -645,7 +645,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         loginJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        loginJFrame.setTitle("Login");
+        loginJFrame.setTitle("Login - ProjectTracker");
         loginJFrame.setBounds(new java.awt.Rectangle(50, 50, 400, 350));
         loginJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
         loginJFrame.setMinimumSize(new java.awt.Dimension(400, 300));
@@ -726,7 +726,7 @@ public class mainView extends javax.swing.JFrame {
             .addComponent(loginJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        settingsJFrame.setTitle("Settings");
+        settingsJFrame.setTitle("Settings - ProjectTracker");
         settingsJFrame.setBounds(new java.awt.Rectangle(50, 50, 365, 345));
         settingsJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
         settingsJFrame.setMinimumSize(new java.awt.Dimension(365, 345));
