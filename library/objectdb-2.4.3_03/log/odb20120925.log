@@ -1,0 +1,507 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:08:40 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 26960@eos23.cis.gvsu.edu
+
+[2012-09-25 15:08:40 #2 type] 
+Type tutorial.Point is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:08:54 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' has been recovered (tr. 6-8)
+
+[2012-09-25 15:08:54 #2 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27007@eos23.cis.gvsu.edu
+
+[2012-09-25 15:08:55 #3 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:08:55 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 27007@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:09:21 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27036@eos23.cis.gvsu.edu
+
+[2012-09-25 15:09:21 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:09:22 #3 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 27036@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:09:38 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27060@eos23.cis.gvsu.edu
+
+[2012-09-25 15:09:38 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:09:39 #3 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 27060@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:35:30 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27530@eos23.cis.gvsu.edu
+
+[2012-09-25 15:35:30 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:35:31 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:36:41 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' has been recovered (tr. 12-13)
+
+[2012-09-25 15:36:41 #2 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27593@eos23.cis.gvsu.edu
+
+[2012-09-25 15:36:42 #3 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:36:42 #4 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:37:04 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' has been recovered (tr. 14-14)
+
+[2012-09-25 15:37:04 #2 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27630@eos23.cis.gvsu.edu
+
+[2012-09-25 15:37:04 #3 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:37:04 #4 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 15:37:04 #5 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 27630@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:37:36 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27664@eos23.cis.gvsu.edu
+
+[2012-09-25 15:37:36 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:37:36 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 15:37:36 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 27664@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:39:26 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27704@eos23.cis.gvsu.edu
+
+[2012-09-25 15:39:26 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:39:26 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 15:39:26 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 27704@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:41:15 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27759@eos23.cis.gvsu.edu
+
+[2012-09-25 15:41:16 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:41:16 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 15:41:16 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 27759@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:41:34 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27791@eos23.cis.gvsu.edu
+
+[2012-09-25 15:41:35 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:41:35 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:41:56 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' has been recovered (tr. 19-19)
+
+[2012-09-25 15:41:56 #2 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27820@eos23.cis.gvsu.edu
+
+[2012-09-25 15:41:56 #3 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:41:56 #4 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:42:23 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' has been recovered (tr. 20-20)
+
+[2012-09-25 15:42:23 #2 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27852@eos23.cis.gvsu.edu
+
+[2012-09-25 15:42:23 #3 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:42:23 #4 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:43:27 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' has been recovered (tr. 21-21)
+
+[2012-09-25 15:43:27 #2 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27886@eos23.cis.gvsu.edu
+
+[2012-09-25 15:43:27 #3 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:43:27 #4 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 15:43:48 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' has been recovered (tr. 22-22)
+
+[2012-09-25 15:43:48 #2 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 27924@eos23.cis.gvsu.edu
+
+[2012-09-25 15:43:48 #3 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 15:43:48 #4 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 15:43:48 #5 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 27924@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:01:06 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28020@eos23.cis.gvsu.edu
+
+[2012-09-25 16:01:06 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:01:06 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:01:06 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28020@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:02:56 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28079@eos23.cis.gvsu.edu
+
+[2012-09-25 16:02:56 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:02:56 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:02:56 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28079@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:03:30 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28115@eos23.cis.gvsu.edu
+
+[2012-09-25 16:03:30 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:03:30 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:03:30 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28115@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:04:52 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28164@eos23.cis.gvsu.edu
+
+[2012-09-25 16:04:52 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:04:52 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:04:52 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28164@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:05:10 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28197@eos23.cis.gvsu.edu
+
+[2012-09-25 16:05:10 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:05:10 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:05:36 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28227@eos23.cis.gvsu.edu
+
+[2012-09-25 16:05:36 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:05:36 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:05:48 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28258@eos23.cis.gvsu.edu
+
+[2012-09-25 16:05:48 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:05:48 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:05:48 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28258@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:06:04 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28289@eos23.cis.gvsu.edu
+
+[2012-09-25 16:06:04 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:06:04 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:06:04 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28289@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:06:58 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28322@eos23.cis.gvsu.edu
+
+[2012-09-25 16:06:58 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:06:58 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:06:58 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28322@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:07:09 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28353@eos23.cis.gvsu.edu
+
+[2012-09-25 16:07:09 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:07:09 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:07:09 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28353@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:08:02 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28383@eos23.cis.gvsu.edu
+
+[2012-09-25 16:08:02 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:08:02 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:08:02 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28383@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:13:37 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28644@eos23.cis.gvsu.edu
+
+[2012-09-25 16:13:37 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:13:37 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:13:37 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28644@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:14:28 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28688@eos23.cis.gvsu.edu
+
+[2012-09-25 16:14:28 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:14:28 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:15:11 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28722@eos23.cis.gvsu.edu
+
+[2012-09-25 16:15:11 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:15:11 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:15:11 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28722@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:15:37 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28755@eos23.cis.gvsu.edu
+
+[2012-09-25 16:15:37 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:15:37 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:15:37 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28755@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:15:44 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28783@eos23.cis.gvsu.edu
+
+[2012-09-25 16:15:44 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:15:44 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:15:44 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28783@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:16:36 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28834@eos23.cis.gvsu.edu
+
+[2012-09-25 16:16:37 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:16:37 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:16:37 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28834@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:17:21 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28866@eos23.cis.gvsu.edu
+
+[2012-09-25 16:17:21 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:17:21 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+[2012-09-25 16:17:21 #4 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is closed by 28866@eos23.cis.gvsu.edu
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:17:56 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28897@eos23.cis.gvsu.edu
+
+[2012-09-25 16:17:56 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:17:56 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:18:03 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28925@eos23.cis.gvsu.edu
+
+[2012-09-25 16:18:04 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:18:04 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:18:50 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 28961@eos23.cis.gvsu.edu
+
+[2012-09-25 16:18:50 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:18:50 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:21:14 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 29001@eos23.cis.gvsu.edu
+
+[2012-09-25 16:21:14 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:21:14 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:21:23 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 29029@eos23.cis.gvsu.edu
+
+[2012-09-25 16:21:23 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:21:23 #3 type] 
+Type tutorial.NewTest is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-09-25 16:21:28 #1 store] 
+Database '/home/burnsidz/objectdb-2.4.3_03/db/points.odb' is opened by 29056@eos23.cis.gvsu.edu
+
+[2012-09-25 16:21:28 #2 type] 
+Type tutorial.Point is not enhanced.
+
+[2012-09-25 16:21:28 #3 type] 
+Type tutorial.NewTest is not enhanced.
+

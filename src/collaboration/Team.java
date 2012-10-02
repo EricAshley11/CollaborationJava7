@@ -5,15 +5,17 @@
 package collaboration;
 
 import java.util.Collection;
-
+import java.io.Serializable;
+import javax.persistence.*;
 /**
  *
  * @author Cam
  */
 @Entity
-class Team implements Serializable {
+public class Team implements Serializable {
 
-	@ID
+	@Id
+        @GeneratedValue
 	private int TeamID;
 	
     private Collection<User> users;

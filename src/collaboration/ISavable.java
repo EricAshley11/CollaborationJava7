@@ -10,6 +10,6 @@ public interface ISavable {
      * @param entityManager The DB entityManager
      * @return if the save was successful
      */
-    boolean Save(EntityManager entityManager);
+    boolean Save(DatabaseManager entityManager);
     
 }

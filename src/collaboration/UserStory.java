@@ -4,6 +4,8 @@
  */
 package collaboration;
 
+import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -11,9 +13,10 @@ import java.util.Collection;
  * @author Cam
  */
 @Entity
-class UserStory implements Serializable{
+public class UserStory implements Serializable{
     
-	@ID
+	@Id
+        @GeneratedValue
 	private int UserStoryID;
 	
     private Collection<Task> tasks;
