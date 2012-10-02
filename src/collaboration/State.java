@@ -4,11 +4,13 @@
  */
 package collaboration;
 
+import java.io.Serializable;
+import javax.persistence.*;
 /**
  *
  * @author Cam
  */
-public class State {
+public class State implements Serializable {
     public enum States {
         INITIAL("Initial"),
         DEFINED("Defined"),

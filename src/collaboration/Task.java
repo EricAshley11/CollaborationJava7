@@ -4,6 +4,8 @@
  */
 package collaboration;
 
+import java.io.Serializable;
+import javax.persistence.*;
 /**
  *
  * @author Cam
@@ -11,7 +13,7 @@ package collaboration;
 @Entity
 class Task {
 
-	@ID
+	@Id
 	private int TaskID;
 	
     private int storyPointsEstimate, storyPointsActual;

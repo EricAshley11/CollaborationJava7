@@ -5,15 +5,17 @@
 package collaboration;
 
 import java.util.Collection;
+import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  *
  * @author Cam
  */
 @Entity
-class UserStory implements Serializable{
+public class UserStory implements Serializable{
     
-	@ID
+	@Id
 	private int UserStoryID;
 	
     private Collection<Task> tasks;
@@ -45,6 +47,7 @@ class UserStory implements Serializable{
         }
         return false;
     }
+
 
     boolean changeProject(Project project) {
         if(project != null && project.equals(this.project)){
