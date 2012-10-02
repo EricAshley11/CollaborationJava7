@@ -10,6 +10,9 @@
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
           <Rectangle value="[50, 50, 250, 250]"/>
         </Property>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
+        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[400, 200]"/>
         </Property>
@@ -141,6 +144,9 @@
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
           <Rectangle value="[50, 50, 250, 250]"/>
         </Property>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
+        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[400, 200]"/>
         </Property>
@@ -268,6 +274,9 @@
         <Property name="alwaysOnTop" type="boolean" value="true"/>
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
           <Rectangle value="[50, 50, 250, 250]"/>
+        </Property>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[450, 400]"/>
@@ -427,6 +436,9 @@
         <Property name="alwaysOnTop" type="boolean" value="true"/>
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
           <Rectangle value="[50, 50, 250, 250]"/>
+        </Property>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[450, 400]"/>
@@ -588,6 +600,9 @@
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
           <Rectangle value="[50, 50, 210, 150]"/>
         </Property>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
+        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[230, 104]"/>
         </Property>
@@ -699,6 +714,9 @@
         <Property name="title" type="java.lang.String" value="Login"/>
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
           <Rectangle value="[50, 50, 400, 350]"/>
+        </Property>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[400, 300]"/>
@@ -817,10 +835,124 @@
         </Container>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JFrame" name="settingsJFrame">
+      <Properties>
+        <Property name="title" type="java.lang.String" value="Settings"/>
+        <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
+          <Rectangle value="[50, 50, 365, 345]"/>
+        </Property>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[365, 345]"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="loginJPanel1" min="-2" max="-2" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="loginJPanel1" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="loginJPanel1">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="spaceJlabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="saveSettingsButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="themeComboBox" min="-2" pref="195" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="spaceJlabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="themeComboBox" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="97" max="32767" attributes="0"/>
+                      <Component id="saveSettingsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="saveSettingsButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Save Settings"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveSettingsButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="spaceJlabel1">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/ProjectTracker.png"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="themeComboBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Glass"/>
+                    <StringItem index="1" value="Light"/>
+                    <StringItem index="2" value="Dark"/>
+                    <StringItem index="3" value="System"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Theme:"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Project Collaboration Tool"/>
+    <Property name="title" type="java.lang.String" value="ProjectTracker"/>
+    <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
+      <Rectangle value="[50, 50, 0, 0]"/>
+    </Property>
+    <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+      <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -903,6 +1035,7 @@
     <Component class="javax.swing.JButton" name="newProjectButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="New Project"/>
+        <Property name="toolTipText" type="java.lang.String" value="New Project"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newProjectButtonActionPerformed"/>
@@ -920,6 +1053,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Settings"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="settingsButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="aboutButton">
       <Properties>
@@ -946,7 +1082,7 @@
               <JTabbedPaneConstraints tabName="" toolTip="Team">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/team.png"/>
+                  <Image iconType="3" name="/resources/icons/team75.png"/>
                 </Property>
                 <Property name="tabToolTip" type="java.lang.String" value="Team"/>
               </JTabbedPaneConstraints>
@@ -961,13 +1097,13 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="teamTableScrollPane" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="addMemberButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="removeMemberButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="editMemberButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace pref="20" max="32767" attributes="0"/>
-                              <Component id="teamFilterButton" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="addMemberButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="189" max="32767" attributes="0"/>
+                              <Component id="teamFilterButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
@@ -979,16 +1115,18 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="addMemberButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="removeMemberButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="editMemberButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="teamFilterButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="teamFilterTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="addMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="removeMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="editMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="teamFilterButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Component id="teamFilterTextField" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="teamTableScrollPane" pref="457" max="32767" attributes="0"/>
+                      <Component id="teamTableScrollPane" pref="249" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -997,7 +1135,10 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="addMemberButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Add Member"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/add50.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Add Member"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addMemberButtonActionPerformed"/>
@@ -1005,7 +1146,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="removeMemberButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Remove Member"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/delete50.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Delete Member"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeMemberButtonActionPerformed"/>
@@ -1013,7 +1157,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="editMemberButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit Member"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/edit50.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Edit Member"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editMemberButtonActionPerformed"/>
@@ -1070,7 +1217,10 @@
             </Container>
             <Component class="javax.swing.JButton" name="teamFilterButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Filter"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/filter50.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Filter"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teamFilterButtonActionPerformed"/>
@@ -1086,7 +1236,7 @@
               <JTabbedPaneConstraints tabName="" toolTip="Tasks">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/tasks.png"/>
+                  <Image iconType="3" name="/resources/icons/tasks75.png"/>
                 </Property>
                 <Property name="tabToolTip" type="java.lang.String" value="Tasks"/>
               </JTabbedPaneConstraints>
@@ -1099,18 +1249,18 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="addTasksButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="removeTaskButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="editTaskButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace pref="20" max="32767" attributes="0"/>
-                              <Component id="tasksFilterButton" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="addTasksButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="189" max="32767" attributes="0"/>
+                              <Component id="tasksFilterButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tasksTableScrollPane" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tasksTableScrollPane" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1119,16 +1269,18 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="addTasksButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="removeTaskButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="editTaskButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tasksFilterTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tasksFilterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="addTasksButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="tasksFilterButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Component id="tasksFilterTextField" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tasksTableScrollPane" pref="457" max="32767" attributes="0"/>
+                      <Component id="tasksTableScrollPane" pref="249" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1137,7 +1289,10 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="addTasksButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Add Task"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/add50.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Add Task"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addTasksButtonActionPerformed"/>
@@ -1145,7 +1300,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="removeTaskButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Remove Task"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/delete50.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Remove Task"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeTaskButtonActionPerformed"/>
@@ -1153,7 +1311,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="editTaskButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit Task"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/edit50.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Edit Task"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editTaskButtonActionPerformed"/>
@@ -1163,7 +1324,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="tasksFilterButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Filter"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/filter50.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Filter"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tasksFilterButtonActionPerformed"/>
@@ -1238,7 +1402,7 @@
               <JTabbedPaneConstraints tabName="" toolTip="Schedule">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/cal.png"/>
+                  <Image iconType="3" name="/resources/icons/cal75.png"/>
                 </Property>
                 <Property name="tabToolTip" type="java.lang.String" value="Schedule"/>
               </JTabbedPaneConstraints>
@@ -1248,12 +1412,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="808" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="833" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="508" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="325" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1264,7 +1428,7 @@
               <JTabbedPaneConstraints tabName="" toolTip="Progress">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/graph.png"/>
+                  <Image iconType="3" name="/resources/icons/graph75.png"/>
                 </Property>
                 <Property name="tabToolTip" type="java.lang.String" value="Progress"/>
               </JTabbedPaneConstraints>
@@ -1274,12 +1438,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="808" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="833" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="508" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="325" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1290,7 +1454,7 @@
               <JTabbedPaneConstraints tabName="" toolTip="Project Overview">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/overview.png"/>
+                  <Image iconType="3" name="/resources/icons/overview75.png"/>
                 </Property>
                 <Property name="tabToolTip" type="java.lang.String" value="Project Overview"/>
               </JTabbedPaneConstraints>
@@ -1300,12 +1464,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="808" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="833" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="508" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="325" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
