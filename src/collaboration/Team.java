@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @author Cam
  */
 @Entity
-class Team implements Serializable {
+public class Team implements Serializable {
 
 	@Id
 	private int TeamID;
