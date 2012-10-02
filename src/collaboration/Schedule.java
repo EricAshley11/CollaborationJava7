@@ -4,9 +4,6 @@
  */
 package collaboration;
 
-import java.util.Collection;
-import java.io.Serializable;
-import javax.persistence.*;
 /**
  *
  * @author Cam

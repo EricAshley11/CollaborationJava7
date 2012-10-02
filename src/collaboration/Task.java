@@ -3,9 +3,6 @@
  * and open the template in the editor.
  */
 package collaboration;
-import java.util.Collection;
-import java.io.Serializable;
-import javax.persistence.*;
 
 /**
  *
@@ -14,8 +11,7 @@ import javax.persistence.*;
 @Entity
 class Task {
 
-	@Id
-        @GeneratedValue
+	@ID
 	private int TaskID;
 	
     private int storyPointsEstimate, storyPointsActual;

@@ -13,11 +13,11 @@ import javax.persistence.*;
  * @author Cam
  */
 @Entity
-public class User implements Serializable {
+public class User implements Serializable{
 
-    @Id
-    @GeneratedValue
-    private int UserID;
+	@ID
+	private int UserID;
+	
     private String name, email;
     private int phoneNum;
     private Collection<Team> teams;

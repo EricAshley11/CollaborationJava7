@@ -5,15 +5,12 @@
 package collaboration;
 
 import java.util.Collection;
-import java.util.Collection;
-import java.io.Serializable;
-import javax.persistence.*;
 
 /**
  *
  * @author Cam
  */
-class Project implements Serializable{
+class Project {
     private Collection<Team> teams;
     private Collection<UserStory> userStories;
     //Calendar is not yet implemented private GCal calendar;
