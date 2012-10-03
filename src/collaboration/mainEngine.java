@@ -25,7 +25,7 @@ public class mainEngine {
         table.setRowSorter(sorter);
         RowFilter<DefaultTableModel, Object> rf = null;
         try {
-            rf = RowFilter.regexFilter(filterText, 0);
+            rf = RowFilter.regexFilter("(?i)" + filterText, 0);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
