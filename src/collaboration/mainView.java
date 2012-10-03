@@ -682,7 +682,7 @@ public class mainView extends javax.swing.JFrame {
 
         spaceJlabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/ProjectTracker.png"))); // NOI18N
 
-        themeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nimbus (Default)", "Glass (Light)", "Tattoo (Dark)", "System (Your computer theme, Windows, Mac, etc)" }));
+        themeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nimbus (Default)", "Glass (Light)", "Tattoo (Dark)", "System (Windows, Mac, etc)" }));
 
         jLabel1.setText("Theme:");
 
@@ -693,16 +693,16 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(loginJPanel1Layout.createSequentialGroup()
                 .addGroup(loginJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginJPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(spaceJlabel1))
-                    .addGroup(loginJPanel1Layout.createSequentialGroup()
                         .addGap(132, 132, 132)
                         .addComponent(saveSettingsButton))
                     .addGroup(loginJPanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(themeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(45, 45, 45)
+                        .addGroup(loginJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(loginJPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(themeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(spaceJlabel1))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         loginJPanel1Layout.setVerticalGroup(
@@ -1296,13 +1296,9 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void saveSettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSettingsButtonActionPerformed
-        updateLookAndFeel("System");
         updateLookAndFeel(themeComboBox.getSelectedItem().toString());
         settingsJFrame.setVisible(false);
         this.setVisible(true);
-        //full screen bug when swithing themes was fixed when going non full to fullscreen
-        this.setExtendedState(0); //not fullscreen
-        this.setExtendedState(6); //fullscreen
     }//GEN-LAST:event_saveSettingsButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
