@@ -1,26 +1,9 @@
 //<editor-fold defaultstate="collapsed" desc=" Imports and package ">
 package collaboration;
 
-import com.alee.laf.WebLookAndFeel;
-import java.awt.Component;
-import java.awt.Frame;
-import java.awt.Window;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultRowSorter;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.RowFilter;
-import javax.swing.RowSorter;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
-import org.jfree.chart.ChartPanel;
 
 //google calendar API imports
 //import com.google.gdata.client.*;
@@ -46,67 +29,25 @@ public class mainView extends javax.swing.JFrame {
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" Custom methods ">
 
-    private void addTitleBar(JFrame frame) {
-        frame.setShape(null);
-        frame.dispose();
-        frame.setUndecorated(false);
-        frame.pack();
-    }
-
-    private void removeTitleBar(JFrame frame) {
-        frame.dispose();
-        frame.setUndecorated(true);
-        frame.pack();
-    }
-
     private void updateLookAndFeel(String pLookAndFeel) {
         try {
-            if (pLookAndFeel.equals("System")) {
-                addTitleBar(this);
-                addTitleBar(addMemberJFrame);
-                addTitleBar(editMemberJFrame);
-                addTitleBar(addTasksJFrame);
-                addTitleBar(editTasksJFrame);
-                addTitleBar(settingsJFrame);
-                addTitleBar(loginJFrame);
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } else if (pLookAndFeel.equals("Dark")) {
-                removeTitleBar(this);
-                removeTitleBar(addMemberJFrame);
-                removeTitleBar(editMemberJFrame);
-                removeTitleBar(addTasksJFrame);
-                removeTitleBar(editTasksJFrame);
-                removeTitleBar(settingsJFrame);
-                removeTitleBar(loginJFrame);
-                setDefaultLookAndFeelDecorated(true);
-                UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
-//            } else if (pLookAndFeel.equals("Light")) {
-//                addTitleBar(this);
-//                addTitleBar(addMemberJFrame);
-//                addTitleBar(editMemberJFrame);
-//                addTitleBar(addTasksJFrame);
-//                addTitleBar(editTasksJFrame);
-//                addTitleBar(settingsJFrame);
-//                addTitleBar(loginJFrame);
-//                WebLookAndFeel.install();
+            if (pLookAndFeel.startsWith("System")) {
+                javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+            } else if (pLookAndFeel.startsWith("Tattoo")) {
+                javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
+            } else if (pLookAndFeel.startsWith("Glass")) {
+                javax.swing.UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
             } else {
-                removeTitleBar(this);
-                removeTitleBar(addMemberJFrame);
-                removeTitleBar(editMemberJFrame);
-                removeTitleBar(addTasksJFrame);
-                removeTitleBar(editTasksJFrame);
-                removeTitleBar(settingsJFrame);
-                removeTitleBar(loginJFrame);
-                UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+                javax.swing.UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             }
-            SwingUtilities.updateComponentTreeUI(this);
-            SwingUtilities.updateComponentTreeUI(addMemberJFrame);
-            SwingUtilities.updateComponentTreeUI(editMemberJFrame);
-            SwingUtilities.updateComponentTreeUI(addTasksJFrame);
-            SwingUtilities.updateComponentTreeUI(editTasksJFrame);
-            SwingUtilities.updateComponentTreeUI(editProjectJFrame);
-            SwingUtilities.updateComponentTreeUI(settingsJFrame);
-            SwingUtilities.updateComponentTreeUI(loginJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(this);
+            javax.swing.SwingUtilities.updateComponentTreeUI(addMemberJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(editMemberJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(addTasksJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(editTasksJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(editProjectJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(settingsJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(loginJFrame);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -741,7 +682,7 @@ public class mainView extends javax.swing.JFrame {
 
         spaceJlabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/ProjectTracker.png"))); // NOI18N
 
-        themeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Glass", "Light", "Dark", "System" }));
+        themeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nimbus (Default)", "Glass (Light)", "Tattoo (Dark)", "System (Your computer theme, Windows, Mac, etc)" }));
 
         jLabel1.setText("Theme:");
 
@@ -1370,24 +1311,11 @@ public class mainView extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        //WebLookAndFeel.install();
         try {
             setDefaultLookAndFeelDecorated(true);
-            javax.swing.UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+            javax.swing.UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
         }
-        //</editor-fold>
-
         /*
          * Create and display the form
          */
@@ -1397,23 +1325,6 @@ public class mainView extends javax.swing.JFrame {
             }
         });
     }
-//    public void saveChart(JFreeChart chart)
-//    {
-//        String fileName="C:/Users/Eric/Desktop/myCategoryChart.jpg";
-//        try {
-//            /**
-//             * This utility saves the JFreeChart as a JPEG
-//             * First Parameter: FileName
-//             * Second Parameter: Chart To Save
-//             * Third Parameter: Height Of <span id="IL_AD10" class="IL_AD">Picture</span>
-//             * Fourth Parameter: Width Of Picture
-//             */
-//        ChartUtilities.saveChartAsJPEG(new File(fileName), chart, 800, 600);
-//    } catch (IOException e) {
-//        e.printStackTrace();
-//        System.err.println("Problem occurred creating chart.");
-//    }
-//    }
     //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" Variable declarations ">
     // Variables declaration - do not modify//GEN-BEGIN:variables

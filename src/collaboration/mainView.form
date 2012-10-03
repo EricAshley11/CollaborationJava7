@@ -927,10 +927,10 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
-                    <StringItem index="0" value="Glass"/>
-                    <StringItem index="1" value="Light"/>
-                    <StringItem index="2" value="Dark"/>
-                    <StringItem index="3" value="System"/>
+                    <StringItem index="0" value="Nimbus (Default)"/>
+                    <StringItem index="1" value="Glass (Light)"/>
+                    <StringItem index="2" value="Tattoo (Dark)"/>
+                    <StringItem index="3" value="System (Your computer theme, Windows, Mac, etc)"/>
                   </StringArray>
                 </Property>
               </Properties>

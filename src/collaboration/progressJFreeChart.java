@@ -4,9 +4,7 @@
  */
 package collaboration;
 
-import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -49,7 +47,22 @@ public class progressJFreeChart {
                 false);
 
         return chart;
-
-
     }
+//    public void saveChart(JFreeChart chart)
+//    {
+//        String fileName="C:/Users/Eric/Desktop/myCategoryChart.jpg";
+//        try {
+//            /**
+//             * This utility saves the JFreeChart as a JPEG
+//             * First Parameter: FileName
+//             * Second Parameter: Chart To Save
+//             * Third Parameter: Height Of <span id="IL_AD10" class="IL_AD">Picture</span>
+//             * Fourth Parameter: Width Of Picture
+//             */
+//        ChartUtilities.saveChartAsJPEG(new File(fileName), chart, 800, 600);
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//        System.err.println("Problem occurred creating chart.");
+//    }
+//    }
 }
