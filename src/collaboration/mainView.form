@@ -605,7 +605,7 @@
           <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[230, 104]"/>
+          <Dimension value="[285, 104]"/>
         </Property>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
@@ -980,7 +980,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tabbedPane" pref="933" max="32767" attributes="0"/>
+                  <Component id="tabbedPane" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="projectComboBox" min="-2" pref="250" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -1104,7 +1104,7 @@
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="189" max="32767" attributes="0"/>
+                              <EmptySpace pref="266" max="32767" attributes="0"/>
                               <Component id="teamFilterButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -1257,7 +1257,7 @@
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="189" max="32767" attributes="0"/>
+                              <EmptySpace pref="266" max="32767" attributes="0"/>
                               <Component id="tasksFilterButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -1414,12 +1414,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="833" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="830" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="325" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="329" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1440,12 +1440,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="833" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="830" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="325" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="329" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1466,12 +1466,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="833" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="830" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="325" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="329" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
