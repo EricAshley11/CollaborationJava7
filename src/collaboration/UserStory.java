@@ -6,6 +6,7 @@ package collaboration;
 
 import java.util.Collection;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.*;
 
 /**
@@ -22,7 +23,9 @@ public class UserStory implements Serializable{
     private Project project;
     private State state;
     
-    public UserStory() {}
+    public UserStory() {
+        tasks = new ArrayList<Task>();
+    }
     
     boolean removeTask(Task task) {
         if(tasks.remove(task)){
