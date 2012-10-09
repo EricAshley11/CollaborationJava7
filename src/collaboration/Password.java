@@ -15,12 +15,12 @@ import javax.persistence.*;
 public class Password implements Serializable {
     
     @Id
-    private int UserID;
+    private String name;
     private String password;
     
     public Password() {}
     
-    public Password(int User, String password){
+    public Password(String User, String password){
         this.password=password;
     }
     
