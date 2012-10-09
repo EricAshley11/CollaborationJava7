@@ -8,14 +8,14 @@ package collaboration;
  *
  * @author Cam
  */
-class Schedule {
+class Schedule{
 
     boolean addMilestone(Milestone milestone) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        throw new UnsupportedOperationException("Not yet implemented");//TODO implement
     }
 
     boolean completeMilestone(Milestone milestone) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        throw new UnsupportedOperationException("Not yet implemented");//TODO implement
     }
     
 }

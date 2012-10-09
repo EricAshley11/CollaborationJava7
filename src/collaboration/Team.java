@@ -14,12 +14,28 @@ import javax.persistence.*;
 @Entity
 public class Team implements Serializable {
 
-	@Id
-	private int TeamID;
+    @Id
+    private int TeamID;
 	
     private Collection<User> users;
     private Collection<Project> projects;
-    private Schedule schedule;
+    private String name;
+    /* TODO: Schedule stuff 
+     * private Schedule schedule;
+    boolean addMilestone(Milestone milestone) {
+        return schedule.addMilestone(milestone);
+    }
+
+    boolean completeMilestone(Milestone milestone) {
+        return schedule.completeMilestone(milestone);
+    }
+    Schedule getSchedule() {
+        return schedule;
+      }
+     */
+    Team(String name){
+        this.name = name;
+    }
 
     boolean addProject(Project project) {
         if (!projects.contains(project)) {
@@ -38,13 +54,7 @@ public class Team implements Serializable {
         return false;
     }
 
-    boolean addMilestone(Milestone milestone) {
-        return schedule.addMilestone(milestone);
-    }
 
-    boolean completeMilestone(Milestone milestone) {
-        return schedule.completeMilestone(milestone);
-    }
 
     boolean addMember(User user) {
         if (!users.contains(user)) {
@@ -63,15 +73,15 @@ public class Team implements Serializable {
         return false;
     }
 
-    Schedule getSchedule() {
-        return schedule;
-    }
 
-    Collection<Project> getProjects() {
+    public Collection<Project> getProjects() {
         return projects;
     }
 
     Collection<User> getTeamMembers() {
         return users;
+    }
+    public String getName(){
+        return this.name;
     }
 }

@@ -14,8 +14,21 @@ import javax.persistence.*;
 public class Project implements Serializable{
     private Collection<Team> teams;
     private Collection<UserStory> userStories;
+    private String name;
     //Calendar is not yet implemented private GCal calendar;
+    Project(String name){
+        this.name = name;
+    }
     
+    String getName(){
+        return name;
+    }
+    Collection<Team> getTeams(){
+        return teams;
+    }
+    void reName(String newName){
+        this.name = newName;
+    }
     boolean removeTeam(Team team) {
         if(teams.remove(team)){
             team.removeProject(this);

@@ -22,6 +22,9 @@ public class User implements Serializable {
     private Collection<Team> teams;
     private Collection<Task> tasks;
 
+    public User(String name){
+        this.name = name;
+    }
     boolean addToTeam(Team team) {
         if (!teams.contains(team)) {
             teams.add(team);
