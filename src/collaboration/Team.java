@@ -25,6 +25,8 @@ public class Team implements Serializable {
     public Team() {}
     
     Team(String name){
+        this.users = new ArrayList<User>();
+        this.projects = new ArrayList<Project>();
         this.name = name;
     }
 

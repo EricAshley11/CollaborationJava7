@@ -6,6 +6,7 @@ package collaboration;
 
 import java.util.Collection;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.*;
 
 /**
@@ -22,7 +23,10 @@ public class User implements Serializable {
     private Collection<Team> teams;
     private Collection<Task> tasks;
 
-    public User() {}
+    public User() {
+        teams = new ArrayList<Team>();
+        tasks = new ArrayList<Task>();
+    }
     
     public User(String name){
         this.name = name;

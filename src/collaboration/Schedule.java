@@ -23,7 +23,7 @@ class Schedule{
     }
 
     boolean completeMilestone(Milestone milestone) {
-        if (milestone.setComplete()) {
+        if (milestones.setComplete()) {
             return true;
         }
         return false;
