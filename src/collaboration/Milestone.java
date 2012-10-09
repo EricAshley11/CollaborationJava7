@@ -8,18 +8,18 @@ import java.util.Date;
  */
 class Milestone {
 
+    int id;
     String description;
-    int number;
     boolean isCompleted;
     Date estimatedCompDate;
     Date completeDate;
     
-    public Milestone(int num, String desc) {
+    public Milestone(String desc, int id) {
         description = desc;
-        number = num;
         isCompleted = false;
         estimatedCompDate = null;
         completeDate = null;
+        this.id = id;
     }
     
     public void setEstDate(int month, int day, int year) {
@@ -33,8 +33,31 @@ class Milestone {
     public boolean isComplete() {return isCompleted;}
     public void setComplete() {isCompleted = true;}
     
-    public boolean isBeforeEstDate() {return completeDate.before(estimatedCompDate);}
-    public boolean isAfterEstDate() {return completeDate.after(estimatedCompDate);}
+    public boolean isOnTime() {return (!completeDate.after(estimatedCompDate));}
+    
+    public String estDateToString() {
+        String date;
+        if (estimatedCompDate != null) {
+            date = getMonth(estimatedCompDate.getMonth()) + " " +
+                   estimatedCompDate.getDate() + " " +
+                   estimatedCompDate.getYear();
+        } else {
+            date = "No Date Set!";
+        }
+        return date;
+    }
+    
+    public String completeDateToString() {
+        String date;
+        if (completeDate != null) {
+            date = getMonth(completeDate.getMonth()) + " " +
+                   completeDate.getDate() + " " +
+                   completeDate.getYear();
+        } else {
+            date = "No completion date!";
+        }
+        return date;
+    }
     
     public String getMonth(int month) {
         String mon;
@@ -70,27 +93,7 @@ class Milestone {
         return mon;
     }
     
-    public String estDateToString() {
-        String date;
-        if (estimatedCompDate != null) {
-            date = getMonth(estimatedCompDate.getMonth()) + " " +
-                   estimatedCompDate.getDate() + " " +
-                   estimatedCompDate.getYear();
-        } else {
-            date = "No Date Set!";
-        }
-        return date;
+    public int getID() {
+        return id;
     }
-    
-    public String completeDateToString() {
-        String date;
-        if (completeDate != null) {
-            date = getMonth(completeDate.getMonth()) + " " +
-                   completeDate.getDate() + " " +
-                   completeDate.getYear();
-        } else {
-            date = "No completion date!";
-        }
-        return date;
-    }   
 }
