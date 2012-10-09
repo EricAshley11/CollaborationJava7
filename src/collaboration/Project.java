@@ -6,6 +6,7 @@ package collaboration;
 
 import java.util.Collection;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.*;
 /**
  *
@@ -19,6 +20,8 @@ public class Project implements Serializable{
     //Calendar is not yet implemented private GCal calendar;   
     Project(String name){
         this.name = name;
+        this.teams = new ArrayList<Team>();
+        this.userStories = new ArrayList<UserStory>();
     }
     
     String getName(){
