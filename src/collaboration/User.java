@@ -35,6 +35,15 @@ public class User implements Serializable {
         }
         return false;
     }
+    
+    void delete() {
+        for(Team team : teams){
+            this.removeFromTeam(team);
+        }
+        for(Task task : tasks){
+            this.removeTask(task);
+        }
+    }
 
     boolean removeFromTeam(Team team) {
         if (teams.remove(team)) {
