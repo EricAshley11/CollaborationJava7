@@ -22,6 +22,8 @@ public class UserStory implements Serializable{
     private Project project;
     private State state;
     
+    public UserStory() {}
+    
     boolean removeTask(Task task) {
         if(tasks.remove(task)){
             task.delete();//TODO: Not sure if this is the best way to do this

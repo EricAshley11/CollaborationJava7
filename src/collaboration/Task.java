@@ -11,7 +11,7 @@ import javax.persistence.*;
  * @author Cam
  */
 @Entity
-class Task {
+public class Task {
 
 	@Id
 	private int TaskID;
@@ -22,6 +22,8 @@ class Task {
     private UserStory userStory;
     private State state;
 
+    public Task() {}
+    
     boolean removeUser(User user) {
         if (user.equals(this.user)) {
             this.user = null;

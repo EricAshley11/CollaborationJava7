@@ -15,7 +15,7 @@ public class Project implements Serializable{
     private Collection<Team> teams;
     private Collection<UserStory> userStories;
     private String name;
-    //Calendar is not yet implemented private GCal calendar;
+    //Calendar is not yet implemented private GCal calendar;   
     Project(String name){
         this.name = name;
     }

@@ -82,7 +82,7 @@ class Milestone {
         return date;
     }
     
-    public String completeDate() {
+    public String completeDateToString() {
         String date;
         if (completeDate != null) {
             date = getMonth(completeDate.getMonth()) + " " +
