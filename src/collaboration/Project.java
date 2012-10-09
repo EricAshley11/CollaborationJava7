@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class Project implements Serializable{
     private Collection<Team> teams;
     private Collection<UserStory> userStories;
+    private Collection<Milestone> milestones;
     private String name;
     //Calendar is not yet implemented private GCal calendar;   
     Project(String name){
@@ -45,6 +46,7 @@ public class Project implements Serializable{
         }
         return false;
     }
+    
     boolean removeUserStory(UserStory userStory) {
         if(userStories.remove(userStory)){
             userStory.removeProject(this);
@@ -57,6 +59,21 @@ public class Project implements Serializable{
         if(!userStories.contains(userStory)){
             userStories.add(userStory);
             userStory.changeProject(this);
+            return true;
+        }
+        return false;
+    }
+    
+    boolean createMilestone(Milestone milestone) {
+        if (!milestones.contains(milestone)) {
+            milestones.add(milestone);
+            return true;
+        }
+        return false;
+    }
+    
+    boolean removeMilestone(Milestone milestone) {
+        if (milestones.remove(milestone)) {
             return true;
         }
         return false;
