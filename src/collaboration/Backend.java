@@ -12,7 +12,7 @@ import java.util.Vector;
  * @author Cam
  */
 public final class Backend {
-    Project currentProject = null;
+    static Project currentProject = null;
     User    currentUser = null;
     private static Backend instance = null;
     
@@ -23,6 +23,7 @@ public final class Backend {
         if(instance == null){
             instance = new Backend();
         }
+        currentProject = (Project) retrieveProjects().toArray()[0];
         return instance;
     }
     void setCurrentProject(Project project){
@@ -37,7 +38,8 @@ public final class Backend {
     //void removeProject(Project project){
         
     //}
-    Collection<Project> retrieveProjects(){
+    
+    static Collection<Project> retrieveProjects(){
         //TODO: Cam get projects from db
         //for now simulate it
         Project p1 = new Project("Project 1");

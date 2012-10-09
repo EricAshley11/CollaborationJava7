@@ -23,14 +23,12 @@ public class User implements Serializable {
     private Collection<Team> teams;
     private Collection<Task> tasks;
 
-    public User() {
+    public User(String name) {
+        this.name = name;
         teams = new ArrayList<Team>();
         tasks = new ArrayList<Task>();
     }
     
-    public User(String name){
-        this.name = name;
-    }
     boolean addToTeam(Team team) {
         if (!teams.contains(team)) {
             teams.add(team);

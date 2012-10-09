@@ -31,7 +31,7 @@ class Milestone {
     }
     
     public boolean isComplete() {return isCompleted;}
-    public void setComplete() {isCompleted = true;}
+    public boolean setComplete() {isCompleted = true; return isCompleted;}
     
     public boolean isOnTime() {return (!completeDate.after(estimatedCompDate));}
     

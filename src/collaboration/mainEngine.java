@@ -5,6 +5,7 @@
 package collaboration;
 
 import javax.swing.DefaultRowSorter;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -31,8 +32,8 @@ public class mainEngine {
         }
         sorter.setRowFilter(rf);
     }
-    
-    public void updateChart(JPanel progressPanel){
+
+    public void updateChart(JPanel progressPanel) {
         progressJFreeChart progressChart = new progressJFreeChart();
         JPanel chartPanel = new ChartPanel(progressChart.createChart());
         chartPanel.setSize(progressPanel.getSize());
@@ -43,8 +44,23 @@ public class mainEngine {
         progressPanel.add(chartPanel);
         progressPanel.getParent().validate();
     }
-    
-    public void deleteUser(User user){
-        Backend.getInstance().removeUser(user);
+
+    public boolean deleteUser(JTable teamTable) {
+        boolean isAnyRowSelected = false;
+        for (int i = 0; i < teamTable.getRowCount(); i++) {
+            if (teamTable.isRowSelected(i)) {
+                isAnyRowSelected = true;
+            }
+        }
+        if (isAnyRowSelected) {
+            DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
+            model.removeRow(teamTable.getSelectedRow());
+            model.getValueAt(teamTable.getSelectedRow(), 0);
+            //do this in backend
+            //Backend.getInstance().removeUser(model.getValueAt(teamTable.getSelectedRow(), 0).toString());
+            return true;
+        } else {
+            return false;
+        }
     }
 }
