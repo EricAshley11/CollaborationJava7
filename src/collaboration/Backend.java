@@ -19,7 +19,7 @@ public final class Backend {
     private Backend(){
         //since this is a singleton, we don't want instantiation from outside the class
     }
-    Backend getInstance(){
+    public static Backend getInstance(){
         if(instance == null){
             instance = new Backend();
         }
@@ -79,6 +79,10 @@ public final class Backend {
 
     Collection<Task> retrieveUserTasks(User user) {
         return user.getTasks();
+    }
+    
+    void removeUser(User user){
+        user.delete();        
     }
     
 }

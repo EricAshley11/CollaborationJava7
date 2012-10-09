@@ -43,4 +43,8 @@ public class mainEngine {
         progressPanel.add(chartPanel);
         progressPanel.getParent().validate();
     }
+    
+    public void deleteUser(User user){
+        Backend.getInstance().removeUser(user);
+    }
 }
