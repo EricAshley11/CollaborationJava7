@@ -20,19 +20,10 @@ public class Team implements Serializable {
     private Collection<User> users;
     private Collection<Project> projects;
     private String name;
-    /* TODO: Schedule stuff 
-     * private Schedule schedule;
-    boolean addMilestone(Milestone milestone) {
-        return schedule.addMilestone(milestone);
-    }
+    private Schedule sched;
 
-    boolean completeMilestone(Milestone milestone) {
-        return schedule.completeMilestone(milestone);
-    }
-    Schedule getSchedule() {
-        return schedule;
-      }
-     */
+    public Team() {}
+    
     Team(String name){
         this.name = name;
     }
@@ -72,7 +63,24 @@ public class Team implements Serializable {
         }
         return false;
     }
+    
+    boolean completeMilestone(Milestone milestone) {
+        if (sched.completeMilestone(milestone)) {
+           return true;
+        }
+        return false;
+    }
+    
+    boolean addMilestone(Milestone milestone) {
+        if (sched.addMilestone(milestone)) {
+            return true;
+        }
+        return false;
+    }
 
+    public Schedule getSched() {
+        return this.sched;
+    }
 
     public Collection<Project> getProjects() {
         return projects;
