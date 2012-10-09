@@ -1,21 +1,34 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package collaboration;
+
+import java.util.*;
 
 /**
  *
  * @author Cam
  */
 class Schedule{
+    
+    private Collection<Milestone> milestones;
+    
+    public Schedule() {
+        
+    }
 
     boolean addMilestone(Milestone milestone) {
-        throw new UnsupportedOperationException("Not yet implemented");//TODO implement
+        if (!milestones.contains(milestone)) {
+            milestones.add(milestone);
+            return true;
+        }
+        return false;
     }
 
     boolean completeMilestone(Milestone milestone) {
-        throw new UnsupportedOperationException("Not yet implemented");//TODO implement
+        if (milestone.setComplete()) {
+            return true;
+        }
+        return false;
     }
+    
+    
     
 }
