@@ -32,19 +32,24 @@ public final class Backend {
     void setCurrentUser(User user){
         this.currentUser = user;
     }
+    
+    
+    //void removeProject(Project project){
+        
+    //}
     Collection<Project> retrieveProjects(){
-        //TODO: get projects from db
+        //TODO: Cam get projects from db
         //for now simulate it
         Project p1 = new Project("Project 1");
         Team t1 = new Team("Team 1");
         p1.addTeam(t1);
         User u1 = new User("User 1");
         u1.setEmail("user1@abc.com");
-        u1.setPhoneNum(0000000001);
+        u1.setPhoneNum("0000000001");
         t1.addMember(u1);
         User u2 = new User("User 2");
         u2.setEmail("user2@abc.com");
-        u2.setPhoneNum(0000000002);
+        u2.setPhoneNum("0000000002");
         t1.addMember(u2);
         
         Project p2 = new Project("Project 2");
@@ -52,11 +57,11 @@ public final class Backend {
         p2.addTeam(t2);
         User u3 = new User("User 3");
         u3.setEmail("user3@abc.com");
-        u3.setPhoneNum(0000000003);
+        u3.setPhoneNum("0000000003");
         t2.addMember(u1);
         User u4 = new User("User 4");
         u4.setEmail("user4@abc.com");
-        u4.setPhoneNum(0000000004);
+        u4.setPhoneNum("0000000004");
         t2.addMember(u2);
         
         Vector<Project> projects = new Vector<Project>();
@@ -73,6 +78,16 @@ public final class Backend {
         }
         return users;
     }
+    String[][] getUserTableData(){
+        String[] users = retrieveUsers().toArray(new String[0]);
+        String[] userInfo = users[0].split(", ");
+        String[][] table = new String[users.length][userInfo.length];
+        for(int i = 0; i < users.length; i++){
+            table[i]= users[i].split(", ");
+        }
+        return table;
+    }
+    
     Collection<Task> retrieveUserTasks(){
         return retrieveUserTasks(this.currentUser);
     }
@@ -84,5 +99,19 @@ public final class Backend {
     void removeUser(User user){
         user.delete();        
     }
+    
+    void removeUser(String name){
+        removeUser(getUserFromName(name));
+    }
+    
+    User getUserFromName(String name){
+        //TODO: Cam need a connection to the DB to query this
+        for(User user : retrieveUsers()){
+            if(user.getName().equals(name)){
+                return user;
+            }
+        }
+        return null;
+    }   
     
 }

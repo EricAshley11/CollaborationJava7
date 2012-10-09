@@ -18,7 +18,7 @@ public class User implements Serializable {
     @Id
     private int UserID;
     private String name, email;
-    private int phoneNum;
+    private String phoneNum;
     private Collection<Team> teams;
     private Collection<Task> tasks;
 
@@ -105,11 +105,11 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public int getPhoneNum() {
+    public String getPhoneNum() {
         return phoneNum;
     }
 
-    public void setPhoneNum(int phoneNum) {
+    public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
 
