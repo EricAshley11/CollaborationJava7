@@ -5,7 +5,6 @@
 package collaboration;
 
 import javax.swing.DefaultRowSorter;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -58,9 +57,20 @@ public class mainEngine {
             model.getValueAt(teamTable.getSelectedRow(), 0);
             //do this in backend
             //Backend.getInstance().removeUser(model.getValueAt(teamTable.getSelectedRow(), 0).toString());
-            return true;
-        } else {
-            return false;
         }
+        return isAnyRowSelected;
+    }
+
+    public void loadTeamTable(JTable teamTable) {
+        System.out.println(Backend.getInstance().getUserTableData()[0][0]);
+        //teamTable.setModel(new DefaultTableModel(Backend.getInstance().getUserTableData(), new String[]{"UserID", "Name", "Phone", "Email", "Tasks"}));
+    }
+
+    public boolean validCredentials() {
+        boolean validCreds = false;
+        //TODO: set validCreds to true given valid credentials are entered will need to
+        //be added here for testing sake validCreds will be set to true until implemented
+        validCreds = true;
+        return validCreds;
     }
 }

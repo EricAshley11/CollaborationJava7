@@ -1255,13 +1255,9 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_editProjectButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        boolean validCredentials = false;
-        //code to set validCredentials to true given valid credentials are entered will need to be added here
-        //for testing sake validCredentials will be set to true until implemented
-        validCredentials = true;
-        if (validCredentials) {
+        if (engine.validCredentials()) {
             loginJFrame.setVisible(false);
-            this.setExtendedState(6); //maximises the screen by default when loggin in.
+            //this.setExtendedState(6); //maximises the screen by default when loggin in.
             this.setVisible(true);
         } else {
             loginJFrame.setVisible(false);
@@ -1300,8 +1296,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_saveSettingsButtonActionPerformed
 
     private void projectComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_projectComboBoxItemStateChanged
-        System.out.println(Backend.getInstance().getUserTableData()[0][0]);
-        teamTable.setModel(new DefaultTableModel(Backend.getInstance().getUserTableData(), new String[]{"UserID", "Name", "Phone", "Email", "Tasks"}));
+        engine.loadTeamTable(teamTable);
     }//GEN-LAST:event_projectComboBoxItemStateChanged
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
