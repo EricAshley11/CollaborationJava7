@@ -132,20 +132,20 @@ public abstract class StateMachineBase extends UIBuilder {
         return (com.codename1.ui.TextField)findByName("passwordTextField", Display.getInstance().getCurrent());
     }
 
-    public com.codename1.ui.Container findTeamContainer(Container root) {
-        return (com.codename1.ui.Container)findByName("teamContainer", root);
-    }
-
-    public com.codename1.ui.Container findTeamContainer() {
-        return (com.codename1.ui.Container)findByName("teamContainer", Display.getInstance().getCurrent());
-    }
-
     public com.codename1.ui.Label findPasswordLabel(Container root) {
         return (com.codename1.ui.Label)findByName("passwordLabel", root);
     }
 
     public com.codename1.ui.Label findPasswordLabel() {
         return (com.codename1.ui.Label)findByName("passwordLabel", Display.getInstance().getCurrent());
+    }
+
+    public com.codename1.ui.Container findTeamContainer(Container root) {
+        return (com.codename1.ui.Container)findByName("teamContainer", root);
+    }
+
+    public com.codename1.ui.Container findTeamContainer() {
+        return (com.codename1.ui.Container)findByName("teamContainer", Display.getInstance().getCurrent());
     }
 
     public com.codename1.ui.Container findScheduleContainer(Container root) {
@@ -236,6 +236,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return (com.codename1.ui.ComponentGroup)findByName("ComponentGroup", Display.getInstance().getCurrent());
     }
 
+    public com.codename1.ui.Container findProjectOverviewContainer(Container root) {
+        return (com.codename1.ui.Container)findByName("projectOverviewContainer", root);
+    }
+
+    public com.codename1.ui.Container findProjectOverviewContainer() {
+        return (com.codename1.ui.Container)findByName("projectOverviewContainer", Display.getInstance().getCurrent());
+    }
+
     public com.codename1.components.MultiButton findMultiButton(Container root) {
         return (com.codename1.components.MultiButton)findByName("MultiButton", root);
     }
@@ -252,14 +260,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return (com.codename1.components.MultiButton)findByName("MultiButton2", Display.getInstance().getCurrent());
     }
 
-    public com.codename1.ui.Container findProjectOverviewContainer(Container root) {
-        return (com.codename1.ui.Container)findByName("projectOverviewContainer", root);
-    }
-
-    public com.codename1.ui.Container findProjectOverviewContainer() {
-        return (com.codename1.ui.Container)findByName("projectOverviewContainer", Display.getInstance().getCurrent());
-    }
-
     public com.codename1.components.MultiButton findMultiButton1(Container root) {
         return (com.codename1.components.MultiButton)findByName("MultiButton1", root);
     }
@@ -274,6 +274,14 @@ public abstract class StateMachineBase extends UIBuilder {
 
     public com.codename1.ui.Container findLogInContainer() {
         return (com.codename1.ui.Container)findByName("logInContainer", Display.getInstance().getCurrent());
+    }
+
+    public com.codename1.components.MultiButton findMultiButton5(Container root) {
+        return (com.codename1.components.MultiButton)findByName("MultiButton5", root);
+    }
+
+    public com.codename1.components.MultiButton findMultiButton5() {
+        return (com.codename1.components.MultiButton)findByName("MultiButton5", Display.getInstance().getCurrent());
     }
 
     public com.codename1.ui.Label findLabel(Container root) {
@@ -425,6 +433,10 @@ public abstract class StateMachineBase extends UIBuilder {
                 onMain1_ButtonAction(c, event);
                 return;
             }
+            if("MultiButton5".equals(c.getName())) {
+                onMain1_MultiButton5Action(c, event);
+                return;
+            }
             if("MultiButton2".equals(c.getName())) {
                 onMain1_MultiButton2Action(c, event);
                 return;
@@ -457,6 +469,9 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onMain1_ButtonAction(Component c, ActionEvent event) {
+      }
+
+      protected void onMain1_MultiButton5Action(Component c, ActionEvent event) {
       }
 
       protected void onMain1_MultiButton2Action(Component c, ActionEvent event) {
