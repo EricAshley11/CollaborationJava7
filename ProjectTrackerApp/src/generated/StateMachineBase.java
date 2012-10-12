@@ -172,6 +172,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return (com.codename1.ui.Label)findByName("Label1", Display.getInstance().getCurrent());
     }
 
+    public com.codename1.ui.Label findLabel2(Container root) {
+        return (com.codename1.ui.Label)findByName("Label2", root);
+    }
+
+    public com.codename1.ui.Label findLabel2() {
+        return (com.codename1.ui.Label)findByName("Label2", Display.getInstance().getCurrent());
+    }
+
     public com.codename1.ui.Container findLogInFieldContainer(Container root) {
         return (com.codename1.ui.Container)findByName("logInFieldContainer", root);
     }
