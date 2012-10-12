@@ -31,6 +31,7 @@ public class Team implements Serializable {
         this.TeamID = nextTeamID++;
     }
 
+    public Team() {}
 //    Team(String name) {
 //        this.users = new ArrayList<User>();
 //        this.projects = new ArrayList<Project>();

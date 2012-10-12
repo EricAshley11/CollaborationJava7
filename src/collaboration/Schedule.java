@@ -1,12 +1,13 @@
 package collaboration;
 
 import java.util.*;
+import java.io.*;
 
 /**
  *
  * @author Cam
  */
-class Schedule{
+class Schedule implements Serializable {
     
     private Collection<Milestone> milestones;
     
