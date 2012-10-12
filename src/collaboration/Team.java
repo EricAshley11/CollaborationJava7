@@ -18,6 +18,7 @@ public class Team implements Serializable {
 
     @Id
     private int TeamID;
+    private static int nextTeamID = 0;
     private Collection<User> users;
     private Collection<Project> projects;
     private String name;
@@ -27,6 +28,7 @@ public class Team implements Serializable {
         this.users = new ArrayList<User>();
         this.projects = new ArrayList<Project>();
         this.name = name;
+        this.TeamID = nextTeamID++;
     }
 
 //    Team(String name) {

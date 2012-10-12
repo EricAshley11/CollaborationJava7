@@ -4,7 +4,9 @@
  */
 package collaboration;
 
+import java.util.Collection;
 import javax.swing.DefaultRowSorter;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -62,8 +64,8 @@ public class mainEngine {
     }
 
     public void loadTeamTable(JTable teamTable) {
-        System.out.println(Backend.getInstance().getUserTableData()[0][0]);
-        //teamTable.setModel(new DefaultTableModel(Backend.getInstance().getUserTableData(), new String[]{"UserID", "Name", "Phone", "Email", "Tasks"}));
+        //System.out.println(Backend.getInstance().getUserTableData()[0][0]);
+        teamTable.setModel(new DefaultTableModel(Backend.getInstance().getUserTableData(), new String[]{"UserID", "Name", "Phone", "Email", "Tasks"}));
     }
 
     public boolean validCredentials() {
@@ -72,5 +74,16 @@ public class mainEngine {
         //be added here for testing sake validCreds will be set to true until implemented
         validCreds = true;
         return validCreds;
+    }
+
+    void populateProjectComboBox(JComboBox projectComboBox) {
+        Collection<Project> projects = Backend.getInstance().retrieveProjects();
+        for(Project project : projects){
+            projectComboBox.addItem(project);
+        }
+    }
+
+    void setCurrentProject(Project project) {
+        Backend.getInstance().setCurrentProject(project);
     }
 }

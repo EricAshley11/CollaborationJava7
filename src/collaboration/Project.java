@@ -81,4 +81,7 @@ public class Project implements Serializable{
         }
         return false;
     }
+    public String toString(){
+        return this.getName();
+    }
 }

@@ -1,6 +1,7 @@
 //<editor-fold defaultstate="collapsed" desc=" Imports and package ">
 package collaboration;
 
+import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -1257,6 +1258,7 @@ public class mainView extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         if (engine.validCredentials()) {
             loginJFrame.setVisible(false);
+            this.engine.populateProjectComboBox(this.projectComboBox);
             //this.setExtendedState(6); //maximises the screen by default when loggin in.
             this.setVisible(true);
         } else {
@@ -1296,7 +1298,10 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_saveSettingsButtonActionPerformed
 
     private void projectComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_projectComboBoxItemStateChanged
-        engine.loadTeamTable(teamTable);
+        if(evt.getStateChange() == ItemEvent.SELECTED){ // this should fix the event happening multiple times
+            engine.setCurrentProject((Project)this.projectComboBox.getSelectedItem());
+            engine.loadTeamTable(teamTable);
+        }
     }//GEN-LAST:event_projectComboBoxItemStateChanged
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">

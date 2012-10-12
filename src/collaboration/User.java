@@ -18,6 +18,7 @@ public class User implements Serializable {
 
     @Id
     private int UserID;
+    private static int nextUID = 0;
     private String name, email;
     private String phoneNum;
     private Collection<Team> teams;
@@ -27,6 +28,7 @@ public class User implements Serializable {
         this.name = name;
         teams = new ArrayList<Team>();
         tasks = new ArrayList<Task>();
+        UserID = nextUID++;
     }
     
     boolean addToTeam(Team team) {
@@ -88,6 +90,10 @@ public class User implements Serializable {
             return true;
         }
         return false;
+    }
+    
+    public String toString(){
+        return String.format("%s, %s, %s, %s", this.UserID, this.name, this.phoneNum, this.email);
     }
 
     // <editor-fold desc="Getters/Setters">
