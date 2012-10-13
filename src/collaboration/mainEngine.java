@@ -17,7 +17,6 @@ import org.jfree.chart.ChartPanel;
 
 /**
  *
- * @author Eric
  */
 public class mainEngine {
 
@@ -46,7 +45,7 @@ public class mainEngine {
         progressPanel.getParent().validate();
     }
 
-    public boolean deleteUser(JTable teamTable) {
+    public boolean removeMember(JTable teamTable) {
         boolean isAnyRowSelected = false;
         for (int i = 0; i < teamTable.getRowCount(); i++) {
             if (teamTable.isRowSelected(i)) {
@@ -64,7 +63,6 @@ public class mainEngine {
     }
 
     public void loadTeamTable(JTable teamTable) {
-        //System.out.println(Backend.getInstance().getUserTableData()[0][0]);
         teamTable.setModel(new DefaultTableModel(Backend.getInstance().getUserTableData(), new String[]{"UserID", "Name", "Phone", "Email", "Tasks"}));
     }
 
@@ -76,14 +74,22 @@ public class mainEngine {
         return validCreds;
     }
 
-    void populateProjectComboBox(JComboBox projectComboBox) {
+    public void populateProjectComboBox(JComboBox projectComboBox) {
         Collection<Project> projects = Backend.getInstance().retrieveProjects();
-        for(Project project : projects){
+        for (Project project : projects) {
             projectComboBox.addItem(project);
         }
     }
 
-    void setCurrentProject(Project project) {
+    public void setCurrentProject(Project project) {
         Backend.getInstance().setCurrentProject(project);
+    }
+
+    public void createUser(String[] textFieldInputs) {
+        //TODO: Cam integrate backend to create user in database
+    }
+
+    public void deleteUser() {
+        //TODO: Cam integrate backend to delete user from database
     }
 }

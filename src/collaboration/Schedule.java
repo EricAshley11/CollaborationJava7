@@ -5,14 +5,12 @@ import java.io.*;
 
 /**
  *
- * @author Cam
  */
 class Schedule implements Serializable {
-    
+
     private Collection<Milestone> milestones;
-    
+
     public Schedule() {
-        
     }
 
     boolean addMilestone(Milestone milestone) {
@@ -29,7 +27,4 @@ class Schedule implements Serializable {
         }
         return false;
     }
-    
-    
-    
 }

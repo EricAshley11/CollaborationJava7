@@ -11,7 +11,6 @@ import javax.persistence.*;
 
 /**
  *
- * @author Cam
  */
 @Entity
 public class User implements Serializable {
@@ -30,7 +29,7 @@ public class User implements Serializable {
         tasks = new ArrayList<Task>();
         UserID = nextUID++;
     }
-    
+
     boolean addToTeam(Team team) {
         if (!teams.contains(team)) {
             teams.add(team);
@@ -39,12 +38,12 @@ public class User implements Serializable {
         }
         return false;
     }
-    
+
     void delete() {
-        for(Team team : teams){
+        for (Team team : teams) {
             this.removeFromTeam(team);
         }
-        for(Task task : tasks){
+        for (Task task : tasks) {
             this.removeTask(task);
         }
     }
@@ -91,8 +90,8 @@ public class User implements Serializable {
         }
         return false;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return String.format("%s, %s, %s, %s", this.UserID, this.name, this.phoneNum, this.email);
     }
 

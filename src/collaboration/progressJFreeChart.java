@@ -11,7 +11,6 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
- * @author EricA
  */
 public class progressJFreeChart {
 

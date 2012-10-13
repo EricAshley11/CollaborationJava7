@@ -11,24 +11,22 @@ import javax.persistence.*;
 
 /**
  *
- * @author Cam
  */
 @Entity
-public class UserStory implements Serializable{
-    
-	@Id
-	private int UserStoryID;
-	
+public class UserStory implements Serializable {
+
+    @Id
+    private int UserStoryID;
     private Collection<Task> tasks;
     private Project project;
     private State state;
-    
+
     public UserStory() {
         tasks = new ArrayList<Task>();
     }
-    
+
     boolean removeTask(Task task) {
-        if(tasks.remove(task)){
+        if (tasks.remove(task)) {
             task.delete();//TODO: Not sure if this is the best way to do this
             return true;
         }
@@ -36,7 +34,7 @@ public class UserStory implements Serializable{
     }
 
     boolean addTask(Task task) {
-        if(tasks.contains(task)){
+        if (tasks.contains(task)) {
             tasks.add(task);
             task.changeUserStory(this);
             return true;
@@ -45,7 +43,7 @@ public class UserStory implements Serializable{
     }
 
     boolean removeProject(Project project) {
-        if(project != null && project.equals(this.project)){
+        if (project != null && project.equals(this.project)) {
             this.project = null;
             project.removeUserStory(this);
             return true;
@@ -53,9 +51,8 @@ public class UserStory implements Serializable{
         return false;
     }
 
-
     boolean changeProject(Project project) {
-        if(project != null && project.equals(this.project)){
+        if (project != null && project.equals(this.project)) {
             this.project.removeUserStory(this);
             this.project = project;
             project.addUserStory(this);
@@ -63,5 +60,4 @@ public class UserStory implements Serializable{
         }
         return false;
     }
-    
 }

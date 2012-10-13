@@ -6,24 +6,24 @@ package collaboration;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 /**
  *
- * @author Cam
  */
 @Entity
 public class Task {
 
-	@Id
-	private int TaskID;
-	
+    @Id
+    private int TaskID;
     private int storyPointsEstimate, storyPointsActual;
     private User user;
     private String description, name;
     private UserStory userStory;
     private State state;
 
-    public Task() {}
-    
+    public Task() {
+    }
+
     boolean removeUser(User user) {
         if (user.equals(this.user)) {
             this.user = null;
@@ -42,7 +42,8 @@ public class Task {
         }
         return false;
     }
-    boolean changeUserStory(UserStory userStory){
+
+    boolean changeUserStory(UserStory userStory) {
         if (userStory != null && !userStory.equals(this.userStory)) {
             this.userStory.removeTask(this);
             this.userStory = userStory;
@@ -51,52 +52,52 @@ public class Task {
         }
         return false;
     }
-    
+
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public String getDescription() {
         return description;
     }
-    
+
     public String getName() {
         return name;
     }
-    
+
     public State getState() {
         return state;
     }
-    
+
     public int getStoryPointsActual() {
         return storyPointsActual;
     }
-    
+
     public int getStoryPointsEstimate() {
         return storyPointsEstimate;
     }
-    
+
     public User getUser() {
         return user;
     }
-    
+
     public UserStory getUserStory() {
         return userStory;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public void setState(State state) {
         this.state = state;
     }
-    
+
     public void setStoryPointsActual(int storyPointsActual) {
         this.storyPointsActual = storyPointsActual;
     }
-    
+
     public void setStoryPointsEstimate(int storyPointsEstimate) {
         this.storyPointsEstimate = storyPointsEstimate;
     }

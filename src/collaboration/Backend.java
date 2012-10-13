@@ -8,51 +8,51 @@ import java.util.Collection;
 import java.util.Vector;
 
 /**
- * This is a singleton class that provides translation between the GUI and backend layers
- * @author Cam
+ * This is a singleton class that provides translation between the GUI and
+ * backend layers
  */
 public final class Backend {
+
     static Project currentProject = null;
-    User    currentUser = null;
+    User currentUser = null;
     private static Backend instance = null;
     boolean createdDummyProjects = false;//used to ensure we aren't making dupe projects
     Collection<Project> dummyProjects;
-    
-    private Backend(){
+
+    private Backend() {
         //since this is a singleton, we don't want instantiation from outside the class
     }
-    public static Backend getInstance(){
-        if(instance == null){
+
+    public static Backend getInstance() {
+        if (instance == null) {
             instance = new Backend();
             currentProject = (Project) instance.retrieveProjects().toArray()[0];//Used to test dummy data
         }
 
         return instance;
     }
-    void setCurrentProject(Project project){
+
+    void setCurrentProject(Project project) {
         currentProject = project;
     }
-    
-    void setCurrentUser(User user){
+
+    void setCurrentUser(User user) {
         this.currentUser = user;
     }
-    
-    
-    //void removeProject(Project project){
-        
+
+    //void removeProject(Project project){    
     //}
-    
-    Collection<Project> retrieveProjects(){
+    Collection<Project> retrieveProjects() {
         //TODO: Cam get projects from db
         //for now simulate it
-        if(!this.createdDummyProjects){
+        if (!this.createdDummyProjects) {
             dummyProjects = getDummyProjects();
             this.createdDummyProjects = true;
         }
-            return dummyProjects;
+        return dummyProjects;
     }
-    
-    private Collection<Project> getDummyProjects(){
+
+    private Collection<Project> getDummyProjects() {
         Project p1 = new Project("Project 1");
         Team t1 = new Team("Team 1");
         p1.addTeam(t1);
@@ -64,7 +64,7 @@ public final class Backend {
         u2.setEmail("user2@abc.com");
         u2.setPhoneNum("(000)000-0002");
         t1.addMember(u2);
-        
+
         Project p2 = new Project("Project 2");
         Team t2 = new Team("Team 2");
         p2.addTeam(t2);
@@ -76,61 +76,61 @@ public final class Backend {
         u4.setEmail("user4@abc.com");
         u4.setPhoneNum("(000)000-0004");
         t2.addMember(u4);
-        
+
         Vector<Project> projects = new Vector<Project>();
         projects.add(p1);
         projects.add(p2);
         return projects;
     }
-    
-    Collection<User> retrieveUsers(){
+
+    Collection<User> retrieveUsers() {
         Collection<Team> teams = this.currentProject.getTeams();
         Collection<User> users = new Vector<User>();
-        for(Team team : teams){
+        for (Team team : teams) {
             users.addAll(team.getTeamMembers());
         }
         return users;
     }
-    String[][] getUserTableData(){
+
+    String[][] getUserTableData() {
         //User[] users = retrieveUsers().toArray(new User[0]);
         //String[] userStrings = .toArray(new String[0]);
         Collection<User> users = retrieveUsers();
         int numUsers = users.size();
         int userFields = 4;
         String[][] tableData = new String[numUsers][userFields];
-        for(int i = 0; i < numUsers; i++){
-            User user = (User)users.toArray()[i];
+        for (int i = 0; i < numUsers; i++) {
+            User user = (User) users.toArray()[i];
             String userString = user.toString();
             String[] userInfo = userString.split(", ");
             tableData[i] = userInfo;
         }
         return tableData;
     }
-    
-    Collection<Task> retrieveUserTasks(){
+
+    Collection<Task> retrieveUserTasks() {
         return retrieveUserTasks(this.currentUser);
     }
 
     Collection<Task> retrieveUserTasks(User user) {
         return user.getTasks();
     }
-    
-    void removeUser(User user){
-        user.delete();        
+
+    void removeUser(User user) {
+        user.delete();
     }
-    
-    void removeUser(String name){
+
+    void removeUser(String name) {
         removeUser(getUserFromName(name));
     }
-    
-    User getUserFromName(String name){
+
+    User getUserFromName(String name) {
         //TODO: Cam need a connection to the DB to query this
-        for(User user : retrieveUsers()){
-            if(user.getName().equals(name)){
+        for (User user : retrieveUsers()) {
+            if (user.getName().equals(name)) {
                 return user;
             }
         }
         return null;
-    }   
-    
+    }
 }
