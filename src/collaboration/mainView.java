@@ -156,16 +156,16 @@ public class mainView extends javax.swing.JFrame {
         editMemberButton = new javax.swing.JButton();
         teamTableScrollPane = new javax.swing.JScrollPane();
         teamTable = new javax.swing.JTable();
-        teamFilterButton = new javax.swing.JButton();
         teamFilterTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         tasksPanel = new javax.swing.JPanel();
         addTasksButton = new javax.swing.JButton();
         removeTaskButton = new javax.swing.JButton();
         editTaskButton = new javax.swing.JButton();
         tasksFilterTextField = new javax.swing.JTextField();
-        tasksFilterButton = new javax.swing.JButton();
         tasksTableScrollPane = new javax.swing.JScrollPane();
         tasksTable = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
         schedulePanel = new javax.swing.JPanel();
         progressPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -944,14 +944,14 @@ public class mainView extends javax.swing.JFrame {
         });
 
         tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        tabbedPane.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabbedPaneMouseClicked(evt);
             }
         });
 
-        addMemberButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add50.png"))); // NOI18N
+        addMemberButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add30.png"))); // NOI18N
         addMemberButton.setToolTipText("Add Member");
         addMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -959,7 +959,7 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        removeMemberButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete50.png"))); // NOI18N
+        removeMemberButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete30.png"))); // NOI18N
         removeMemberButton.setToolTipText("Delete Member");
         removeMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -967,7 +967,7 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        editMemberButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit50.png"))); // NOI18N
+        editMemberButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit30.png"))); // NOI18N
         editMemberButton.setToolTipText("Edit Member");
         editMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -999,15 +999,21 @@ public class mainView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        teamTableScrollPane.setViewportView(teamTable);
-
-        teamFilterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/filter50.png"))); // NOI18N
-        teamFilterButton.setToolTipText("Filter");
-        teamFilterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teamFilterButtonActionPerformed(evt);
+        teamTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                teamTableMouseClicked(evt);
             }
         });
+        teamTableScrollPane.setViewportView(teamTable);
+
+        teamFilterTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                teamFilterTextFieldKeyReleased(evt);
+            }
+        });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/filter30.png"))); // NOI18N
+        jLabel4.setToolTipText("Filter");
 
         javax.swing.GroupLayout teamPanelLayout = new javax.swing.GroupLayout(teamPanel);
         teamPanel.setLayout(teamPanelLayout);
@@ -1016,15 +1022,15 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, teamPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
                     .addGroup(teamPanelLayout.createSequentialGroup()
                         .addComponent(addMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
-                        .addComponent(teamFilterButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -1033,21 +1039,24 @@ public class mainView extends javax.swing.JFrame {
             teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(teamPanelLayout.createSequentialGroup()
                 .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addMemberButton)
-                    .addComponent(removeMemberButton)
-                    .addComponent(editMemberButton)
-                    .addComponent(teamFilterButton)
                     .addGroup(teamPanelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                        .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addMemberButton)
+                            .addComponent(removeMemberButton)
+                            .addComponent(editMemberButton))
+                        .addGap(1, 1, 1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, teamPanelLayout.createSequentialGroup()
+                        .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/team75.png")), teamPanel, "Team"); // NOI18N
 
-        addTasksButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add50.png"))); // NOI18N
+        addTasksButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add30.png"))); // NOI18N
         addTasksButton.setToolTipText("Add Task");
         addTasksButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1055,7 +1064,7 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        removeTaskButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete50.png"))); // NOI18N
+        removeTaskButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete30.png"))); // NOI18N
         removeTaskButton.setToolTipText("Remove Task");
         removeTaskButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1063,7 +1072,7 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        editTaskButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit50.png"))); // NOI18N
+        editTaskButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit30.png"))); // NOI18N
         editTaskButton.setToolTipText("Edit Task");
         editTaskButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1071,11 +1080,9 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        tasksFilterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/filter50.png"))); // NOI18N
-        tasksFilterButton.setToolTipText("Filter");
-        tasksFilterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tasksFilterButtonActionPerformed(evt);
+        tasksFilterTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tasksFilterTextFieldKeyReleased(evt);
             }
         });
 
@@ -1098,6 +1105,9 @@ public class mainView extends javax.swing.JFrame {
         });
         tasksTableScrollPane.setViewportView(tasksTable);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/filter30.png"))); // NOI18N
+        jLabel3.setToolTipText("Filter");
+
         javax.swing.GroupLayout tasksPanelLayout = new javax.swing.GroupLayout(tasksPanel);
         tasksPanel.setLayout(tasksPanelLayout);
         tasksPanelLayout.setHorizontalGroup(
@@ -1111,26 +1121,29 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeTaskButton)
                         .addGap(18, 18, 18)
                         .addComponent(editTaskButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
-                        .addComponent(tasksFilterButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE))
+                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tasksPanelLayout.setVerticalGroup(
             tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tasksPanelLayout.createSequentialGroup()
                 .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addTasksButton)
-                    .addComponent(removeTaskButton)
-                    .addComponent(editTaskButton)
-                    .addComponent(tasksFilterButton)
                     .addGroup(tasksPanelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                        .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addTasksButton)
+                            .addComponent(removeTaskButton)
+                            .addComponent(editTaskButton))
+                        .addGap(1, 1, 1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tasksPanelLayout.createSequentialGroup()
+                        .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1140,11 +1153,11 @@ public class mainView extends javax.swing.JFrame {
         schedulePanel.setLayout(schedulePanelLayout);
         schedulePanelLayout.setHorizontalGroup(
             schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1026, Short.MAX_VALUE)
+            .addGap(0, 931, Short.MAX_VALUE)
         );
         schedulePanelLayout.setVerticalGroup(
             schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+            .addGap(0, 461, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/cal75.png")), schedulePanel, "Schedule"); // NOI18N
@@ -1153,11 +1166,11 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1026, Short.MAX_VALUE)
+            .addGap(0, 931, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+            .addGap(0, 461, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/graph75.png")), progressPanel, "Progress"); // NOI18N
@@ -1194,11 +1207,11 @@ public class mainView extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/overview75.png")), jPanel1, "Project Overview"); // NOI18N
@@ -1210,10 +1223,10 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabbedPane)
+                    .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(projectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                         .addComponent(newProjectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editProjectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1413,14 +1426,6 @@ public class mainView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void teamFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamFilterButtonActionPerformed
-        engine.filterTable(teamTable, teamFilterTextField.getText());
-    }//GEN-LAST:event_teamFilterButtonActionPerformed
-
-    private void tasksFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tasksFilterButtonActionPerformed
-        engine.filterTable(tasksTable, tasksFilterTextField.getText());
-    }//GEN-LAST:event_tasksFilterButtonActionPerformed
-
     private void loginJFrameComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_loginJFrameComponentShown
         this.setVisible(false);
     }//GEN-LAST:event_loginJFrameComponentShown
@@ -1466,6 +1471,22 @@ public class mainView extends javax.swing.JFrame {
     private void createUserJFrameWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_createUserJFrameWindowClosed
         loginJFrame.setVisible(true);
     }//GEN-LAST:event_createUserJFrameWindowClosed
+
+    private void teamTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teamTableMouseClicked
+        if(teamTable.getSelectedColumn()==4){ //last column
+            tabbedPane.setSelectedIndex(1); //tasks pane
+            tasksFilterTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
+            engine.filterTable(tasksTable, tasksFilterTextField.getText());
+        }
+    }//GEN-LAST:event_teamTableMouseClicked
+
+    private void teamFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teamFilterTextFieldKeyReleased
+        engine.filterTable(teamTable, teamFilterTextField.getText());
+    }//GEN-LAST:event_teamFilterTextFieldKeyReleased
+
+    private void tasksFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasksFilterTextFieldKeyReleased
+        engine.filterTable(tasksTable, tasksFilterTextField.getText());
+    }//GEN-LAST:event_tasksFilterTextFieldKeyReleased
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -1566,6 +1587,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPasswordField firstPasswordField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
@@ -1590,12 +1613,10 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel spaceJlabel1;
     private javax.swing.JLabel spaceJlabel2;
     private javax.swing.JTabbedPane tabbedPane;
-    private javax.swing.JButton tasksFilterButton;
     private javax.swing.JTextField tasksFilterTextField;
     private javax.swing.JPanel tasksPanel;
     private javax.swing.JTable tasksTable;
     private javax.swing.JScrollPane tasksTableScrollPane;
-    private javax.swing.JButton teamFilterButton;
     private javax.swing.JTextField teamFilterTextField;
     private javax.swing.JPanel teamPanel;
     private javax.swing.JTable teamTable;

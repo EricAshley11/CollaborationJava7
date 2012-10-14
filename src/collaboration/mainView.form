@@ -1226,10 +1226,10 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tabbedPane" max="32767" attributes="0"/>
+                  <Component id="tabbedPane" pref="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="projectComboBox" min="-2" pref="250" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                       <Component id="newProjectButton" min="-2" pref="125" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="editProjectButton" min="-2" pref="125" max="-2" attributes="0"/>
@@ -1319,7 +1319,7 @@
     <Container class="javax.swing.JTabbedPane" name="tabbedPane">
       <Properties>
         <Property name="tabLayoutPolicy" type="int" value="1"/>
-        <Property name="tabPlacement" type="int" value="3"/>
+        <Property name="tabPlacement" type="int" value="2"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabbedPaneMouseClicked"/>
@@ -1346,15 +1346,15 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="teamTableScrollPane" pref="998" max="32767" attributes="0"/>
+                          <Component id="teamTableScrollPane" pref="911" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="addMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="382" max="32767" attributes="0"/>
-                              <Component id="teamFilterButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
@@ -1367,17 +1367,23 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="addMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="removeMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="editMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="teamFilterButton" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Component id="teamFilterTextField" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="addMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="removeMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="editMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="teamFilterTextField" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="teamTableScrollPane" pref="301" max="32767" attributes="0"/>
+                      <Component id="teamTableScrollPane" pref="410" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1387,7 +1393,7 @@
             <Component class="javax.swing.JButton" name="addMemberButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/add50.png"/>
+                  <Image iconType="3" name="/resources/icons/add30.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Add Member"/>
               </Properties>
@@ -1398,7 +1404,7 @@
             <Component class="javax.swing.JButton" name="removeMemberButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/delete50.png"/>
+                  <Image iconType="3" name="/resources/icons/delete30.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Delete Member"/>
               </Properties>
@@ -1409,7 +1415,7 @@
             <Component class="javax.swing.JButton" name="editMemberButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/edit50.png"/>
+                  <Image iconType="3" name="/resources/icons/edit30.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Edit Member"/>
               </Properties>
@@ -1464,21 +1470,24 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teamTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="teamFilterButton">
+            <Component class="javax.swing.JTextField" name="teamFilterTextField">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="teamFilterTextFieldKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/filter50.png"/>
+                  <Image iconType="3" name="/resources/icons/filter30.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Filter"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teamFilterButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="teamFilterTextField">
             </Component>
           </SubComponents>
         </Container>
@@ -1507,12 +1516,12 @@
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="382" max="32767" attributes="0"/>
-                              <Component id="tasksFilterButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tasksTableScrollPane" pref="998" max="32767" attributes="0"/>
+                          <Component id="tasksTableScrollPane" pref="911" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1522,17 +1531,23 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="addTasksButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="tasksFilterButton" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Component id="tasksFilterTextField" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="addTasksButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="tasksFilterTextField" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tasksTableScrollPane" pref="301" max="32767" attributes="0"/>
+                      <Component id="tasksTableScrollPane" pref="410" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1542,7 +1557,7 @@
             <Component class="javax.swing.JButton" name="addTasksButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/add50.png"/>
+                  <Image iconType="3" name="/resources/icons/add30.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Add Task"/>
               </Properties>
@@ -1553,7 +1568,7 @@
             <Component class="javax.swing.JButton" name="removeTaskButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/delete50.png"/>
+                  <Image iconType="3" name="/resources/icons/delete30.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Remove Task"/>
               </Properties>
@@ -1564,7 +1579,7 @@
             <Component class="javax.swing.JButton" name="editTaskButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/edit50.png"/>
+                  <Image iconType="3" name="/resources/icons/edit30.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Edit Task"/>
               </Properties>
@@ -1573,16 +1588,8 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="tasksFilterTextField">
-            </Component>
-            <Component class="javax.swing.JButton" name="tasksFilterButton">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/filter50.png"/>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Filter"/>
-              </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tasksFilterButtonActionPerformed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tasksFilterTextFieldKeyReleased"/>
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="tasksTableScrollPane">
@@ -1646,6 +1653,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/filter30.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Filter"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="schedulePanel">
@@ -1664,12 +1679,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1026" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="931" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="377" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="461" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1690,12 +1705,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1026" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="931" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="377" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="461" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1716,12 +1731,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="1026" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="931" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="377" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="461" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
