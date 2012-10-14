@@ -55,9 +55,24 @@ public class mainEngine {
         if (isAnyRowSelected) {
             DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
             model.removeRow(teamTable.getSelectedRow());
-            model.getValueAt(teamTable.getSelectedRow(), 0);
             //do this in backend
             //Backend.getInstance().removeUser(model.getValueAt(teamTable.getSelectedRow(), 0).toString());
+        }
+        return isAnyRowSelected;
+    }
+
+    public boolean removeTask(JTable tasksTable) {
+        boolean isAnyRowSelected = false;
+        for (int i = 0; i < tasksTable.getRowCount(); i++) {
+            if (tasksTable.isRowSelected(i)) {
+                isAnyRowSelected = true;
+            }
+        }
+        if (isAnyRowSelected) {
+            DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
+            model.removeRow(tasksTable.getSelectedRow());
+            //do this in backend
+            //Backend.getInstance().removeTask(model.getValueAt(teamTable.getSelectedRow(), 0).toString());
         }
         return isAnyRowSelected;
     }

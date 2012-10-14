@@ -1266,16 +1266,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addTasksButtonActionPerformed
 
     private void removeTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeTaskButtonActionPerformed
-        boolean isAnyRowSelected = false;
-        for (int i = 0; i < tasksTable.getRowCount(); i++) {
-            if (tasksTable.isRowSelected(i)) {
-                isAnyRowSelected = true;
-            }
-        }
-        if (isAnyRowSelected) {
-            DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-            model.removeRow(tasksTable.getSelectedRow());
-        } else {
+        if (!engine.removeTask(tasksTable)) {
             JOptionPane.showMessageDialog(this,
                     "No Task Selected",
                     "No Task Selected", JOptionPane.DEFAULT_OPTION);
@@ -1297,7 +1288,6 @@ public class mainView extends javax.swing.JFrame {
     private void addMemberDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberDialogButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
         model.addRow(new Object[]{"userID", addMemberNameTextField.getText(), addMemberPhoneTextField.getText(), addMemberEmailTextField.getText()});
-
         addMemberJFrame.setVisible(false);
     }//GEN-LAST:event_addMemberDialogButtonActionPerformed
 
