@@ -9,6 +9,7 @@ import javax.swing.DefaultRowSorter;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -78,7 +79,26 @@ public class mainEngine {
     }
 
     public void loadTeamTable(JTable teamTable) {
-        teamTable.setModel(new DefaultTableModel(Backend.getInstance().getUserTableData(), new String[]{"UserID", "Name", "Phone", "Email", "Tasks"}));
+        teamTable.setModel(new javax.swing.table.DefaultTableModel(
+                Backend.getInstance().getUserTableData(),
+                new String[]{
+                    "UserID", "Name", "Phone", "Email", "Tasks"
+                }) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
     }
 
     public boolean validCredentials() {
@@ -100,11 +120,26 @@ public class mainEngine {
         Backend.getInstance().setCurrentProject(project);
     }
 
-    public void createUser(String[] textFieldInputs) {
+    public void createUser(JTextField[] textFields) {
         //TODO: Cam integrate backend to create user in database
     }
 
     public void deleteUser() {
         //TODO: Cam integrate backend to delete user from database
+    }
+
+    public boolean editUser(JTable teamTable, JTextField[] textFields) {
+        boolean isAnyRowSelected = false;
+        for (int i = 0; i < teamTable.getRowCount(); i++) {
+            if (teamTable.isRowSelected(i)) {
+                isAnyRowSelected = true;
+            }
+        }
+        if (isAnyRowSelected) {
+            textFields[0].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
+            textFields[1].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 1).toString());
+            textFields[2].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 2).toString());
+        }
+        return isAnyRowSelected;
     }
 }

@@ -4,6 +4,7 @@ package collaboration;
 import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 //google calendar API imports
@@ -50,7 +51,7 @@ public class mainView extends javax.swing.JFrame {
             javax.swing.SwingUtilities.updateComponentTreeUI(settingsJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(loginJFrame);
         } catch (Exception e) {
-            System.out.println(e.toString());
+            //System.out.println(e.toString());
         }
     }
 //</editor-fold>
@@ -1300,16 +1301,8 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_saveEditMemberButtonActionPerformed
 
     private void editMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberButtonActionPerformed
-        boolean isAnyRowSelected = false;
-        for (int i = 0; i < teamTable.getRowCount(); i++) {
-            if (teamTable.isRowSelected(i)) {
-                isAnyRowSelected = true;
-            }
-        }
-        if (isAnyRowSelected) {
-            editNameTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
-            editPhoneTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 1).toString());
-            editEmailTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 2).toString());
+        JTextField[] textFields = {editNameTextField, editPhoneTextField, editEmailTextField};
+        if (engine.editUser(teamTable, textFields)) {
             editMemberJFrame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this,
@@ -1454,20 +1447,20 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_projectComboBoxItemStateChanged
 
     private void createUserDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserDialogButtonActionPerformed
-        String[] textFieldsInput = {createUserUsernameTextField.getText(),
-            firstPasswordField.getPassword().toString(),
-            confirmPasswordField.getPassword().toString(),
-            createUserNameTextField.getText(),
-            createUserPhoneTextField.getText(),
-            createUserEmailTextField.getText()};
-        engine.createUser(textFieldsInput);
+        JTextField[] textFields = {createUserUsernameTextField,
+            firstPasswordField,
+            confirmPasswordField,
+            createUserNameTextField,
+            createUserPhoneTextField,
+            createUserEmailTextField};
+        engine.createUser(textFields);
         createUserJFrame.setVisible(false);
         loginJFrame.setVisible(true);
     }//GEN-LAST:event_createUserDialogButtonActionPerformed
 
     private void createUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserButtonActionPerformed
-        createUserJFrame.setVisible(true);
         loginJFrame.setVisible(false);
+        createUserJFrame.setVisible(true);
     }//GEN-LAST:event_createUserButtonActionPerformed
 
     private void createUserJFrameWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_createUserJFrameWindowClosed
