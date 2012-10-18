@@ -12,17 +12,18 @@ import javax.persistence.*;
 /**
  *
  */
-@Entity
+@Entity(name = "Team") //Entity name
 public class Team implements Serializable {
-
+    
     @Id
     private int TeamID;
     private static int nextTeamID = 0;
+    @OneToMany
     private Collection<User> users;
     private Collection<Project> projects;
     private String name;
     private Schedule sched;
-
+    
     public Team(String name) {
         this.users = new ArrayList<User>();
         this.projects = new ArrayList<Project>();
@@ -30,8 +31,8 @@ public class Team implements Serializable {
         this.TeamID = nextTeamID++;
     }
 
-    public Team() {
-    }
+    public Team() {}
+    
 //    Team(String name) {
 //        this.users = new ArrayList<User>();
 //        this.projects = new ArrayList<Project>();

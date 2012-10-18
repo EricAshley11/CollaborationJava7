@@ -4,14 +4,15 @@
  */
 package collaboration;
 
-import java.util.Collection;
+
+//import java.util.Collection;
 import java.io.Serializable;
 import javax.persistence.*;
 
 /**
  *
  */
-@Entity
+@Entity(name = "Password")
 public class Password implements Serializable {
 
     @Id
