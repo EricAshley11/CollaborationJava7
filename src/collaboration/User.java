@@ -12,17 +12,23 @@ import javax.persistence.*;
 /**
  *
  */
-@Entity
+@Entity(name = "User") //entity name
 public class User implements Serializable {
 
-    @Id
+    @Id //primary key
+    @Column(nullable = false)
     private int UserID;
+    
     private static int nextUID = 0;
     private String name, email;
     private String phoneNum;
+    @OneToMany
     private Collection<Team> teams;
+    @OneToMany
     private Collection<Task> tasks;
 
+    public User() {}
+    
     public User(String name) {
         this.name = name;
         teams = new ArrayList<Team>();

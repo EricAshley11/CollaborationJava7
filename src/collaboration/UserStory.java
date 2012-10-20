@@ -12,11 +12,12 @@ import javax.persistence.*;
 /**
  *
  */
-@Entity
+@Entity(name = "UserStory")
 public class UserStory implements Serializable {
 
     @Id
     private int UserStoryID;
+    @OneToMany
     private Collection<Task> tasks;
     private Project project;
     private State state;

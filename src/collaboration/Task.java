@@ -10,14 +10,16 @@ import javax.persistence.*;
 /**
  *
  */
-@Entity
-public class Task {
+@Entity(name = "Task") //Entity name
+public class Task implements Serializable {
 
     @Id
     private int TaskID;
     private int storyPointsEstimate, storyPointsActual;
+    @OneToOne
     private User user;
     private String description, name;
+    @OneToOne
     private UserStory userStory;
     private State state;
 
