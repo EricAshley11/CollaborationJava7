@@ -27,7 +27,7 @@ public class mainEngine {
         table.setRowSorter(sorter);
         RowFilter<DefaultTableModel, Object> rf = null;
         try {
-            rf = RowFilter.regexFilter("(?i)" + filterText, 0);
+            rf = RowFilter.regexFilter("(?i)" + filterText, 0, 1, 2, 3);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
@@ -44,6 +44,17 @@ public class mainEngine {
         }
         progressPanel.add(chartPanel);
         progressPanel.getParent().validate();
+    }
+
+    public boolean addMember(JTable teamTable, String userString) {
+        try {
+            DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
+            User user = Backend.getInstance().getUserFromName(userString);
+            model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean removeMember(JTable teamTable) {

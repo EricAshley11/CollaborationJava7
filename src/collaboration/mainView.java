@@ -62,11 +62,7 @@ public class mainView extends javax.swing.JFrame {
         addMemberJPanel = new javax.swing.JPanel();
         addMemberDialogButton = new javax.swing.JButton();
         addMemberNameJLabel = new javax.swing.JLabel();
-        addMemberPhoneJLabel = new javax.swing.JLabel();
-        addMemberEmailJLabel = new javax.swing.JLabel();
         addMemberNameTextField = new javax.swing.JTextField();
-        addMemberPhoneTextField = new javax.swing.JTextField();
-        addMemberEmailTextField = new javax.swing.JTextField();
         editMemberJFrame = new javax.swing.JFrame();
         editMemberJPanel = new javax.swing.JPanel();
         saveEditMemberButton = new javax.swing.JButton();
@@ -143,6 +139,15 @@ public class mainView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         firstPasswordField = new javax.swing.JPasswordField();
         confirmPasswordField = new javax.swing.JPasswordField();
+        addMemberJFrame1 = new javax.swing.JFrame();
+        addMemberJPanel1 = new javax.swing.JPanel();
+        addMemberDialogButton1 = new javax.swing.JButton();
+        addMemberNameJLabel1 = new javax.swing.JLabel();
+        addMemberPhoneJLabel1 = new javax.swing.JLabel();
+        addMemberEmailJLabel1 = new javax.swing.JLabel();
+        addMemberNameTextField1 = new javax.swing.JTextField();
+        addMemberPhoneTextField1 = new javax.swing.JTextField();
+        addMemberEmailTextField1 = new javax.swing.JTextField();
         projectComboBox = new javax.swing.JComboBox();
         signOutButton = new javax.swing.JButton();
         newProjectButton = new javax.swing.JButton();
@@ -177,12 +182,13 @@ public class mainView extends javax.swing.JFrame {
         addMemberJFrame.setAlwaysOnTop(true);
         addMemberJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         addMemberJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        addMemberJFrame.setMinimumSize(new java.awt.Dimension(400, 200));
+        addMemberJFrame.setMaximumSize(new java.awt.Dimension(400, 120));
+        addMemberJFrame.setMinimumSize(new java.awt.Dimension(400, 120));
         addMemberJFrame.setName("Add Member"); // NOI18N
 
-        addMemberJPanel.setMaximumSize(new java.awt.Dimension(400, 200));
-        addMemberJPanel.setMinimumSize(new java.awt.Dimension(400, 200));
-        addMemberJPanel.setPreferredSize(new java.awt.Dimension(400, 200));
+        addMemberJPanel.setMaximumSize(new java.awt.Dimension(400, 120));
+        addMemberJPanel.setMinimumSize(new java.awt.Dimension(400, 120));
+        addMemberJPanel.setPreferredSize(new java.awt.Dimension(400, 120));
 
         addMemberDialogButton.setText("Add Member");
         addMemberDialogButton.addActionListener(new java.awt.event.ActionListener() {
@@ -191,55 +197,34 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        addMemberNameJLabel.setText("Name");
-
-        addMemberPhoneJLabel.setText("Phone");
-
-        addMemberEmailJLabel.setText("Email");
+        addMemberNameJLabel.setText("Username");
 
         javax.swing.GroupLayout addMemberJPanelLayout = new javax.swing.GroupLayout(addMemberJPanel);
         addMemberJPanel.setLayout(addMemberJPanelLayout);
         addMemberJPanelLayout.setHorizontalGroup(
             addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMemberJPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanelLayout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(addMemberDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanelLayout.createSequentialGroup()
-                            .addComponent(addMemberNameJLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addMemberNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanelLayout.createSequentialGroup()
-                            .addComponent(addMemberPhoneJLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addMemberPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanelLayout.createSequentialGroup()
-                            .addComponent(addMemberEmailJLabel)
-                            .addGap(32, 32, 32)
-                            .addComponent(addMemberEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(23, 24, Short.MAX_VALUE))
+                .addGroup(addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addMemberJPanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(addMemberNameJLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addMemberNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addMemberJPanelLayout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(addMemberDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         addMemberJPanelLayout.setVerticalGroup(
             addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMemberJPanelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(22, 22, 22)
                 .addGroup(addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addMemberNameJLabel)
-                    .addComponent(addMemberNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addMemberPhoneJLabel)
-                    .addComponent(addMemberPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addMemberEmailJLabel)
-                    .addComponent(addMemberEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addMemberNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addMemberNameJLabel))
                 .addGap(18, 18, 18)
                 .addComponent(addMemberDialogButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addMemberJFrameLayout = new javax.swing.GroupLayout(addMemberJFrame.getContentPane());
@@ -250,7 +235,7 @@ public class mainView extends javax.swing.JFrame {
         );
         addMemberJFrameLayout.setVerticalGroup(
             addMemberJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addMemberJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 189, Short.MAX_VALUE)
+            .addComponent(addMemberJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         editMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -891,6 +876,86 @@ public class mainView extends javax.swing.JFrame {
             .addComponent(createUserJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        addMemberJFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addMemberJFrame1.setTitle("Add Member - ProjectTracker");
+        addMemberJFrame1.setAlwaysOnTop(true);
+        addMemberJFrame1.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
+        addMemberJFrame1.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
+        addMemberJFrame1.setMinimumSize(new java.awt.Dimension(400, 200));
+        addMemberJFrame1.setName("Add Member"); // NOI18N
+
+        addMemberJPanel1.setMaximumSize(new java.awt.Dimension(400, 200));
+        addMemberJPanel1.setMinimumSize(new java.awt.Dimension(400, 200));
+
+        addMemberDialogButton1.setText("Add Member");
+        addMemberDialogButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMemberDialogButton1ActionPerformed(evt);
+            }
+        });
+
+        addMemberNameJLabel1.setText("Name");
+
+        addMemberPhoneJLabel1.setText("Phone");
+
+        addMemberEmailJLabel1.setText("Email");
+
+        javax.swing.GroupLayout addMemberJPanel1Layout = new javax.swing.GroupLayout(addMemberJPanel1);
+        addMemberJPanel1.setLayout(addMemberJPanel1Layout);
+        addMemberJPanel1Layout.setHorizontalGroup(
+            addMemberJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addMemberJPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(addMemberJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanel1Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(addMemberDialogButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanel1Layout.createSequentialGroup()
+                            .addComponent(addMemberNameJLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addMemberNameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanel1Layout.createSequentialGroup()
+                            .addComponent(addMemberPhoneJLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addMemberPhoneTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMemberJPanel1Layout.createSequentialGroup()
+                            .addComponent(addMemberEmailJLabel1)
+                            .addGap(32, 32, 32)
+                            .addComponent(addMemberEmailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(23, 24, Short.MAX_VALUE))
+        );
+        addMemberJPanel1Layout.setVerticalGroup(
+            addMemberJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMemberJPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(addMemberJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addMemberNameJLabel1)
+                    .addComponent(addMemberNameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(addMemberJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addMemberPhoneJLabel1)
+                    .addComponent(addMemberPhoneTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(addMemberJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addMemberEmailJLabel1)
+                    .addComponent(addMemberEmailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(addMemberDialogButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout addMemberJFrame1Layout = new javax.swing.GroupLayout(addMemberJFrame1.getContentPane());
+        addMemberJFrame1.getContentPane().setLayout(addMemberJFrame1Layout);
+        addMemberJFrame1Layout.setHorizontalGroup(
+            addMemberJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(addMemberJPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        addMemberJFrame1Layout.setVerticalGroup(
+            addMemberJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(addMemberJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ProjectTracker");
         setBounds(new java.awt.Rectangle(50, 50, 0, 0));
@@ -1250,7 +1315,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(signOutButton)
                     .addComponent(editProjectButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addComponent(tabbedPane)
                 .addContainerGap())
         );
 
@@ -1264,8 +1329,8 @@ public class mainView extends javax.swing.JFrame {
 
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
         addMemberNameTextField.setText("");
-        addMemberPhoneTextField.setText("");
-        addMemberEmailTextField.setText("");
+//        addMemberPhoneTextField.setText("");
+//        addMemberEmailTextField.setText("");
         addMemberJFrame.setVisible(true);
     }//GEN-LAST:event_addMemberButtonActionPerformed
 
@@ -1300,8 +1365,13 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_tabbedPaneMouseClicked
 
     private void addMemberDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberDialogButtonActionPerformed
-        DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
-        model.addRow(new Object[]{"userID", addMemberNameTextField.getText(), addMemberPhoneTextField.getText(), addMemberEmailTextField.getText()});
+        String userString = addMemberNameTextField.getText();
+        if (engine.addMember(teamTable, userString)) {
+            JOptionPane.showMessageDialog(this,
+                    userString + "has been added as a member of this team",
+                    "Success", JOptionPane.DEFAULT_OPTION);
+        } else {
+        }
         addMemberJFrame.setVisible(false);
     }//GEN-LAST:event_addMemberDialogButtonActionPerformed
 
@@ -1473,7 +1543,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_createUserJFrameWindowClosed
 
     private void teamTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teamTableMouseClicked
-        if(teamTable.getSelectedColumn()==4){ //last column
+        if (teamTable.getSelectedColumn() == 4) { //last column
             tabbedPane.setSelectedIndex(1); //tasks pane
             tasksFilterTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
             engine.filterTable(tasksTable, tasksFilterTextField.getText());
@@ -1487,6 +1557,10 @@ public class mainView extends javax.swing.JFrame {
     private void tasksFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasksFilterTextFieldKeyReleased
         engine.filterTable(tasksTable, tasksFilterTextField.getText());
     }//GEN-LAST:event_tasksFilterTextFieldKeyReleased
+
+    private void addMemberDialogButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberDialogButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addMemberDialogButton1ActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -1514,14 +1588,19 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton aboutButton;
     private javax.swing.JButton addMemberButton;
     private javax.swing.JButton addMemberDialogButton;
-    private javax.swing.JLabel addMemberEmailJLabel;
-    private javax.swing.JTextField addMemberEmailTextField;
+    private javax.swing.JButton addMemberDialogButton1;
+    private javax.swing.JLabel addMemberEmailJLabel1;
+    private javax.swing.JTextField addMemberEmailTextField1;
     private javax.swing.JFrame addMemberJFrame;
+    private javax.swing.JFrame addMemberJFrame1;
     private javax.swing.JPanel addMemberJPanel;
+    private javax.swing.JPanel addMemberJPanel1;
     private javax.swing.JLabel addMemberNameJLabel;
+    private javax.swing.JLabel addMemberNameJLabel1;
     private javax.swing.JTextField addMemberNameTextField;
-    private javax.swing.JLabel addMemberPhoneJLabel;
-    private javax.swing.JTextField addMemberPhoneTextField;
+    private javax.swing.JTextField addMemberNameTextField1;
+    private javax.swing.JLabel addMemberPhoneJLabel1;
+    private javax.swing.JTextField addMemberPhoneTextField1;
     private javax.swing.JLabel addTasksActualJLabel;
     private javax.swing.JTextField addTasksActualTextField;
     private javax.swing.JButton addTasksButton;
