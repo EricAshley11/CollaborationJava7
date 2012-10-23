@@ -4,6 +4,7 @@
  */
 package collaboration;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.DefaultRowSorter;
 import javax.swing.JComboBox;
@@ -21,17 +22,36 @@ import org.jfree.chart.ChartPanel;
  */
 public class mainEngine {
 
-    public void filterTable(JTable table, String filterText) {
+    public void filterTable(JTable table, String filterText, int[] selectedColumns) {
         TableModel model = table.getModel();
         DefaultRowSorter sorter = new TableRowSorter<>(model);
         table.setRowSorter(sorter);
         RowFilter<DefaultTableModel, Object> rf = null;
         try {
-            rf = RowFilter.regexFilter("(?i)" + filterText, 0, 1, 2, 3);
+            rf = RowFilter.regexFilter("(?i)" + filterText, selectedColumns);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
         sorter.setRowFilter(rf);
+    }
+
+    public int[] setFilterColumns(boolean[] checkedBoxes) {
+        ArrayList<Integer> selectedColumns = new ArrayList<Integer>();
+        for (int i = 0; i < checkedBoxes.length; i++) {
+            if (checkedBoxes[i] == true) {
+                selectedColumns.add(i);
+            }
+        }
+        int[] filterColumns = intArrayListToIntArray(selectedColumns);
+        return filterColumns;
+    }
+
+    private int[] intArrayListToIntArray(ArrayList<Integer> list) {
+        int[] ret = new int[list.size()];
+        for (int i = 0; i < ret.length; i++) {
+            ret[i] = list.get(i);
+        }
+        return ret;
     }
 
     public void updateChart(JPanel progressPanel) {
@@ -93,7 +113,7 @@ public class mainEngine {
         teamTable.setModel(new javax.swing.table.DefaultTableModel(
                 Backend.getInstance().getUserTableData(),
                 new String[]{
-                    "UserID", "Name", "Phone", "Email", "Tasks"
+                    "Username", "Full Name", "Phone", "Email", "Tasks"
                 }) {
             Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
