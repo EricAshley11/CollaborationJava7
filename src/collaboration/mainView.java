@@ -146,6 +146,17 @@ public class mainView extends javax.swing.JFrame {
         filterTeamFullNameJCheckBox = new javax.swing.JCheckBox();
         filterTeamEmailJCheckBox = new javax.swing.JCheckBox();
         filterTeamPhoneJCheckBox = new javax.swing.JCheckBox();
+        filterTasksJFrame = new javax.swing.JFrame();
+        filterTasksJPanel = new javax.swing.JPanel();
+        filterTasksSaveButton = new javax.swing.JButton();
+        filterTasksLeadJCheckBox = new javax.swing.JCheckBox();
+        filterTasksUserStoryJCheckBox = new javax.swing.JCheckBox();
+        filterTasksStatusJCheckBox = new javax.swing.JCheckBox();
+        filterTasksTaskJCheckBox = new javax.swing.JCheckBox();
+        filterTasksEstCompletionJCheckBox = new javax.swing.JCheckBox();
+        filterTasksActualCompletionJCheckBox = new javax.swing.JCheckBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         projectComboBox = new javax.swing.JComboBox();
         signOutButton = new javax.swing.JButton();
         newProjectButton = new javax.swing.JButton();
@@ -160,7 +171,7 @@ public class mainView extends javax.swing.JFrame {
         teamTableScrollPane = new javax.swing.JScrollPane();
         teamTable = new javax.swing.JTable();
         teamFilterTextField = new javax.swing.JTextField();
-        filterButton = new javax.swing.JButton();
+        filterTeamButton = new javax.swing.JButton();
         tasksPanel = new javax.swing.JPanel();
         addTasksButton = new javax.swing.JButton();
         removeTaskButton = new javax.swing.JButton();
@@ -168,7 +179,7 @@ public class mainView extends javax.swing.JFrame {
         tasksFilterTextField = new javax.swing.JTextField();
         tasksTableScrollPane = new javax.swing.JScrollPane();
         tasksTable = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        filterTasksButton = new javax.swing.JButton();
         schedulePanel = new javax.swing.JPanel();
         progressPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -180,7 +191,6 @@ public class mainView extends javax.swing.JFrame {
         addMemberJFrame.setAlwaysOnTop(true);
         addMemberJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         addMemberJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        addMemberJFrame.setMaximumSize(new java.awt.Dimension(400, 120));
         addMemberJFrame.setMinimumSize(new java.awt.Dimension(400, 120));
         addMemberJFrame.setName("Add Member"); // NOI18N
 
@@ -946,6 +956,94 @@ public class mainView extends javax.swing.JFrame {
             .addComponent(filterTeamJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        filterTasksJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        filterTasksJFrame.setTitle("Filter Team On...");
+        filterTasksJFrame.setAlwaysOnTop(true);
+        filterTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
+        filterTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
+        filterTasksJFrame.setMaximumSize(new java.awt.Dimension(189, 153));
+        filterTasksJFrame.setMinimumSize(new java.awt.Dimension(189, 153));
+        filterTasksJFrame.setName("Add Member"); // NOI18N
+
+        filterTasksSaveButton.setText("Save");
+        filterTasksSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterTasksSaveButtonActionPerformed(evt);
+            }
+        });
+
+        filterTasksLeadJCheckBox.setSelected(true);
+        filterTasksLeadJCheckBox.setText("Lead");
+
+        filterTasksUserStoryJCheckBox.setSelected(true);
+        filterTasksUserStoryJCheckBox.setText("User Story");
+
+        filterTasksStatusJCheckBox.setSelected(true);
+        filterTasksStatusJCheckBox.setText("Status");
+
+        filterTasksTaskJCheckBox.setSelected(true);
+        filterTasksTaskJCheckBox.setText("Task");
+
+        filterTasksEstCompletionJCheckBox.setSelected(true);
+        filterTasksEstCompletionJCheckBox.setText("Estimated Completion");
+
+        filterTasksActualCompletionJCheckBox.setSelected(true);
+        filterTasksActualCompletionJCheckBox.setText("Actual Completion");
+
+        javax.swing.GroupLayout filterTasksJPanelLayout = new javax.swing.GroupLayout(filterTasksJPanel);
+        filterTasksJPanel.setLayout(filterTasksJPanelLayout);
+        filterTasksJPanelLayout.setHorizontalGroup(
+            filterTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filterTasksJPanelLayout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(filterTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(filterTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(filterTasksActualCompletionJCheckBox)
+                        .addComponent(filterTasksEstCompletionJCheckBox)
+                        .addComponent(filterTasksLeadJCheckBox)
+                        .addComponent(filterTasksUserStoryJCheckBox)
+                        .addComponent(filterTasksTaskJCheckBox)
+                        .addComponent(filterTasksStatusJCheckBox))
+                    .addGroup(filterTasksJPanelLayout.createSequentialGroup()
+                        .addComponent(filterTasksSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGap(38, 38, 38))
+        );
+        filterTasksJPanelLayout.setVerticalGroup(
+            filterTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filterTasksJPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(filterTasksLeadJCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(filterTasksUserStoryJCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(filterTasksTaskJCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(filterTasksStatusJCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filterTasksEstCompletionJCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filterTasksActualCompletionJCheckBox)
+                .addGap(18, 18, 18)
+                .addComponent(filterTasksSaveButton)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout filterTasksJFrameLayout = new javax.swing.GroupLayout(filterTasksJFrame.getContentPane());
+        filterTasksJFrame.getContentPane().setLayout(filterTasksJFrameLayout);
+        filterTasksJFrameLayout.setHorizontalGroup(
+            filterTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(filterTasksJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        filterTasksJFrameLayout.setVerticalGroup(
+            filterTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filterTasksJFrameLayout.createSequentialGroup()
+                .addComponent(filterTasksJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jScrollPane2.setViewportView(jEditorPane1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ProjectTracker");
         setBounds(new java.awt.Rectangle(50, 50, 0, 0));
@@ -1067,11 +1165,11 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        filterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/filter30.png"))); // NOI18N
-        filterButton.setToolTipText("Edit Member");
-        filterButton.addActionListener(new java.awt.event.ActionListener() {
+        filterTeamButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/filter30.png"))); // NOI18N
+        filterTeamButton.setToolTipText("Edit Member");
+        filterTeamButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterButtonActionPerformed(evt);
+                filterTeamButtonActionPerformed(evt);
             }
         });
 
@@ -1090,7 +1188,7 @@ public class mainView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(filterButton)
+                        .addComponent(filterTeamButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -1102,7 +1200,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addMemberButton)
                     .addComponent(removeMemberButton)
                     .addComponent(editMemberButton)
-                    .addComponent(filterButton)
+                    .addComponent(filterTeamButton)
                     .addGroup(teamPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1162,8 +1260,13 @@ public class mainView extends javax.swing.JFrame {
         });
         tasksTableScrollPane.setViewportView(tasksTable);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/filter30.png"))); // NOI18N
-        jLabel3.setToolTipText("Filter");
+        filterTasksButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/filter30.png"))); // NOI18N
+        filterTasksButton.setToolTipText("Edit Member");
+        filterTasksButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterTasksButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tasksPanelLayout = new javax.swing.GroupLayout(tasksPanel);
         tasksPanel.setLayout(tasksPanelLayout);
@@ -1179,7 +1282,7 @@ public class mainView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(editTaskButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
+                        .addComponent(filterTasksButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE))
@@ -1189,18 +1292,15 @@ public class mainView extends javax.swing.JFrame {
             tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tasksPanelLayout.createSequentialGroup()
                 .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addTasksButton)
+                    .addComponent(removeTaskButton)
+                    .addComponent(editTaskButton)
+                    .addComponent(filterTasksButton)
                     .addGroup(tasksPanelLayout.createSequentialGroup()
-                        .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addTasksButton)
-                            .addComponent(removeTaskButton)
-                            .addComponent(editTaskButton))
-                        .addGap(1, 1, 1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tasksPanelLayout.createSequentialGroup()
-                        .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1553,9 +1653,9 @@ public class mainView extends javax.swing.JFrame {
         engine.filterTable(tasksTable, tasksFilterTextField.getText(), defaultAllColumns);
     }//GEN-LAST:event_tasksFilterTextFieldKeyReleased
 
-    private void filterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterButtonActionPerformed
+    private void filterTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTeamButtonActionPerformed
         filterTeamJFrame.setVisible(true);
-    }//GEN-LAST:event_filterButtonActionPerformed
+    }//GEN-LAST:event_filterTeamButtonActionPerformed
 
     private void filterTeamSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTeamSaveButtonActionPerformed
         boolean[] checkedBoxes = {filterTeamUsernameJCheckBox.isSelected(),
@@ -1566,6 +1666,22 @@ public class mainView extends javax.swing.JFrame {
         engine.filterTable(teamTable, teamFilterTextField.getText(), engine.setFilterColumns(checkedBoxes));
         filterTeamJFrame.setVisible(false);
     }//GEN-LAST:event_filterTeamSaveButtonActionPerformed
+
+    private void filterTasksSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTasksSaveButtonActionPerformed
+        boolean[] checkedBoxes = {filterTasksLeadJCheckBox.isSelected(),
+            filterTasksUserStoryJCheckBox.isSelected(),
+            filterTasksTaskJCheckBox.isSelected(),
+            filterTasksStatusJCheckBox.isSelected(),
+            filterTasksEstCompletionJCheckBox.isSelected(),
+            filterTasksActualCompletionJCheckBox.isSelected()
+        };
+        engine.filterTable(tasksTable, tasksFilterTextField.getText(), engine.setFilterColumns(checkedBoxes));
+        filterTasksJFrame.setVisible(false);
+    }//GEN-LAST:event_filterTasksSaveButtonActionPerformed
+
+    private void filterTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTasksButtonActionPerformed
+         filterTasksJFrame.setVisible(true);
+    }//GEN-LAST:event_filterTasksButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -1659,7 +1775,17 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTextField editTasksTaskTextField;
     private javax.swing.JLabel editTasksUserStoryJLabel;
     private javax.swing.JTextField editTasksUserStoryTextField;
-    private javax.swing.JButton filterButton;
+    private javax.swing.JCheckBox filterTasksActualCompletionJCheckBox;
+    private javax.swing.JButton filterTasksButton;
+    private javax.swing.JCheckBox filterTasksEstCompletionJCheckBox;
+    private javax.swing.JFrame filterTasksJFrame;
+    private javax.swing.JPanel filterTasksJPanel;
+    private javax.swing.JCheckBox filterTasksLeadJCheckBox;
+    private javax.swing.JButton filterTasksSaveButton;
+    private javax.swing.JCheckBox filterTasksStatusJCheckBox;
+    private javax.swing.JCheckBox filterTasksTaskJCheckBox;
+    private javax.swing.JCheckBox filterTasksUserStoryJCheckBox;
+    private javax.swing.JButton filterTeamButton;
     private javax.swing.JCheckBox filterTeamEmailJCheckBox;
     private javax.swing.JCheckBox filterTeamFullNameJCheckBox;
     private javax.swing.JFrame filterTeamJFrame;
@@ -1668,11 +1794,12 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton filterTeamSaveButton;
     private javax.swing.JCheckBox filterTeamUsernameJCheckBox;
     private javax.swing.JPasswordField firstPasswordField;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTree jTree1;
     private javax.swing.JButton loginButton;
     private javax.swing.JFrame loginJFrame;
