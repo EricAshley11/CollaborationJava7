@@ -22,7 +22,9 @@ import org.jfree.chart.ChartPanel;
  */
 public class mainEngine {
 
-    public void filterTable(JTable table, String filterText, int[] selectedColumns) {
+    private int[] selectedColumns;
+    
+    public void filterTable(JTable table, String filterText) {
         TableModel model = table.getModel();
         DefaultRowSorter sorter = new TableRowSorter<>(model);
         table.setRowSorter(sorter);
@@ -35,24 +37,33 @@ public class mainEngine {
         sorter.setRowFilter(rf);
     }
 
-    public int[] setFilterColumns(boolean[] checkedBoxes) {
-        ArrayList<Integer> selectedColumns = new ArrayList<Integer>();
+    public void setFilterColumns(boolean[] checkedBoxes) {
+        //ArrayList<Integer> selectedColumnsArrayList = new ArrayList<Integer>();
+        int boxesChecked = 0;
         for (int i = 0; i < checkedBoxes.length; i++) {
             if (checkedBoxes[i] == true) {
-                selectedColumns.add(i);
+                boxesChecked++;
+                //selectedColumnsArrayList.add(i);
             }
         }
-        int[] filterColumns = intArrayListToIntArray(selectedColumns);
-        return filterColumns;
+        selectedColumns = new int[boxesChecked];
+        for (int i = 0, place = 0; i < checkedBoxes.length; i++) {
+            if (checkedBoxes[i] == true) {
+                selectedColumns[place] = i;
+                place++;
+            }
+        }
+        //int[] filterColumns = intArrayListToIntArray(selectedColumnsArrayList);
+        //return filterColumns;
     }
 
-    private int[] intArrayListToIntArray(ArrayList<Integer> list) {
-        int[] ret = new int[list.size()];
-        for (int i = 0; i < ret.length; i++) {
-            ret[i] = list.get(i);
-        }
-        return ret;
-    }
+//    private int[] intArrayListToIntArray(ArrayList<Integer> list) {
+//        int[] ret = new int[list.size()];
+//        for (int i = 0; i < ret.length; i++) {
+//            ret[i] = list.get(i);
+//        }
+//        return ret;
+//    }
 
     public void updateChart(JPanel progressPanel) {
         progressJFreeChart progressChart = new progressJFreeChart();

@@ -1663,7 +1663,7 @@ public class mainView extends javax.swing.JFrame {
             filterTeamPhoneJCheckBox.isSelected(),
             filterTeamEmailJCheckBox.isSelected()
         };
-        engine.filterTable(teamTable, teamFilterTextField.getText(), engine.setFilterColumns(checkedBoxes));
+        engine.filterTable(teamTable, teamFilterTextField.getText());
         filterTeamJFrame.setVisible(false);
     }//GEN-LAST:event_filterTeamSaveButtonActionPerformed
 
@@ -1675,7 +1675,7 @@ public class mainView extends javax.swing.JFrame {
             filterTasksEstCompletionJCheckBox.isSelected(),
             filterTasksActualCompletionJCheckBox.isSelected()
         };
-        engine.filterTable(tasksTable, tasksFilterTextField.getText(), engine.setFilterColumns(checkedBoxes));
+        engine.filterTable(tasksTable, tasksFilterTextField.getText());
         filterTasksJFrame.setVisible(false);
     }//GEN-LAST:event_filterTasksSaveButtonActionPerformed
 
