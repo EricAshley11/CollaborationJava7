@@ -80,8 +80,8 @@ public class mainEngine {
     public boolean addMember(JTable teamTable, String userString) {
         try {
             DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
-            User user = Backend.getInstance().getUserFromName(userString);
-            model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
+            //User user = Backend.getInstance().getUserFromName(userString);
+            //model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
             return true;
         } catch (Exception e) {
             return false;
@@ -151,16 +151,16 @@ public class mainEngine {
         return validCreds;
     }
 
-    public void populateProjectComboBox(JComboBox projectComboBox) {
-        Collection<Project> projects = Backend.getInstance().retrieveProjects();
-        for (Project project : projects) {
-            projectComboBox.addItem(project);
-        }
-    }
-
-    public void setCurrentProject(Project project) {
-        Backend.getInstance().setCurrentProject(project);
-    }
+//    public void populateProjectComboBox(JComboBox projectComboBox) {
+//        Collection<Project> projects = Backend.getInstance().retrieveProjects();
+//        for (Project project : projects) {
+//            projectComboBox.addItem(project);
+//        }
+//    }
+//
+//    public void setCurrentProject(Project project) {
+//        Backend.getInstance().setCurrentProject(project);
+//    }
 
     public void createUser(JTextField[] textFields) {
         //TODO: Cam integrate backend to create user in database

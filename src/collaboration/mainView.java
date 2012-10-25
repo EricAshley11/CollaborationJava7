@@ -191,12 +191,13 @@ public class mainView extends javax.swing.JFrame {
         addMemberJFrame.setAlwaysOnTop(true);
         addMemberJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         addMemberJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        addMemberJFrame.setMinimumSize(new java.awt.Dimension(400, 120));
+        addMemberJFrame.setMaximumSize(new java.awt.Dimension(400, 100));
+        addMemberJFrame.setMinimumSize(new java.awt.Dimension(400, 100));
         addMemberJFrame.setName("Add Member"); // NOI18N
+        addMemberJFrame.setPreferredSize(new java.awt.Dimension(400, 100));
+        addMemberJFrame.setResizable(false);
 
-        addMemberJPanel.setMaximumSize(new java.awt.Dimension(400, 120));
-        addMemberJPanel.setMinimumSize(new java.awt.Dimension(400, 120));
-        addMemberJPanel.setPreferredSize(new java.awt.Dimension(400, 120));
+        addMemberJPanel.setPreferredSize(null);
 
         addMemberDialogButton.setText("Add Member");
         addMemberDialogButton.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +233,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addMemberNameJLabel))
                 .addGap(18, 18, 18)
                 .addComponent(addMemberDialogButton)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addMemberJFrameLayout = new javax.swing.GroupLayout(addMemberJFrame.getContentPane());
@@ -889,7 +890,6 @@ public class mainView extends javax.swing.JFrame {
         filterTeamJFrame.setAlwaysOnTop(true);
         filterTeamJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         filterTeamJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        filterTeamJFrame.setMaximumSize(new java.awt.Dimension(189, 153));
         filterTeamJFrame.setMinimumSize(new java.awt.Dimension(189, 153));
         filterTeamJFrame.setName("Add Member"); // NOI18N
 
@@ -961,7 +961,6 @@ public class mainView extends javax.swing.JFrame {
         filterTasksJFrame.setAlwaysOnTop(true);
         filterTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         filterTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        filterTasksJFrame.setMaximumSize(new java.awt.Dimension(189, 153));
         filterTasksJFrame.setMinimumSize(new java.awt.Dimension(189, 153));
         filterTasksJFrame.setName("Add Member"); // NOI18N
 
@@ -1575,7 +1574,7 @@ public class mainView extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         if (engine.validCredentials()) {
             loginJFrame.setVisible(false);
-            this.engine.populateProjectComboBox(this.projectComboBox);
+//            this.engine.populateProjectComboBox(this.projectComboBox);
             //this.setExtendedState(6); //maximises the screen by default when loggin in.
             this.setVisible(true);
         } else {
@@ -1608,7 +1607,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void projectComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_projectComboBoxItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) { // this should fix the event happening multiple times
-            engine.setCurrentProject((Project) this.projectComboBox.getSelectedItem());
+//            engine.setCurrentProject((Project) this.projectComboBox.getSelectedItem());
             engine.loadTeamTable(teamTable);
         }
     }//GEN-LAST:event_projectComboBoxItemStateChanged
@@ -1639,18 +1638,18 @@ public class mainView extends javax.swing.JFrame {
             tabbedPane.setSelectedIndex(1); //tasks pane
             tasksFilterTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
             int[] defaultAllColumns = {0,1,2,3};
-            engine.filterTable(tasksTable, tasksFilterTextField.getText(), defaultAllColumns);
+            engine.filterTable(tasksTable, tasksFilterTextField.getText());
         }
     }//GEN-LAST:event_teamTableMouseClicked
 
     private void teamFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teamFilterTextFieldKeyReleased
         int[] defaultAllColumns = {0,1,2,3};
-        engine.filterTable(teamTable, teamFilterTextField.getText(), defaultAllColumns);
+        engine.filterTable(teamTable, teamFilterTextField.getText());
     }//GEN-LAST:event_teamFilterTextFieldKeyReleased
 
     private void tasksFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasksFilterTextFieldKeyReleased
         int[] defaultAllColumns = {0,1,2,3};
-        engine.filterTable(tasksTable, tasksFilterTextField.getText(), defaultAllColumns);
+        engine.filterTable(tasksTable, tasksFilterTextField.getText());
     }//GEN-LAST:event_tasksFilterTextFieldKeyReleased
 
     private void filterTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTeamButtonActionPerformed
