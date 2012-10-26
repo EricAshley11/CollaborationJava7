@@ -5,6 +5,7 @@ import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 //google calendar API imports
@@ -1637,18 +1638,15 @@ public class mainView extends javax.swing.JFrame {
         if (teamTable.getSelectedColumn() == 4) { //last column
             tabbedPane.setSelectedIndex(1); //tasks pane
             tasksFilterTextField.setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
-            int[] defaultAllColumns = {0,1,2,3};
             engine.filterTable(tasksTable, tasksFilterTextField.getText());
         }
     }//GEN-LAST:event_teamTableMouseClicked
 
     private void teamFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teamFilterTextFieldKeyReleased
-        int[] defaultAllColumns = {0,1,2,3};
         engine.filterTable(teamTable, teamFilterTextField.getText());
     }//GEN-LAST:event_teamFilterTextFieldKeyReleased
 
     private void tasksFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasksFilterTextFieldKeyReleased
-        int[] defaultAllColumns = {0,1,2,3};
         engine.filterTable(tasksTable, tasksFilterTextField.getText());
     }//GEN-LAST:event_tasksFilterTextFieldKeyReleased
 
@@ -1662,7 +1660,7 @@ public class mainView extends javax.swing.JFrame {
             filterTeamPhoneJCheckBox.isSelected(),
             filterTeamEmailJCheckBox.isSelected()
         };
-        engine.filterTable(teamTable, teamFilterTextField.getText());
+        engine.setFilterColumns(checkedBoxes);
         filterTeamJFrame.setVisible(false);
     }//GEN-LAST:event_filterTeamSaveButtonActionPerformed
 
@@ -1674,7 +1672,7 @@ public class mainView extends javax.swing.JFrame {
             filterTasksEstCompletionJCheckBox.isSelected(),
             filterTasksActualCompletionJCheckBox.isSelected()
         };
-        engine.filterTable(tasksTable, tasksFilterTextField.getText());
+        engine.setFilterColumns(checkedBoxes);
         filterTasksJFrame.setVisible(false);
     }//GEN-LAST:event_filterTasksSaveButtonActionPerformed
 
@@ -1691,12 +1689,13 @@ public class mainView extends javax.swing.JFrame {
         try {
             setDefaultLookAndFeelDecorated(true);
             javax.swing.UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
         }
         /*
          * Create and display the form
          */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new mainView().loginJFrame.setVisible(true);
             }
