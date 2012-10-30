@@ -4,6 +4,7 @@
  */
 package collaboration;
 
+import collaborationjava7.common.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.DefaultRowSorter;
@@ -73,8 +74,8 @@ public class mainEngine {
     public boolean addMember(JTable teamTable, String userString) {
         try {
             DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
-            //User user = Backend.getInstance().getUserFromName(userString);
-            //model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
+            IUser user = ClientBackend.getInstance().getUserFromName(userString);
+            model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
             return true;
         } catch (Exception e) {
             return false;
@@ -92,7 +93,7 @@ public class mainEngine {
             DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
             model.removeRow(teamTable.getSelectedRow());
             //do this in backend
-            //Backend.getInstance().removeUser(model.getValueAt(teamTable.getSelectedRow(), 0).toString());
+            ClientBackend.getInstance().removeUser(model.getValueAt(teamTable.getSelectedRow(), 0).toString());
         }
         return isAnyRowSelected;
     }
@@ -115,7 +116,7 @@ public class mainEngine {
 
     public void loadTeamTable(JTable teamTable) {
         teamTable.setModel(new javax.swing.table.DefaultTableModel(
-                Backend.getInstance().getUserTableData(),
+                ClientBackend.getInstance().getUserTableData(),
                 new String[]{
                     "Username", "Full Name", "Phone", "Email", "Tasks"
                 }) {
@@ -144,16 +145,16 @@ public class mainEngine {
         return validCreds;
     }
 
-//    public void populateProjectComboBox(JComboBox projectComboBox) {
-//        Collection<Project> projects = Backend.getInstance().retrieveProjects();
-//        for (Project project : projects) {
-//            projectComboBox.addItem(project);
-//        }
-//    }
-//
-//    public void setCurrentProject(Project project) {
-//        Backend.getInstance().setCurrentProject(project);
-//    }
+    public void populateProjectComboBox(JComboBox projectComboBox) {
+        Collection<IProject> projects = ClientBackend.getInstance().retrieveProjects();
+        for (IProject project : projects) {
+            projectComboBox.addItem(project);
+        }
+    }
+
+    public void setCurrentProject(IProject project) {
+        ClientBackend.getInstance().setCurrentProject(project);
+    }
     public void createUser(JTextField[] textFields) {
         //TODO: Cam integrate backend to create user in database
     }

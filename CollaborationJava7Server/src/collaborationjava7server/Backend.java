@@ -25,17 +25,17 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
     }
 
     @Override
-    public void setCurrentProject(IProject project) {
+    public void setCurrentProject(IProject project) throws RemoteException{
         currentProject = project;
     }
 
     @Override
-    public void setCurrentUser(IUser user) {
+    public void setCurrentUser(IUser user) throws RemoteException{
         this.currentUser = user;
     }
 
     @Override
-    public void removeProject(IProject project){    
+    public void removeProject(IProject project) throws RemoteException{    
         throw new UnsupportedOperationException("");
     }
     

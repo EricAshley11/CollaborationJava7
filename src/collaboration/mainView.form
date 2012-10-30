@@ -1554,7 +1554,7 @@
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="444" max="32767" attributes="0"/>
                               <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -1719,7 +1719,7 @@
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="444" max="32767" attributes="0"/>
                               <Component id="filterTasksButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -1879,12 +1879,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="931" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="928" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="461" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="465" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1905,12 +1905,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="931" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="928" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="461" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="465" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1931,12 +1931,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="931" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="928" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="461" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="465" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

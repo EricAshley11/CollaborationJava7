@@ -7,6 +7,7 @@ package collaborationjava7server;
 import collaborationjava7.common.*;
 import java.util.Collection;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import javax.persistence.*;
 
@@ -42,7 +43,7 @@ public class Project implements Serializable, IProject {
         this.name = newName;
     }
 
-    public boolean removeTeam(ITeam team) {
+    public boolean removeTeam(ITeam team) throws RemoteException{
         if (teams.remove(team)) {
             team.removeProject(this);
             return true;
@@ -50,7 +51,7 @@ public class Project implements Serializable, IProject {
         return false;
     }
 
-    public boolean addTeam(ITeam team) {
+    public boolean addTeam(ITeam team) throws RemoteException {
         if (!teams.contains(team)) {
             teams.add(team);
             team.addProject(this);
@@ -59,7 +60,7 @@ public class Project implements Serializable, IProject {
         return false;
     }
 
-    public boolean removeUserStory(IUserStory userStory) {
+    public boolean removeUserStory(IUserStory userStory) throws RemoteException {
         if (userStories.remove(userStory)) {
             userStory.removeProject(this);
             return true;
@@ -67,7 +68,7 @@ public class Project implements Serializable, IProject {
         return false;
     }
 
-    public boolean addUserStory(IUserStory userStory) {
+    public boolean addUserStory(IUserStory userStory) throws RemoteException {
         if (!userStories.contains(userStory)) {
             userStories.add(userStory);
             userStory.changeProject(this);
