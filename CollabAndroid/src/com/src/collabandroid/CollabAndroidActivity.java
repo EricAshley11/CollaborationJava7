@@ -17,28 +17,35 @@ public class CollabAndroidActivity extends TabActivity {
         
         TabHost tabHost = getTabHost();
         
-        // Tab for Photos
-        TabSpec photospec = tabHost.newTabSpec("Photos");
-        photospec.setIndicator("Photos", getResources().getDrawable(R.drawable.icon_photos_tab));
-        Intent photosIntent = new Intent(this, PhotosActivity.class);
-        photospec.setContent(photosIntent);
+        // Tab for Team
+        TabSpec teamSpec = tabHost.newTabSpec("Team");
+        teamSpec.setIndicator("Team", getResources().getDrawable(R.drawable.icon_photos_tab));
+        Intent teamIntent = new Intent(this, TeamActivity.class);
+        teamSpec.setContent(teamIntent);
         
-        // Tab for Songs
-        TabSpec songspec = tabHost.newTabSpec("Songs");
-        // setting Title and Icon for the Tab
-        songspec.setIndicator("Songs", getResources().getDrawable(R.drawable.icon_songs_tab));
-        Intent songsIntent = new Intent(this, SongsActivity.class);
-        songspec.setContent(songsIntent);
+        // Tab for Tasks
+        TabSpec taskSpec = tabHost.newTabSpec("Task");
+        taskSpec.setIndicator("Task", getResources().getDrawable(R.drawable.icon_videos_tab));
+        Intent taskIntent = new Intent(this, TasksActivity.class);
+        taskSpec.setContent(taskIntent);
         
-        // Tab for Videos
-        TabSpec videospec = tabHost.newTabSpec("Videos");
-        videospec.setIndicator("Videos", getResources().getDrawable(R.drawable.icon_videos_tab));
-        Intent videosIntent = new Intent(this, VideosActivity.class);
-        videospec.setContent(videosIntent);
+        // Tab for Calendar
+        TabSpec calSpec = tabHost.newTabSpec("Calendar");
+        calSpec.setIndicator("Calendar", getResources().getDrawable(R.drawable.icon_videos_tab));
+        Intent calIntent = new Intent(this, CalActivity.class);
+        calSpec.setContent(calIntent);
+        
+        // Tab for Graph
+        TabSpec graphSpec = tabHost.newTabSpec("Graphs");
+        graphSpec.setIndicator("Graphs", getResources().getDrawable(R.drawable.icon_songs_tab));
+        Intent graphIntent = new Intent(this, GraphActivity.class);
+        graphSpec.setContent(graphIntent);
         
         // Adding all TabSpec to TabHost
-        tabHost.addTab(photospec); // Adding photos tab
-        tabHost.addTab(songspec); // Adding songs tab
-        tabHost.addTab(videospec); // Adding videos tab
+        tabHost.addTab(teamSpec); // Adding Team tab
+        tabHost.addTab(taskSpec); // Adding Tasks tab
+        tabHost.addTab(calSpec); // Adding Calendar tab
+        tabHost.addTab(graphSpec); // Adding Graph tab
+
     }
 }

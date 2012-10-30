@@ -15,13 +15,13 @@
         </activity>
         
         <!--  Songs Activity -->
-        <activity android:name=".SongsActivity" />
+        <activity android:name=".GraphActivity" />
         
         <!--  Videos Activity -->
-        <activity android:name=".VideosActivity" />
+        <activity android:name=".CalActivity" />
         
         <!--  Photos Activity -->
-        <activity android:name=".PhotosActivity" />
+        <activity android:name=".TeamActivity" />
 
     </application>
 </manifest>
