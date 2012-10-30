@@ -84,4 +84,14 @@ class QueryManager {
            return true;
           }
     }
+    public User getUser(String name) {
+        Query getUserQ = em.createQuery("SELECT U FROM User U WHERE U.name = :qname");
+        getUserQ.setParameter("qname", name);
+        try{
+        User shell = (User) getUserQ.getSingleResult();
+        return shell;
+        }
+        catch(Exception E){ return null;
+    }
+}
 }
