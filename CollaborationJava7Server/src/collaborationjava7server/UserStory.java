@@ -23,9 +23,15 @@ public class UserStory implements Serializable, IUserStory {
     private Collection<ITask> tasks;
     private Project project;
     private State state;
+    private String name;
 
     public UserStory() {
         tasks = new ArrayList<ITask>();
+    }
+    
+    public UserStory(String name) {
+        tasks = new ArrayList<ITask>();
+        this.name = name;
     }
 
     @Override
