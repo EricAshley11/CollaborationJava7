@@ -157,7 +157,12 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
     }
 
     @Override
-    public IUserStory createUserStory(String usName) {
+    public IUserStory createUserStory(String usName) throws RemoteException {
         return QueryManager.getInstance().createUserStory(usName);
+    }
+
+    @Override
+    public IUser getUser(String name) throws RemoteException {
+        return QueryManager.getInstance().getUser(name);
     }
 }

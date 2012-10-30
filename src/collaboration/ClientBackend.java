@@ -206,5 +206,15 @@ public class ClientBackend implements IBackend{
         }
         return null;
     }
+
+    @Override
+    public IUser getUser(String name) throws RemoteException {
+        try {
+            return remoteObj.getUser(name);
+        } catch (RemoteException ex) {
+            printRemoteError(ex);
+        }
+        return null;
+    }
     
 }
