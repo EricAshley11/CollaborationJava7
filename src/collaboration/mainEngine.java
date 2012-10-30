@@ -22,48 +22,41 @@ import org.jfree.chart.ChartPanel;
  */
 public class mainEngine {
 
-    private int[] selectedColumns;
-    
+    private int[] selectedTeamColumns = {0, 1, 2, 3};
+    private int[] selectedTasksColumns = {0, 1, 2, 3, 4, 5};
+
     public void filterTable(JTable table, String filterText) {
         TableModel model = table.getModel();
         DefaultRowSorter sorter = new TableRowSorter<>(model);
         table.setRowSorter(sorter);
         RowFilter<DefaultTableModel, Object> rf = null;
         try {
+            int[] selectedColumns;
+            if (table.getColumnCount() == 4) { //teamTable
+                selectedColumns = selectedTeamColumns;
+            } else {
+                selectedColumns = selectedTasksColumns;
+            }
             rf = RowFilter.regexFilter("(?i)" + filterText, selectedColumns);
         } catch (java.util.regex.PatternSyntaxException e) {
-            return;
         }
         sorter.setRowFilter(rf);
     }
 
     public void setFilterColumns(boolean[] checkedBoxes) {
-        //ArrayList<Integer> selectedColumnsArrayList = new ArrayList<Integer>();
-        int boxesChecked = 0;
-        for (int i = 0; i < checkedBoxes.length; i++) {
-            if (checkedBoxes[i] == true) {
-                boxesChecked++;
-                //selectedColumnsArrayList.add(i);
-            }
-        }
-        selectedColumns = new int[boxesChecked];
+        int[] selectedColumns = new int[checkedBoxes.length];
         for (int i = 0, place = 0; i < checkedBoxes.length; i++) {
             if (checkedBoxes[i] == true) {
                 selectedColumns[place] = i;
                 place++;
             }
         }
-        //int[] filterColumns = intArrayListToIntArray(selectedColumnsArrayList);
-        //return filterColumns;
+        if (checkedBoxes.length == 4) { //teamTable
+            selectedTeamColumns = selectedColumns;
+        } else {
+            selectedTasksColumns = selectedColumns;
+        }
     }
-
-//    private int[] intArrayListToIntArray(ArrayList<Integer> list) {
-//        int[] ret = new int[list.size()];
-//        for (int i = 0; i < ret.length; i++) {
-//            ret[i] = list.get(i);
-//        }
-//        return ret;
-//    }
 
     public void updateChart(JPanel progressPanel) {
         progressJFreeChart progressChart = new progressJFreeChart();
@@ -80,8 +73,8 @@ public class mainEngine {
     public boolean addMember(JTable teamTable, String userString) {
         try {
             DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
-            User user = Backend.getInstance().getUserFromName(userString);
-            model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
+            //User user = Backend.getInstance().getUserFromName(userString);
+            //model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
             return true;
         } catch (Exception e) {
             return false;
@@ -151,17 +144,16 @@ public class mainEngine {
         return validCreds;
     }
 
-    public void populateProjectComboBox(JComboBox projectComboBox) {
-        Collection<Project> projects = Backend.getInstance().retrieveProjects();
-        for (Project project : projects) {
-            projectComboBox.addItem(project);
-        }
-    }
-
-    public void setCurrentProject(Project project) {
-        Backend.getInstance().setCurrentProject(project);
-    }
-
+//    public void populateProjectComboBox(JComboBox projectComboBox) {
+//        Collection<Project> projects = Backend.getInstance().retrieveProjects();
+//        for (Project project : projects) {
+//            projectComboBox.addItem(project);
+//        }
+//    }
+//
+//    public void setCurrentProject(Project project) {
+//        Backend.getInstance().setCurrentProject(project);
+//    }
     public void createUser(JTextField[] textFields) {
         //TODO: Cam integrate backend to create user in database
     }
