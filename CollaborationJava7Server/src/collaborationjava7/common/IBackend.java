@@ -43,5 +43,6 @@ public interface IBackend extends Remote {
     
     IUser createUser(String user, String password) throws RemoteException;
     
+    IUser getUser(String name) throws RemoteException;
     
 }
