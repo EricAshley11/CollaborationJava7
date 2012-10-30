@@ -18,7 +18,7 @@ public class ClientBackend implements IBackend{
 
     private static ClientBackend instance = null;
     private IBackend remoteObj;
-    private static String serverAddr = "localhost";
+    private static String serverAddr = "eos02";
     public static ClientBackend getInstance(){
         if(instance == null){
             //make a single backend for the client
