@@ -5,8 +5,11 @@
 package collaboration;
 
 import collaborationjava7.common.*;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultRowSorter;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -155,8 +158,25 @@ public class mainEngine {
     public void setCurrentProject(IProject project) {
         ClientBackend.getInstance().setCurrentProject(project);
     }
-    public void createUser(JTextField[] textFields) {
-        //TODO: Cam integrate backend to create user in database
+    public boolean createUser(JTextField[] textFields) {
+        //textFields[0] is createUserUsernameTextField
+        //textFields[1] is firstPasswordField
+        //textFields[2] is confirmPasswordField
+        //textFields[3] is createUserNameTextField
+        //textFields[4] is createUserPhoneTextField
+        //textFields[5] is createUserEmailTextField
+        if (textFields[1].getText().equals(textFields[2].getText())) {
+            IUser newUser = ClientBackend.getInstance().createUser(textFields[0].getText(), textFields[1].getText());
+            try {
+                newUser.setName(textFields[3].getText());
+                newUser.setPhoneNum(textFields[4].getText());
+                newUser.setEmail(textFields[5].getText());
+            } catch (RemoteException ex) {
+                Logger.getLogger(mainEngine.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return true;
+        }
+        return false;
     }
 
     public void deleteUser() {
