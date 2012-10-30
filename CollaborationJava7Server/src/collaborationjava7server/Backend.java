@@ -7,7 +7,7 @@ import collaborationjava7.common.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Collection;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * This is a class that provides communication between the client and
@@ -34,6 +34,7 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
         this.currentUser = user;
     }
 
+    
     @Override
     public void removeProject(IProject project) throws RemoteException{    
         throw new UnsupportedOperationException("");
@@ -76,7 +77,7 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
         u4.setPhoneNum("(000)000-0004");
         t2.addMember(u4);
 
-        Vector<IProject> projects = new Vector<IProject>();
+        ArrayList<IProject> projects = new ArrayList<IProject>();
         projects.add(p1);
         projects.add(p2);
         return projects;
@@ -85,7 +86,7 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
     @Override
     public Collection<IUser> retrieveUsers() throws RemoteException {
         Collection<ITeam> teams = this.currentProject.getTeams();
-        Collection<IUser> users = new Vector<IUser>();
+        Collection<IUser> users = new ArrayList<IUser>();
         for (ITeam team : teams) {
             users.addAll(team.getTeamMembers());
         }
@@ -138,5 +139,25 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
             }
         }
         return null;
+    }
+
+    @Override
+    public IUser createUser(String userName, String password) throws RemoteException {
+        return QueryManager.getInstance().createUser(userName, password);
+    }
+
+    @Override
+    public IProject createProject(String projectName) throws RemoteException {
+        return QueryManager.getInstance().createProject(projectName);
+    }
+
+    @Override
+    public ITeam createTeam(String teamName) throws RemoteException {
+        return QueryManager.getInstance().createTeam(teamName);
+    }
+
+    @Override
+    public IUserStory createUserStory(String usName) {
+        return QueryManager.getInstance().createUserStory(usName);
     }
 }

@@ -9,6 +9,8 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +20,7 @@ public class ClientBackend implements IBackend{
 
     private static ClientBackend instance = null;
     private IBackend remoteObj;
-    private static String serverAddr = "eos02";
+    private static String serverAddr = "localhost";
     public static ClientBackend getInstance(){
         if(instance == null){
             //make a single backend for the client
@@ -162,6 +164,47 @@ public class ClientBackend implements IBackend{
     private void printRemoteError(RemoteException ex){
         System.err.println("There was a remote error:");
         ex.printStackTrace(System.err);
+    }
+
+    @Override
+    public IProject createProject(String projectName){
+        try {
+            return remoteObj.createProject(projectName);
+        } catch (RemoteException ex) {
+            printRemoteError(ex);
+        }
+        return null;
+        
+    }
+
+    @Override
+    public ITeam createTeam(String teamName){
+        try {
+            return remoteObj.createTeam(teamName);
+        } catch (RemoteException ex) {
+            printRemoteError(ex);
+        }
+        return null;
+    }
+
+    @Override
+    public IUserStory createUserStory(String usName) {
+        try {
+            return remoteObj.createUserStory(usName);
+         } catch (RemoteException ex) {
+            printRemoteError(ex);
+        }
+        return null;
+    }
+
+    @Override
+    public IUser createUser(String user, String password){
+        try {
+            return remoteObj.createUser(user, password);
+        } catch (RemoteException ex) {
+            printRemoteError(ex);
+        }
+        return null;
     }
     
 }

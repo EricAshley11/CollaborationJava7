@@ -17,6 +17,12 @@ public interface IBackend extends Remote {
 
     void removeProject(IProject project) throws RemoteException;
     
+    IProject createProject(String projectName) throws RemoteException;
+    
+    ITeam createTeam(String teamName) throws RemoteException;
+    
+    IUserStory createUserStory(String usName) throws RemoteException;
+    
     Collection<IProject> retrieveProjects() throws RemoteException;
 
     Collection<IProject> getDummyProjects() throws RemoteException;
@@ -34,4 +40,8 @@ public interface IBackend extends Remote {
     void removeUser(String name) throws RemoteException;
 
     IUser getUserFromName(String name) throws RemoteException;
+    
+    IUser createUser(String user, String password) throws RemoteException;
+    
+    
 }

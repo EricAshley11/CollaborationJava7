@@ -18,10 +18,23 @@ class QueryManager {
     // Open a database connection
     // (create a new database if it doesn't exist yet):
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("$objectdb/db/ProjectDB.odb");
-    EntityManager em = emf.createEntityManager();
+    private EntityManager em;
+    private EntityManagerFactory emf;
+    private static QueryManager instance = null;
+    
+    private QueryManager(){
+         emf = Persistence.createEntityManagerFactory("$objectdb/db/ProjectDB.odb");
+         em = emf.createEntityManager();
+    }
 
-    private User createUser(String username, String password) {
+    public static QueryManager getInstance(){
+        if(instance == null){
+            instance = new QueryManager();
+        }
+        return instance;        
+    }
+    
+    public User createUser(String username, String password) {
         em.getTransaction().begin();
         User U = new User(username);
         Password P = new Password(username, password);
@@ -31,7 +44,7 @@ class QueryManager {
         return U;
     }
 
-    private Team createTeam(String name) {
+    public Team createTeam(String name) {
         em.getTransaction().begin();
         Team T = new Team(name);
         em.persist(T);
@@ -40,7 +53,7 @@ class QueryManager {
         return T;
     }
     
-    private UserStory createUserStory(String name) {
+    public UserStory createUserStory(String name) {
         em.getTransaction().begin();
         UserStory US = new UserStory(name);
         em.persist(US);
@@ -49,7 +62,7 @@ class QueryManager {
         return US;
     }
 
-    private Project createProject(String name) {
+    public Project createProject(String name) {
         em.getTransaction().begin();
         Project P = new Project(name);
         em.persist(P);
@@ -58,7 +71,7 @@ class QueryManager {
         return P;
     }
     
-    private boolean checkPassword(IUser user, String password) {
+    public boolean checkPassword(IUser user, String password) {
         Query createUserQ = em.createQuery("SELECT U.name FROM User U, Password P WHERE P.Username = U.name");
           if(createUserQ.getResultList().isEmpty()==true) {
               em.close();
