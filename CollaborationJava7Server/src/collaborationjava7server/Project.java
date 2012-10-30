@@ -4,6 +4,7 @@
  */
 package collaborationjava7server;
 
+import collaborationjava7.common.*;
 import java.util.Collection;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,33 +13,36 @@ import javax.persistence.*;
 /**
  *
  */
-public class Project implements Serializable {
+public class Project implements Serializable, IProject {
 
-    private Collection<Team> teams;
-    private Collection<UserStory> userStories;
-    private Collection<Milestone> milestones;
+    private Collection<ITeam> teams;
+    private Collection<IUserStory> userStories;
+    private Collection<IMilestone> milestones;
     private String name;
     //Calendar is not yet implemented private GCal calendar;   
 
     Project(String name) {
         this.name = name;
-        this.teams = new ArrayList<Team>();
-        this.userStories = new ArrayList<UserStory>();
+        this.teams = new ArrayList<ITeam>();
+        this.userStories = new ArrayList<IUserStory>();
     }
 
-    String getName() {
+    @Override
+    public String getName() {
         return name;
     }
 
-    Collection<Team> getTeams() {
+    @Override
+    public Collection<ITeam> getTeams() {
         return teams;
     }
 
-    void reName(String newName) {
+    @Override
+    public void reName(String newName) {
         this.name = newName;
     }
 
-    boolean removeTeam(Team team) {
+    public boolean removeTeam(ITeam team) {
         if (teams.remove(team)) {
             team.removeProject(this);
             return true;
@@ -46,7 +50,7 @@ public class Project implements Serializable {
         return false;
     }
 
-    boolean addTeam(Team team) {
+    public boolean addTeam(ITeam team) {
         if (!teams.contains(team)) {
             teams.add(team);
             team.addProject(this);
@@ -55,7 +59,7 @@ public class Project implements Serializable {
         return false;
     }
 
-    boolean removeUserStory(UserStory userStory) {
+    public boolean removeUserStory(IUserStory userStory) {
         if (userStories.remove(userStory)) {
             userStory.removeProject(this);
             return true;
@@ -63,7 +67,7 @@ public class Project implements Serializable {
         return false;
     }
 
-    boolean addUserStory(UserStory userStory) {
+    public boolean addUserStory(IUserStory userStory) {
         if (!userStories.contains(userStory)) {
             userStories.add(userStory);
             userStory.changeProject(this);
@@ -72,7 +76,7 @@ public class Project implements Serializable {
         return false;
     }
 
-    boolean createMilestone(Milestone milestone) {
+    public boolean createMilestone(IMilestone milestone) {
         if (!milestones.contains(milestone)) {
             milestones.add(milestone);
             return true;
@@ -80,13 +84,14 @@ public class Project implements Serializable {
         return false;
     }
 
-    boolean removeMilestone(Milestone milestone) {
+    public boolean removeMilestone(IMilestone milestone) {
         if (milestones.remove(milestone)) {
             return true;
         }
         return false;
     }
 
+    @Override
     public String toString() {
         return this.getName();
     }

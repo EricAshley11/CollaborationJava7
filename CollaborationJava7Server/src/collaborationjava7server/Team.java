@@ -4,8 +4,10 @@
  */
 package collaborationjava7server;
 
+import collaborationjava7.common.*;
 import java.util.Collection;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import javax.persistence.*;
 
@@ -13,20 +15,20 @@ import javax.persistence.*;
  *
  */
 @Entity(name = "Team") //Entity name
-public class Team implements Serializable {
+public class Team implements Serializable, ITeam {
     
     @Id
     private int TeamID;
     private static int nextTeamID = 0;
     @OneToMany
-    private Collection<User> users;
-    private Collection<Project> projects;
+    private Collection<IUser> users;
+    private Collection<IProject> projects;
     private String name;
     private Schedule sched;
     
     public Team(String name) {
-        this.users = new ArrayList<User>();
-        this.projects = new ArrayList<Project>();
+        this.users = new ArrayList<IUser>();
+        this.projects = new ArrayList<IProject>();
         this.name = name;
         this.TeamID = nextTeamID++;
     }
@@ -39,7 +41,8 @@ public class Team implements Serializable {
 //        this.name = name;
 //    }
 
-    boolean addProject(Project project) {
+    @Override
+    public boolean addProject(IProject project) throws RemoteException{
         if (!projects.contains(project)) {
             projects.add(project);
             project.addTeam(this);
@@ -48,7 +51,8 @@ public class Team implements Serializable {
         return false;
     }
 
-    boolean removeProject(Project project) {
+    @Override
+    public boolean removeProject(IProject project) throws RemoteException{
         if (projects.remove(project)) {
             project.removeTeam(this);
             return true;
@@ -56,7 +60,8 @@ public class Team implements Serializable {
         return false;
     }
 
-    boolean addMember(User user) {
+    @Override
+    public boolean addMember(IUser user) throws RemoteException{
         if (!users.contains(user)) {
             users.add(user);
             user.addToTeam(this);
@@ -65,7 +70,8 @@ public class Team implements Serializable {
         return false;
     }
 
-    boolean removeMember(User user) {
+    @Override
+    public boolean removeMember(IUser user) throws RemoteException{
         if (users.remove(user)) {
             user.removeFromTeam(this);
             return true;
@@ -73,32 +79,38 @@ public class Team implements Serializable {
         return false;
     }
 
-    boolean completeMilestone(Milestone milestone) {
+    @Override
+    public boolean completeMilestone(IMilestone milestone) throws RemoteException{
         if (sched.completeMilestone(milestone)) {
             return true;
         }
         return false;
     }
 
-    boolean addMilestone(Milestone milestone) {
+    @Override
+    public boolean addMilestone(IMilestone milestone) {
         if (sched.addMilestone(milestone)) {
             return true;
         }
         return false;
     }
 
-    public Schedule getSched() {
+    @Override
+    public ISchedule getSched() {
         return this.sched;
     }
 
-    public Collection<Project> getProjects() {
+    @Override
+    public Collection<IProject> getProjects() {
         return projects;
     }
 
-    Collection<User> getTeamMembers() {
+    @Override
+    public Collection<IUser> getTeamMembers() {
         return users;
     }
 
+    @Override
     public String getName() {
         return this.name;
     }

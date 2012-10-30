@@ -4,29 +4,32 @@
  */
 package collaborationjava7server;
 
+import collaborationjava7.common.*;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import javax.persistence.*;
 
 /**
  *
  */
 @Entity(name = "Task") //Entity name
-public class Task implements Serializable {
+public class Task implements Serializable, ITask {
 
     @Id
     private int TaskID;
     private int storyPointsEstimate, storyPointsActual;
     @OneToOne
-    private User user;
+    private IUser user;
     private String description, name;
     @OneToOne
-    private UserStory userStory;
+    private IUserStory userStory;
     private State state;
 
     public Task() {
     }
 
-    boolean removeUser(User user) {
+    @Override
+    public boolean removeUser(IUser user) throws RemoteException{
         if (user.equals(this.user)) {
             this.user = null;
             user.removeTask(this);
@@ -35,7 +38,8 @@ public class Task implements Serializable {
         return false;
     }
 
-    boolean changeUser(User user) {
+    @Override
+    public boolean changeUser(IUser user) throws RemoteException{
         if (user != null && !user.equals(this.user)) {
             this.user.removeTask(this);
             this.user = user;
@@ -45,7 +49,8 @@ public class Task implements Serializable {
         return false;
     }
 
-    boolean changeUserStory(UserStory userStory) {
+    @Override
+    public boolean changeUserStory(IUserStory userStory) throws RemoteException{
         if (userStory != null && !userStory.equals(this.userStory)) {
             this.userStory.removeTask(this);
             this.userStory = userStory;
@@ -56,10 +61,12 @@ public class Task implements Serializable {
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -68,26 +75,32 @@ public class Task implements Serializable {
         return state;
     }
 
+    @Override
     public int getStoryPointsActual() {
         return storyPointsActual;
     }
 
+    @Override
     public int getStoryPointsEstimate() {
         return storyPointsEstimate;
     }
 
-    public User getUser() {
+    @Override
+    public IUser getUser() {
         return user;
     }
 
-    public UserStory getUserStory() {
+    @Override
+    public IUserStory getUserStory() {
         return userStory;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -96,16 +109,19 @@ public class Task implements Serializable {
         this.state = state;
     }
 
+    @Override
     public void setStoryPointsActual(int storyPointsActual) {
         this.storyPointsActual = storyPointsActual;
     }
 
+    @Override
     public void setStoryPointsEstimate(int storyPointsEstimate) {
         this.storyPointsEstimate = storyPointsEstimate;
     }
     //</editor-fold>
 
-    void delete() {
+    @Override
+    public void delete() {
         //TODO: Not sure if this is the best way to do this
         throw new UnsupportedOperationException("Not yet implemented");
     }

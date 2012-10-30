@@ -1,11 +1,13 @@
 package collaborationjava7server;
 
+import collaborationjava7.common.IMilestone;
+import java.rmi.RemoteException;
 import java.util.Date;
 
 /**
  * This object contains milestone information to be used in projects
  */
-class Milestone {
+class Milestone implements IMilestone{
 
     int id;
     String description;
@@ -33,7 +35,7 @@ class Milestone {
         return isCompleted;
     }
 
-    public boolean setComplete() {
+    public boolean setComplete() throws RemoteException{
         isCompleted = true;
         return isCompleted;
     }

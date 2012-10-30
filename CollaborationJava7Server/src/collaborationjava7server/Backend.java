@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package collaborationjava7server;
+import collaborationjava7.common.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Collection;
@@ -14,32 +15,32 @@ import java.util.Vector;
  */
 public final class Backend extends UnicastRemoteObject implements IBackend{
 
-    Project currentProject = null;
-    User currentUser = null;
+    IProject currentProject = null;
+    IUser currentUser = null;
     boolean createdDummyProjects = false;//used to ensure we aren't making dupe projects
-    Collection<Project> dummyProjects;
+    Collection<IProject> dummyProjects;
 
     public Backend() throws RemoteException{
         currentProject = (Project) retrieveProjects().toArray()[0];//Used to test dummy data
     }
 
     @Override
-    public void setCurrentProject(Project project) {
+    public void setCurrentProject(IProject project) {
         currentProject = project;
     }
 
     @Override
-    public void setCurrentUser(User user) {
+    public void setCurrentUser(IUser user) {
         this.currentUser = user;
     }
 
     @Override
-    public void removeProject(Project project){    
+    public void removeProject(IProject project){    
         throw new UnsupportedOperationException("");
     }
     
     @Override
-    public Collection<Project> retrieveProjects() {
+    public Collection<IProject> retrieveProjects() throws RemoteException {
         //TODO: Cam get projects from db
         //for now simulate it
         if (!this.createdDummyProjects) {
@@ -50,7 +51,7 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
     }
 
     @Override
-    public Collection<Project> getDummyProjects() {
+    public Collection<IProject> getDummyProjects() throws RemoteException {
         Project p1 = new Project("Project 1");
         Team t1 = new Team("Team 1");
         p1.addTeam(t1);
@@ -75,27 +76,27 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
         u4.setPhoneNum("(000)000-0004");
         t2.addMember(u4);
 
-        Vector<Project> projects = new Vector<Project>();
+        Vector<IProject> projects = new Vector<IProject>();
         projects.add(p1);
         projects.add(p2);
         return projects;
     }
 
     @Override
-    public Collection<User> retrieveUsers() {
-        Collection<Team> teams = this.currentProject.getTeams();
-        Collection<User> users = new Vector<User>();
-        for (Team team : teams) {
+    public Collection<IUser> retrieveUsers() throws RemoteException {
+        Collection<ITeam> teams = this.currentProject.getTeams();
+        Collection<IUser> users = new Vector<IUser>();
+        for (ITeam team : teams) {
             users.addAll(team.getTeamMembers());
         }
         return users;
     }
 
     @Override
-    public String[][] getUserTableData() {
+    public String[][] getUserTableData() throws RemoteException{
         //User[] users = retrieveUsers().toArray(new User[0]);
         //String[] userStrings = .toArray(new String[0]);
-        Collection<User> users = retrieveUsers();
+        Collection<IUser> users = retrieveUsers();
         int numUsers = users.size();
         int userFields = 4;
         String[][] tableData = new String[numUsers][userFields];
@@ -109,29 +110,29 @@ public final class Backend extends UnicastRemoteObject implements IBackend{
     }
 
     @Override
-    public Collection<Task> retrieveUserTasks() {
+    public Collection<ITask> retrieveUserTasks() throws RemoteException{
         return retrieveUserTasks(this.currentUser);
     }
 
     @Override
-    public Collection<Task> retrieveUserTasks(User user) {
+    public Collection<ITask> retrieveUserTasks(IUser user) throws RemoteException{
         return user.getTasks();
     }
 
     @Override
-    public void removeUser(User user) {
+    public void removeUser(IUser user) throws RemoteException{
         user.delete();
     }
 
     @Override
-    public void removeUser(String name) {
+    public void removeUser(String name) throws RemoteException{
         removeUser(getUserFromName(name));
     }
 
     @Override
-    public User getUserFromName(String name) {
+    public IUser getUserFromName(String name) throws RemoteException{
         //TODO: Cam need a connection to the DB to query this
-        for (User user : retrieveUsers()) {
+        for (IUser user : retrieveUsers()) {
             if (user.getName().equals(name)) {
                 return user;
             }

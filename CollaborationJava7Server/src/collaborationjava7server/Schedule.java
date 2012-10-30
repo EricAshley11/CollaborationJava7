@@ -1,19 +1,22 @@
 package collaborationjava7server;
 
+import collaborationjava7.common.*;
 import java.util.*;
 import java.io.*;
+import java.rmi.RemoteException;
 
 /**
  *
  */
-class Schedule implements Serializable {
+class Schedule implements Serializable, ISchedule {
 
-    private Collection<Milestone> milestones;
+    private Collection<IMilestone> milestones;
 
     public Schedule() {
     }
 
-    boolean addMilestone(Milestone milestone) {
+    @Override
+    public boolean addMilestone(IMilestone milestone) {
         if (!milestones.contains(milestone)) {
             milestones.add(milestone);
             return true;
@@ -21,7 +24,8 @@ class Schedule implements Serializable {
         return false;
     }
 
-    boolean completeMilestone(Milestone milestone) {
+    @Override
+    public boolean completeMilestone(IMilestone milestone) throws RemoteException{
         if (milestone.setComplete()) {
             return true;
         }

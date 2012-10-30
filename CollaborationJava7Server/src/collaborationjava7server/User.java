@@ -4,8 +4,10 @@
  */
 package collaborationjava7server;
 
+import collaborationjava7.common.*;
 import java.util.Collection;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import javax.persistence.*;
 
@@ -13,7 +15,7 @@ import javax.persistence.*;
  *
  */
 @Entity(name = "User") //entity name
-public class User implements Serializable {
+public class User implements Serializable, IUser {
 
     @Id //primary key
     @Column(nullable = false)
@@ -23,20 +25,20 @@ public class User implements Serializable {
     private String name, email;
     private String phoneNum;
     @OneToMany
-    private Collection<Team> teams;
+    private Collection<ITeam> teams;
     @OneToMany
-    private Collection<Task> tasks;
+    private Collection<ITask> tasks;
 
     public User() {}
     
     public User(String name) {
         this.name = name;
-        teams = new ArrayList<Team>();
-        tasks = new ArrayList<Task>();
+        teams = new ArrayList<ITeam>();
+        tasks = new ArrayList<ITask>();
         UserID = nextUID++;
     }
 
-    boolean addToTeam(Team team) {
+    public boolean addToTeam(ITeam team) throws RemoteException{
         if (!teams.contains(team)) {
             teams.add(team);
             team.addMember(this);
@@ -45,16 +47,18 @@ public class User implements Serializable {
         return false;
     }
 
-    void delete() {
-        for (Team team : teams) {
+    @Override
+    public void delete() throws RemoteException{
+        for (ITeam team : teams) {
             this.removeFromTeam(team);
         }
-        for (Task task : tasks) {
+        for (ITask task : tasks) {
             this.removeTask(task);
         }
     }
 
-    boolean removeFromTeam(Team team) {
+    @Override
+    public boolean removeFromTeam(ITeam team) throws RemoteException{
         if (teams.remove(team)) {
             team.removeMember(this);
             return true;
@@ -62,7 +66,8 @@ public class User implements Serializable {
         return false;
     }
 
-    boolean switchTeams(Team oldTeam, Team newTeam) {
+    @Override
+    public boolean switchTeams(ITeam oldTeam, ITeam newTeam) throws RemoteException{
         boolean retVal = true;
         if (teams.remove(oldTeam)) {
             oldTeam.removeMember(this);
@@ -79,7 +84,8 @@ public class User implements Serializable {
 
     }
 
-    boolean addTask(Task task) {
+    @Override
+    public boolean addTask(ITask task) throws RemoteException {
         if (!tasks.contains(task)) {
             tasks.add(task);
             task.changeUser(this);
@@ -89,7 +95,8 @@ public class User implements Serializable {
 
     }
 
-    boolean removeTask(Task task) {
+    @Override
+    public boolean removeTask(ITask task)  throws RemoteException{
         if (tasks.remove(task)) {
             task.removeUser(this);
             return true;
@@ -97,40 +104,49 @@ public class User implements Serializable {
         return false;
     }
 
+    @Override
     public String toString() {
         return String.format("%s, %s, %s, %s", this.UserID, this.name, this.phoneNum, this.email);
     }
 
     // <editor-fold desc="Getters/Setters">
+    @Override
     public String getEmail() {
         return email;
     }
 
+    @Override
     public void setEmail(String email) {
         this.email = email;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public String getPhoneNum() {
         return phoneNum;
     }
 
+    @Override
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
 
-    public Collection<Task> getTasks() {
+    @Override
+    public Collection<ITask> getTasks() {
         return tasks;
     }
 
-    public Collection<Team> getTeams() {
+    @Override
+    public Collection<ITeam> getTeams() {
         return teams;
     }
     // </editor-fold>

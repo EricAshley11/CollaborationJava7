@@ -4,8 +4,10 @@
  */
 package collaborationjava7server;
 
+import collaborationjava7.common.*;
 import java.util.Collection;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import javax.persistence.*;
 
@@ -13,20 +15,21 @@ import javax.persistence.*;
  *
  */
 @Entity(name = "UserStory")
-public class UserStory implements Serializable {
+public class UserStory implements Serializable, IUserStory {
 
     @Id
     private int UserStoryID;
     @OneToMany
-    private Collection<Task> tasks;
+    private Collection<ITask> tasks;
     private Project project;
     private State state;
 
     public UserStory() {
-        tasks = new ArrayList<Task>();
+        tasks = new ArrayList<ITask>();
     }
 
-    boolean removeTask(Task task) {
+    @Override
+    public boolean removeTask(ITask task) throws RemoteException{
         if (tasks.remove(task)) {
             task.delete();//TODO: Not sure if this is the best way to do this
             return true;
@@ -34,7 +37,8 @@ public class UserStory implements Serializable {
         return false;
     }
 
-    boolean addTask(Task task) {
+    @Override
+    public boolean addTask(ITask task) throws RemoteException{
         if (tasks.contains(task)) {
             tasks.add(task);
             task.changeUserStory(this);
@@ -43,7 +47,8 @@ public class UserStory implements Serializable {
         return false;
     }
 
-    boolean removeProject(Project project) {
+    @Override
+    public boolean removeProject(IProject project) throws RemoteException{
         if (project != null && project.equals(this.project)) {
             this.project = null;
             project.removeUserStory(this);
@@ -52,10 +57,11 @@ public class UserStory implements Serializable {
         return false;
     }
 
-    boolean changeProject(Project project) {
+    @Override
+    public boolean changeProject(IProject project) throws RemoteException{
         if (project != null && project.equals(this.project)) {
             this.project.removeUserStory(this);
-            this.project = project;
+           // this.project = project; TODO:Fix this somehow
             project.addUserStory(this);
             return true;
         }
