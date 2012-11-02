@@ -8,6 +8,7 @@ import com.google.gdata.data.extensions.*;
 import com.google.gdata.util.*;
 import java.net.*;
 import java.text.*;
+import java.io.*;
 
 /**
  *
@@ -15,12 +16,17 @@ import java.text.*;
  */
 public class Calendar {
     
-    String ownedURL = "https://www.google.com/calendar/feeds/default/owncalendars/full";
+    private static final String privateURL = "https://www.google.com/calendar/feeds/default/owncalendars/full";
+    //private static final String baseFeed_URL = "https://www.google.com/calendar/feeds/";
+    //private static final String eventFeed_URL = "/private/full";
+    //private static final String calendarFeed_URL = "/owncalendars/full";
+    String user = "";
     DateFormat googleDF;
     java.util.Date currentDate;
     java.util.Date weekAheadDate;
     java.util.Calendar cal;
     CalendarQuery myQuery;
+    CalendarService myService;
     long time;
     
     public Calendar() {
@@ -32,40 +38,60 @@ public class Calendar {
         weekAheadDate = new java.util.Date(time);
     }
     
-    public CalendarService validate(String user, String pass) {
+    public boolean validate(String user, String pass) {
+        boolean flag = false;
         try {
-            CalendarService myService = new CalendarService("My Calendar");
+            myService = new CalendarService("My Calendar");
             myService.setUserCredentials(user, pass);
-            return myService;
+            this.user = user;
+            flag = true;
+            return flag;
         } catch (AuthenticationException e) {
-            e.printStackTrace();
-            System.err.println("Sorry: Could Not Validate Credentials!");
-            return null;
+            return flag;
         }    
     }
     
-     public String printWeeklyAgenda(CalendarService service) {
-        String agenda = null;
+     public String printWeeklyAgenda()
+            throws ServiceException, IOException {
+        String agenda;
         CalendarEventFeed result;
-        CalendarService myService = service;
-        try {
-            URL feed = new URL("https://www.google.com/calendar/feeds/default/private/full");
-            myQuery = new CalendarQuery(feed);
-            myQuery.setMinimumStartTime(DateTime.parseDateTime(googleDF.format(currentDate)));
-            myQuery.setMaximumStartTime(DateTime.parseDateTime(googleDF.format(weekAheadDate)));
-            result = myService.query(myQuery, CalendarEventFeed.class);
-            agenda = "Upcoming events: \n\n";
-            for (int i = 0; i< result.getEntries().size(); i++) {
-                CalendarEventEntry entry = result.getEntries().get(i);
-                agenda += "\t" + entry.getTitle().getPlainText() + "\n";
-            }
-        } catch (java.io.IOException | ServiceException e) {
-            e.printStackTrace();
-            System.err.println("Sorry: Could Not Print Schedule!");
-        }
-        
+
+        URL feed = new URL("https://www.google.com/calendar/feeds/default/private/full");
+        myQuery = new CalendarQuery(feed);
+        myQuery.setMinimumStartTime(DateTime.parseDateTime(googleDF.format(currentDate)));
+        myQuery.setMaximumStartTime(DateTime.parseDateTime(googleDF.format(weekAheadDate)));
+        result = myService.query(myQuery, CalendarEventFeed.class); //Bringing up exception
+        agenda = "Upcoming events: \n\n";
+        for (int i = 0; i< result.getEntries().size(); i++) {
+            CalendarEventEntry entry = result.getEntries().get(i);
+            agenda += "\t" + entry.getTitle().getPlainText() + "\n";
+        }   
         return agenda;
     }
     
+    public boolean LoginSuccess(CalendarService service) {
+        boolean flag = false;
+        if (service != null) {
+            flag = true;
+        }
+        return flag;
+    }
+    
+    public String printUserCalendars() 
+           throws ServiceException, IOException {
+
+        String ownedCalendars = "Your Calendars:\n\n";
+        URL feed = new URL("https://www.google.com/calendar/feeds/default/owncalendars/full");
+        CalendarFeed result = myService.getFeed(feed, CalendarFeed.class); //Bringing up exception
+        for (int i = 0; i < result.getEntries().size(); i++) {
+            CalendarEntry entry = result.getEntries().get(i);
+            ownedCalendars += "\t" + entry.getTitle().getPlainText() + "\n";
+        }
+        return ownedCalendars;
+    }
+    
+    public CalendarService getService() {
+        return myService;
+    }
 }
 
