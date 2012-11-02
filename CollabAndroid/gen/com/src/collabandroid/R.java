@@ -11,16 +11,15 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
-        public static final int icon_photos_tab=0x7f020001;
-        public static final int icon_songs_tab=0x7f020002;
-        public static final int icon_videos_tab=0x7f020003;
-        public static final int photos_gray=0x7f020004;
-        public static final int photos_white=0x7f020005;
-        public static final int songs_gray=0x7f020006;
-        public static final int songs_white=0x7f020007;
-        public static final int videos_gray=0x7f020008;
-        public static final int videos_white=0x7f020009;
+        public static final int cal75=0x7f020000;
+        public static final int graph75=0x7f020001;
+        public static final int icon=0x7f020002;
+        public static final int icon_cal_tab=0x7f020003;
+        public static final int icon_graph_tab=0x7f020004;
+        public static final int icon_tasks_tab=0x7f020005;
+        public static final int icon_team_tab=0x7f020006;
+        public static final int tasks75=0x7f020007;
+        public static final int team75=0x7f020008;
     }
     public static final class layout {
         public static final int cal_layout=0x7f030000;
