@@ -28,6 +28,12 @@ public class mainView extends javax.swing.JFrame {
      * Creates new form mainView
      */
     public mainView() {
+        try {
+        } catch (Exception e) {
+            System.out.println("Server is down");
+            System.exit(0);
+            //Runtime.getRuntime().exec(null)
+        }
         initComponents();
     }
 //</editor-fold>
@@ -52,6 +58,8 @@ public class mainView extends javax.swing.JFrame {
             javax.swing.SwingUtilities.updateComponentTreeUI(editProjectJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(settingsJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(loginJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(filterTeamJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(filterTasksJFrame);
         } catch (Exception e) {
             //System.out.println(e.toString());
         }
@@ -64,7 +72,7 @@ public class mainView extends javax.swing.JFrame {
         addMemberJPanel = new javax.swing.JPanel();
         addMemberDialogButton = new javax.swing.JButton();
         addMemberNameJLabel = new javax.swing.JLabel();
-        addMemberNameTextField = new javax.swing.JTextField();
+        addMemberUsernameTextField = new javax.swing.JTextField();
         editMemberJFrame = new javax.swing.JFrame();
         editMemberJPanel = new javax.swing.JPanel();
         saveEditMemberButton = new javax.swing.JButton();
@@ -233,7 +241,7 @@ public class mainView extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(addMemberNameJLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(addMemberNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(addMemberUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addMemberJPanelLayout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addComponent(addMemberDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -244,7 +252,7 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMemberJPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(addMemberJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addMemberNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addMemberUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addMemberNameJLabel))
                 .addGap(18, 18, 18)
                 .addComponent(addMemberDialogButton)
@@ -976,8 +984,11 @@ public class mainView extends javax.swing.JFrame {
         filterTasksJFrame.setAlwaysOnTop(true);
         filterTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         filterTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        filterTasksJFrame.setMinimumSize(new java.awt.Dimension(189, 153));
+        filterTasksJFrame.setMinimumSize(new java.awt.Dimension(0, 300));
         filterTasksJFrame.setName("Add Member"); // NOI18N
+        filterTasksJFrame.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        filterTasksJPanel.setMinimumSize(new java.awt.Dimension(0, 240));
 
         filterTasksSaveButton.setText("Save");
         filterTasksSaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1040,7 +1051,7 @@ public class mainView extends javax.swing.JFrame {
                 .addComponent(filterTasksActualCompletionJCheckBox)
                 .addGap(18, 18, 18)
                 .addComponent(filterTasksSaveButton)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout filterTasksJFrameLayout = new javax.swing.GroupLayout(filterTasksJFrame.getContentPane());
@@ -1303,7 +1314,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1398,7 +1409,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1462,7 +1473,7 @@ public class mainView extends javax.swing.JFrame {
                         .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(printCalendarsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(gCalWeeklyAgendaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         calendarPanelLayout.setVerticalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1477,7 +1488,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(gCalWeeklyAgendaButton))
                 .addGap(29, 29, 29)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(calendarScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                    .addComponent(calendarScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                     .addGroup(calendarPanelLayout.createSequentialGroup()
                         .addComponent(createNewScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -1501,7 +1512,7 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 928, Short.MAX_VALUE)
+            .addGap(0, 931, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1542,7 +1553,7 @@ public class mainView extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1598,9 +1609,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_signOutButtonActionPerformed
 
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
-        addMemberNameTextField.setText("");
-//        addMemberPhoneTextField.setText("");
-//        addMemberEmailTextField.setText("");
+        addMemberUsernameTextField.setText("");
         addMemberJFrame.setVisible(true);
     }//GEN-LAST:event_addMemberButtonActionPerformed
 
@@ -1635,7 +1644,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_tabbedPaneMouseClicked
 
     private void addMemberDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberDialogButtonActionPerformed
-        String userString = addMemberNameTextField.getText();
+        String userString = addMemberUsernameTextField.getText();
         if (engine.addMember(teamTable, userString)) {
             JOptionPane.showMessageDialog(this,
                     userString + "has been added as a member of this team",
@@ -1855,7 +1864,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_filterTasksSaveButtonActionPerformed
 
     private void filterTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTasksButtonActionPerformed
-         filterTasksJFrame.setVisible(true);
+        filterTasksJFrame.setVisible(true);
     }//GEN-LAST:event_filterTasksButtonActionPerformed
 
     private void gCalLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalLoginButtonActionPerformed
@@ -1880,7 +1889,7 @@ public class mainView extends javax.swing.JFrame {
         } else {
             calendarTextArea.setText("Login Failed... Try Again\n");
         }
-        
+
         gCalendarLoginJFrame.setVisible(false);
         gCalUserNameTextField.setText("");
         gCalPasswordTextField.setText("");
@@ -1932,7 +1941,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JFrame addMemberJFrame;
     private javax.swing.JPanel addMemberJPanel;
     private javax.swing.JLabel addMemberNameJLabel;
-    private javax.swing.JTextField addMemberNameTextField;
+    private javax.swing.JTextField addMemberUsernameTextField;
     private javax.swing.JLabel addTasksActualJLabel;
     private javax.swing.JTextField addTasksActualTextField;
     private javax.swing.JButton addTasksButton;
