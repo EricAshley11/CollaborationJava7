@@ -60,7 +60,7 @@ public class Calendar {
         myQuery = new CalendarQuery(feed);
         myQuery.setMinimumStartTime(DateTime.parseDateTime(googleDF.format(currentDate)));
         myQuery.setMaximumStartTime(DateTime.parseDateTime(googleDF.format(weekAheadDate)));
-        result = myService.query(myQuery, CalendarEventFeed.class); //Bringing up exception
+        result = myService.query(myQuery, CalendarEventFeed.class);
         agenda = "Upcoming events: \n\n";
         for (int i = 0; i< result.getEntries().size(); i++) {
             CalendarEventEntry entry = result.getEntries().get(i);
@@ -81,8 +81,8 @@ public class Calendar {
            throws ServiceException, IOException {
 
         String ownedCalendars = "Your Calendars:\n\n";
-        URL feed = new URL("https://www.google.com/calendar/feeds/default/owncalendars/full");
-        CalendarFeed result = myService.getFeed(feed, CalendarFeed.class); //Bringing up exception
+        URL feed = new URL(privateURL);
+        CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
         for (int i = 0; i < result.getEntries().size(); i++) {
             CalendarEntry entry = result.getEntries().get(i);
             ownedCalendars += "\t" + entry.getTitle().getPlainText() + "\n";
@@ -92,6 +92,26 @@ public class Calendar {
     
     public CalendarService getService() {
         return myService;
+    }
+    
+    public boolean createNewCalendar(String title, String description, String location) {
+        boolean flag = false;
+        try {
+            CalendarEntry newCal = new CalendarEntry();
+            newCal.setTitle(new PlainTextConstruct(title));
+            newCal.setSummary(new PlainTextConstruct(description));
+            newCal.setTimeZone(new TimeZoneProperty("EST"));
+            newCal.setHidden(HiddenProperty.FALSE);
+            newCal.setColor(new ColorProperty("#2952A3"));
+            newCal.addLocation(new Where("","",location));
+
+            URL postUrl = new URL(privateURL);
+            CalendarEntry newCalendar = myService.insert(postUrl, newCal);
+            flag = true;
+        } catch (ServiceException | IOException e) {
+        }
+
+        return flag;
     }
 }
 
