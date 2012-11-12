@@ -1602,7 +1602,7 @@ public class mainView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-//<editor-fold defaultstate="collapsed" desc=" Actions ">
+ //<editor-fold defaultstate="collapsed" desc=" Actions ">
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
         passwordTextField.setText("");
         loginJFrame.setVisible(true);

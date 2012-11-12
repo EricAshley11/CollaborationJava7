@@ -40,8 +40,9 @@ public class mainEngine {
         RowFilter<DefaultTableModel, Object> rf = null;
         try {
             int[] selectedColumns;
-            if (table.getColumnCount() == 4) { //teamTable
+            if (table.getColumnCount() == 5) { //teamTable (4 plus tasks {Click Here} column
                 selectedColumns = selectedTeamColumns;
+                System.out.println(selectedTeamColumns);
             } else {
                 selectedColumns = selectedTasksColumns;
             }
@@ -53,10 +54,11 @@ public class mainEngine {
 
     public void setFilterColumns(boolean[] checkedBoxes) {
         int[] selectedColumns = new int[checkedBoxes.length];
-        for (int i = 0, place = 0; i < checkedBoxes.length; i++) {
+        for (int i = 0; i < checkedBoxes.length; i++) {
             if (checkedBoxes[i] == true) {
-                selectedColumns[place] = i;
-                place++;
+                selectedColumns[i] = i;
+            } else {
+                selectedColumns[i] = 0;
             }
         }
         if (checkedBoxes.length == 4) { //teamTable
@@ -154,6 +156,7 @@ public class mainEngine {
 
     public void populateProjectComboBox(JComboBox projectComboBox) {
         Collection<IProject> projects = ClientBackend.getInstance().retrieveProjects();
+        projectComboBox.removeAllItems(); //to avoid duplications
         for (IProject project : projects) {
             projectComboBox.addItem(project);
         }
@@ -183,7 +186,7 @@ public class mainEngine {
         return false;
     }
 
-    public void deleteUser() {
+    public void deleteUser() { //not an option in GUI, maybe not necessary?
         //TODO: Cam integrate backend to delete user from database
     }
 
@@ -195,9 +198,9 @@ public class mainEngine {
             }
         }
         if (isAnyRowSelected) {
-            textFields[0].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
-            textFields[1].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 1).toString());
-            textFields[2].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 2).toString());
+            textFields[0].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 1).toString());
+            textFields[1].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 2).toString());
+            textFields[2].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 3).toString());
         }
         return isAnyRowSelected;
     }

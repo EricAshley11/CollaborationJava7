@@ -1267,9 +1267,6 @@
           <Dimension value="[0, 300]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Add Member" noResource="true"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[0, 0]"/>
-        </Property>
       </Properties>
 
       <Layout>
