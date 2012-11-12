@@ -5,21 +5,21 @@
 package collaboration;
 
 import collaborationjava7.common.*;
+import collaborationjava7server.BackendResource;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.restlet.resource.ClientResource;
 
 /**
  *
  * @author Cam
  */
-public class ClientBackend implements IBackend{
+public class ClientBackend extends Backend{
 
     private static ClientBackend instance = null;
-    private IBackend remoteObj;
+    private Backend remoteObj;
     private static String serverAddr = "localhost";
     public static ClientBackend getInstance(){
         if(instance == null){
@@ -30,14 +30,15 @@ public class ClientBackend implements IBackend{
     }
     //This constructor is private because we want this class to be a singleton
     private ClientBackend(){
-        //Get a backend from RMI Server
-        if (System.getSecurityManager() == null) {
-        System.setSecurityManager(new SecurityManager());
-        }
+        super("abc");
+        //Get a backend from Server
         try {
-            String name = "Backend";
-            Registry registry = LocateRegistry.getRegistry(serverAddr);
-            remoteObj = (IBackend) registry.lookup(name);
+            // Define our Restlet client resources.  
+            ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/backend");  
+            IBackendResource br = cr.wrap(IBackendResource.class);
+            remoteObj = br.retrieve();
+
             System.out.println("Got the object from the server.");
         } catch (Exception e) {
             System.err.println("Error getting the object from server");
@@ -47,174 +48,91 @@ public class ClientBackend implements IBackend{
     
     
     @Override
-    public void setCurrentProject(IProject project){
-        try {
-            remoteObj.setCurrentProject(project);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
+    public void setCurrentProject(Project project){
+         remoteObj.setCurrentProject(project);
     }
 
     @Override
-    public void setCurrentUser(IUser user){
-        try {
+    public void setCurrentUser(User user){
             remoteObj.setCurrentUser(user);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
+
     }
 
     @Override
-    public void removeProject(IProject project){
-        try {
-            remoteObj.removeProject(project);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
+    public void removeProject(Project project){
+         remoteObj.removeProject(project);
     }
 
     @Override
-    public Collection<IProject> retrieveProjects(){
-        try {
-            return remoteObj.retrieveProjects();
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-            return null;
-        }
+    public Collection<Project> retrieveProjects(){
+         return remoteObj.retrieveProjects();
+
     }
 
     @Override
-    public Collection<IProject> getDummyProjects(){
-        try {
-            return remoteObj.getDummyProjects();
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-            return null;
-        }
+    public Collection<Project> getDummyProjects(){
+         return remoteObj.getDummyProjects();
+
     }
 
     @Override
-    public Collection<IUser> retrieveUsers(){
-        try {
-            return remoteObj.retrieveUsers();
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-            return null;
-        }
+    public Collection<User> retrieveUsers(){
+        return remoteObj.retrieveUsers();
     }
 
     @Override
     public String[][] getUserTableData(){
-        try {
-            return remoteObj.getUserTableData();
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-            return null;
-        }
+        return remoteObj.getUserTableData();
     }
 
     @Override
-    public Collection<ITask> retrieveUserTasks(){
-        try {
-            return remoteObj.retrieveUserTasks();
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-            return null;
-        }
+    public Collection<Task> retrieveUserTasks(){
+         return remoteObj.retrieveUserTasks();
     }
 
     @Override
-    public Collection<ITask> retrieveUserTasks(IUser user){
-        try {
-            return remoteObj.retrieveUserTasks(user);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-            return null;
-        }
+    public Collection<Task> retrieveUserTasks(User user){
+         return remoteObj.retrieveUserTasks(user);
     }
 
     @Override
-    public void removeUser(IUser user){
-        try {
-            remoteObj.removeUser(user);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
+    public void removeUser(User user){
+         remoteObj.removeUser(user);
     }
 
     @Override
     public void removeUser(String name){
-        try {
-            remoteObj.removeUser(name);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
+         remoteObj.removeUser(name);
     }
 
     @Override
-    public IUser getUserFromName(String name){
-        try {
-            return remoteObj.getUserFromName(name);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-            return null;
-        }
-    }
-    
-    private void printRemoteError(RemoteException ex){
-        System.err.println("There was a remote error:");
-        ex.printStackTrace(System.err);
+    public User getUserFromName(String name){
+        return remoteObj.getUserFromName(name);
     }
 
     @Override
-    public IProject createProject(String projectName){
-        try {
-            return remoteObj.createProject(projectName);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
-        return null;
-        
+    public Project createProject(String projectName){
+         return remoteObj.createProject(projectName);
     }
 
     @Override
-    public ITeam createTeam(String teamName){
-        try {
-            return remoteObj.createTeam(teamName);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
-        return null;
+    public Team createTeam(String teamName){
+         return remoteObj.createTeam(teamName);
     }
 
     @Override
-    public IUserStory createUserStory(String usName) {
-        try {
-            return remoteObj.createUserStory(usName);
-         } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
-        return null;
+    public UserStory createUserStory(String usName) {
+         return remoteObj.createUserStory(usName);
     }
 
     @Override
-    public IUser createUser(String user, String password){
-        try {
-            return remoteObj.createUser(user, password);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
-        return null;
+    public User createUser(String user, String password){
+         return remoteObj.createUser(user, password);
     }
 
     @Override
-    public IUser getUser(String name) throws RemoteException {
-        try {
-            return remoteObj.getUser(name);
-        } catch (RemoteException ex) {
-            printRemoteError(ex);
-        }
-        return null;
+    public User getUser(String name) {
+          return remoteObj.getUser(name);
     }
     
 }

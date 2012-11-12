@@ -77,7 +77,7 @@ public class mainEngine {
     public boolean addMember(JTable teamTable, String userString) {
         try {
             DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
-            IUser user = ClientBackend.getInstance().getUserFromName(userString);
+            User user = ClientBackend.getInstance().getUserFromName(userString);
             model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
             return true;
         } catch (Exception e) {
@@ -149,13 +149,13 @@ public class mainEngine {
     }
 
     public void populateProjectComboBox(JComboBox projectComboBox) {
-        Collection<IProject> projects = ClientBackend.getInstance().retrieveProjects();
-        for (IProject project : projects) {
+        Collection<Project> projects = ClientBackend.getInstance().retrieveProjects();
+        for (Project project : projects) {
             projectComboBox.addItem(project);
         }
     }
 
-    public void setCurrentProject(IProject project) {
+    public void setCurrentProject(Project project) {
         ClientBackend.getInstance().setCurrentProject(project);
     }
     public boolean createUser(JTextField[] textFields) {
@@ -166,12 +166,12 @@ public class mainEngine {
         //textFields[4] is createUserPhoneTextField
         //textFields[5] is createUserEmailTextField
         if (textFields[1].getText().equals(textFields[2].getText())) {
-            IUser newUser = ClientBackend.getInstance().createUser(textFields[0].getText(), textFields[1].getText());
+            User newUser = ClientBackend.getInstance().createUser(textFields[0].getText(), textFields[1].getText());
             try {
                 newUser.setName(textFields[3].getText());
                 newUser.setPhoneNum(textFields[4].getText());
                 newUser.setEmail(textFields[5].getText());
-            } catch (RemoteException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(mainEngine.class.getName()).log(Level.SEVERE, null, ex);
             }
             return true;

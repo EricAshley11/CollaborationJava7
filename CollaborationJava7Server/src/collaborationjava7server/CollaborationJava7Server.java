@@ -4,10 +4,8 @@
  */
 package collaborationjava7server;
 
-import java.rmi.RMISecurityManager;
-import java.rmi.registry.*;
-import java.rmi.server.UnicastRemoteObject;
-import java.security.Policy;
+import org.restlet.Component;
+import org.restlet.data.Protocol;
 
 /**
  *
@@ -19,13 +17,17 @@ public class CollaborationJava7Server {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.setSecurityManager(new RMISecurityManager());
+        //System.setSecurityManager(new RMISecurityManager());
         try {
-            System.out.println("Exporting");
-            String name = "Backend";
-            Backend backend = new Backend();
-            Registry registry = LocateRegistry.createRegistry(1099);
-            registry.rebind(name, backend);
+            System.out.println("Exporting");  
+            Component component = new Component();  
+            component.getServers().add(Protocol.HTTP, 8182);  
+  
+            component.getDefaultHost().attach("/collab", new CollabApplication());
+  
+            // Start the component.  
+            component.start();  
+          
         } catch (Exception e) {
             System.err.println("Backend exception:");
             e.printStackTrace();

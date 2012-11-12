@@ -3,18 +3,13 @@
  * and open the template in the editor.
  */
 package collaborationjava7server;
-
-import collaborationjava7.common.IUser;
-import java.rmi.RemoteException;
+import collaborationjava7.common.*;
 import javax.persistence.*;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * This is a class that helps save to the DB
  */
-class QueryManager {
+public class QueryManager {
     // Open a database connection
     // (create a new database if it doesn't exist yet):
 
@@ -67,11 +62,11 @@ class QueryManager {
         Project P = new Project(name);
         em.persist(P);
         em.getTransaction().commit();
-        System.out.println("Created Project " + name);
+        System.out.println("Created Project " + name+", id: "+P.getID());
         return P;
     }
     
-    public boolean checkPassword(IUser user, String password) {
+    public boolean checkPassword(IUserResource user, String password) {
         Query createUserQ = em.createQuery("SELECT U.name FROM User U, Password P WHERE P.Username = U.name");
           if(createUserQ.getResultList().isEmpty()==true) {
               em.close();
@@ -92,6 +87,36 @@ class QueryManager {
         return shell;
         }
         catch(Exception E){ return null;
+        }
     }
-}
+    private <T> T getByID(long id, Class<T> type){
+        String qText = "SELECT T FROM "+type.getSimpleName()+ " T WHERE T.id = "+id;
+        TypedQuery<T> q = em.createQuery(qText, type);
+        return q.getSingleResult();
+    }
+    
+    public Project getProjectByID(long id){
+        return getByID(id, Project.class);
+    }
+    public User getUserByID(long id){
+        return getByID(id, User.class);
+    }
+    public UserStory getUserStoryByID(long id){
+        return getByID(id, UserStory.class);
+    }
+    public Schedule getScheduleByID(long id){
+        return getByID(id, Schedule.class);
+    }
+    public Team getTeamByID(long id){
+        return getByID(id, Team.class);
+    }
+    public Task getTaskByID(long id){
+        return getByID(id, Task.class);
+    }
+    public Milestone getMilestoneByID(long id){
+        return getByID(id, Milestone.class);
+    }
+    public State getStateByID(long id){
+        return getByID(id, State.class);
+    }
 }

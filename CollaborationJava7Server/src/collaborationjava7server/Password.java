@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Entity(name = "Password")
 public class Password implements Serializable {
 
-    @Id
+    @Id @GeneratedValue
     private String name;
     private String password;
 
