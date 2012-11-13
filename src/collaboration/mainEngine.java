@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.IOException;
 import javax.swing.DefaultRowSorter;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -20,6 +21,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import org.jfree.chart.ChartPanel;
+import com.google.gdata.client.*;
+import com.google.gdata.util.ServiceException;
 
 /**
  *
@@ -28,6 +31,7 @@ public class mainEngine {
 
     private int[] selectedTeamColumns = {0, 1, 2, 3};
     private int[] selectedTasksColumns = {0, 1, 2, 3, 4, 5};
+    private Calendar calendar;
 
     public void filterTable(JTable table, String filterText) {
         TableModel model = table.getModel();
@@ -190,5 +194,35 @@ public class mainEngine {
             textFields[2].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 2).toString());
         }
         return isAnyRowSelected;
+    }
+    
+    public boolean calendarLogin(String username, String password) {
+        calendar = new Calendar();
+        return calendar.validate(username,password);
+        
+    }
+    
+    public String printCalendars() {
+        try {
+            return calendar.printUserCalendars();
+        } catch (ServiceException | IOException e) {
+            e.printStackTrace();
+            return "Unable to print!\n";
+        }
+    }
+    
+    public String printWeeklyAgenda() {
+        try {
+            return calendar.printWeeklyAgenda();
+        } catch (ServiceException | IOException e) {
+            e.printStackTrace();
+            return "Unable to print!\n";
+        }
+    }
+    
+    public boolean createNewCalendar(String title, String description, String location) {
+        boolean flag = false;
+        
+        return flag;
     }
 }

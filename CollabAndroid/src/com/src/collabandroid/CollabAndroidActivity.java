@@ -19,25 +19,25 @@ public class CollabAndroidActivity extends TabActivity {
         
         // Tab for Team
         TabSpec teamSpec = tabHost.newTabSpec("Team");
-        teamSpec.setIndicator("Team", getResources().getDrawable(R.drawable.icon_photos_tab));
+        teamSpec.setIndicator("Team", getResources().getDrawable(R.drawable.icon_team_tab));
         Intent teamIntent = new Intent(this, TeamActivity.class);
         teamSpec.setContent(teamIntent);
         
         // Tab for Tasks
         TabSpec taskSpec = tabHost.newTabSpec("Task");
-        taskSpec.setIndicator("Task", getResources().getDrawable(R.drawable.icon_videos_tab));
+        taskSpec.setIndicator("Task", getResources().getDrawable(R.drawable.icon_tasks_tab));
         Intent taskIntent = new Intent(this, TasksActivity.class);
         taskSpec.setContent(taskIntent);
         
         // Tab for Calendar
         TabSpec calSpec = tabHost.newTabSpec("Calendar");
-        calSpec.setIndicator("Calendar", getResources().getDrawable(R.drawable.icon_videos_tab));
+        calSpec.setIndicator("Calendar", getResources().getDrawable(R.drawable.icon_cal_tab));
         Intent calIntent = new Intent(this, CalActivity.class);
         calSpec.setContent(calIntent);
         
         // Tab for Graph
         TabSpec graphSpec = tabHost.newTabSpec("Graphs");
-        graphSpec.setIndicator("Graphs", getResources().getDrawable(R.drawable.icon_songs_tab));
+        graphSpec.setIndicator("Graphs", getResources().getDrawable(R.drawable.icon_graph_tab));
         Intent graphIntent = new Intent(this, GraphActivity.class);
         graphSpec.setContent(graphIntent);
         
