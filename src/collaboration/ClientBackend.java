@@ -5,7 +5,8 @@
 package collaboration;
 
 import collaborationjava7.common.*;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import org.restlet.resource.ClientResource;
 
 /**
@@ -31,6 +32,14 @@ public class ClientBackend{
         System.out.println(bob);
         User bob2 = cb.getUserFromId(bob.getID());
         System.out.println(bob2);
+        bob2.setEmail("changedemail@test.com");
+        cb.remoteObj.saveUser(bob2);
+        User bob3 = cb.getUserFromId(bob2.getID());
+        System.out.println(bob3);
+        List<User> users = cb.remoteObj.getUsersFromName("BOB");
+        for(User u : users){
+            System.out.println(u);
+        }
     }
     //This constructor is private because we want this class to be a singleton
     private ClientBackend(){
@@ -62,17 +71,17 @@ public class ClientBackend{
          remoteObj.removeProject(project);
     }
 
-    public Collection<Project> retrieveProjects(){
+    public ArrayList<Project> retrieveProjects(){
          return null;//remoteObj.retrieveProjects();
 
     }
 
-    public Collection<Project> getDummyProjects(){
+    public ArrayList<Project> getDummyProjects(){
          return null;//remoteObj.getDummyProjects();
 
     }
 
-    public Collection<User> retrieveUsers(){
+    public ArrayList<User> retrieveUsers(){
         return remoteObj.retrieveUsers();
     }
 
@@ -80,11 +89,11 @@ public class ClientBackend{
         return remoteObj.getUserTableData();
     }
 
-    public Collection<Task> retrieveUserTasks(){
+    public ArrayList<Task> retrieveUserTasks(){
          return null;//remoteObj.retrieveUserTasks();
     }
 
-    public Collection<Task> retrieveUserTasks(User user){
+    public ArrayList<Task> retrieveUserTasks(User user){
          return remoteObj.retrieveUserTasks(user);
     }
 
@@ -117,7 +126,7 @@ public class ClientBackend{
     }
     
     public User getUser(String name) {
-        Collection<User> users = remoteObj.getUsersFromName(name);
+        List<User> users = remoteObj.getUsersFromName(name);
         if(users!=null && users.size()==1){
             return users.iterator().next();
         }

@@ -7,7 +7,7 @@ package collaboration;
 import collaborationjava7.common.*;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultRowSorter;
@@ -149,7 +149,7 @@ public class mainEngine {
     }
 
     public void populateProjectComboBox(JComboBox projectComboBox) {
-        Collection<Project> projects = ClientBackend.getInstance().retrieveProjects();
+        ArrayList<Project> projects = ClientBackend.getInstance().retrieveProjects();
         for (Project project : projects) {
             projectComboBox.addItem(project);
         }
