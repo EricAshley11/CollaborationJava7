@@ -27,26 +27,25 @@ public class ClientBackend{
     
     public static void main(String[] args){
         ClientBackend cb = ClientBackend.getInstance();
-        User bob = cb.createUser("BOB", "Abc");
-        System.out.println(bob.getName()+" "+bob.getID());
+        User bob = cb.createUser("BOB", "abc", "123-555-9999","bob@test.com");
+        System.out.println(bob);
         User bob2 = cb.getUserFromId(bob.getID());
-        System.out.println(bob2.getName());
+        System.out.println(bob2);
     }
     //This constructor is private because we want this class to be a singleton
     private ClientBackend(){
-        //Get a backend from Server
-        try {
+        //try {
             // Define our Restlet client resources.  
-            ClientResource cr = new ClientResource(  
-                "http://"+serverAddr+":8182/collab/backend");  
-            IBackendResource br = cr.wrap(IBackendResource.class);
-            remoteObj = br.retrieve(serverAddr);
-
+            //ClientResource cr = new ClientResource(  
+            //    "http://"+serverAddr+":8182/collab/backend");  
+            //IBackendResource br = cr.wrap(IBackendResource.class);
+            remoteObj = new Backend(serverAddr);//br.retrieve(serverAddr);
+            /*
             System.out.println("Got the object from the server.");
         } catch (Exception e) {
             System.err.println("Error getting the object from server");
             e.printStackTrace();
-        }
+        }*/
     }
     
     
@@ -90,7 +89,7 @@ public class ClientBackend{
     }
 
     public void removeUser(User user){
-         remoteObj.removeUser(user);
+         //remoteObj.removeUser(user);
     }
 
     public void removeUser(String name){
@@ -109,8 +108,8 @@ public class ClientBackend{
          return remoteObj.createUserStory(usName);
     }
 
-    public User createUser(String user, String password){
-         return remoteObj.createUser(user, password);
+    public User createUser(String user, String password, String phoneNum, String email){
+         return remoteObj.createUser(user, password, phoneNum, email);
     }
 
     public User getUserFromId(long id) {
@@ -118,7 +117,11 @@ public class ClientBackend{
     }
     
     public User getUser(String name) {
-          return remoteObj.getUser(name);
+        Collection<User> users = remoteObj.getUsersFromName(name);
+        if(users!=null && users.size()==1){
+            return users.iterator().next();
+        }
+        return null;
     }
     
 }

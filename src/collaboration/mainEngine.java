@@ -166,14 +166,8 @@ public class mainEngine {
         //textFields[4] is createUserPhoneTextField
         //textFields[5] is createUserEmailTextField
         if (textFields[1].getText().equals(textFields[2].getText())) {
-            User newUser = ClientBackend.getInstance().createUser(textFields[0].getText(), textFields[1].getText());
-            try {
-                newUser.setName(textFields[3].getText());
-                newUser.setPhoneNum(textFields[4].getText());
-                newUser.setEmail(textFields[5].getText());
-            } catch (Exception ex) {
-                Logger.getLogger(mainEngine.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            User newUser = ClientBackend.getInstance().createUser(textFields[0].getText(), textFields[1].getText(),
+                    textFields[4].getText(), textFields[5].getText());
             return true;
         }
         return false;
