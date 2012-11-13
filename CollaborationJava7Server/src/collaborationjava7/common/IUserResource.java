@@ -18,5 +18,5 @@ public interface IUserResource{
     public void store(User user);
 
     @Delete
-    public void remove(int id);
+    public void remove();
 }

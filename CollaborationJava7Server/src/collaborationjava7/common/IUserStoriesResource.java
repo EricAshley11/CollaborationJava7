@@ -5,15 +5,16 @@
 package collaborationjava7.common;
 
 import java.util.Collection;
-import org.restlet.resource.*;
+import org.restlet.resource.Get;
+import org.restlet.resource.Post;
 
 /**
  *
  * @author Cam
  */
-public interface IProjectsResource {
-    @Get
-    public Collection<Project> retrieve(long userID);
+public interface IUserStoriesResource {
     @Post
-    public Project create(String name);
+    public UserStory create(String name);
+    @Get
+    public Collection<UserStory> retrieve();
 }

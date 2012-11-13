@@ -4,6 +4,8 @@
  */
 package collaborationjava7.common;
 
+import java.util.Collection;
+import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
 /**
@@ -11,6 +13,19 @@ import org.restlet.resource.Post;
  * @author Cam
  */
 public interface IUsersResource {
+    /**
+     * Creates a new user
+     * namePass[0]=userName, namePass[1]=password
+     * @param namePass
+     * @return created user
+     */
     @Post
     public User create(String[] namePass);
+    /**
+     * Gets the users with the given name
+     * @param name
+     * @return 
+     */
+    @Get
+    public Collection<User> retrieve(String name);
 }

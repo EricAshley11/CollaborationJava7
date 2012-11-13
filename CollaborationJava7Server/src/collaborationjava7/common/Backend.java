@@ -40,7 +40,7 @@ public class Backend implements Serializable{
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/project");  
             IProjectsResource pr = cr.wrap(IProjectsResource.class);
-            return pr.retrieve(u);
+            return pr.retrieve(u.getID());
     }
 
     
@@ -82,7 +82,7 @@ public class Backend implements Serializable{
         //for (Team team : teams) {
           //  users.addAll(team.getTeamMembers());
         //}
-        return null;//users;
+        return null;
     }
 
     
@@ -107,13 +107,25 @@ public class Backend implements Serializable{
     }
 
     
-    public void removeUser(User user) {
-        user.delete();
-    }
+    //public void removeUser(User user) {
+    //     user.delete();
+    //}
 
     
     public void removeUser(String name) {
-       // removeUser(getUserFromName(name));
+            long id = -1;
+            Collection<User> users = this.getUsersFromName(name);
+            if(users!=null){
+                if(users.size()==1){
+                    User u = users.iterator().next();
+                    id = u.getID();
+                    ClientResource cr = new ClientResource(  
+                        "http://"+serverAddr+":8182/collab/user/"+id);  
+                    IUserResource ur = cr.wrap(IUserResource.class);
+                    ur.remove();
+                }
+            }
+            
     }
 
     
@@ -125,11 +137,11 @@ public class Backend implements Serializable{
     }
 
     
-    public User createUser(String userName, String password)  {
+    public User createUser(String userName, String password, String phoneNum, String email)  {
             ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/user");  
             IUsersResource ur = cr.wrap(IUsersResource.class);
-            return ur.create(new String[]{userName, password});
+            return ur.create(new String[]{userName, password, phoneNum, email});
     }
 
     
@@ -150,11 +162,17 @@ public class Backend implements Serializable{
 
     
     public UserStory createUserStory(String usName)  {
-        return QueryManager.getInstance().createUserStory(usName);
+            ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/userstory");  
+            IUserStoriesResource ur = cr.wrap(IUserStoriesResource.class);
+            return ur.create(usName);
     }
 
     
-    public User getUser(String name)  {
-        return QueryManager.getInstance().getUser(name);
-    }
+    public Collection<User> getUsersFromName(String name)  {
+            ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/user");  
+            IUsersResource ur = cr.wrap(IUsersResource.class);
+            return ur.retrieve(name);
+    }    
 }
