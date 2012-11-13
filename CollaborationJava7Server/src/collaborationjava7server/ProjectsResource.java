@@ -9,7 +9,6 @@ import collaborationjava7.common.Project;
 import collaborationjava7.common.Team;
 import collaborationjava7.common.User;
 import java.util.ArrayList;
-import java.util.ArrayList;
 import org.restlet.resource.ServerResource;
 
 /**

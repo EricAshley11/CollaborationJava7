@@ -81,19 +81,15 @@ public class QueryManager {
         System.out.println("Created Project " + name+", id: "+P.getID());
         return P;
     }
-    
-    public boolean checkPassword(IUserResource user, String password) {
-        Query createUserQ = em.createQuery("SELECT U.name FROM User U, Password P WHERE P.Username = U.name");
-          if(createUserQ.getResultList().isEmpty()==true) {
-              em.close();
-              emf.close();
-              return false;
-          }
-          else {
-           em.close();
-           emf.close();
-           return true;
-          }
+    public User checkPassword(String user, String password) {
+        TypedQuery<User> createUserQ = em.createQuery("SELECT U FROM User U, Password P WHERE P.userName = U.name AND P.password = \""+
+                password+"\"", User.class);
+        try{
+            return createUserQ.getSingleResult();
+        }catch(Exception e){
+            System.out.println("Invalid Credentials");
+            return null;
+        }
     }
     public List<User> getUsersByName(String name) {
         return getByName(name, User.class);

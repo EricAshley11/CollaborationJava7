@@ -17,14 +17,15 @@ public class Password implements Serializable {
 
     @Id @GeneratedValue
     private long id;
-    private String name;
+    private String userName;
     private String password;
 
     public Password() {
     }
 
-    public Password(String User, String password) {
+    public Password(String userName, String password) {
         this.password = password;
+        this.userName = userName;
     }
 
     public String getPassword() {

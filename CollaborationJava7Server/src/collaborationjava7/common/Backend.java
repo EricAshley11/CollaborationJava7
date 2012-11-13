@@ -181,5 +181,12 @@ public class Backend implements Serializable{
                 "http://"+serverAddr+":8182/collab/user");  
             IUsersResource ur = cr.wrap(IUsersResource.class);
             return ur.retrieve(name);
-    }    
+    }
+
+    public User loginUser(String userName, String password) {
+            ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/login/"+userName+"/"+password);  
+            ILoginResource lr = cr.wrap(ILoginResource.class);
+            return lr.login();
+    }
 }
