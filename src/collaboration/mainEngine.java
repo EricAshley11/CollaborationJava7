@@ -225,4 +225,10 @@ public class mainEngine {
             return "Unable to print!\n";
         }
     }
+    
+    public boolean createNewCalendar(String title, String description, String location) {
+        boolean flag = false;
+        
+        return flag;
+    }
 }
