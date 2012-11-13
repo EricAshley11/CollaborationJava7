@@ -71,8 +71,8 @@ public class ClientBackend{
          remoteObj.removeProject(project);
     }
 
-    public ArrayList<Project> retrieveProjects(){
-         return null;//remoteObj.retrieveProjects();
+    public ArrayList<Project> retrieveUserProjects(User u){
+         return remoteObj.retrieveProjects(u);
 
     }
 
@@ -131,6 +131,10 @@ public class ClientBackend{
             return users.iterator().next();
         }
         return null;
+    }
+
+    public User login(String userName, String password) {
+        return remoteObj.loginUser(userName, password);
     }
     
 }

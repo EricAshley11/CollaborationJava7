@@ -1875,7 +1875,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_editProjectButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        if (engine.validCredentials()) {
+        if (engine.validCredentials(this.usernameTextField.getText(), String.copyValueOf(this.passwordTextField.getPassword()))) {
             loginJFrame.setVisible(false);
             this.engine.populateProjectComboBox(this.projectComboBox);
             //this.setExtendedState(6); //maximises the screen by default when loggin in.
@@ -1910,7 +1910,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void projectComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_projectComboBoxItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) { // this should fix the event happening multiple times
-            engine.setCurrentProject((IProject) this.projectComboBox.getSelectedItem());//TODO: Fix this
+            engine.setCurrentProject((Project) this.projectComboBox.getSelectedItem());//TODO: Fix this
             engine.loadTeamTable(teamTable);
         }
     }//GEN-LAST:event_projectComboBoxItemStateChanged

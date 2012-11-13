@@ -32,7 +32,9 @@ public class mainEngine {
     private int[] selectedTeamColumns = {0, 1, 2, 3};
     private int[] selectedTasksColumns = {0, 1, 2, 3, 4, 5};
     private Calendar calendar;
-
+    private User user;
+    
+    
     public void filterTable(JTable table, String filterText) {
         TableModel model = table.getModel();
         DefaultRowSorter sorter = new TableRowSorter<>(model);
@@ -144,16 +146,20 @@ public class mainEngine {
         });
     }
 
-    public boolean validCredentials() {
+    public boolean validCredentials(String userName, String password) {
         boolean validCreds = false;
         //TODO: set validCreds to true given valid credentials are entered will need to
         //be added here for testing sake validCreds will be set to true until implemented
-        validCreds = true;
+        User u = ClientBackend.getInstance().login(userName, password);
+        if(u != null){
+            validCreds = true;
+            user = u;
+        }
         return validCreds;
     }
 
     public void populateProjectComboBox(JComboBox projectComboBox) {
-        ArrayList<Project> projects = ClientBackend.getInstance().retrieveProjects();
+        ArrayList<Project> projects = ClientBackend.getInstance().retrieveUserProjects(user);
         for (Project project : projects) {
             projectComboBox.addItem(project);
         }
@@ -170,7 +176,7 @@ public class mainEngine {
         //textFields[4] is createUserPhoneTextField
         //textFields[5] is createUserEmailTextField
         if (textFields[1].getText().equals(textFields[2].getText())) {
-            User newUser = ClientBackend.getInstance().createUser(textFields[0].getText(), textFields[1].getText(),
+            ClientBackend.getInstance().createUser(textFields[0].getText(), textFields[1].getText(),
                     textFields[4].getText(), textFields[5].getText());
             return true;
         }
