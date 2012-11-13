@@ -30,7 +30,10 @@ public class UserResource  extends ServerResource implements IUserResource{
     }
 
     @Override
-    public void remove(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void remove() {
+        id = Long.parseLong((String)this.getRequestAttributes().get("id"));
+        user = QueryManager.getInstance().getUserByID(id);
+        user.delete();
+        user = null;
     }    
 }

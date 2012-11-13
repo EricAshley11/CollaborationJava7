@@ -4,6 +4,7 @@
  */
 package collaborationjava7server;
 import collaborationjava7.common.*;
+import java.util.Collection;
 import javax.persistence.*;
 
 /**
@@ -29,9 +30,11 @@ public class QueryManager {
         return instance;        
     }
     
-    public User createUser(String username, String password) {
+    public User createUser(String username, String password, String phoneNum, String email) {
         em.getTransaction().begin();
         User U = new User(username);
+        U.setPhoneNum(phoneNum);
+        U.setEmail(email);
         Password P = new Password(username, password);
         em.persist(U);
         em.persist(P);
@@ -80,16 +83,44 @@ public class QueryManager {
            return true;
           }
     }
-    public User getUser(String name) {
-        Query getUserQ = em.createQuery("SELECT U FROM User U WHERE U.name = :qname");
-        getUserQ.setParameter("qname", name);
-        try{
-        User shell = (User) getUserQ.getSingleResult();
-        return shell;
-        }
-        catch(Exception E){ return null;
-        }
+    public Collection<User> getUsersByName(String name) {
+        return getByName(name, User.class);
     }
+    public Collection<Project> getProjectsByName(String name){
+        return getByName(name, Project.class);
+    }
+    public Collection<UserStory> getUserStoriesByName(String name){
+        return getByName(name, UserStory.class);
+    }
+    public Collection<Schedule> getSchedulesByName(String name){
+        return getByName(name, Schedule.class);
+    }
+    public Collection<Team> getTeamsByName(String name){
+        return getByName(name, Team.class);
+    }
+    public Collection<Task> getTasksByName(String name){
+        return getByName(name, Task.class);
+    }
+    public Collection<Milestone> getMilestonesByName(String name){
+        return getByName(name, Milestone.class);
+    }
+    public Collection<State> getStatesByName(String name){
+        return getByName(name, State.class);
+    }
+    
+    private <T> Collection<T> getByName(String name, Class<T> type){
+        String qText = "SELECT T FROM "+type.getSimpleName()+" T WHERE T.name = "+name;
+        TypedQuery<T> q = em.createQuery(qText, type);
+        Collection<T> ret;
+        try{
+            ret= q.getResultList();
+        }
+        catch(Exception e){
+            ret = null;
+        }
+        return ret;
+    }
+    
     private <T> T getByID(long id, Class<T> type){
         String qText = "SELECT T FROM "+type.getSimpleName()+" T WHERE T.id = "+id;
         TypedQuery<T> q = em.createQuery(qText, type);

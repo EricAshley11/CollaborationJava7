@@ -29,7 +29,7 @@ public class CollabApplication extends Application{
         router.attach("/team/{id}", TeamResource.class);  
         router.attach("/user", UsersResource.class);
         router.attach("/user/{id}", UserResource.class);  
-        //router.attach("/userstory", UserStoriesResource.class);
+        router.attach("/userstory", UserStoriesResource.class);
         router.attach("/userstory/{id}", UserStoryResource.class);
         router.attach("/backend",BackendResource.class);
         return router;  

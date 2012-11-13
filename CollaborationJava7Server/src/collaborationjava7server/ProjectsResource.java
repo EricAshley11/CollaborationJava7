@@ -18,8 +18,9 @@ import org.restlet.resource.ServerResource;
  */
 public class ProjectsResource extends ServerResource implements IProjectsResource{
     @Override
-    public Collection<Project> retrieve(User u) {
+    public Collection<Project> retrieve(long userID) {
         Collection<Project> retVal = new ArrayList<Project>();
+        User u = QueryManager.getInstance().getUserByID(userID);
         Collection<Team> teams = u.getTeams();
         for(Team t : teams){
             retVal.addAll(t.getProjects());
