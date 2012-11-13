@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class Password implements Serializable {
 
     @Id @GeneratedValue
+    private long id;
     private String name;
     private String password;
 
@@ -28,6 +29,9 @@ public class Password implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+    public long getID(){
+        return id;
     }
 
     public void setPassword(String password) {

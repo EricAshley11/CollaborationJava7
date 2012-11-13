@@ -19,7 +19,6 @@ public class User implements Serializable {
     @Column(nullable = false)
     private long id;
     
-    private static int nextUID = 0;
     private String name, email;
     private String phoneNum;
     @OneToMany
@@ -33,7 +32,6 @@ public class User implements Serializable {
         this.name = name;
         teams = new ArrayList<Team>();
         tasks = new ArrayList<Task>();
-        id = nextUID++;
     }
 
     public boolean addToTeam(Team team) {

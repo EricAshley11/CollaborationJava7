@@ -7,31 +7,21 @@ import collaborationjava7server.QueryManager;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.ArrayList;
+import org.restlet.resource.ClientResource;
 
 /**
  * This is a class that provides communication between the client and
  * server layers
  */
 public class Backend implements Serializable{
-
-    Project currentProject = null;
-    User currentUser = null;
+    boolean testing = false; //Temporary bool to get dummy data if we are testing
     boolean createdDummyProjects = false;//used to ensure we aren't making dupe projects
+    String serverAddr;
     Collection<Project> dummyProjects;
 
-    public Backend() {
-        currentProject = (Project) retrieveProjects().toArray()[0];//Used to test dummy data
-    }
-    public Backend(String test){
-        
-    }
-
-    public void setCurrentProject(Project project) {
-        currentProject = project;
-    }
-
-    public void setCurrentUser(User user) {
-        this.currentUser = user;
+    public Backend(String serverAddr) {
+        this.serverAddr = serverAddr;
+        //retrieveProjects(testUser);//Used to test dummy data
     }
 
     
@@ -39,22 +29,26 @@ public class Backend implements Serializable{
         throw new UnsupportedOperationException("");
     }
     
-    public Collection<Project> retrieveProjects()  {
-        //TODO: Cam get projects from db
-        //for now simulate it
-        if (!this.createdDummyProjects) {
-            dummyProjects = getDummyProjects();
-            this.createdDummyProjects = true;
+    public Collection<Project> retrieveProjects(User u)  {
+        if(testing){
+            if (!this.createdDummyProjects) {
+                dummyProjects = getDummyProjects(u);
+                this.createdDummyProjects = true;
+            }
+            return dummyProjects;
         }
-        return dummyProjects;
+        ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/project");  
+            IProjectsResource pr = cr.wrap(IProjectsResource.class);
+            return pr.retrieve(u);
     }
 
     
-    public Collection<Project> getDummyProjects()  {
+    public Collection<Project> getDummyProjects(User u)  {
         Project p1 = new Project("Project 1");
         Team t1 = new Team("Team 1");
         p1.addTeam(t1);
-        User u1 = new User("User 1");
+        User u1 = u;
         u1.setEmail("user1@abc.com");
         u1.setPhoneNum("(000)000-0001");
         t1.addMember(u1);
@@ -83,12 +77,12 @@ public class Backend implements Serializable{
 
     
     public Collection<User> retrieveUsers()  {
-        Collection<Team> teams = this.currentProject.getTeams();
-        Collection<User> users = new ArrayList<User>();
-        for (Team team : teams) {
-            users.addAll(team.getTeamMembers());
-        }
-        return users;
+        //Collection<Team> teams = this.currentProject.getTeams();
+        //Collection<User> users = new ArrayList<User>();
+        //for (Team team : teams) {
+          //  users.addAll(team.getTeamMembers());
+        //}
+        return null;//users;
     }
 
     
@@ -107,12 +101,6 @@ public class Backend implements Serializable{
         }
         return tableData;
     }
-
-    
-    public Collection<Task> retrieveUserTasks() {
-        return retrieveUserTasks(this.currentUser);
-    }
-
     
     public Collection<Task> retrieveUserTasks(User user) {
         return user.getTasks();
@@ -125,33 +113,39 @@ public class Backend implements Serializable{
 
     
     public void removeUser(String name) {
-        removeUser(getUserFromName(name));
+       // removeUser(getUserFromName(name));
     }
 
     
-    public User getUserFromName(String name) {
-        //TODO: Cam need a connection to the DB to query this
-        for (User user : retrieveUsers()) {
-            if (user.getName().equals(name)) {
-                return user;
-            }
-        }
-        return null;
+    public User getUserFromId(long id) {
+            ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/user/"+id);  
+            IUserResource ur = cr.wrap(IUserResource.class);
+            return ur.retrieve();
     }
 
     
     public User createUser(String userName, String password)  {
-        return QueryManager.getInstance().createUser(userName, password);
+            ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/user");  
+            IUsersResource ur = cr.wrap(IUsersResource.class);
+            return ur.create(new String[]{userName, password});
     }
 
     
     public Project createProject(String projectName)  {
-        return QueryManager.getInstance().createProject(projectName);
+        ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/project");  
+            IProjectsResource ur = cr.wrap(IProjectsResource.class);
+            return ur.create(projectName);
     }
 
     
     public Team createTeam(String teamName)  {
-        return QueryManager.getInstance().createTeam(teamName);
+        ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/team");  
+            ITeamsResource tr = cr.wrap(ITeamsResource.class);
+            return tr.create(teamName);
     }
 
     

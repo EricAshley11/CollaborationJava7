@@ -4,13 +4,17 @@
  */
 package collaborationjava7.common;
 
+import java.util.Collection;
 import org.restlet.resource.*;
 
 /**
  *
  * @author Cam
  */
-public interface IBackendResource {
+public interface ITeamsResource {
     @Get
-    public Backend retrieve(String serverAddr);
+    public Collection<Team> retrieve();
+    
+    @Post
+    public Team create(String teamName);
 }

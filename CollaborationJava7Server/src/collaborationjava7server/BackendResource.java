@@ -14,23 +14,8 @@ import org.restlet.resource.ServerResource;
  * @author Cam
  */
 public class BackendResource extends ServerResource implements IBackendResource{
-    Backend backend = null;
     @Override
-    public Backend retrieve() {
-        if(backend == null){
-            backend = new Backend();
-        }
-        return backend;
+    public Backend retrieve(String serverAddr) {
+        return new Backend(serverAddr);
     }
-
-    @Override
-    public void store(Backend backend) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void remove(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
 }

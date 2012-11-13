@@ -36,6 +36,7 @@ public class QueryManager {
         em.persist(U);
         em.persist(P);
         em.getTransaction().commit();
+        System.out.println("New UserID: "+U.getID()+" New Password ID: "+P.getID());
         return U;
     }
 
@@ -90,7 +91,7 @@ public class QueryManager {
         }
     }
     private <T> T getByID(long id, Class<T> type){
-        String qText = "SELECT T FROM "+type.getSimpleName()+ " T WHERE T.id = "+id;
+        String qText = "SELECT T FROM "+type.getSimpleName()+" T WHERE T.id = "+id;
         TypedQuery<T> q = em.createQuery(qText, type);
         return q.getSingleResult();
     }

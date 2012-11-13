@@ -4,13 +4,13 @@
  */
 package collaborationjava7.common;
 
-import org.restlet.resource.*;
+import org.restlet.resource.Post;
 
 /**
  *
  * @author Cam
  */
-public interface IBackendResource {
-    @Get
-    public Backend retrieve(String serverAddr);
+public interface IUsersResource {
+    @Post
+    public User create(String[] namePass);
 }
