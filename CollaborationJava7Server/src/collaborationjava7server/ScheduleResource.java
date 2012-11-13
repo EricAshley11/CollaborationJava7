@@ -24,8 +24,8 @@ public class ScheduleResource extends ServerResource implements IScheduleResourc
     }
 
     @Override
-    public void store(Schedule schedule) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean store(Schedule schedule) {
+        return QueryManager.getInstance().updateObj(schedule);
     }
 
     @Override

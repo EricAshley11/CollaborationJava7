@@ -23,8 +23,8 @@ public class UserStoryResource  extends ServerResource implements IUserStoryReso
     }
 
     @Override
-    public void store(UserStory userstory) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean store(UserStory userstory) {
+        return QueryManager.getInstance().updateObj(userstory);
     }
 
     @Override

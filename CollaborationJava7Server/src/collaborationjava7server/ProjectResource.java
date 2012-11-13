@@ -24,8 +24,8 @@ public class ProjectResource extends ServerResource implements IProjectResource{
     }
 
     @Override
-    public void store(Project project) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean store(Project project) {
+        return QueryManager.getInstance().updateObj(project);
     }
 
     @Override

@@ -4,7 +4,7 @@
  */
 package collaborationjava7.common;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import org.restlet.resource.*;
 
 /**
@@ -13,7 +13,7 @@ import org.restlet.resource.*;
  */
 public interface ITeamsResource {
     @Get
-    public Collection<Team> retrieve();
+    public ArrayList<Team> retrieve();
     
     @Post
     public Team create(String teamName);

@@ -23,8 +23,8 @@ public class StateResource extends ServerResource implements IStateResource{
     }
 
     @Override
-    public void store(State task) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean store(State store) {
+        return QueryManager.getInstance().updateObj(store);
     }
 
     @Override

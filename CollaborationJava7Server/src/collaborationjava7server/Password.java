@@ -5,7 +5,7 @@
 package collaborationjava7server;
 
 
-//import java.util.Collection;
+//import java.util.ArrayList;
 import java.io.Serializable;
 import javax.persistence.*;
 

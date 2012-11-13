@@ -15,7 +15,7 @@ public interface IUserStoryResource{
     public UserStory retrieve();
 
     @Put
-    public void store(UserStory userstory);
+    public boolean store(UserStory userstory);
 
     @Delete
     public void remove(int id);

@@ -23,8 +23,8 @@ public class TeamResource  extends ServerResource implements ITeamResource{
     }
 
     @Override
-    public void store(Team team) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean store(Team team) {
+        return QueryManager.getInstance().updateObj(team);
     }
 
     @Override

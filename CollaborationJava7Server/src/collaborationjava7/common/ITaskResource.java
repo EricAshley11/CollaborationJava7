@@ -15,7 +15,7 @@ public interface ITaskResource{
     public Task retrieve();
 
     @Put
-    public void store(Task task);
+    public boolean store(Task task);
 
     @Delete
     public void remove(int id);

@@ -23,8 +23,8 @@ public class TaskResource extends ServerResource implements ITaskResource{
     }
 
     @Override
-    public void store(Task task) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean store(Task task) {
+        return QueryManager.getInstance().updateObj(task);
     }
 
     @Override

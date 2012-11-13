@@ -25,8 +25,8 @@ public class UserResource  extends ServerResource implements IUserResource{
     }
 
     @Override
-    public void store(User user) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean store(User user) {
+        return QueryManager.getInstance().updateObj(user);
     }
 
     @Override

@@ -16,7 +16,7 @@ public interface IMilestoneResource{
     public Milestone retrieve();
 
     @Put
-    public void store(Milestone milestone);
+    public boolean store(Milestone milestone);
 
     @Delete
     public void remove(int id);

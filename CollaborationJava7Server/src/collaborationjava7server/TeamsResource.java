@@ -6,7 +6,7 @@ package collaborationjava7server;
 
 import collaborationjava7.common.ITeamsResource;
 import collaborationjava7.common.Team;
-import java.util.Collection;
+import java.util.ArrayList;
 import org.restlet.resource.ServerResource;
 
 /**
@@ -16,7 +16,7 @@ import org.restlet.resource.ServerResource;
 public class TeamsResource extends ServerResource implements ITeamsResource{
 
     @Override
-    public Collection<Team> retrieve() {
+    public ArrayList<Team> retrieve() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

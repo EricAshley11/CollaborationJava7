@@ -4,10 +4,10 @@
  */
 package collaborationjava7server;
 
-import java.util.Collection;
-import org.restlet.resource.ServerResource;
 import collaborationjava7.common.IUsersResource;
 import collaborationjava7.common.User;
+import java.util.ArrayList;
+import org.restlet.resource.ServerResource;
 
 /**
  *
@@ -21,7 +21,9 @@ public class UsersResource extends ServerResource implements IUsersResource{
     }
 
     @Override
-    public Collection<User> retrieve(String name) {
-        return QueryManager.getInstance().getUsersByName(name);
+    public ArrayList<User> retrieve(String name) {
+        ArrayList<User> ret = new ArrayList<User>();
+        ret.addAll(QueryManager.getInstance().getUsersByName(name));
+        return ret;
     }
 }

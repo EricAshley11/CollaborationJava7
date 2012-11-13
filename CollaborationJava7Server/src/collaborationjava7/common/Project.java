@@ -4,7 +4,7 @@
  */
 package collaborationjava7.common;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.*;
@@ -17,9 +17,9 @@ import javax.persistence.*;
 public class Project implements Serializable{
     @Id @GeneratedValue
     private long id;
-    private Collection<Team> teams;
-    private Collection<UserStory> userStories;
-    private Collection<Milestone> milestones;
+    private ArrayList<Team> teams;
+    private ArrayList<UserStory> userStories;
+    private ArrayList<Milestone> milestones;
     private String name;
     //Calendar is not yet implemented private GCal calendar;   
 
@@ -37,7 +37,7 @@ public class Project implements Serializable{
         return name;
     }
 
-    public Collection<Team> getTeams() {
+    public ArrayList<Team> getTeams() {
         return teams;
     }
 

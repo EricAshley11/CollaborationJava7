@@ -23,7 +23,7 @@ public class MilestoneResource extends ServerResource implements IMilestoneResou
     }
 
     @Override
-    public void store(Milestone milestone) {
+    public boolean store(Milestone milestone) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

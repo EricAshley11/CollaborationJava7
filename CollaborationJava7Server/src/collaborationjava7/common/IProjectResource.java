@@ -14,7 +14,7 @@ public interface IProjectResource{
     public Project retrieve();
 
     @Put
-    public void store(Project project);
+    public boolean store(Project project);
 
     @Delete
     public void remove(int id);

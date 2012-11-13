@@ -9,7 +9,7 @@ import collaborationjava7.common.Project;
 import collaborationjava7.common.Team;
 import collaborationjava7.common.User;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.ArrayList;
 import org.restlet.resource.ServerResource;
 
 /**
@@ -18,10 +18,10 @@ import org.restlet.resource.ServerResource;
  */
 public class ProjectsResource extends ServerResource implements IProjectsResource{
     @Override
-    public Collection<Project> retrieve(long userID) {
-        Collection<Project> retVal = new ArrayList<Project>();
+    public ArrayList<Project> retrieve(long userID) {
+        ArrayList<Project> retVal = new ArrayList<Project>();
         User u = QueryManager.getInstance().getUserByID(userID);
-        Collection<Team> teams = u.getTeams();
+        ArrayList<Team> teams = u.getTeams();
         for(Team t : teams){
             retVal.addAll(t.getProjects());
         }

@@ -5,7 +5,7 @@
 package collaborationjava7.common;
 
 import collaborationjava7.common.ITeamResource;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.*;
@@ -20,8 +20,8 @@ public class Team implements Serializable{
     private long id;
     private static int nextTeamID = 0;
     @OneToMany
-    private Collection<User> users;
-    private Collection<Project> projects;
+    private ArrayList<User> users;
+    private ArrayList<Project> projects;
     private String name;
     private Schedule sched;
     
@@ -92,11 +92,11 @@ public class Team implements Serializable{
         return this.sched;
     }
 
-    public Collection<Project> getProjects() {
+    public ArrayList<Project> getProjects() {
         return projects;
     }
 
-    public Collection<User> getTeamMembers() {
+    public ArrayList<User> getTeamMembers() {
         return users;
     }
 

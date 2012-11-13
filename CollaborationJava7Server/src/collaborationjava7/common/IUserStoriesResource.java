@@ -4,7 +4,7 @@
  */
 package collaborationjava7.common;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
@@ -16,5 +16,5 @@ public interface IUserStoriesResource {
     @Post
     public UserStory create(String name);
     @Get
-    public Collection<UserStory> retrieve();
+    public ArrayList<UserStory> retrieve();
 }

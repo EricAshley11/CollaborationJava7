@@ -12,7 +12,7 @@ public class Schedule implements Serializable {
 
     @Id @GeneratedValue
     private long id;
-    private Collection<Milestone> milestones;
+    private ArrayList<Milestone> milestones;
 
     
     public Schedule() {

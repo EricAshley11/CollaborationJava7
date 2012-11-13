@@ -15,7 +15,7 @@ public interface IStateResource {
     public State retrieve();
 
     @Put
-    public void store(State task);
+    public boolean store(State state);
 
     @Delete
     public void remove(int id);

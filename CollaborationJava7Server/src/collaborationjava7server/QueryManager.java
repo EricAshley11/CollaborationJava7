@@ -4,7 +4,8 @@
  */
 package collaborationjava7server;
 import collaborationjava7.common.*;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -28,6 +29,17 @@ public class QueryManager {
             instance = new QueryManager();
         }
         return instance;        
+    }
+    public boolean updateObj(Object object){
+        try{
+            em.getTransaction().begin();
+            em.merge(object);
+            em.getTransaction().commit();
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+        
     }
     
     public User createUser(String username, String password, String phoneNum, String email) {
@@ -83,35 +95,35 @@ public class QueryManager {
            return true;
           }
     }
-    public Collection<User> getUsersByName(String name) {
+    public List<User> getUsersByName(String name) {
         return getByName(name, User.class);
     }
-    public Collection<Project> getProjectsByName(String name){
+    public List<Project> getProjectsByName(String name){
         return getByName(name, Project.class);
     }
-    public Collection<UserStory> getUserStoriesByName(String name){
+    public List<UserStory> getUserStoriesByName(String name){
         return getByName(name, UserStory.class);
     }
-    public Collection<Schedule> getSchedulesByName(String name){
+    public List<Schedule> getSchedulesByName(String name){
         return getByName(name, Schedule.class);
     }
-    public Collection<Team> getTeamsByName(String name){
+    public List<Team> getTeamsByName(String name){
         return getByName(name, Team.class);
     }
-    public Collection<Task> getTasksByName(String name){
+    public List<Task> getTasksByName(String name){
         return getByName(name, Task.class);
     }
-    public Collection<Milestone> getMilestonesByName(String name){
+    public List<Milestone> getMilestonesByName(String name){
         return getByName(name, Milestone.class);
     }
-    public Collection<State> getStatesByName(String name){
+    public List<State> getStatesByName(String name){
         return getByName(name, State.class);
     }
     
-    private <T> Collection<T> getByName(String name, Class<T> type){
-        String qText = "SELECT T FROM "+type.getSimpleName()+" T WHERE T.name = "+name;
+    private <T> List<T> getByName(String name, Class<T> type){
+        String qText = "SELECT T FROM "+type.getSimpleName()+" T WHERE T.name = \""+name+"\"";
         TypedQuery<T> q = em.createQuery(qText, type);
-        Collection<T> ret;
+        List<T> ret;
         try{
             ret= q.getResultList();
         }

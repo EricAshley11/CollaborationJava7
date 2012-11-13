@@ -15,7 +15,7 @@ public interface ITeamResource{
     public Team retrieve();
 
     @Put
-    public void store(Team team);
+    public boolean store(Team team);
 
     @Delete
     public void remove(int id);

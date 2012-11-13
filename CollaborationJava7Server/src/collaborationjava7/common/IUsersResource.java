@@ -4,7 +4,8 @@
  */
 package collaborationjava7.common;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
@@ -27,5 +28,5 @@ public interface IUsersResource {
      * @return 
      */
     @Get
-    public Collection<User> retrieve(String name);
+    public ArrayList<User> retrieve(String name);
 }

@@ -5,8 +5,9 @@
 package collaborationjava7.common;
 import collaborationjava7server.QueryManager;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
 import org.restlet.resource.ClientResource;
 
 /**
@@ -17,7 +18,7 @@ public class Backend implements Serializable{
     boolean testing = false; //Temporary bool to get dummy data if we are testing
     boolean createdDummyProjects = false;//used to ensure we aren't making dupe projects
     String serverAddr;
-    Collection<Project> dummyProjects;
+    ArrayList<Project> dummyProjects;
 
     public Backend(String serverAddr) {
         this.serverAddr = serverAddr;
@@ -29,7 +30,7 @@ public class Backend implements Serializable{
         throw new UnsupportedOperationException("");
     }
     
-    public Collection<Project> retrieveProjects(User u)  {
+    public ArrayList<Project> retrieveProjects(User u)  {
         if(testing){
             if (!this.createdDummyProjects) {
                 dummyProjects = getDummyProjects(u);
@@ -44,7 +45,7 @@ public class Backend implements Serializable{
     }
 
     
-    public Collection<Project> getDummyProjects(User u)  {
+    public ArrayList<Project> getDummyProjects(User u)  {
         Project p1 = new Project("Project 1");
         Team t1 = new Team("Team 1");
         p1.addTeam(t1);
@@ -76,9 +77,9 @@ public class Backend implements Serializable{
     }
 
     
-    public Collection<User> retrieveUsers()  {
-        //Collection<Team> teams = this.currentProject.getTeams();
-        //Collection<User> users = new ArrayList<User>();
+    public ArrayList<User> retrieveUsers()  {
+        //ArrayList<Team> teams = this.currentProject.getTeams();
+        //ArrayList<User> users = new ArrayList<User>();
         //for (Team team : teams) {
           //  users.addAll(team.getTeamMembers());
         //}
@@ -89,7 +90,7 @@ public class Backend implements Serializable{
     public String[][] getUserTableData() {
         //User[] users = retrieveUsers().toArray(new User[0]);
         //String[] userStrings = .toArray(new String[0]);
-        Collection<User> users = retrieveUsers();
+        ArrayList<User> users = retrieveUsers();
         int numUsers = users.size();
         int userFields = 4;
         String[][] tableData = new String[numUsers][userFields];
@@ -102,7 +103,7 @@ public class Backend implements Serializable{
         return tableData;
     }
     
-    public Collection<Task> retrieveUserTasks(User user) {
+    public ArrayList<Task> retrieveUserTasks(User user) {
         return user.getTasks();
     }
 
@@ -114,7 +115,7 @@ public class Backend implements Serializable{
     
     public void removeUser(String name) {
             long id = -1;
-            Collection<User> users = this.getUsersFromName(name);
+            List<User> users = this.getUsersFromName(name);
             if(users!=null){
                 if(users.size()==1){
                     User u = users.iterator().next();
@@ -144,6 +145,12 @@ public class Backend implements Serializable{
             return ur.create(new String[]{userName, password, phoneNum, email});
     }
 
+    public boolean saveUser(User u){
+        ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/user/"+u.getID());  
+            IUserResource ur = cr.wrap(IUserResource.class);
+            return ur.store(u);
+    }
     
     public Project createProject(String projectName)  {
         ClientResource cr = new ClientResource(  
@@ -169,7 +176,7 @@ public class Backend implements Serializable{
     }
 
     
-    public Collection<User> getUsersFromName(String name)  {
+    public List<User> getUsersFromName(String name)  {
             ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/user");  
             IUsersResource ur = cr.wrap(IUsersResource.class);

@@ -15,7 +15,7 @@ public interface IUserResource{
     public User retrieve();
 
     @Put
-    public void store(User user);
+    public boolean store(User user);
 
     @Delete
     public void remove();

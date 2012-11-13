@@ -4,7 +4,7 @@
  */
 package collaborationjava7.common;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.*;
@@ -22,9 +22,9 @@ public class User implements Serializable {
     private String name, email;
     private String phoneNum;
     @OneToMany
-    private Collection<Team> teams;
+    private ArrayList<Team> teams;
     @OneToMany
-    private Collection<Task> tasks;
+    private ArrayList<Task> tasks;
 
     public User() {}
     
@@ -124,11 +124,11 @@ public class User implements Serializable {
         this.phoneNum = phoneNum;
     }
 
-    public Collection<Task> getTasks() {
+    public ArrayList<Task> getTasks() {
         return tasks;
     }
 
-    public Collection<Team> getTeams() {
+    public ArrayList<Team> getTeams() {
         return teams;
     }
     public long getID() {

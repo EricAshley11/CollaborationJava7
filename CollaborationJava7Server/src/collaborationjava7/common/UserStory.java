@@ -4,7 +4,7 @@
  */
 package collaborationjava7.common;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.*;
@@ -18,7 +18,7 @@ public class UserStory implements Serializable {
     @Id @GeneratedValue
     private long id;
     @OneToMany
-    private Collection<Task> tasks;
+    private ArrayList<Task> tasks;
     private Project project;
     private State state;
     private String name;

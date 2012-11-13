@@ -6,7 +6,7 @@ package collaborationjava7server;
 
 import collaborationjava7.common.IUserStoriesResource;
 import collaborationjava7.common.UserStory;
-import java.util.Collection;
+import java.util.ArrayList;
 import org.restlet.resource.ServerResource;
 
 /**
@@ -20,7 +20,7 @@ public class UserStoriesResource extends ServerResource implements IUserStoriesR
     }
 
     @Override
-    public Collection<UserStory> retrieve() {
+    public ArrayList<UserStory> retrieve() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

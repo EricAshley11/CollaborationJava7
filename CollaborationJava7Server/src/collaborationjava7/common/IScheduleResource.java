@@ -16,7 +16,7 @@ public interface IScheduleResource{
     public Schedule retrieve();
 
     @Put
-    public void store(Schedule schedule);
+    public boolean store(Schedule schedule);
 
     @Delete
     public void remove(int id);

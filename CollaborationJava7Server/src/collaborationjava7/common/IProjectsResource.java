@@ -4,7 +4,7 @@
  */
 package collaborationjava7.common;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import org.restlet.resource.*;
 
 /**
@@ -13,7 +13,7 @@ import org.restlet.resource.*;
  */
 public interface IProjectsResource {
     @Get
-    public Collection<Project> retrieve(long userID);
+    public ArrayList<Project> retrieve(long userID);
     @Post
     public Project create(String name);
 }
