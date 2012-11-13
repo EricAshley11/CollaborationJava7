@@ -77,7 +77,7 @@ public class mainEngine {
     public boolean addMember(JTable teamTable, String userString) {
         try {
             DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
-            User user = ClientBackend.getInstance().getUserFromName(userString);
+            User user = ClientBackend.getInstance().getUser(userString);
             model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
             return true;
         } catch (Exception e) {
