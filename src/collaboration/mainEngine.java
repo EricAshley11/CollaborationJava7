@@ -33,7 +33,7 @@ public class mainEngine {
     private int[] selectedTasksColumns = {0, 1, 2, 3, 4, 5};
     private Calendar calendar;
     private User user;
-    
+    private Project selectedProj;
     
     public void filterTable(JTable table, String filterText) {
         TableModel model = table.getModel();
@@ -125,7 +125,7 @@ public class mainEngine {
 
     public void loadTeamTable(JTable teamTable) {
         teamTable.setModel(new javax.swing.table.DefaultTableModel(
-                ClientBackend.getInstance().getUserTableData(),
+                ClientBackend.getInstance().getUserTableData(selectedProj),
                 new String[]{
                     "Username", "Full Name", "Phone", "Email", "Tasks"
                 }) {
@@ -148,8 +148,6 @@ public class mainEngine {
 
     public boolean validCredentials(String userName, String password) {
         boolean validCreds = false;
-        //TODO: set validCreds to true given valid credentials are entered will need to
-        //be added here for testing sake validCreds will be set to true until implemented
         User u = ClientBackend.getInstance().login(userName, password);
         if(u != null){
             validCreds = true;
@@ -164,10 +162,10 @@ public class mainEngine {
             projectComboBox.addItem(project);
         }
     }
-
-    public void setCurrentProject(Project project) {
-        ClientBackend.getInstance().setCurrentProject(project);
+    public Project createProject(String name){
+        return ClientBackend.getInstance().createProject(name,this.user);
     }
+    
     public boolean createUser(JTextField[] textFields) {
         //textFields[0] is createUserUsernameTextField
         //textFields[1] is firstPasswordField
@@ -192,6 +190,7 @@ public class mainEngine {
         for (int i = 0; i < teamTable.getRowCount(); i++) {
             if (teamTable.isRowSelected(i)) {
                 isAnyRowSelected = true;
+                break;
             }
         }
         if (isAnyRowSelected) {
@@ -230,5 +229,9 @@ public class mainEngine {
         boolean flag = false;
         
         return flag;
+    }
+
+    void setSeletedProj(Project proj) {
+        this.selectedProj = proj;
     }
 }

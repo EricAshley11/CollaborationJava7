@@ -18,18 +18,16 @@ public class Team implements Serializable{
     
     @Id @GeneratedValue
     private long id;
-    private static int nextTeamID = 0;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="team")
     private ArrayList<User> users;
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="team")
     private ArrayList<Project> projects;
     private String name;
-    private Schedule sched;
     
     public Team(String name) {
         this.users = new ArrayList<User>();
         this.projects = new ArrayList<Project>();
         this.name = name;
-        this.id = nextTeamID++;
     }
 
     public Team() {}
@@ -43,7 +41,7 @@ public class Team implements Serializable{
     public boolean addProject(Project project) {
         if (!projects.contains(project)) {
             projects.add(project);
-            project.addTeam(this);
+            project.changeTeam(this);
             return true;
         }
         return false;
@@ -51,7 +49,6 @@ public class Team implements Serializable{
 
     public boolean removeProject(Project project) {
         if (projects.remove(project)) {
-            project.removeTeam(this);
             return true;
         }
         return false;
@@ -74,23 +71,23 @@ public class Team implements Serializable{
         return false;
     }
 
-    public boolean completeMilestone(Milestone milestone) {
-        if (sched.completeMilestone(milestone)) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean addMilestone(Milestone milestone) {
-        if (sched.addMilestone(milestone)) {
-            return true;
-        }
-        return false;
-    }
-
-    public Schedule getSched() {
-        return this.sched;
-    }
+//    public boolean completeMilestone(Milestone milestone) {
+//        if (sched.completeMilestone(milestone)) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public boolean addMilestone(Milestone milestone) {
+//        if (sched.addMilestone(milestone)) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public Schedule getSched() {
+//        return this.sched;
+//    }
 
     public ArrayList<Project> getProjects() {
         return projects;

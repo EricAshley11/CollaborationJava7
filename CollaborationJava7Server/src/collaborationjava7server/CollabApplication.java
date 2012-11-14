@@ -31,7 +31,7 @@ public class CollabApplication extends Application{
         router.attach("/user/{id}", UserResource.class);  
         router.attach("/userstory", UserStoriesResource.class);
         router.attach("/userstory/{id}", UserStoryResource.class);
-        router.attach("/login/{userName}/{pass}",LoginResource.class);
+        router.attach("/login/{userName}",LoginResource.class);
         return router;  
     }  
   

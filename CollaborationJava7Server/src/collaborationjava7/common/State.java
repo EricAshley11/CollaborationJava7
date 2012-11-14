@@ -5,7 +5,6 @@
 package collaborationjava7.common;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
 /**
  *
@@ -45,8 +44,6 @@ public class State implements Serializable {
     }
     private boolean blocked;
     private States state;
-    @Id @GeneratedValue
-    private long id;
     
     public State() {
         this.blocked = false;
@@ -73,8 +70,5 @@ public class State implements Serializable {
 
     public String getDisplayString() {
         return this.state.getDisplayString();
-    }
-    public long getID() {
-        return id;
     }
 }

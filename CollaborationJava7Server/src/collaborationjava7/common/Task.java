@@ -4,7 +4,6 @@
  */
 package collaborationjava7.common;
 
-import collaborationjava7.common.ITaskResource;
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -17,16 +16,18 @@ public class Task implements Serializable{
     @Id @GeneratedValue
     private long id;
     private int storyPointsEstimate, storyPointsActual;
-    @OneToOne
+    @ManyToOne
     private User user;
     private String description, name;
-    @OneToOne
+    @ManyToOne
     private UserStory userStory;
     private State doneState;
 
     public Task() {
     }
-
+    public Task(String name){
+        this.name = name;
+    }
     public boolean removeUser(User user) {
         if (user.equals(this.user)) {
             this.user = null;
@@ -38,20 +39,22 @@ public class Task implements Serializable{
 
     public boolean changeUser(User user) {
         if (user != null && !user.equals(this.user)) {
+            User oldUser = this.user;
             this.user.removeTask(this);
             this.user = user;
             user.addTask(this);
-            return true;
+            return true;//QueryManager.getInstance().updateObjs(new Object[]{this, oldUser, this.user});
         }
         return false;
     }
 
     public boolean changeUserStory(UserStory userStory) {
         if (userStory != null && !userStory.equals(this.userStory)) {
+            UserStory oldUS = this.userStory;
             this.userStory.removeTask(this);
             this.userStory = userStory;
             userStory.addTask(this);
-            return true;
+            return true;//QueryManager.getInstance().updateObjs(new Object[]{this, oldUS, this.userStory});
         }
         return false;
     }

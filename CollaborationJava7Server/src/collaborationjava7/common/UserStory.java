@@ -17,9 +17,10 @@ public class UserStory implements Serializable {
 
     @Id @GeneratedValue
     private long id;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="userStory")
     private ArrayList<Task> tasks;
-    private Project project;
+    @ManyToOne
+    private Milestone milestone;
     private State state;
     private String name;
 
@@ -35,35 +36,38 @@ public class UserStory implements Serializable {
     public boolean removeTask(Task task) {
         if (tasks.remove(task)) {
             //task.delete();//TODO: Not sure if this is the best way to do this
+            //QueryManager.getInstance().updateObj(this);
             return true;
         }
         return false;
     }
 
     public boolean addTask(Task task) {
-        if (tasks.contains(task)) {
+        if (!tasks.contains(task)) {
             tasks.add(task);
             task.changeUserStory(this);
+            //QueryManager.getInstance().updateObj(this);
             return true;
         }
         return false;
     }
 
-    public boolean removeProject(Project project) {
-        if (project != null && project.equals(this.project)) {
-            this.project = null;
-            project.removeUserStory(this);
-            return true;
+    public boolean removeMilestone(Milestone milestone) {
+        if (milestone != null && milestone.equals(this.milestone)) {
+            Milestone oldMilestone = this.milestone;
+            this.milestone = null;
+            return true;// QueryManager.getInstance().updateObjs(new Object[]{milestone, this, oldMilestone});
         }
         return false;
     }
     
-    public boolean changeProject(Project project) {
-        if (project != null && project.equals(this.project)) {
-            this.project.removeUserStory(this);
-           // this.project = project; TODO:Fix this somehow
-            project.addUserStory(this);
-            return true;
+    public boolean changeMilestone(Milestone milestone) {
+        if (milestone != null && !milestone.equals(this.milestone)) {
+            this.milestone.remUserStory(this);
+            Milestone oldMilestone = this.milestone;
+            this.milestone = milestone;
+            milestone.addUserStory(this);
+            return true;//QueryManager.getInstance().updateObjs(new Object[]{this, oldMilestone, milestone});
         }
         return false;
     }

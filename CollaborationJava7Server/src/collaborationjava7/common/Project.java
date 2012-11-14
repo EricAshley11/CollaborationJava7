@@ -17,28 +17,30 @@ import javax.persistence.*;
 public class Project implements Serializable{
     @Id @GeneratedValue
     private long id;
-    private ArrayList<Team> teams;
-    private ArrayList<UserStory> userStories;
-    private ArrayList<Milestone> milestones;
+    @ManyToOne
+    private Team team;
+    @OneToOne
+    private Schedule schedule;
+    
     private String name;
-    //Calendar is not yet implemented private GCal calendar;   
 
     public Project() {
     }
 
     public Project(String name) {
         this.name = name;
-        this.teams = new ArrayList<Team>();
-        this.userStories = new ArrayList<UserStory>();
-        this.milestones = new ArrayList<Milestone>();
     }
 
     public String getName() {
         return name;
     }
+    public void setName(String name){
+        this.name = name;
+        //QueryManager.getInstance().updateObj(this);
+    }
 
-    public ArrayList<Team> getTeams() {
-        return teams;
+    public Team getTeam() {
+        return team;
     }
 
 
@@ -46,23 +48,17 @@ public class Project implements Serializable{
         this.name = newName;
     }
 
-    public boolean removeTeam(Team team) {
-        if (teams.remove(team)) {
-            team.removeProject(this);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean addTeam(Team team)  {
-        if (!teams.contains(team)) {
-            teams.add(team);
+    public boolean changeTeam(Team team)  {
+        if (this.team != team) {
+            Team oldTeam = this.team;
+            this.team.removeProject(this);
             team.addProject(this);
-            return true;
+            this.team = team;
+            return true;//QueryManager.getInstance().updateObjs(new Object[]{this, oldTeam, team});
         }
         return false;
     }
-
+/*
     public boolean removeUserStory(UserStory userStory)  {
         if (userStories.remove(userStory)) {
             userStory.removeProject(this);
@@ -94,7 +90,7 @@ public class Project implements Serializable{
         }
         return false;
     }
-
+*/
     public String toString() {
         return this.getName();
     }

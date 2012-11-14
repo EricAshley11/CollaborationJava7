@@ -11,7 +11,7 @@ import javax.persistence.*;
 /**
  * This is a class that helps save to the DB
  */
-public class QueryManager {
+class QueryManager {
     // Open a database connection
     // (create a new database if it doesn't exist yet):
 
@@ -24,13 +24,13 @@ public class QueryManager {
          em = emf.createEntityManager();
     }
 
-    public static QueryManager getInstance(){
+    static QueryManager getInstance(){
         if(instance == null){
             instance = new QueryManager();
         }
         return instance;        
     }
-    public boolean updateObj(Object object){
+    boolean updateObj(Object object){
         try{
             em.getTransaction().begin();
             em.merge(object);
@@ -39,10 +39,17 @@ public class QueryManager {
         }catch(Exception e){
             return false;
         }
-        
     }
     
-    public User createUser(String username, String password, String phoneNum, String email) {
+    boolean updateObjs(Object[] object) {
+        boolean retVal = true;
+        for(Object o : object){
+            if(!updateObj(o))
+                retVal = false;
+        }
+        return retVal;
+    }
+    User createUser(String username, String password, String phoneNum, String email) {
         em.getTransaction().begin();
         User U = new User(username);
         U.setPhoneNum(phoneNum);
@@ -55,7 +62,7 @@ public class QueryManager {
         return U;
     }
 
-    public Team createTeam(String name) {
+    Team createTeam(String name) {
         em.getTransaction().begin();
         Team T = new Team(name);
         em.persist(T);
@@ -64,7 +71,7 @@ public class QueryManager {
         return T;
     }
     
-    public UserStory createUserStory(String name) {
+    UserStory createUserStory(String name) {
         em.getTransaction().begin();
         UserStory US = new UserStory(name);
         em.persist(US);
@@ -73,7 +80,7 @@ public class QueryManager {
         return US;
     }
 
-    public Project createProject(String name) {
+    Project createProject(String name) {
         em.getTransaction().begin();
         Project P = new Project(name);
         em.persist(P);
@@ -81,7 +88,7 @@ public class QueryManager {
         System.out.println("Created Project " + name+", id: "+P.getID());
         return P;
     }
-    public User checkPassword(String user, String password) {
+    User checkPassword(String user, String password) {
         TypedQuery<User> createUserQ = em.createQuery("SELECT U FROM User U, Password P WHERE P.userName = U.name AND P.password = \""+
                 password+"\"", User.class);
         try{
@@ -91,28 +98,28 @@ public class QueryManager {
             return null;
         }
     }
-    public List<User> getUsersByName(String name) {
+    List<User> getUsersByName(String name) {
         return getByName(name, User.class);
     }
-    public List<Project> getProjectsByName(String name){
+    List<Project> getProjectsByName(String name){
         return getByName(name, Project.class);
     }
-    public List<UserStory> getUserStoriesByName(String name){
+    List<UserStory> getUserStoriesByName(String name){
         return getByName(name, UserStory.class);
     }
-    public List<Schedule> getSchedulesByName(String name){
+    List<Schedule> getSchedulesByName(String name){
         return getByName(name, Schedule.class);
     }
-    public List<Team> getTeamsByName(String name){
+    List<Team> getTeamsByName(String name){
         return getByName(name, Team.class);
     }
-    public List<Task> getTasksByName(String name){
+    List<Task> getTasksByName(String name){
         return getByName(name, Task.class);
     }
-    public List<Milestone> getMilestonesByName(String name){
+    List<Milestone> getMilestonesByName(String name){
         return getByName(name, Milestone.class);
     }
-    public List<State> getStatesByName(String name){
+    List<State> getStatesByName(String name){
         return getByName(name, State.class);
     }
     
@@ -135,28 +142,29 @@ public class QueryManager {
         return q.getSingleResult();
     }
     
-    public Project getProjectByID(long id){
+    Project getProjectByID(long id){
         return getByID(id, Project.class);
     }
-    public User getUserByID(long id){
+    User getUserByID(long id){
         return getByID(id, User.class);
     }
-    public UserStory getUserStoryByID(long id){
+    UserStory getUserStoryByID(long id){
         return getByID(id, UserStory.class);
     }
-    public Schedule getScheduleByID(long id){
+    Schedule getScheduleByID(long id){
         return getByID(id, Schedule.class);
     }
-    public Team getTeamByID(long id){
+    Team getTeamByID(long id){
         return getByID(id, Team.class);
     }
-    public Task getTaskByID(long id){
+    Task getTaskByID(long id){
         return getByID(id, Task.class);
     }
-    public Milestone getMilestoneByID(long id){
+    Milestone getMilestoneByID(long id){
         return getByID(id, Milestone.class);
     }
-    public State getStateByID(long id){
+    State getStateByID(long id){
         return getByID(id, State.class);
     }
+
 }

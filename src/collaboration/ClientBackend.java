@@ -56,16 +56,6 @@ public class ClientBackend{
             e.printStackTrace();
         }*/
     }
-    
-    
-    public void setCurrentProject(Project project){
-        // remoteObj.setCurrentProject(project);
-    }
-
-    public void setCurrentUser(User user){
-           // remoteObj.setCurrentUser(user);
-
-    }
 
     public void removeProject(Project project){
          remoteObj.removeProject(project);
@@ -81,12 +71,12 @@ public class ClientBackend{
 
     }
 
-    public ArrayList<User> retrieveUsers(){
-        return remoteObj.retrieveUsers();
+    public ArrayList<User> retrieveUsers(Project p){
+        return remoteObj.retrieveUsers(p);
     }
 
-    public String[][] getUserTableData(){
-        return remoteObj.getUserTableData();
+    public String[][] getUserTableData(Project p){
+        return remoteObj.getUserTableData(p);
     }
 
     public ArrayList<Task> retrieveUserTasks(){
@@ -105,8 +95,8 @@ public class ClientBackend{
          remoteObj.removeUser(name);
     }
 
-    public Project createProject(String projectName){
-         return remoteObj.createProject(projectName);
+    public Project createProject(String projectName, User u){
+         return remoteObj.createProject(projectName, u);
     }
 
     public Team createTeam(String teamName){

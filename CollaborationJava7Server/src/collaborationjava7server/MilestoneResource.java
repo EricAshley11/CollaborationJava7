@@ -24,7 +24,7 @@ public class MilestoneResource extends ServerResource implements IMilestoneResou
 
     @Override
     public boolean store(Milestone milestone) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return QueryManager.getInstance().updateObj(this);
     }
 
     @Override

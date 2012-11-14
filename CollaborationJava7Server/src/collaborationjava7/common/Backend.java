@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package collaborationjava7.common;
-import collaborationjava7server.QueryManager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class Backend implements Serializable{
     public ArrayList<Project> getDummyProjects(User u)  {
         Project p1 = new Project("Project 1");
         Team t1 = new Team("Team 1");
-        p1.addTeam(t1);
+        p1.changeTeam(t1);
         User u1 = u;
         u1.setEmail("user1@abc.com");
         u1.setPhoneNum("(000)000-0001");
@@ -60,7 +59,7 @@ public class Backend implements Serializable{
 
         Project p2 = new Project("Project 2");
         Team t2 = new Team("Team 2");
-        p2.addTeam(t2);
+        p2.changeTeam(t2);
         User u3 = new User("User 3");
         u3.setEmail("user3@abc.com");
         u3.setPhoneNum("(000)000-0003");
@@ -77,25 +76,21 @@ public class Backend implements Serializable{
     }
 
     
-    public ArrayList<User> retrieveUsers()  {
-        //ArrayList<Team> teams = this.currentProject.getTeams();
-        //ArrayList<User> users = new ArrayList<User>();
-        //for (Team team : teams) {
-          //  users.addAll(team.getTeamMembers());
-        //}
-        return null;
+    public ArrayList<User> retrieveUsers(Project p)  {
+        Team team = p.getTeam();
+        return team.getTeamMembers();
     }
 
     
-    public String[][] getUserTableData() {
-        //User[] users = retrieveUsers().toArray(new User[0]);
-        //String[] userStrings = .toArray(new String[0]);
-        ArrayList<User> users = retrieveUsers();
+    public String[][] getUserTableData(Project p) {
+        ArrayList<User> users = retrieveUsers(p);
         int numUsers = users.size();
-        int userFields = 4;
+        int userFields = 4; 
+        if(users.get(0) != null)
+            userFields = users.get(0).toString().split(",").length;
         String[][] tableData = new String[numUsers][userFields];
         for (int i = 0; i < numUsers; i++) {
-            User user = (User) users.toArray()[i];
+            User user = users.get(i);
             String userString = user.toString();
             String[] userInfo = userString.split(", ");
             tableData[i] = userInfo;
@@ -152,11 +147,21 @@ public class Backend implements Serializable{
             return ur.store(u);
     }
     
-    public Project createProject(String projectName)  {
+    public Project createProject(String projectName, User u)  {
         ClientResource cr = new ClientResource(  
-                "http://"+serverAddr+":8182/collab/project");  
-            IProjectsResource ur = cr.wrap(IProjectsResource.class);
-            return ur.create(projectName);
+           "http://"+serverAddr+":8182/collab/project");  
+        IProjectsResource pr = cr.wrap(IProjectsResource.class);
+        Project newProj = pr.create(projectName);
+        newProj.changeTeam(u.getTeam());
+        ClientResource cr2 = new ClientResource(  
+           "http://"+serverAddr+":8182/collab/project/"+newProj.getID());
+        IProjectResource pr2 = cr2.wrap(IProjectResource.class);
+        if(pr2.store(newProj)){
+            return newProj;
+        }else{
+            System.err.println("Error creating Project: "+projectName);
+            return null;
+        }
     }
 
     
@@ -185,8 +190,8 @@ public class Backend implements Serializable{
 
     public User loginUser(String userName, String password) {
             ClientResource cr = new ClientResource(  
-                "http://"+serverAddr+":8182/collab/login/"+userName+"/"+password);  
+                "http://"+serverAddr+":8182/collab/login/"+userName);  
             ILoginResource lr = cr.wrap(ILoginResource.class);
-            return lr.login();
+            return lr.login(password);
     }
 }

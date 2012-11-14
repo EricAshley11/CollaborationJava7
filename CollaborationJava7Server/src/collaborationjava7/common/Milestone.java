@@ -1,7 +1,7 @@
 package collaborationjava7.common;
 
-import collaborationjava7.common.IMilestoneResource;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -9,20 +9,24 @@ import javax.persistence.*;
  * This object contains milestone information to be used in projects
  */
 public class Milestone implements Serializable{
+
     @Id @GeneratedValue
     private long id;
+    @OneToMany(cascade=CascadeType.ALL)
+    private ArrayList<UserStory> userStories;
     
+    String name;
     String description;
     boolean isCompleted;
     Date estimatedCompDate;
     Date completeDate;
 
-    public Milestone(String desc, int id) {
-        description = desc;
+    public Milestone(String name) {
+        this.name = name;
+        userStories = new ArrayList<>();
         isCompleted = false;
         estimatedCompDate = null;
         completeDate = null;
-        this.id = id;
     }
 
     public void setEstDate(int month, int day, int year) {
@@ -117,6 +121,22 @@ public class Milestone implements Serializable{
         return mon;
     }
 
+    public ArrayList<UserStory> getUserStories(){
+        return userStories;
+    }
+    public boolean addUserStory(UserStory us){
+        if(userStories.add(us)){
+            return true;//QueryManager.getInstance().updateObj(this);
+        }
+        return false;
+    }
+    public boolean remUserStory(UserStory us){
+        if(userStories.remove(us)){
+            return true;//QueryManager.getInstance().updateObjs(new Object[]{this,us});
+        }
+        return false;
+    }
+    
     public long getID() {
         return id;
     }

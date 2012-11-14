@@ -1845,7 +1845,8 @@ public class mainView extends javax.swing.JFrame {
         try {
             String projectTitle = JOptionPane.showInputDialog("Project Title");
             if (!projectTitle.isEmpty()) {
-                projectComboBox.addItem(projectTitle);
+                Project newProj = engine.createProject(projectTitle);
+                projectComboBox.addItem(newProj);
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Project title is required to create a new project",
@@ -1910,7 +1911,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void projectComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_projectComboBoxItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) { // this should fix the event happening multiple times
-            engine.setCurrentProject((Project) this.projectComboBox.getSelectedItem());//TODO: Fix this
+            engine.setSeletedProj((Project)this.projectComboBox.getSelectedItem());
             engine.loadTeamTable(teamTable);
         }
     }//GEN-LAST:event_projectComboBoxItemStateChanged

@@ -15,10 +15,9 @@ import org.restlet.resource.ServerResource;
 public class LoginResource extends ServerResource implements ILoginResource{
 
     @Override
-    public User login() {
+    public User login(String password) {
         String userName = (String)this.getRequestAttributes().get("userName");
-        String pass = (String)this.getRequestAttributes().get("pass");
-        return QueryManager.getInstance().checkPassword(userName, pass);
+        return QueryManager.getInstance().checkPassword(userName, password);
     }
     
 }

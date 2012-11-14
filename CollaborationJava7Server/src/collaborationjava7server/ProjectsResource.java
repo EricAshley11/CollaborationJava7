@@ -20,11 +20,13 @@ public class ProjectsResource extends ServerResource implements IProjectsResourc
     public ArrayList<Project> retrieve(long userID) {
         ArrayList<Project> retVal = new ArrayList<Project>();
         User u = QueryManager.getInstance().getUserByID(userID);
-        ArrayList<Team> teams = u.getTeams();
-        for(Team t : teams){
-            retVal.addAll(t.getProjects());
+        Team t = u.getTeam();
+        try{
+            return u.getTeam().getProjects();
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ArrayList<Project>();
         }
-        return retVal;
     }
 
     @Override
