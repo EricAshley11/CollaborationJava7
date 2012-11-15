@@ -91,8 +91,9 @@ public class Backend implements Serializable, IBackend{
         ArrayList<User> users = retrieveUsers(p);
         int numUsers = users.size();
         int userFields = 4; 
-        if(users.get(0) != null)
+        if(users.get(0) != null) {
             userFields = users.get(0).toString().split(",").length;
+        }
         String[][] tableData = new String[numUsers][userFields];
         for (int i = 0; i < numUsers; i++) {
             User user = users.get(i);

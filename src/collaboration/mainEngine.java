@@ -228,12 +228,44 @@ public class mainEngine {
     
     public boolean createNewCalendar(String title, String description, String location) {
         boolean flag = false;
-        
+        if (calendar.createNewCalendar(title, description, location)) {
+            flag = true;
+        }
         return flag;
+    }
+    
+    public void loadCalendarTable(JTable calendarTable) {
+        try {
+            calendarTable.setModel(new javax.swing.table.DefaultTableModel(
+                    calendar.getUserCalendars(),
+                    new String[]{
+                        "Calendars"
+                    }) {
+                public boolean isCellEditable() {
+                    return false;
+                }         
+            });
+        } catch (ServiceException | IOException e) {
+        }
     }
 
     void setSeletedProj(Project proj) {
         this.selectedProj = proj;
+    }
+    
+    public void loadCalendarEntryTable(JTable entryTable, String name) {
+        try {
+            entryTable.setModel(new javax.swing.table.DefaultTableModel(
+                    calendar.getEntryData(name),
+                    new String[]{
+                        "Entries"
+                    }) {
+                public boolean isCellEditable() {
+                    return false;
+                }         
+            });
+        } catch (ServiceException | IOException e) {
+        }
     }
 
     void processProjectNameChanged(JComboBox projComboBox, String editedProjectName) {

@@ -113,5 +113,45 @@ public class Calendar {
 
         return flag;
     }
+    
+    public String[][] getUserCalendars() 
+            throws ServiceException, IOException {
+
+        URL feed = new URL(privateURL);
+        CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
+        String[][] calendars = new String[result.getEntries().size()][result.getEntries().size()];
+        for (int i = 0; i < result.getEntries().size(); i++) {
+            CalendarEntry entry = result.getEntries().get(i);
+            calendars[i][0] = entry.getTitle().getPlainText();
+        }
+            
+        return calendars;
+    }
+    
+    public String[][] getEntryData(String calendarName) 
+            throws ServiceException, IOException {
+        URL postURL = null;
+        URL feed = new URL(privateURL);
+        CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
+
+        for (int i = 0; i < result.getEntries().size(); i++) {
+            CalendarEntry calendarEntry = result.getEntries().get(i);
+            if (calendarEntry.getTitle().getPlainText().equals(calendarName)) {
+                postURL = new URL(calendarEntry.getHtmlLink().getHref());
+            }
+        }
+
+        myQuery = new CalendarQuery(postURL);
+        myQuery.setMinimumStartTime(DateTime.parseDateTime(googleDF.format(currentDate)));
+        myQuery.setMaximumStartTime(DateTime.parseDateTime(googleDF.format(weekAheadDate)));
+        CalendarEventFeed entryResult = myService.query(myQuery, CalendarEventFeed.class);
+        String[][] entries = new String[entryResult.getEntries().size()][entryResult.getEntries().size()];
+        for (int i = 0; i< entryResult.getEntries().size(); i++) {
+            CalendarEventEntry entry = entryResult.getEntries().get(i);
+            entries[i][0] = entry.getTitle().getPlainText();
+        }
+        
+        return entries;
+    }
 }
 
