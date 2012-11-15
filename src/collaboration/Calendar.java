@@ -191,5 +191,29 @@ public class Calendar {
         
         return flag;
     }
+    
+    public boolean deleteEntryFromCalendar(String calendarName, String entryName) 
+            throws ServiceException, IOException {
+        boolean flag = true;
+        URL postURL = null;
+        URL feed = new URL(privateURL);
+        CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
+        
+        for (int i = 0; i < result.getEntries().size(); i++) {
+            CalendarEntry calendarEntry = result.getEntries().get(i);
+            if (calendarEntry.getTitle().getPlainText().equals(calendarName)) {
+                postURL = new URL(calendarEntry.getLink(Link.Rel.ALTERNATE, Link.Type.ATOM).getHref());
+            }
+        }
+        CalendarEventFeed temp = myService.getFeed(postURL, CalendarEventFeed.class);
+        for (int i = 0; i< temp.getEntries().size(); i++) {
+            CalendarEventEntry entry = temp.getEntries().get(i);
+            if (entry.getTitle().getPlainText().equals(entryName)) {
+                entry.delete();
+                flag = true;
+            }
+        }         
+        return flag;
+    }
 }
 
