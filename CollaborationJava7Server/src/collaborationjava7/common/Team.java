@@ -4,8 +4,6 @@
  */
 package collaborationjava7.common;
 
-import collaborationjava7.common.ITeamResource;
-import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.*;

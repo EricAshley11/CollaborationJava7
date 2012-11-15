@@ -34,7 +34,8 @@ public class User implements Serializable {
 
     public boolean addToTeam(Team team) {
         if (this.team != team) {
-            this.team.removeMember(this);
+            if(this.team != null)
+                this.team.removeMember(this);
             team.addMember(this);
             this.team = team;
             return true;//QueryManager.getInstance().updateObjs(new Object[]{team,this});
@@ -81,7 +82,7 @@ public class User implements Serializable {
     }
 
     public String toString() {
-        return String.format("%s, %s, %s, %s", this.id, this.name, this.phoneNum, this.email);
+        return String.format(" %s, %s, %s", this.name, this.phoneNum, this.email);
     }
 
     // <editor-fold desc="Getters/Setters">

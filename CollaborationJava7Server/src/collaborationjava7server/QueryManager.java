@@ -58,7 +58,7 @@ class QueryManager {
         em.persist(U);
         em.persist(P);
         em.getTransaction().commit();
-        System.out.println("New UserID: "+U.getID()+" New Password ID: "+P.getID());
+        System.out.println("New User, ID: "+U.getName()+", "+U.getID()+" New Password ID: "+P.getID());
         return U;
     }
 
@@ -83,18 +83,25 @@ class QueryManager {
     Project createProject(String name) {
         em.getTransaction().begin();
         Project P = new Project(name);
+        Schedule S = new Schedule();
+        P.setSchedule(S);
         em.persist(P);
+        em.persist(S);
         em.getTransaction().commit();
         System.out.println("Created Project " + name+", id: "+P.getID());
         return P;
     }
     User checkPassword(String user, String password) {
-        TypedQuery<User> createUserQ = em.createQuery("SELECT U FROM User U, Password P WHERE P.userName = U.name AND P.password = \""+
-                password+"\"", User.class);
+        TypedQuery<User> createUserQ = 
+                em.createQuery("SELECT U FROM User U, Password P WHERE P.userName = :name AND U.name = P.userName AND P.password = :pass", User.class);
         try{
-            return createUserQ.getSingleResult();
+            //List<User> users = createUserQ.setParameter("name", user)
+                    //.setParameter("pass", password).getResultList();
+            User u = createUserQ.setParameter("name", user)
+                    .setParameter("pass", password).getSingleResult();
+            return u;
         }catch(Exception e){
-            System.out.println("Invalid Credentials");
+            System.out.println("Invalid Credentials"+e.getMessage());
             return null;
         }
     }
@@ -167,4 +174,21 @@ class QueryManager {
         return getByID(id, State.class);
     }
 
+    Task createTask(String name) {
+        em.getTransaction().begin();
+        Task t = new Task(name);
+        em.persist(t);
+        em.getTransaction().commit();
+        System.out.println("Created Task " + name+", id: "+t.getID());
+        return t;
+    }
+
+    Milestone createMilestone(String name) {
+        em.getTransaction().begin();
+        Milestone m = new Milestone(name);
+        em.persist(m);
+        em.getTransaction().commit();
+        System.out.println("Created Milestone " + name+", id: "+m.getID());
+        return m;
+    }
 }

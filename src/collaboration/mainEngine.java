@@ -148,7 +148,7 @@ public class mainEngine {
 
     public boolean validCredentials(String userName, String password) {
         boolean validCreds = false;
-        User u = ClientBackend.getInstance().login(userName, password);
+        User u = ClientBackend.getInstance().loginUser(userName, password);
         if(u != null){
             validCreds = true;
             user = u;
@@ -157,6 +157,7 @@ public class mainEngine {
     }
 
     public void populateProjectComboBox(JComboBox projectComboBox) {
+        projectComboBox.removeAllItems();
         ArrayList<Project> projects = ClientBackend.getInstance().retrieveUserProjects(user);
         for (Project project : projects) {
             projectComboBox.addItem(project);
@@ -233,5 +234,29 @@ public class mainEngine {
 
     void setSeletedProj(Project proj) {
         this.selectedProj = proj;
+    }
+
+    void processProjectNameChanged(JComboBox projComboBox, String editedProjectName) {
+        Project proj = (Project) projComboBox.getSelectedItem();
+        if (editedProjectName.equals("DELETE")) {
+            this.deleteProject(proj);
+            projComboBox.removeItemAt(projComboBox.getSelectedIndex());
+            projComboBox.setSelectedIndex(0);
+        } else {
+            this.editProjectName(proj, editedProjectName);
+            projComboBox.getModel().setSelectedItem(proj);
+        }
+    }
+
+    private void deleteProject(Project proj) {
+        ClientBackend.getInstance().removeProject(proj);
+    }
+
+    private void editProjectName(Project proj, String editedProjectName) {
+        ClientBackend.getInstance().editProjectName(proj, editedProjectName);
+    }
+
+    void updateUser(String newName, String newPhone, String newEmail) {
+        ClientBackend.getInstance().updateUser(newName, newPhone, newEmail);
     }
 }

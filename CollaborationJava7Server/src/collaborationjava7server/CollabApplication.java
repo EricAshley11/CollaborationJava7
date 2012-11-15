@@ -19,11 +19,9 @@ public class CollabApplication extends Application{
         router.attach("/milestone/{id}", MilestoneResource.class);  
         router.attach("/project", ProjectsResource.class);  
         router.attach("/project/{id}", ProjectResource.class);  
-        //router.attach("/schedule", SchedulesResource.class);  
         router.attach("/schedule/{id}", ScheduleResource.class);  
-        //router.attach("/state", StatesResource.class);  
         router.attach("/state/{id}", StateResource.class);  
-        //router.attach("/task", TasksResource.class); 
+        router.attach("/task", TasksResource.class); 
         router.attach("/task/{id}", TaskResource.class); 
         router.attach("/team", TeamsResource.class); 
         router.attach("/team/{id}", TeamResource.class);  

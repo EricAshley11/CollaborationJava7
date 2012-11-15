@@ -13,7 +13,7 @@ import org.restlet.resource.ClientResource;
  *
  * @author Cam
  */
-public class ClientBackend{
+public class ClientBackend implements IBackend{
 
     private static ClientBackend instance = null;
     private Backend remoteObj;
@@ -27,22 +27,30 @@ public class ClientBackend{
     }
     
     public static void main(String[] args){
-        ClientBackend cb = ClientBackend.getInstance();
-        User bob = cb.createUser("BOB", "abc", "123-555-9999","bob@test.com");
-        System.out.println(bob);
-        User bob2 = cb.getUserFromId(bob.getID());
-        System.out.println(bob2);
-        bob2.setEmail("changedemail@test.com");
-        cb.remoteObj.saveUser(bob2);
-        User bob3 = cb.getUserFromId(bob2.getID());
-        System.out.println(bob3);
-        List<User> users = cb.remoteObj.getUsersFromName("BOB");
-        for(User u : users){
-            System.out.println(u);
-        }
+        //Make some test data and put it in the database
+        User cam = getInstance().createUser("cam", "abc", "616-1111", "cam@test");
+        User zach = getInstance().createUser("zach", "abc", "616-2222", "zach@test");
+        User ericA = getInstance().createUser("ericA", "abc", "616-3333", "erica@test");
+        User tommy = getInstance().createUser("tommy", "abc", "616-4444", "tommy@test");
+        User ericM = getInstance().createUser("ericm", "abc", "616-5555", "ericm@test");
+        User mike = getInstance().createUser("mike", "abc", "616-6666", "mike@test");
+        
+        Team team = getInstance().createTeam("collabTeam");
+        team.addMember(cam);
+        team.addMember(zach);
+        team.addMember(ericA);
+        team.addMember(tommy);
+        team.addMember(ericM);
+        team.addMember(mike);
+        getInstance().saveEntity(team);
+        
+        Project proj1 = getInstance().createProject("testProj1", cam);
+        Project proj2 = getInstance().createProject("testProj2", cam);
+        
     }
     //This constructor is private because we want this class to be a singleton
     private ClientBackend(){
+        //Realized we don't really need to get a remote object here, we can just use the ClientBackend as a wrapper
         //try {
             // Define our Restlet client resources.  
             //ClientResource cr = new ClientResource(  
@@ -87,10 +95,6 @@ public class ClientBackend{
          return remoteObj.retrieveUserTasks(user);
     }
 
-    public void removeUser(User user){
-         //remoteObj.removeUser(user);
-    }
-
     public void removeUser(String name){
          remoteObj.removeUser(name);
     }
@@ -123,8 +127,41 @@ public class ClientBackend{
         return null;
     }
 
-    public User login(String userName, String password) {
+    @Override
+    public Milestone createMilestone(String milestoneName) {
+        return remoteObj.createMilestone(milestoneName);
+    }
+
+    @Override
+    public Task createTask(String taskName) {
+        return remoteObj.createTask(taskName);
+    }
+
+    @Override
+    public List<User> getUsersFromName(String name) {
+        return remoteObj.getUsersFromName(name);
+    }
+
+    @Override
+    public User loginUser(String userName, String password) {
         return remoteObj.loginUser(userName, password);
     }
-    
+
+    @Override
+    public ArrayList<Project> retrieveProjects(User u) {
+        return remoteObj.retrieveProjects(u);
+    }
+
+    @Override
+    public <T> boolean saveEntity(T entity) {
+        return remoteObj.saveEntity(entity);
+    }
+
+    public void editProjectName(Project proj, String editedProjectName) {
+        remoteObj.editProjectName(proj, editedProjectName);
+    }
+
+    void updateUser(String newName, String newPhone, String newEmail) {
+        remoteObj.updateUser(newName, newPhone, newEmail);
+    }
 }

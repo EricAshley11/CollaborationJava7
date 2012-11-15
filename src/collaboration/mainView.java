@@ -1857,13 +1857,8 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_newProjectButtonActionPerformed
 
     private void editProjectSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectSaveButtonActionPerformed
-        String edittedProjectName = editProjectTextField.getText();
-        if (edittedProjectName.equals("DELETE")) {
-            projectComboBox.removeItemAt(projectComboBox.getSelectedIndex());
-            projectComboBox.setSelectedItem(null);
-        } else {
-            projectComboBox.getModel().setSelectedItem(editProjectTextField.getText());
-        }
+        String editedProjectName = editProjectTextField.getText();
+        engine.processProjectNameChanged(projectComboBox, editedProjectName);
         editProjectJFrame.setVisible(false);
     }//GEN-LAST:event_editProjectSaveButtonActionPerformed
 

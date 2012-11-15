@@ -18,6 +18,7 @@ public class TaskResource extends ServerResource implements ITaskResource{
     
     @Override
     public Task retrieve() {
+        id = Long.parseLong((String)this.getRequestAttributes().get("id"));
         task = QueryManager.getInstance().getTaskByID(id);
         return task;
     }

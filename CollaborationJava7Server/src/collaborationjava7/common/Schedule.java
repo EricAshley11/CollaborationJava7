@@ -21,9 +21,6 @@ public class Schedule implements Serializable {
 
     
     public Schedule() {
-    }
-    public Schedule(Project p){
-        this.project = p;
         this.milestones = new ArrayList<>();
     }
 

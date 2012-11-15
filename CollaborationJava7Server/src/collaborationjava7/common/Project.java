@@ -38,6 +38,9 @@ public class Project implements Serializable{
         this.name = name;
         //QueryManager.getInstance().updateObj(this);
     }
+    public void setSchedule(Schedule s){
+        this.schedule = s;
+    }
 
     public Team getTeam() {
         return team;
@@ -50,8 +53,8 @@ public class Project implements Serializable{
 
     public boolean changeTeam(Team team)  {
         if (this.team != team) {
-            Team oldTeam = this.team;
-            this.team.removeProject(this);
+            if(this.team != null)
+                this.team.removeProject(this);
             team.addProject(this);
             this.team = team;
             return true;//QueryManager.getInstance().updateObjs(new Object[]{this, oldTeam, team});
