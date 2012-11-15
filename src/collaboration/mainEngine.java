@@ -248,6 +248,16 @@ public class mainEngine {
         } catch (ServiceException | IOException e) {
         }
     }
+    
+    public boolean deleteCalendar(String name) {
+        boolean flag = false;
+        try {
+            calendar.deleteCalendar(name);
+            flag = true;
+        } catch (ServiceException | IOException e) {
+        }
+        return flag;
+    }
 
     void setSeletedProj(Project proj) {
         this.selectedProj = proj;

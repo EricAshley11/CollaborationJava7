@@ -1631,6 +1631,11 @@ public class mainView extends javax.swing.JFrame {
         removeCalendarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete30.png"))); // NOI18N
         removeCalendarButton.setText("Remove Calendar");
         removeCalendarButton.setEnabled(false);
+        removeCalendarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeCalendarButtonActionPerformed(evt);
+            }
+        });
 
         createEventButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add30.png"))); // NOI18N
         createEventButton.setText("Create Event");
@@ -1648,39 +1653,35 @@ public class mainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(calendarPanelLayout.createSequentialGroup()
-                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                .addComponent(gCalLoginButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gCalLogoutButton))
-                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(calTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(calendarTableLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(entryTableLabel)
-                                    .addComponent(entryTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(createEventButton)
-                                    .addComponent(deleteEventButton))))
-                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addComponent(jLabel3)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(printCalendarsButton)
-                                    .addComponent(calendarScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(gCalWeeklyAgendaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(61, Short.MAX_VALUE))))
-                    .addGroup(calendarPanelLayout.createSequentialGroup()
                         .addComponent(removeCalendarButton)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(calendarPanelLayout.createSequentialGroup()
-                        .addComponent(createCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(calendarPanelLayout.createSequentialGroup()
+                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(calendarPanelLayout.createSequentialGroup()
+                                        .addComponent(gCalLoginButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(gCalLogoutButton))
+                                    .addGroup(calendarPanelLayout.createSequentialGroup()
+                                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(calTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(calendarTableLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(entryTableLabel)
+                                            .addComponent(entryTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(createEventButton)
+                                            .addComponent(deleteEventButton))))
+                                .addGap(26, 26, 26)
+                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(printCalendarsButton)
+                                        .addComponent(calendarScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(gCalWeeklyAgendaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel3)))
+                            .addComponent(createCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(61, Short.MAX_VALUE))))
         );
         calendarPanelLayout.setVerticalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2165,11 +2166,13 @@ public class mainView extends javax.swing.JFrame {
             if (engine.createNewCalendar(gCalCalendarTitleTextField.getText(), 
                                          gCalCalendarDescriptionTextArea.getText(), 
                                          gCalLocationTextField.getText())) {
-                calendarTextArea.setText("Calendar created...\n\n");
+                calendarTextArea.setText("Calendar " + 
+                        gCalCalendarTitleTextField.getText() + " created...\n\n");
                 gCalendarAddCalendarJFrame.setVisible(false);
                 gCalCalendarTitleTextField.setText("");
                 gCalCalendarDescriptionTextArea.setText("");
                 gCalLocationTextField.setText("");
+                engine.loadCalendarTable(calTable);
             } else {
                 calendarTextArea.setText("Failed to create a new calendar...\n\n");
                 gCalendarAddCalendarJFrame.setVisible(false);
@@ -2191,6 +2194,16 @@ public class mainView extends javax.swing.JFrame {
         gCalCalendarDescriptionTextArea.setText("");
         gCalLocationTextField.setText("");
     }//GEN-LAST:event_createCalendarButtonActionPerformed
+
+    private void removeCalendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCalendarButtonActionPerformed
+        String name = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
+        if (engine.deleteCalendar(name)) {
+            engine.loadCalendarTable(calTable);
+            calendarTextArea.setText("Calendar " + name + " Deleted...\n\n");
+        } else {
+            calendarTextArea.setText("Unable to delete...\n\n");
+        }
+    }//GEN-LAST:event_removeCalendarButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
