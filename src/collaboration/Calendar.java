@@ -140,7 +140,7 @@ public class Calendar {
                 postURL = new URL(calendarEntry.getLink(Link.Rel.ALTERNATE, Link.Type.ATOM).getHref());
             }
         }
-
+        
         myQuery = new CalendarQuery(postURL);
         myQuery.setMinimumStartTime(DateTime.parseDateTime(googleDF.format(currentDate)));
         myQuery.setMaximumStartTime(DateTime.parseDateTime(googleDF.format(weekAheadDate)));
@@ -152,6 +152,23 @@ public class Calendar {
         }
         
         return entries;
+    }
+    
+    public boolean deleteCalendar(String name) 
+            throws ServiceException, IOException {
+        boolean flag = false;
+        
+        URL url = new URL(privateURL);
+        CalendarFeed result = myService.getFeed(url, CalendarFeed.class);
+        for (int i = 0; i < result.getEntries().size(); i++) {
+            CalendarEntry entry = result.getEntries().get(i);
+            if (entry.getTitle().getPlainText().equals(name)) {
+                entry.delete();
+                flag = true;
+            }
+        }
+        
+        return flag;
     }
     
     
