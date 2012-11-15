@@ -137,7 +137,7 @@ public class Calendar {
         for (int i = 0; i < result.getEntries().size(); i++) {
             CalendarEntry calendarEntry = result.getEntries().get(i);
             if (calendarEntry.getTitle().getPlainText().equals(calendarName)) {
-                postURL = new URL(calendarEntry.getHtmlLink().getHref());
+                postURL = new URL(calendarEntry.getLink(Link.Rel.ALTERNATE, Link.Type.ATOM).getHref());
             }
         }
 
@@ -153,5 +153,7 @@ public class Calendar {
         
         return entries;
     }
+    
+    
 }
 
