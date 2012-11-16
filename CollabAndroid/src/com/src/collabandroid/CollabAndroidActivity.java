@@ -16,13 +16,20 @@ public class CollabAndroidActivity extends TabActivity {
         setContentView(R.layout.main);
         
         TabHost tabHost = getTabHost();
-        
+        System.out.println("0");
         // Tab for Team
         TabSpec teamSpec = tabHost.newTabSpec("Team");
+        System.out.println("01");
+
         teamSpec.setIndicator("Team", getResources().getDrawable(R.drawable.icon_team_tab));
-        Intent teamIntent = new Intent(this, TeamActivity.class);
+        System.out.println("02");
+
+        Intent teamIntent = new Intent(this, TeamActivity.class);//MultiColumnActivity.class);//TeamActivity.class);
+        System.out.println("03");
+
         teamSpec.setContent(teamIntent);
-        
+        System.out.println("04");
+
         // Tab for Tasks
         TabSpec taskSpec = tabHost.newTabSpec("Task");
         taskSpec.setIndicator("Task", getResources().getDrawable(R.drawable.icon_tasks_tab));
@@ -42,7 +49,11 @@ public class CollabAndroidActivity extends TabActivity {
         graphSpec.setContent(graphIntent);
         
         // Adding all TabSpec to TabHost
+        System.out.println("06");
+
         tabHost.addTab(teamSpec); // Adding Team tab
+        System.out.println("07");
+
         tabHost.addTab(taskSpec); // Adding Tasks tab
         tabHost.addTab(calSpec); // Adding Calendar tab
         tabHost.addTab(graphSpec); // Adding Graph tab

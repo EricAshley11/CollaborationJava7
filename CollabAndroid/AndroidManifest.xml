@@ -28,7 +28,9 @@
         		  android:label="Register New Account"></activity>
         
         <!--  Team Activity -->
-        <activity android:name=".TeamActivity" />
+         <activity android:name=".TeamActivity" />
+         
+        <!-- <activity android:name=".MultiColumnActivity"/> -->
         
         <!--  Tasks Activity -->
         <activity android:name=".TasksActivity" />
