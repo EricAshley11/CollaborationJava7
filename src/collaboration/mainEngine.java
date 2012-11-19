@@ -34,7 +34,7 @@ public class mainEngine {
     private Calendar calendar;
     private User user;
     private Project selectedProj;
-    
+
     public void filterTable(JTable table, String filterText) {
         TableModel model = table.getModel();
         DefaultRowSorter sorter = new TableRowSorter<>(model);
@@ -149,7 +149,7 @@ public class mainEngine {
     public boolean validCredentials(String userName, String password) {
         boolean validCreds = false;
         User u = ClientBackend.getInstance().loginUser(userName, password);
-        if(u != null){
+        if (u != null) {
             validCreds = true;
             user = u;
         }
@@ -163,10 +163,11 @@ public class mainEngine {
             projectComboBox.addItem(project);
         }
     }
-    public Project createProject(String name){
-        return ClientBackend.getInstance().createProject(name,this.user);
+
+    public Project createProject(String name) {
+        return ClientBackend.getInstance().createProject(name, this.user);
     }
-    
+
     public boolean createUser(JTextField[] textFields) {
         //textFields[0] is createUserUsernameTextField
         //textFields[1] is firstPasswordField
@@ -201,13 +202,13 @@ public class mainEngine {
         }
         return isAnyRowSelected;
     }
-    
+
     public boolean calendarLogin(String username, String password) {
         calendar = new Calendar();
-        return calendar.validate(username,password);
-        
+        return calendar.validate(username, password);
+
     }
-    
+
     public String printCalendars() {
         try {
             return calendar.printUserCalendars();
@@ -216,7 +217,7 @@ public class mainEngine {
             return "Unable to print!\n";
         }
     }
-    
+
     public String printWeeklyAgenda() {
         try {
             return calendar.printWeeklyAgenda();
@@ -225,7 +226,7 @@ public class mainEngine {
             return "Unable to print!\n";
         }
     }
-    
+
     public boolean createNewCalendar(String title, String description, String location) {
         boolean flag = false;
         if (calendar.createNewCalendar(title, description, location)) {
@@ -233,7 +234,7 @@ public class mainEngine {
         }
         return flag;
     }
-    
+
     public void loadCalendarTable(JTable calendarTable) {
         try {
             calendarTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -243,12 +244,12 @@ public class mainEngine {
                     }) {
                 public boolean isCellEditable() {
                     return false;
-                }         
+                }
             });
         } catch (ServiceException | IOException e) {
         }
     }
-    
+
     public boolean deleteCalendar(String name) {
         boolean flag = false;
         try {
@@ -262,7 +263,7 @@ public class mainEngine {
     void setSeletedProj(Project proj) {
         this.selectedProj = proj;
     }
-    
+
     public void loadCalendarEntryTable(JTable entryTable, String name) {
         try {
             entryTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -272,7 +273,7 @@ public class mainEngine {
                     }) {
                 public boolean isCellEditable() {
                     return false;
-                }         
+                }
             });
         } catch (ServiceException | IOException e) {
         }
@@ -301,23 +302,27 @@ public class mainEngine {
     void updateUser(User user, String newName, String newPhone, String newEmail) {
         ClientBackend.getInstance().updateUser(user, newName, newPhone, newEmail);
     }
-    
+
     boolean userHasTeam() {
-        if(user.getTeam()!=null)
+        if (user.getTeam() != null) {
             return true;
+        }
         return false;
     }
-    JComboBox<Team> createTeamComboBox(){
+
+    JComboBox<Team> createTeamComboBox() {
         JComboBox<Team> retVal = new JComboBox<Team>();
-        for(Team team : ClientBackend.getInstance().getAllTeams()){
+        for (Team team : ClientBackend.getInstance().getAllTeams()) {
             retVal.addItem(team);
         }
         return retVal;
     }
-    boolean loginTeam(Team team, String password){
+
+    boolean loginTeam(Team team, String password) {
         return ClientBackend.getInstance().loginTeam(team, password);
     }
-    void addUserToTeam(User user, Team team){
+
+    void addUserToTeam(User user, Team team) {
         ClientBackend.getInstance().addUserToTeam(user, team);
     }
 }
