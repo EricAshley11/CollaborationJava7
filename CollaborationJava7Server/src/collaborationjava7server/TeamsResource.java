@@ -21,8 +21,10 @@ public class TeamsResource extends ServerResource implements ITeamsResource{
     }
 
     @Override
-    public Team create(String teamName) {
-        return QueryManager.getInstance().createTeam(teamName);
+    public Team create(String[] namePass) {
+        if(namePass.length != 2)
+            return null;
+        return QueryManager.getInstance().createTeam(namePass[0],namePass[1]);
     }
     
 }

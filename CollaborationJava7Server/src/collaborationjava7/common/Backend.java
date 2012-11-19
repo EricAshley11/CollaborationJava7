@@ -51,7 +51,7 @@ public class Backend implements Serializable, IBackend{
     
     public ArrayList<Project> getDummyProjects(User u)  {
         Project p1 = new Project("Project 1");
-        Team t1 = new Team("Team 1");
+        Team t1 = new Team("Team 1","abc");
         p1.changeTeam(t1);
         User u1 = u;
         u1.setEmail("user1@abc.com");
@@ -63,7 +63,7 @@ public class Backend implements Serializable, IBackend{
         t1.addMember(u2);
 
         Project p2 = new Project("Project 2");
-        Team t2 = new Team("Team 2");
+        Team t2 = new Team("Team 2","abc");
         p2.changeTeam(t2);
         User u3 = new User("User 3");
         u3.setEmail("user3@abc.com");
@@ -183,11 +183,11 @@ public class Backend implements Serializable, IBackend{
 
     
     @Override
-    public Team createTeam(String teamName)  {
+    public Team createTeam(String teamName, String password)  {
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/team");  
             ITeamsResource tr = cr.wrap(ITeamsResource.class);
-            Team t =tr.create(teamName);
+            Team t =tr.create(new String[]{teamName, password});
             cr.release();
             return t;
     }
@@ -334,5 +334,16 @@ public class Backend implements Serializable, IBackend{
             ArrayList<Team> teams = tr.retrieve();
             cr.release();
             return teams;
+    }
+
+    @Override
+    public boolean loginTeam(Team team, String password) {
+        return team.validatePassword(password);
+    }
+
+    @Override
+    public void addUserToTeam(User u, Team t) {
+        t.addMember(u);
+        this.saveEntity(t);
     }
 }

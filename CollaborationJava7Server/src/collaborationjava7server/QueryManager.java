@@ -62,9 +62,9 @@ class QueryManager {
         return U;
     }
 
-    Team createTeam(String name) {
+    Team createTeam(String name, String password) {
         em.getTransaction().begin();
-        Team T = new Team(name);
+        Team T = new Team(name, password);
         em.persist(T);
         em.getTransaction().commit();
         System.out.println("Created Team " + name);

@@ -19,7 +19,7 @@ public interface IBackend {
 
     Task createTask(String taskName);
 
-    Team createTeam(String teamName);
+    Team createTeam(String teamName, String password);
 
     User createUser(String userName, String password, String phoneNum, String email);
 
@@ -48,4 +48,8 @@ public interface IBackend {
     void editProjectName(Project proj, String editedProjectName);
     
     ArrayList<Team> getAllTeams();
+    
+    boolean loginTeam(Team team, String password);
+    
+    void addUserToTeam(User u, Team t);
 }

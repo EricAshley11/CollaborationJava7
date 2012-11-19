@@ -16,5 +16,5 @@ public interface ITeamsResource {
     public ArrayList<Team> retrieve();
     
     @Post
-    public Team create(String teamName);
+    public Team create(String[] namePass);
 }

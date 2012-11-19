@@ -21,11 +21,13 @@ public class Team implements Serializable{
     @OneToMany(cascade=CascadeType.ALL, mappedBy="team")
     private ArrayList<Project> projects;
     private String name;
+    private String password;
     
-    public Team(String name) {
+    public Team(String name, String password) {
         this.users = new ArrayList<User>();
         this.projects = new ArrayList<Project>();
         this.name = name;
+        this.password = password;
     }
 
     public Team() {}
@@ -100,5 +102,8 @@ public class Team implements Serializable{
     }
     public long getID() {
         return id;
+    }
+    public boolean validatePassword(String password){
+        return password.equals(this.password);
     }
 }

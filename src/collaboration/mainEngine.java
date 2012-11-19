@@ -314,4 +314,10 @@ public class mainEngine {
         }
         return retVal;
     }
+    boolean loginTeam(Team team, String password){
+        return ClientBackend.getInstance().loginTeam(team, password);
+    }
+    void addUserToTeam(User user, Team team){
+        ClientBackend.getInstance().addUserToTeam(user, team);
+    }
 }

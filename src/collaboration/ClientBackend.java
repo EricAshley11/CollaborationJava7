@@ -35,7 +35,7 @@ public class ClientBackend implements IBackend{
         User ericM = getInstance().createUser("ericm", "abc", "616-5555", "ericm@test");
         User mike = getInstance().createUser("mike", "abc", "616-6666", "mike@test");
         
-        Team team = getInstance().createTeam("collabTeam");
+        Team team = getInstance().createTeam("collabTeam", "abc");
         team.addMember(cam);
         team.addMember(zach);
         team.addMember(ericA);
@@ -103,8 +103,8 @@ public class ClientBackend implements IBackend{
          return remoteObj.createProject(projectName, u);
     }
 
-    public Team createTeam(String teamName){
-         return remoteObj.createTeam(teamName);
+    public Team createTeam(String teamName, String password){
+         return remoteObj.createTeam(teamName, password);
     }
 
     public UserStory createUserStory(String usName) {
@@ -168,5 +168,15 @@ public class ClientBackend implements IBackend{
     @Override
     public ArrayList<Team> getAllTeams() {
         return remoteObj.getAllTeams();
+    }
+
+    @Override
+    public boolean loginTeam(Team team, String password) {
+        return remoteObj.loginTeam(team, password);
+    }
+
+    @Override
+    public void addUserToTeam(User u, Team t) {
+        remoteObj.addUserToTeam(u, t);
     }
 }
