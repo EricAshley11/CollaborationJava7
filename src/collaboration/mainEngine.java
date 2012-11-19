@@ -301,4 +301,8 @@ public class mainEngine {
     void updateUser(String newName, String newPhone, String newEmail) {
         ClientBackend.getInstance().updateUser(newName, newPhone, newEmail);
     }
+    
+    boolean userHasTeam() {
+        return false; // TODO: CAM return your boolean method here :)
+    }
 }
