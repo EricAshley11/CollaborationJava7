@@ -43,7 +43,9 @@ public class Backend implements Serializable, IBackend{
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/project");  
             IProjectsResource pr = cr.wrap(IProjectsResource.class);
-            return pr.retrieve(u.getID());
+            ArrayList<Project> retVal = pr.retrieve(u.getID());
+            cr.release();
+            return retVal;
     }
 
     
@@ -127,6 +129,7 @@ public class Backend implements Serializable, IBackend{
                         "http://"+serverAddr+":8182/collab/user/"+id);  
                     IUserResource ur = cr.wrap(IUserResource.class);
                     ur.remove();
+                    cr.release();
                 }
             }
             
@@ -138,7 +141,9 @@ public class Backend implements Serializable, IBackend{
             ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/user/"+id);  
             IUserResource ur = cr.wrap(IUserResource.class);
-            return ur.retrieve();
+            User u = ur.retrieve();
+            cr.release();
+            return u;
     }
 
     
@@ -147,7 +152,9 @@ public class Backend implements Serializable, IBackend{
             ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/user");  
             IUsersResource ur = cr.wrap(IUsersResource.class);
-            return ur.create(new String[]{userName, password, phoneNum, email});
+            User u = ur.create(new String[]{userName, password, phoneNum, email});
+            cr.release();
+            return u;
     }
 
 
@@ -163,9 +170,13 @@ public class Backend implements Serializable, IBackend{
            "http://"+serverAddr+":8182/collab/project/"+newProj.getID());
         IProjectResource pr2 = cr2.wrap(IProjectResource.class);
         if(pr2.store(newProj)){
+            cr.release();
+            cr2.release();
             return newProj;
         }else{
             System.err.println("Error creating Project: "+projectName);
+            cr.release();
+            cr2.release();
             return null;
         }
     }
@@ -176,7 +187,9 @@ public class Backend implements Serializable, IBackend{
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/team");  
             ITeamsResource tr = cr.wrap(ITeamsResource.class);
-            return tr.create(teamName);
+            Team t =tr.create(teamName);
+            cr.release();
+            return t;
     }
 
     
@@ -185,7 +198,9 @@ public class Backend implements Serializable, IBackend{
             ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/userstory");  
             IUserStoriesResource ur = cr.wrap(IUserStoriesResource.class);
-            return ur.create(usName);
+            UserStory us = ur.create(usName);
+            cr.release();
+            return us;
     }
 
     
@@ -194,7 +209,9 @@ public class Backend implements Serializable, IBackend{
         ClientResource cr = new ClientResource(  
             "http://"+serverAddr+":8182/collab/task");  
         ITasksResource ur = cr.wrap(ITasksResource.class);
-        return ur.create(taskName);
+        Task t =ur.create(taskName);
+        cr.release();
+        return t;
     }
 
 
@@ -203,7 +220,9 @@ public class Backend implements Serializable, IBackend{
         ClientResource cr = new ClientResource(  
             "http://"+serverAddr+":8182/collab/milestone");  
         IMilestonesResource ur = cr.wrap(IMilestonesResource.class);
-        return ur.create(milestoneName);
+        Milestone m = ur.create(milestoneName);
+        cr.release();
+        return m;
     }
     
     @Override
@@ -211,7 +230,9 @@ public class Backend implements Serializable, IBackend{
             ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/user");  
             IUsersResource ur = cr.wrap(IUsersResource.class);
-            return ur.retrieve(name);
+            List<User> u = ur.retrieve(name);
+            cr.release();
+            return u;
     }
 
     @Override
@@ -219,7 +240,9 @@ public class Backend implements Serializable, IBackend{
             ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/login/"+userName);  
             ILoginResource lr = cr.wrap(ILoginResource.class);
-            return lr.login(password);
+            User u =lr.login(password);
+            cr.release();
+            return u;
     }
     
     @Override
@@ -241,43 +264,57 @@ public class Backend implements Serializable, IBackend{
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/milestone/"+m.getID());  
             IMilestoneResource mr = cr.wrap(IMilestoneResource.class);
-            return mr.store(m);
+            boolean flag = mr.store(m);
+            cr.release();
+            return flag;
     }
     private boolean saveProject(Project p){
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/project/"+p.getID());  
             IProjectResource pr = cr.wrap(IProjectResource.class);
-            return pr.store(p);
+            boolean flag = pr.store(p);
+            cr.release();
+            return flag;
     }
     private boolean saveSchedule(Schedule s){
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/schedule/"+s.getID());  
             IScheduleResource sr = cr.wrap(IScheduleResource.class);
-            return sr.store(s);
+            boolean flag = sr.store(s);
+            cr.release();
+            return flag;
     }
     private boolean saveTask(Task t){
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/task/"+t.getID());  
             ITaskResource tr = cr.wrap(ITaskResource.class);
-            return tr.store(t);
+            boolean flag = tr.store(t);
+            cr.release();
+            return flag;
     }
     private boolean saveTeam(Team t){
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/team/"+t.getID());  
             ITeamResource tr = cr.wrap(ITeamResource.class);
-            return tr.store(t);
+            boolean flag = tr.store(t);
+            cr.release();
+            return flag;
     }
     private boolean saveUser(User u){
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/user/"+u.getID());  
             IUserResource ur = cr.wrap(IUserResource.class);
-            return ur.store(u);
+            boolean flag = ur.store(u);
+            cr.release();
+            return flag;
     }
     private boolean saveUserStory(UserStory us){
         ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/userstory/"+us.getID());  
             IUserStoryResource ur = cr.wrap(IUserStoryResource.class);
-            return ur.store(us);
+            boolean flag = ur.store(us);
+            cr.release();
+            return flag;
     }
 
     public void editProjectName(Project proj, String editedProjectName) {
@@ -285,7 +322,17 @@ public class Backend implements Serializable, IBackend{
         this.saveEntity(proj);
     }
 
-    public void updateUser(String newName, String newPhone, String newEmail) {
+    public void updateUser(User user, String newName, String newPhone, String newEmail) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public ArrayList<Team> getAllTeams() {
+            ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/team/");  
+            ITeamsResource tr = cr.wrap(ITeamsResource.class);
+            ArrayList<Team> teams = tr.retrieve();
+            cr.release();
+            return teams;
     }
 }

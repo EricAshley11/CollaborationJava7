@@ -17,7 +17,7 @@ public class TeamsResource extends ServerResource implements ITeamsResource{
 
     @Override
     public ArrayList<Team> retrieve() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return QueryManager.getInstance().getAll(Team.class);
     }
 
     @Override

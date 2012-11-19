@@ -47,4 +47,5 @@ public interface IBackend {
     
     void editProjectName(Project proj, String editedProjectName);
     
+    ArrayList<Team> getAllTeams();
 }

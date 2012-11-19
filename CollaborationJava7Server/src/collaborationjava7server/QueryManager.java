@@ -191,4 +191,12 @@ class QueryManager {
         System.out.println("Created Milestone " + name+", id: "+m.getID());
         return m;
     }
+
+    <T> ArrayList<T> getAll(Class<T> aClass) {
+        String queryTxt = "SELECT T FROM :type T";
+        TypedQuery<T> query = em.createQuery(queryTxt, aClass);
+        List<T> results = query.setParameter("type", aClass.getSimpleName()).getResultList();
+        ArrayList<T> retVal = new ArrayList(results);
+        return retVal;
+    }
 }

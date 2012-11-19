@@ -298,11 +298,20 @@ public class mainEngine {
         ClientBackend.getInstance().editProjectName(proj, editedProjectName);
     }
 
-    void updateUser(String newName, String newPhone, String newEmail) {
-        ClientBackend.getInstance().updateUser(newName, newPhone, newEmail);
+    void updateUser(User user, String newName, String newPhone, String newEmail) {
+        ClientBackend.getInstance().updateUser(user, newName, newPhone, newEmail);
     }
     
     boolean userHasTeam() {
-        return false; // TODO: CAM return your boolean method here :)
+        if(user.getTeam()!=null)
+            return true;
+        return false;
+    }
+    JComboBox<Team> createTeamComboBox(){
+        JComboBox<Team> retVal = new JComboBox<Team>();
+        for(Team team : ClientBackend.getInstance().getAllTeams()){
+            retVal.addItem(team);
+        }
+        return retVal;
     }
 }
