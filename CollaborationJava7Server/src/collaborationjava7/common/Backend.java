@@ -329,7 +329,7 @@ public class Backend implements Serializable, IBackend{
     @Override
     public ArrayList<Team> getAllTeams() {
             ClientResource cr = new ClientResource(  
-                "http://"+serverAddr+":8182/collab/team/");  
+                "http://"+serverAddr+":8182/collab/team");  
             ITeamsResource tr = cr.wrap(ITeamsResource.class);
             ArrayList<Team> teams = tr.retrieve();
             cr.release();
