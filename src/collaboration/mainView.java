@@ -193,7 +193,7 @@ public class mainView extends javax.swing.JFrame {
         noTeamCreateNewTeamJButton = new javax.swing.JButton();
         noTeamJoinExistingTeamJButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        createNewTeamDialog = new javax.swing.JFrame();
+        createNewTeamJFrame = new javax.swing.JFrame();
         createProjectTeamJButton = new javax.swing.JButton();
         createProjectTeamNameTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -201,7 +201,7 @@ public class mainView extends javax.swing.JFrame {
         createProjectTeamJPasswordField = new javax.swing.JPasswordField();
         createProjectTeamConfirmJPasswordField = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
-        createNewTeamDialog1 = new javax.swing.JFrame();
+        createNewTeamJFrame1 = new javax.swing.JFrame();
         noTeamCreateNewTeamJButton2 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -1351,12 +1351,12 @@ public class mainView extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        createNewTeamDialog.setTitle("Join or Create Team");
-        createNewTeamDialog.setBounds(new java.awt.Rectangle(55, 55, 369, 250));
-        createNewTeamDialog.setMaximumSize(new java.awt.Dimension(369, 250));
-        createNewTeamDialog.setMinimumSize(new java.awt.Dimension(369, 250));
-        createNewTeamDialog.setPreferredSize(new java.awt.Dimension(369, 250));
-        createNewTeamDialog.setResizable(false);
+        createNewTeamJFrame.setTitle("Join or Create Team");
+        createNewTeamJFrame.setBounds(new java.awt.Rectangle(55, 55, 369, 250));
+        createNewTeamJFrame.setMaximumSize(new java.awt.Dimension(369, 250));
+        createNewTeamJFrame.setMinimumSize(new java.awt.Dimension(369, 250));
+        createNewTeamJFrame.setPreferredSize(new java.awt.Dimension(369, 250));
+        createNewTeamJFrame.setResizable(false);
 
         createProjectTeamJButton.setText("Create Project Team");
         createProjectTeamJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1371,57 +1371,53 @@ public class mainView extends javax.swing.JFrame {
 
         jLabel7.setText("Project Password:");
 
-        createProjectTeamJPasswordField.setText("jPasswordField1");
-
-        createProjectTeamConfirmJPasswordField.setText("jPasswordField1");
-
         jLabel8.setText("Confirm Password:");
 
-        javax.swing.GroupLayout createNewTeamDialogLayout = new javax.swing.GroupLayout(createNewTeamDialog.getContentPane());
-        createNewTeamDialog.getContentPane().setLayout(createNewTeamDialogLayout);
-        createNewTeamDialogLayout.setHorizontalGroup(
-            createNewTeamDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createNewTeamDialogLayout.createSequentialGroup()
+        javax.swing.GroupLayout createNewTeamJFrameLayout = new javax.swing.GroupLayout(createNewTeamJFrame.getContentPane());
+        createNewTeamJFrame.getContentPane().setLayout(createNewTeamJFrameLayout);
+        createNewTeamJFrameLayout.setHorizontalGroup(
+            createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createNewTeamJFrameLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(createNewTeamDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(createProjectTeamJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(createNewTeamDialogLayout.createSequentialGroup()
-                        .addGroup(createNewTeamDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(createNewTeamJFrameLayout.createSequentialGroup()
+                        .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
                             .addComponent(jLabel8))
                         .addGap(14, 14, 14)
-                        .addGroup(createNewTeamDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(createProjectTeamConfirmJPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                             .addComponent(createProjectTeamJPasswordField)
                             .addComponent(createProjectTeamNameTextField))))
                 .addContainerGap())
         );
-        createNewTeamDialogLayout.setVerticalGroup(
-            createNewTeamDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createNewTeamDialogLayout.createSequentialGroup()
+        createNewTeamJFrameLayout.setVerticalGroup(
+            createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createNewTeamJFrameLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(createNewTeamDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createProjectTeamNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(11, 11, 11)
-                .addGroup(createNewTeamDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(createProjectTeamJPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(createNewTeamDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(createProjectTeamConfirmJPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addComponent(createProjectTeamJButton)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
-        createNewTeamDialog1.setTitle("Join or Create Team");
-        createNewTeamDialog1.setBounds(new java.awt.Rectangle(55, 55, 369, 150));
-        createNewTeamDialog1.setMaximumSize(new java.awt.Dimension(369, 150));
-        createNewTeamDialog1.setMinimumSize(new java.awt.Dimension(369, 150));
-        createNewTeamDialog1.setPreferredSize(new java.awt.Dimension(369, 150));
+        createNewTeamJFrame1.setTitle("Join or Create Team");
+        createNewTeamJFrame1.setBounds(new java.awt.Rectangle(55, 55, 369, 150));
+        createNewTeamJFrame1.setMaximumSize(new java.awt.Dimension(369, 150));
+        createNewTeamJFrame1.setMinimumSize(new java.awt.Dimension(369, 150));
+        createNewTeamJFrame1.setPreferredSize(new java.awt.Dimension(369, 150));
 
         noTeamCreateNewTeamJButton2.setText("Create Project");
 
@@ -1437,41 +1433,41 @@ public class mainView extends javax.swing.JFrame {
 
         jLabel11.setText("Confirm Password:");
 
-        javax.swing.GroupLayout createNewTeamDialog1Layout = new javax.swing.GroupLayout(createNewTeamDialog1.getContentPane());
-        createNewTeamDialog1.getContentPane().setLayout(createNewTeamDialog1Layout);
-        createNewTeamDialog1Layout.setHorizontalGroup(
-            createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createNewTeamDialog1Layout.createSequentialGroup()
+        javax.swing.GroupLayout createNewTeamJFrame1Layout = new javax.swing.GroupLayout(createNewTeamJFrame1.getContentPane());
+        createNewTeamJFrame1.getContentPane().setLayout(createNewTeamJFrame1Layout);
+        createNewTeamJFrame1Layout.setHorizontalGroup(
+            createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createNewTeamJFrame1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(noTeamCreateNewTeamJButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(createNewTeamDialog1Layout.createSequentialGroup()
-                        .addGroup(createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(createNewTeamJFrame1Layout.createSequentialGroup()
+                        .addGroup(createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel9)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jPasswordField3, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                                 .addComponent(jPasswordField4)))
                         .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        createNewTeamDialog1Layout.setVerticalGroup(
-            createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createNewTeamDialog1Layout.createSequentialGroup()
+        createNewTeamJFrame1Layout.setVerticalGroup(
+            createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createNewTeamJFrame1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(11, 11, 11)
-                .addGroup(createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(createNewTeamDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(createNewTeamJFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jPasswordField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2188,18 +2184,22 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_aboutButtonActionPerformed
 
     private void newProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProjectButtonActionPerformed
-        try {
-            String projectTitle = JOptionPane.showInputDialog("Project Title");
-            if (!projectTitle.isEmpty()) {
-                Project newProj = engine.createProject(projectTitle);
-                projectComboBox.addItem(newProj);
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Project title is required to create a new project",
-                        "Title Required", JOptionPane.DEFAULT_OPTION);
-            }
-        } catch (Exception e) {//do nothing if canceled
-        }
+//        try {
+//            String projectTitle = JOptionPane.showInputDialog("Project Title");
+//            if (!projectTitle.isEmpty()) {
+//                Project newProj = engine.createProject(projectTitle);
+//                projectComboBox.addItem(newProj);
+//            } else {
+//                JOptionPane.showMessageDialog(this,
+//                        "Project title is required to create a new project",
+//                        "Title Required", JOptionPane.DEFAULT_OPTION);
+//            }
+//        } catch (Exception e) {//do nothing if canceled
+//        }
+        createProjectTeamNameTextField.setText("");
+        createProjectTeamJPasswordField.setText("");
+        createProjectTeamConfirmJPasswordField.setText("");
+        createNewTeamJFrame.setVisible(true);
     }//GEN-LAST:event_newProjectButtonActionPerformed
 
     private void editProjectSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectSaveButtonActionPerformed
@@ -2444,7 +2444,10 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_removeCalendarButtonActionPerformed
 
     private void noTeamCreateNewTeamJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTeamCreateNewTeamJButtonActionPerformed
-        createNewTeamDialog.setVisible(true);
+        createProjectTeamNameTextField.setText("");
+        createProjectTeamJPasswordField.setText("");
+        createProjectTeamConfirmJPasswordField.setText("");
+        createNewTeamJFrame.setVisible(true);
     }//GEN-LAST:event_noTeamCreateNewTeamJButtonActionPerformed
 
     private void noTeamJoinExistingTeamJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTeamJoinExistingTeamJButtonActionPerformed
@@ -2455,7 +2458,16 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_noTeamJoinExistingTeamJButtonActionPerformed
 
     private void createProjectTeamJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProjectTeamJButtonActionPerformed
-        // TODO add your handling code here:
+        String projectTitle = createProjectTeamNameTextField.getText();
+        if (!projectTitle.isEmpty()) {
+            Project newProj = engine.createProject(projectTitle);
+            projectComboBox.addItem(newProj);
+            createNewTeamJFrame.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Project title is required to create a new project",
+                    "Title Required", JOptionPane.DEFAULT_OPTION);
+        }
     }//GEN-LAST:event_createProjectTeamJButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
@@ -2514,8 +2526,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JButton createCalendarButton;
     private javax.swing.JButton createEventButton;
-    private javax.swing.JFrame createNewTeamDialog;
-    private javax.swing.JFrame createNewTeamDialog1;
+    private javax.swing.JFrame createNewTeamJFrame;
+    private javax.swing.JFrame createNewTeamJFrame1;
     private javax.swing.JPasswordField createProjectTeamConfirmJPasswordField;
     private javax.swing.JButton createProjectTeamJButton;
     private javax.swing.JPasswordField createProjectTeamJPasswordField;
@@ -2674,3 +2686,4 @@ public class mainView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 //</editor-fold>
+
