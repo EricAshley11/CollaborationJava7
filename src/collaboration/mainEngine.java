@@ -325,4 +325,10 @@ public class mainEngine {
     void addUserToTeam(User user, Team team) {
         ClientBackend.getInstance().addUserToTeam(user, team);
     }
+    void addUserToTeam(Team team) {
+        ClientBackend.getInstance().addUserToTeam(this.user, team);
+    }
+    Team createTeam(String teamName, String password){
+        return ClientBackend.getInstance().createTeam(teamName, password);
+    }
 }
