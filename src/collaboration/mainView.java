@@ -210,7 +210,7 @@ public class mainView extends javax.swing.JFrame {
         jPasswordField4 = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         joinExistingTeamJFrame = new javax.swing.JFrame();
-        noTeamCreateNewTeamJButton3 = new javax.swing.JButton();
+        joinExistingTeamJoinJButton = new javax.swing.JButton();
         joinExistingComboBox = new javax.swing.JComboBox();
         projectComboBox = new javax.swing.JComboBox();
         signOutButton = new javax.swing.JButton();
@@ -1303,9 +1303,7 @@ public class mainView extends javax.swing.JFrame {
 
         noTeamJFrame.setTitle("Join or Create Team");
         noTeamJFrame.setBounds(new java.awt.Rectangle(55, 55, 369, 150));
-        noTeamJFrame.setMaximumSize(new java.awt.Dimension(369, 170));
         noTeamJFrame.setMinimumSize(new java.awt.Dimension(369, 170));
-        noTeamJFrame.setPreferredSize(new java.awt.Dimension(369, 170));
 
         noTeamCreateNewTeamJButton.setText("Create New Team");
         noTeamCreateNewTeamJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1400,17 +1398,17 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createProjectTeamNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(createProjectTeamJPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(createProjectTeamConfirmJPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
                 .addComponent(createProjectTeamJButton)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         createNewTeamJFrame1.setTitle("Join or Create Team");
@@ -1481,7 +1479,12 @@ public class mainView extends javax.swing.JFrame {
         joinExistingTeamJFrame.setMinimumSize(new java.awt.Dimension(369, 150));
         joinExistingTeamJFrame.setPreferredSize(new java.awt.Dimension(369, 150));
 
-        noTeamCreateNewTeamJButton3.setText("Join");
+        joinExistingTeamJoinJButton.setText("Join");
+        joinExistingTeamJoinJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                joinExistingTeamJoinJButtonActionPerformed(evt);
+            }
+        });
 
         joinExistingComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Team1" }));
 
@@ -1493,7 +1496,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(joinExistingTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(joinExistingComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(noTeamCreateNewTeamJButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
+                    .addComponent(joinExistingTeamJoinJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
                 .addContainerGap())
         );
         joinExistingTeamJFrameLayout.setVerticalGroup(
@@ -1502,8 +1505,8 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(joinExistingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(noTeamCreateNewTeamJButton3)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(joinExistingTeamJoinJButton)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2451,8 +2454,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_noTeamCreateNewTeamJButtonActionPerformed
 
     private void noTeamJoinExistingTeamJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTeamJoinExistingTeamJButtonActionPerformed
-        JComboBox<Team> test = engine.createTeamComboBox();
-        joinExistingComboBox.setModel(test.getModel());
+        joinExistingComboBox.setModel(new javax.swing.DefaultComboBoxModel(engine.createTeamComboBox()));
         //joinExistingComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Team1" }));
         joinExistingTeamJFrame.setVisible(true);
     }//GEN-LAST:event_noTeamJoinExistingTeamJButtonActionPerformed
@@ -2469,6 +2471,10 @@ public class mainView extends javax.swing.JFrame {
                     "Title Required", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_createProjectTeamJButtonActionPerformed
+
+    private void joinExistingTeamJoinJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinExistingTeamJoinJButtonActionPerformed
+        engine.addUserToTeam(joinExistingComboBox.getSelectedIndex());
+    }//GEN-LAST:event_joinExistingTeamJoinJButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -2644,6 +2650,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTree jTree1;
     private javax.swing.JComboBox joinExistingComboBox;
     private javax.swing.JFrame joinExistingTeamJFrame;
+    private javax.swing.JButton joinExistingTeamJoinJButton;
     private javax.swing.JButton loginButton;
     private javax.swing.JFrame loginJFrame;
     private javax.swing.JPanel loginJPanel;
@@ -2651,7 +2658,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton newProjectButton;
     private javax.swing.JButton noTeamCreateNewTeamJButton;
     private javax.swing.JButton noTeamCreateNewTeamJButton2;
-    private javax.swing.JButton noTeamCreateNewTeamJButton3;
     private javax.swing.JFrame noTeamJFrame;
     private javax.swing.JButton noTeamJoinExistingTeamJButton;
     private javax.swing.JLabel passwordJLabel;
@@ -2686,4 +2692,3 @@ public class mainView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 //</editor-fold>
-

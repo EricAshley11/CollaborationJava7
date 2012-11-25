@@ -310,10 +310,16 @@ public class mainEngine {
         return false;
     }
 
-    JComboBox<Team> createTeamComboBox() {
-        JComboBox<Team> retVal = new JComboBox<Team>();
-        for (Team team : ClientBackend.getInstance().getAllTeams()) {
-            retVal.addItem(team);
+    String[] createTeamComboBox() {
+//        JComboBox<Team> retVal = new JComboBox<Team>();
+//        for (Team team : ClientBackend.getInstance().getAllTeams()) {
+//            retVal.addItem(team);
+//        }
+//        return retVal;
+        ArrayList<Team> teamList = ClientBackend.getInstance().getAllTeams();
+        String[] retVal = new String[ClientBackend.getInstance().getAllTeams().size()];
+        for (int i = 0; i < teamList.size(); i++) {
+            retVal[i] = teamList.get(i).getName();
         }
         return retVal;
     }
@@ -325,8 +331,8 @@ public class mainEngine {
     void addUserToTeam(User user, Team team) {
         ClientBackend.getInstance().addUserToTeam(user, team);
     }
-    void addUserToTeam(Team team) {
-        ClientBackend.getInstance().addUserToTeam(this.user, team);
+    void addUserToTeam(int indexSelected) {
+        ClientBackend.getInstance().addUserToTeam(this.user, ClientBackend.getInstance().getAllTeams().get(indexSelected));
     }
     Team createTeam(String teamName, String password){
         return ClientBackend.getInstance().createTeam(teamName, password);
