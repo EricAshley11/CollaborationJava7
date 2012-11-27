@@ -29,7 +29,7 @@ public class JTogglHelper {
     boolean billable;
     //---------------------------
     
-    Project project;    
+    ch.simas.jtoggl.Project project;    
     Date endTime;
     
     JTogglHelper(String userName, String password){
@@ -64,16 +64,16 @@ public class JTogglHelper {
     }
     
     ArrayList<String> getProjectNames(){
-        List<Project> projs = jToggl.getProjects();
+        List<ch.simas.jtoggl.Project> projs = jToggl.getProjects();
         ArrayList<String> retVal = new ArrayList<>();
-        for(Project p : projs){
+        for(ch.simas.jtoggl.Project p : projs){
             retVal.add(p.getName());
         }
         return retVal;
     }
-    private Project getProjectByName(String name){
-        List<Project> projs = jToggl.getProjects();
-        for(Project p : projs){
+    private ch.simas.jtoggl.Project getProjectByName(String name){
+        List<ch.simas.jtoggl.Project> projs = jToggl.getProjects();
+        for(ch.simas.jtoggl.Project p : projs){
             if(p.getName().equals(name)){
                 return p;
             }
@@ -82,7 +82,7 @@ public class JTogglHelper {
     }
     boolean selectProjectByName(String name){
         boolean flag = false;
-        Project p = getProjectByName(name);
+        ch.simas.jtoggl.Project p = getProjectByName(name);
         if(p != null){
             project = p;
             flag = true;
