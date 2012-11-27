@@ -21,7 +21,8 @@ public class UserStoriesResource extends ServerResource implements IUserStoriesR
 
     @Override
     public ArrayList<UserStory> retrieve() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ArrayList<UserStory> us = QueryManager.getInstance().getAll(UserStory.class);
+        return us;
     }
     
 }

@@ -5,11 +5,14 @@
 package collaborationjava7.common;
 
 import java.io.Serializable;
+import javax.persistence.Embeddable;
+import javax.persistence.Id;
 
 /**
  *
  */
-public class State implements Serializable {
+@Embeddable
+public class Status implements Serializable {
 
     public enum States {
 
@@ -45,12 +48,12 @@ public class State implements Serializable {
     private boolean blocked;
     private States state;
     
-    public State() {
+    public Status() {
         this.blocked = false;
         this.state = States.INITIAL;
     }
 
-    public State nextState() {
+    public Status nextState() {
         this.state = this.state.getNext();
         return this;
     }
@@ -70,5 +73,9 @@ public class State implements Serializable {
 
     public String getDisplayString() {
         return this.state.getDisplayString();
+    }
+    @Override
+    public String toString(){
+        return this.getDisplayString();
     }
 }

@@ -341,4 +341,21 @@ public class mainEngine {
     Team createTeam(String teamName, String password){
         return ClientBackend.getInstance().createTeam(teamName, password);
     }
+    void createProjectUsersComboBox(JComboBox comboBox){
+        comboBox.removeAllItems();
+        for(User u : ClientBackend.getInstance().retrieveUsers(selectedProj)){
+            comboBox.addItem(u);
+        }
+    }
+    Object[] getNewTaskRow(User lead, UserStory userStory, String taskName, String estimated, String actual){
+        Task task = ClientBackend.getInstance().createTask(lead, userStory, taskName, Integer.parseInt(estimated), Integer.parseInt(actual));
+        return task.toString().split(",");
+    }
+
+    void createProjectUserStoriesComboBox(JComboBox newTaskUserStoryComboBox) {
+        newTaskUserStoryComboBox.removeAllItems();
+        for(UserStory us : ClientBackend.getInstance().getUserStories(selectedProj)){
+            newTaskUserStoryComboBox.addItem(us);
+        }
+    }
 }

@@ -41,6 +41,9 @@ public class Project implements Serializable{
     public void setSchedule(Schedule s){
         this.schedule = s;
     }
+    public Schedule getSchedule(){
+        return this.schedule;
+    }
 
     public Team getTeam() {
         return team;

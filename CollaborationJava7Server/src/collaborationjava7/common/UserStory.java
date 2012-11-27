@@ -21,7 +21,7 @@ public class UserStory implements Serializable {
     private ArrayList<Task> tasks;
     @ManyToOne
     private Milestone milestone;
-    private State state;
+    private Status state;
     private String name;
 
     public UserStory() {
@@ -73,5 +73,12 @@ public class UserStory implements Serializable {
     }
     public long getID() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public String toString(){
+        return this.getName();
     }
 }

@@ -8,6 +8,7 @@ import javax.persistence.*;
 /**
  * This object contains milestone information to be used in projects
  */
+@Entity
 public class Milestone implements Serializable{
 
     @Id @GeneratedValue
@@ -18,8 +19,15 @@ public class Milestone implements Serializable{
     String name;
     String description;
     boolean isCompleted;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     Date estimatedCompDate;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     Date completeDate;
+
+    public Milestone() {
+    }
 
     public Milestone(String name) {
         this.name = name;

@@ -34,18 +34,35 @@ public class ClientBackend implements IBackend{
         User tommy = getInstance().createUser("tommy", "abc", "616-4444", "tommy@test");
         User ericM = getInstance().createUser("ericm", "abc", "616-5555", "ericm@test");
         User mike = getInstance().createUser("mike", "abc", "616-6666", "mike@test");
-        
         Team team = getInstance().createTeam("collabTeam", "abc");
-        team.addMember(cam);
-        team.addMember(zach);
-        team.addMember(ericA);
-        team.addMember(tommy);
-        team.addMember(ericM);
-        team.addMember(mike);
-        getInstance().saveEntity(team);
+        getInstance().addUserToTeam(cam, team);
+        getInstance().addUserToTeam(zach, team);
+        getInstance().addUserToTeam(ericA, team);
+        getInstance().addUserToTeam(tommy, team);
+        getInstance().addUserToTeam(ericM, team);
+        getInstance().addUserToTeam(mike, team);
         
         Project proj1 = getInstance().createProject("testProj1", cam);
         Project proj2 = getInstance().createProject("testProj2", cam);
+        
+        UserStory us1 = getInstance().createUserStory("testUS1");
+        UserStory us2 = getInstance().createUserStory("testUS2");
+        
+        Milestone ms1 = getInstance().createMilestone("testMS1", proj1.getSchedule());
+        Milestone ms2 = getInstance().createMilestone("testMS2", proj2.getSchedule());
+        
+        ms1.addUserStory(us1);
+        ms2.addUserStory(us2);
+        
+        getInstance().saveEntity(proj1);
+        getInstance().saveEntity(proj2);
+        getInstance().saveEntity(us1);
+        getInstance().saveEntity(us2);
+        getInstance().saveEntity(ms1);
+        getInstance().saveEntity(ms2);
+        
+        Task t1 = getInstance().createTask(cam, us1, "testTask1", 1, 0);
+        Task t2 = getInstance().createTask(zach, us2, "testTask2", 2, 0);
         
     }
     //This constructor is private because we want this class to be a singleton
@@ -126,17 +143,7 @@ public class ClientBackend implements IBackend{
         }
         return null;
     }
-
-    @Override
-    public Milestone createMilestone(String milestoneName) {
-        return remoteObj.createMilestone(milestoneName);
-    }
-
-    @Override
-    public Task createTask(String taskName) {
-        return remoteObj.createTask(taskName);
-    }
-
+    
     @Override
     public List<User> getUsersFromName(String name) {
         return remoteObj.getUsersFromName(name);
@@ -178,5 +185,24 @@ public class ClientBackend implements IBackend{
     @Override
     public void addUserToTeam(User u, Team t) {
         remoteObj.addUserToTeam(u, t);
+    }
+
+    @Override
+    public UserStory getUserStoryFromName(String userStory) {
+        return remoteObj.getUserStoryFromName(userStory);
+    }
+
+    @Override
+    public Task createTask(User lead, UserStory userStory, String taskName, int estimated, int actual) {
+        return remoteObj.createTask(lead, userStory, taskName, estimated, actual);
+    }
+
+    ArrayList<UserStory> getUserStories(Project project) {
+        return remoteObj.getUserStories(project);
+    }
+
+    @Override
+    public Milestone createMilestone(String name, Schedule sched) {
+        return remoteObj.createMilestone(name, sched);
     }
 }

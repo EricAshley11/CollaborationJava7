@@ -24,7 +24,7 @@ public class MilestoneResource extends ServerResource implements IMilestoneResou
 
     @Override
     public boolean store(Milestone milestone) {
-        return QueryManager.getInstance().updateObj(this);
+        return QueryManager.getInstance().updateObj(milestone);
     }
 
     @Override

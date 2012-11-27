@@ -57,4 +57,7 @@ public class Schedule implements Serializable {
     public long getID() {
         return id;
     }
+    public ArrayList<Milestone> getMilestones(){
+        return milestones;
+    }
 }

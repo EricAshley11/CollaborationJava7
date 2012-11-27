@@ -215,25 +215,13 @@ public class Backend implements Serializable, IBackend{
     }
 
     
-    @Override
-    public Task createTask(String taskName)  {
+    private Task createTask(String taskName)  {
         ClientResource cr = new ClientResource(  
             "http://"+serverAddr+":8182/collab/task");  
         ITasksResource ur = cr.wrap(ITasksResource.class);
         Task t =ur.create(taskName);
         cr.release();
         return t;
-    }
-
-
-    @Override
-    public Milestone createMilestone(String milestoneName)  {
-        ClientResource cr = new ClientResource(  
-            "http://"+serverAddr+":8182/collab/milestone");  
-        IMilestonesResource ur = cr.wrap(IMilestonesResource.class);
-        Milestone m = ur.create(milestoneName);
-        cr.release();
-        return m;
     }
     
     @Override
@@ -357,5 +345,55 @@ public class Backend implements Serializable, IBackend{
         t.addMember(u);
         this.saveEntity(t);
         this.saveEntity(u);
+    }
+
+    public UserStory getUserStoryFromName(String userStory) {
+        ClientResource cr = new ClientResource(
+                "http://"+serverAddr+":8182/collab/userstory");
+        IUserStoriesResource ur = cr.wrap(IUserStoriesResource.class);
+        ArrayList<UserStory> userStories = ur.retrieve();
+        for(UserStory us : userStories){
+            if(us.getName().equals(userStory)){
+                cr.release();
+                return us;
+            }
+        }
+        cr.release();
+        return null;
+    }
+
+    @Override
+    public Task createTask(User lead, UserStory userStory, String taskName, int estimated, int actual) {
+        Task retVal = this.createTask(taskName);
+        retVal.changeUser(lead);
+        retVal.changeUserStory(userStory);
+        retVal.setTimeEstimate(estimated);
+        retVal.setTimeActual(actual);
+        this.saveEntity(lead);
+        this.saveEntity(retVal);
+        this.saveEntity(userStory);
+        return retVal;    
+    }
+
+    public ArrayList<UserStory> getUserStories(Project project) {        
+        ArrayList<Milestone> milestones = project.getSchedule().getMilestones();
+        ArrayList<UserStory> retVal = new ArrayList<UserStory>();
+        for(Milestone m : milestones){
+            retVal.addAll(m.getUserStories());
+        }
+        return retVal;
+    }
+
+    @Override
+    public Milestone createMilestone(String name, Schedule sched) {
+        ClientResource cr = new ClientResource(  
+            "http://"+serverAddr+":8182/collab/milestone");  
+        IMilestonesResource mr = cr.wrap(IMilestonesResource.class);
+        Milestone m = mr.create(name);
+        cr.release();
+        sched.addMilestone(m);
+        this.saveEntity(sched);
+        this.saveEntity(m);
+        return m;
     }
 }

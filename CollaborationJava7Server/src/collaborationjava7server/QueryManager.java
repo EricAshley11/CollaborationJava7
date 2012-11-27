@@ -6,6 +6,7 @@ package collaborationjava7server;
 import collaborationjava7.common.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.jdo.Transaction;
 import javax.persistence.*;
 
 /**
@@ -126,10 +127,6 @@ class QueryManager {
     List<Milestone> getMilestonesByName(String name){
         return getByName(name, Milestone.class);
     }
-    List<State> getStatesByName(String name){
-        return getByName(name, State.class);
-    }
-    
     private <T> List<T> getByName(String name, Class<T> type){
         String qText = "SELECT T FROM "+type.getSimpleName()+" T WHERE T.name = \""+name+"\"";
         TypedQuery<T> q = em.createQuery(qText, type);
@@ -170,8 +167,8 @@ class QueryManager {
     Milestone getMilestoneByID(long id){
         return getByID(id, Milestone.class);
     }
-    State getStateByID(long id){
-        return getByID(id, State.class);
+    Status getStatusByID(long id){
+        return getByID(id, Status.class);
     }
 
     Task createTask(String name) {
@@ -179,17 +176,29 @@ class QueryManager {
         Task t = new Task(name);
         em.persist(t);
         em.getTransaction().commit();
-        System.out.println("Created Task " + name+", id: "+t.getID());
+        //System.out.println("Created Task " + name+", id: "+t.getID());
         return t;
     }
 
     Milestone createMilestone(String name) {
-        em.getTransaction().begin();
+        EntityTransaction t = em.getTransaction();
+        if(t.isActive()){
+            System.out.println("transaction still active");
+        }
+        t.begin();
         Milestone m = new Milestone(name);
         em.persist(m);
         em.getTransaction().commit();
         System.out.println("Created Milestone " + name+", id: "+m.getID());
         return m;
+    }
+    Status createStatus(){
+        em.getTransaction().begin();;
+        Status s = new Status();
+        em.persist(s);
+        em.getTransaction().commit();
+        System.out.println("Created new Status");
+        return s;
     }
 
     <T> ArrayList<T> getAll(Class<T> aClass) {

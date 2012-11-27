@@ -13,11 +13,9 @@ import java.util.List;
  */
 public interface IBackend {
 
-    Milestone createMilestone(String milestoneName);
-
     Project createProject(String projectName, User u);
 
-    Task createTask(String taskName);
+    Task createTask(User lead, UserStory userStory, String taskName, int estimated, int actual );
 
     Team createTeam(String teamName, String password);
 
@@ -52,4 +50,8 @@ public interface IBackend {
     boolean loginTeam(Team team, String password);
     
     void addUserToTeam(User u, Team t);
+    
+    UserStory getUserStoryFromName(String userStory);
+    
+    Milestone createMilestone(String name, Schedule sched);
 }

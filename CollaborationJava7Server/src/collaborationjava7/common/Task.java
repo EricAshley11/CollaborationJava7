@@ -21,12 +21,13 @@ public class Task implements Serializable{
     private String description, name;
     @ManyToOne
     private UserStory userStory;
-    private State doneState;
+    private Status doneStatus;
 
     public Task() {
     }
     public Task(String name){
         this.name = name;
+        this.doneStatus = new Status();
     }
     public boolean removeUser(User user) {
         if (user.equals(this.user)) {
@@ -40,7 +41,8 @@ public class Task implements Serializable{
     public boolean changeUser(User user) {
         if (user != null && !user.equals(this.user)) {
             User oldUser = this.user;
-            this.user.removeTask(this);
+            if(this.user != null)
+                this.user.removeTask(this);
             this.user = user;
             user.addTask(this);
             return true;//QueryManager.getInstance().updateObjs(new Object[]{this, oldUser, this.user});
@@ -51,9 +53,10 @@ public class Task implements Serializable{
     public boolean changeUserStory(UserStory userStory) {
         if (userStory != null && !userStory.equals(this.userStory)) {
             UserStory oldUS = this.userStory;
-            this.userStory.removeTask(this);
+            if(this.userStory != null)
+                this.userStory.removeTask(this);
             this.userStory = userStory;
-            userStory.addTask(this);
+            this.userStory.addTask(this);
             return true;//QueryManager.getInstance().updateObjs(new Object[]{this, oldUS, this.userStory});
         }
         return false;
@@ -68,8 +71,8 @@ public class Task implements Serializable{
         return name;
     }
 
-    public State getState() {
-        return doneState;
+    public Status getState() {
+        return doneStatus;
     }
 
     public int getTimeActual() {
@@ -96,8 +99,8 @@ public class Task implements Serializable{
         this.name = name;
     }
 
-    public void setState(State state) {
-        this.doneState = state;
+    public void setState(Status state) {
+        this.doneStatus = state;
     }
 
     public void setTimeActual(int timeActual) {
@@ -110,6 +113,23 @@ public class Task implements Serializable{
     
     public long getID() {
         return id;
+    }
+    
+    public String toString(){
+        try{
+            return user.getName()+","+this.userStory.getName()+","+this.getName()+
+                ","+this.getState().getDisplayString()+","+this.timeEstimate+","+this.timeActual;
+        }catch(Exception e){
+            System.err.println("User: "+user+"\n"+
+                            "US: "+userStory+"\n"+
+                            "Name :"+name+"\n"+
+                            "Status :"+doneStatus+"\n"+
+                            "Est: "+timeEstimate+"\n"+
+                            "Act: "+timeActual+"\n"                
+                    
+                    );
+            return "BLANK,haha";
+        }
     }
     //</editor-fold>
 }
