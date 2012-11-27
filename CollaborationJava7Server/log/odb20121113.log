@@ -1,0 +1,87 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-11-13 17:22:19 #1 store] 
+Database '/home/burnsidz/SeniorProject/CollaborationJava7/CollaborationJava7Server/db/ProjectDB.odb' has been recovered (tr. 26-27)
+
+[2012-11-13 17:22:19 #2 store] 
+Database '/home/burnsidz/SeniorProject/CollaborationJava7/CollaborationJava7Server/db/ProjectDB.odb' is opened by 1142@eos21.cis.gvsu.edu
+
+[2012-11-13 17:22:19 #3 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-11-13 17:22:19 #4 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-11-13 17:22:19 #5 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-11-13 17:22:19 #6 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-11-13 17:22:19 #7 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-11-13 17:22:19 #8 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-11-13 17:22:19 #9 type] 
+Type collaborationjava7server.Password is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-11-13 17:26:34 #1 store] 
+Database '/home/burnsidz/SeniorProject/CollaborationJava7/CollaborationJava7Server/db/ProjectDB.odb' has been recovered (tr. 28-29)
+
+[2012-11-13 17:26:34 #2 store] 
+Database '/home/burnsidz/SeniorProject/CollaborationJava7/CollaborationJava7Server/db/ProjectDB.odb' is opened by 2166@eos21.cis.gvsu.edu
+
+[2012-11-13 17:26:37 #3 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-11-13 17:26:37 #4 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-11-13 17:26:37 #5 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-11-13 17:26:37 #6 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-11-13 17:26:37 #7 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-11-13 17:26:37 #8 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-11-13 17:26:37 #9 type] 
+Type collaborationjava7server.Password is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-11-13 17:27:43 #1 store] 
+Database '/home/burnsidz/SeniorProject/CollaborationJava7/CollaborationJava7Server/db/ProjectDB.odb' has been recovered (tr. 30-31)
+
+[2012-11-13 17:27:43 #2 store] 
+Database '/home/burnsidz/SeniorProject/CollaborationJava7/CollaborationJava7Server/db/ProjectDB.odb' is opened by 2243@eos21.cis.gvsu.edu
+
+[2012-11-13 17:27:44 #3 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-11-13 17:27:44 #4 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-11-13 17:27:44 #5 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-11-13 17:27:44 #6 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-11-13 17:27:44 #7 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-11-13 17:27:44 #8 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-11-13 17:27:44 #9 type] 
+Type collaborationjava7server.Password is not enhanced.
+
