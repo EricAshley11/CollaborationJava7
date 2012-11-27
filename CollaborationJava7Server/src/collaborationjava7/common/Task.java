@@ -15,7 +15,7 @@ public class Task implements Serializable{
 
     @Id @GeneratedValue
     private long id;
-    private int storyPointsEstimate, storyPointsActual;
+    private int timeEstimate, timeActual;
     @ManyToOne
     private User user;
     private String description, name;
@@ -72,12 +72,12 @@ public class Task implements Serializable{
         return doneState;
     }
 
-    public int getStoryPointsActual() {
-        return storyPointsActual;
+    public int getTimeActual() {
+        return timeActual;
     }
 
-    public int getStoryPointsEstimate() {
-        return storyPointsEstimate;
+    public int getTimeEstimate() {
+        return timeEstimate;
     }
 
     public User getUser() {
@@ -100,12 +100,12 @@ public class Task implements Serializable{
         this.doneState = state;
     }
 
-    public void setStoryPointsActual(int storyPointsActual) {
-        this.storyPointsActual = storyPointsActual;
+    public void setTimeActual(int timeActual) {
+        this.timeActual = timeActual;
     }
 
-    public void setStoryPointsEstimate(int storyPointsEstimate) {
-        this.storyPointsEstimate = storyPointsEstimate;
+    public void setTimeEstimate(int timeEstimate) {
+        this.timeEstimate = timeEstimate;
     }
     
     public long getID() {
