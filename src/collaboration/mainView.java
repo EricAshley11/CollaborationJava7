@@ -1497,6 +1497,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         gCalendarAddEntryJFrame.setBounds(new java.awt.Rectangle(300, 400, 410, 370));
+        gCalendarAddEntryJFrame.setEnabled(false);
 
         addEntryTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         addEntryTitleLabel.setText("Add Calendar Entry");
@@ -1522,9 +1523,19 @@ public class mainView extends javax.swing.JFrame {
         addEntryDescriptionScrollPane.setViewportView(addEntryDescriptionTextArea);
 
         addEntryCancelButton.setText("Cancel");
+        addEntryCancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addEntryCancelButtonActionPerformed(evt);
+            }
+        });
 
         addEntryAddButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add30.png"))); // NOI18N
         addEntryAddButton.setText("Add");
+        addEntryAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addEntryAddButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout gCalendarAddEntryJFrameLayout = new javax.swing.GroupLayout(gCalendarAddEntryJFrame.getContentPane());
         gCalendarAddEntryJFrame.getContentPane().setLayout(gCalendarAddEntryJFrameLayout);
@@ -2571,6 +2582,47 @@ public class mainView extends javax.swing.JFrame {
             this.setVisible(true);
         }
     }//GEN-LAST:event_createNewTeamButtonActionPerformed
+
+    private void addEntryCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEntryCancelButtonActionPerformed
+        gCalendarAddEntryJFrame.setEnabled(false);
+        addEntryTitleTextField.setText("");
+        addEntryDescriptionTextArea.setText("");
+        addEntryStartTimeTextField.setText("12:00");
+        addEntryEndTimeTextField.setText("1:00");
+    }//GEN-LAST:event_addEntryCancelButtonActionPerformed
+
+    private void addEntryAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEntryAddButtonActionPerformed
+        if (addEntryTitleTextField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a title.");
+        } else if (addEntryDescriptionTextArea.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a description.");
+        } else if (addEntryStartTimeTextField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a starting time.");
+        } else if (addEntryEndTimeTextField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a ending time.");
+        } else{
+            String name = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
+            if (engine.addNewEntry(name, addEntryTitleTextField.getText(), addEntryDescriptionTextArea.getText(), 
+                                        addEntryStartTimeTextField.getText(), addEntryEndTimeTextField.getText())) {
+                calendarTextArea.setText("Entry: "
+                        + addEntryTitleTextField.getText() + " was created\nin calendar: "
+                                    + name + "\n\n");
+                gCalendarAddEntryJFrame.setVisible(false);
+                addEntryTitleTextField.setText("");
+                addEntryDescriptionTextArea.setText("");
+                addEntryStartTimeTextField.setText("");
+                addEntryEndTimeTextField.setText("");
+                engine.loadCalendarEntryTable(entryTable, name);
+            } else {
+                calendarTextArea.setText("Failed to create entry...\n\n");
+                gCalendarAddEntryJFrame.setVisible(false);
+                addEntryTitleTextField.setText("");
+                addEntryDescriptionTextArea.setText("");
+                addEntryStartTimeTextField.setText("");
+                addEntryEndTimeTextField.setText("");
+            }
+        }
+    }//GEN-LAST:event_addEntryAddButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
