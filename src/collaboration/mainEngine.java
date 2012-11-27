@@ -310,29 +310,33 @@ public class mainEngine {
         return false;
     }
 
-    String[] createTeamComboBox() {
-//        JComboBox<Team> retVal = new JComboBox<Team>();
-//        for (Team team : ClientBackend.getInstance().getAllTeams()) {
-//            retVal.addItem(team);
+    JComboBox<Team> createTeamComboBox(JComboBox teamBox) {
+        teamBox.removeAllItems();
+        for (Team team : ClientBackend.getInstance().getAllTeams()) {
+            teamBox.addItem(team);
+        }
+        return teamBox;
+//        ArrayList<Team> teamList = ClientBackend.getInstance().getAllTeams();
+//        String[] retVal = new String[ClientBackend.getInstance().getAllTeams().size()];
+//        for (int i = 0; i < teamList.size(); i++) {
+//            retVal[i] = teamList.get(i).getName();
 //        }
 //        return retVal;
-        ArrayList<Team> teamList = ClientBackend.getInstance().getAllTeams();
-        String[] retVal = new String[ClientBackend.getInstance().getAllTeams().size()];
-        for (int i = 0; i < teamList.size(); i++) {
-            retVal[i] = teamList.get(i).getName();
-        }
-        return retVal;
     }
 
     boolean loginTeam(Team team, String password) {
-        return ClientBackend.getInstance().loginTeam(team, password);
+        if(ClientBackend.getInstance().loginTeam(team, password)){
+            addUserToTeam(team);
+            return true;
+        }
+        return false;
     }
 
     void addUserToTeam(User user, Team team) {
         ClientBackend.getInstance().addUserToTeam(user, team);
     }
-    void addUserToTeam(int indexSelected) {
-        ClientBackend.getInstance().addUserToTeam(this.user, ClientBackend.getInstance().getAllTeams().get(indexSelected));
+    void addUserToTeam(Team team) {
+        addUserToTeam(user, team);
     }
     Team createTeam(String teamName, String password){
         return ClientBackend.getInstance().createTeam(teamName, password);

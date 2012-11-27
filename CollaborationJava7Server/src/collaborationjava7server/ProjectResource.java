@@ -18,8 +18,8 @@ public class ProjectResource extends ServerResource implements IProjectResource{
     
     @Override
     public Project retrieve() {
-        Project p = QueryManager.getInstance().createProject("abc");
-        project = QueryManager.getInstance().getProjectByID(p.getID());
+        id = Long.parseLong((String)this.getRequestAttributes().get("id"));
+        project = QueryManager.getInstance().getProjectByID(id);
         return project;
     }
 

@@ -90,6 +90,7 @@ public class Backend implements Serializable, IBackend{
     
     @Override
     public String[][] getUserTableData(Project p) {
+        p = this.getProjectFromId(p.getID());
         ArrayList<User> users = retrieveUsers(p);
         int numUsers = users.size();
         int userFields = 4; 
@@ -144,6 +145,16 @@ public class Backend implements Serializable, IBackend{
             User u = ur.retrieve();
             cr.release();
             return u;
+    }
+    
+    //@Override
+    public Project getProjectFromId(long id) {
+            ClientResource cr = new ClientResource(  
+                "http://"+serverAddr+":8182/collab/project/"+id);  
+            IProjectResource pr = cr.wrap(IProjectResource.class);
+            Project p = pr.retrieve();
+            cr.release();
+            return p;
     }
 
     
@@ -345,5 +356,6 @@ public class Backend implements Serializable, IBackend{
     public void addUserToTeam(User u, Team t) {
         t.addMember(u);
         this.saveEntity(t);
+        this.saveEntity(u);
     }
 }

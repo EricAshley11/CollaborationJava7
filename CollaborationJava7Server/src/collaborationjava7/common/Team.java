@@ -106,4 +106,7 @@ public class Team implements Serializable{
     public boolean validatePassword(String password){
         return password.equals(this.password);
     }
+    public String toString(){
+        return this.getName();
+    }
 }

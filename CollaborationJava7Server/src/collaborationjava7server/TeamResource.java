@@ -18,6 +18,7 @@ public class TeamResource  extends ServerResource implements ITeamResource{
     
     @Override
     public Team retrieve() {
+        id = Long.parseLong((String)this.getRequestAttributes().get("id"));
         team = QueryManager.getInstance().getTeamByID(id);
         return team;
     }
