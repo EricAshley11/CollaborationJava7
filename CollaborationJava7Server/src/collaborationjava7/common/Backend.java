@@ -116,6 +116,9 @@ public class Backend implements Serializable, IBackend{
         }
         int numTasks = tasks.size();
         int taskFields = 5; 
+        if(numTasks==0){
+            return new String[0][5];
+        }
         if(tasks.get(0) != null) {
             taskFields = tasks.get(0).toString().split(",").length;
         }
