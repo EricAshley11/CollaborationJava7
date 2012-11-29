@@ -81,4 +81,8 @@ public class UserStory implements Serializable {
     public String toString(){
         return this.getName();
     }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
 }

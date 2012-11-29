@@ -2425,6 +2425,7 @@ public class mainView extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED) { // this should fix the event happening multiple times
             engine.setSeletedProj((Project) this.projectComboBox.getSelectedItem());
             engine.loadTeamTable(teamTable);
+            engine.loadTasksTable(tasksTable);
         }
     }//GEN-LAST:event_projectComboBoxItemStateChanged
 

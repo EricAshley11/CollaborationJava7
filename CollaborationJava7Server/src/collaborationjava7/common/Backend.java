@@ -107,6 +107,28 @@ public class Backend implements Serializable, IBackend{
         return tableData;
     }
     
+    public String[][] getTasksTableData(Project p) {
+        p = this.getProjectFromId(p.getID());
+        ArrayList<UserStory> userStories = this.getUserStories(p);
+        ArrayList<Task> tasks = new ArrayList<Task>();
+        for(UserStory us : userStories){
+            tasks.addAll(us.getTasks());
+        }
+        int numTasks = tasks.size();
+        int taskFields = 5; 
+        if(tasks.get(0) != null) {
+            taskFields = tasks.get(0).toString().split(",").length;
+        }
+        String[][] tableData = new String[numTasks][taskFields];
+        for (int i = 0; i < numTasks; i++) {
+            Task task = tasks.get(i);
+            String taskString = task.toString();
+            String[] taskInfo = taskString.split(",");
+            tableData[i] = taskInfo;
+        }
+        return tableData;
+    }
+    
     @Override
     public ArrayList<Task> retrieveUserTasks(User user) {
         return user.getTasks();

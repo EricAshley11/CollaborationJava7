@@ -103,6 +103,9 @@ public class ClientBackend implements IBackend{
     public String[][] getUserTableData(Project p){
         return remoteObj.getUserTableData(p);
     }
+    public String[][] getTasksTableData(Project p) {
+        return remoteObj.getTasksTableData(p);
+    }
 
     public ArrayList<Task> retrieveUserTasks(){
          return null;//remoteObj.retrieveUserTasks();

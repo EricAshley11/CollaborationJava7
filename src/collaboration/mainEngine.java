@@ -146,6 +146,30 @@ public class mainEngine {
         });
     }
 
+    void loadTasksTable(JTable tasksTable) {
+        tasksTable.setModel(new javax.swing.table.DefaultTableModel(
+                ClientBackend.getInstance().getTasksTableData(selectedProj),
+                new String [] {
+        "Lead", "User Story", "Task", "Status", "Estimated Completion", "Actual Completion"
+    }
+) {
+    boolean[] canEdit = new boolean [] {
+        false, false, false, false, false, false
+    };
+
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+    }
     public boolean validCredentials(String userName, String password) {
         boolean validCreds = false;
         User u = ClientBackend.getInstance().loginUser(userName, password);
@@ -357,5 +381,9 @@ public class mainEngine {
         for(UserStory us : ClientBackend.getInstance().getUserStories(selectedProj)){
             newTaskUserStoryComboBox.addItem(us);
         }
+    }
+
+    boolean addNewEntry(String name, String text, String text0, String text1, String text2) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

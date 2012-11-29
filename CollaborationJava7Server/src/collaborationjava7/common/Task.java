@@ -128,7 +128,7 @@ public class Task implements Serializable{
                             "Act: "+timeActual+"\n"                
                     
                     );
-            return "BLANK,haha";
+            return "invalid task";
         }
     }
     //</editor-fold>
