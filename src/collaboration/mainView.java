@@ -2199,13 +2199,9 @@ public class mainView extends javax.swing.JFrame {
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/overview75.png")), jPanel1, "Project Overview"); // NOI18N
 
-        jTogglPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         togglTaskLabel.setText("Toggl Task");
-        jTogglPanel.add(togglTaskLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 793, 27));
 
         togglTaskTextField.setEnabled(false);
-        jTogglPanel.add(togglTaskTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 160, -1));
 
         togglButton.setBackground(java.awt.Color.green);
         togglButton.setText("Start");
@@ -2215,19 +2211,15 @@ public class mainView extends javax.swing.JFrame {
                 togglButtonActionPerformed(evt);
             }
         });
-        jTogglPanel.add(togglButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 70, -1));
 
         togglStatusText.setText("Waiting...");
         togglStatusText.setEnabled(false);
-        jTogglPanel.add(togglStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 370, 30));
-        jTogglPanel.add(togglPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 160, -1));
 
         togglUserField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 togglUserFieldActionPerformed(evt);
             }
         });
-        jTogglPanel.add(togglUserField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 200, -1));
 
         togglLoginButton.setText("Login");
         togglLoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -2235,16 +2227,65 @@ public class mainView extends javax.swing.JFrame {
                 togglLoginButtonActionPerformed(evt);
             }
         });
-        jTogglPanel.add(togglLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
 
         togglLoginLabel.setText("Login");
-        jTogglPanel.add(togglLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel3.setText("Name");
-        jTogglPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         jLabel5.setText("Password");
-        jTogglPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
+
+        javax.swing.GroupLayout jTogglPanelLayout = new javax.swing.GroupLayout(jTogglPanel);
+        jTogglPanel.setLayout(jTogglPanelLayout);
+        jTogglPanelLayout.setHorizontalGroup(
+            jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(togglLoginLabel))
+            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3)
+                .addGap(171, 171, 171)
+                .addComponent(jLabel5))
+            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(togglLoginButton))
+            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(togglTaskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(togglStatusText, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jTogglPanelLayout.setVerticalGroup(
+            jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(togglLoginLabel)
+                .addGap(23, 23, 23)
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
+                .addGap(3, 3, 3)
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(togglLoginButton))
+                .addGap(101, 101, 101)
+                .addComponent(togglTaskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(togglButton)
+                    .addComponent(togglStatusText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         tabbedPane.addTab("tab6", jTogglPanel);
 
