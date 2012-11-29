@@ -11,7 +11,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-
 //google calendar API imports
 //import com.google.gdata.client.*;
 //import com.google.gdata.client.calendar.*;
@@ -24,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" Class declaration and constructor ">
 public class mainView extends javax.swing.JFrame {
+
     JTogglHelper togglHelper = null;
     mainEngine engine = new mainEngine();
 
@@ -66,6 +66,45 @@ public class mainView extends javax.swing.JFrame {
         } catch (Exception e) {
             //System.out.println(e.toString());
         }
+    }
+
+    public void clearAllFields() {
+        addEntryEndTimeTextField.setText("");
+        addEntryStartTimeTextField.setText("");
+        addEntryTitleTextField.setText("");
+        addMemberUsernameTextField.setText("");
+        addTasksActualTextField.setText("");
+        addTasksEstimatedTextField.setText("");
+        addTasksStatusTextField.setText("");
+        addTasksTaskTextField.setText("");
+        confirmPasswordField.setText("");
+        createProjectNameTextField.setText("");
+        createUserEmailTextField.setText("");
+        createUserNameTextField.setText("");
+        createUserPhoneTextField.setText("");
+        createUserUsernameTextField.setText("");
+        editEmailTextField.setText("");
+        editNameTextField.setText("");
+        editPhoneTextField.setText("");
+        editProjectTextField.setText("");
+        editTasksActualTextField.setText("");
+        editTasksEstimatedTextField.setText("");
+        editTasksLeadTextField.setText("");
+        editTasksStatusTextField.setText("");
+        editTasksTaskTextField.setText("");
+        editTasksUserStoryTextField.setText("");
+        firstPasswordField.setText("");
+        gCalCalendarTitleTextField.setText("");
+        gCalLocationTextField.setText("");
+        gCalPasswordField.setText("");
+        gCalUserNameTextField.setText("");
+        newTeamConfirmPasswordField.setText("");
+        newTeamNameTextField.setText("");
+        newTeamPasswordField.setText("");
+        passwordTextField.setText("");
+        tasksFilterTextField.setText("");
+        teamFilterTextField.setText("");
+        usernameTextField.setText("");
     }
 //</editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -2331,7 +2370,7 @@ public class mainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 //<editor-fold defaultstate="collapsed" desc=" Actions ">
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
-        passwordTextField.setText("");
+        clearAllFields();
         loginJFrame.setVisible(true);
     }//GEN-LAST:event_signOutButtonActionPerformed
 
@@ -2429,7 +2468,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void addTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTasksDialogButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-        model.addRow(engine.getNewTaskRow(((User)leadComboBox.getSelectedItem()),(UserStory)newTaskUserStoryComboBox.getSelectedItem(), addTasksTaskTextField.getText(), addTasksEstimatedTextField.getText(), addTasksActualTextField.getText()));//new Object[]{addTasksLeadTextField.getText(), });
+        model.addRow(engine.getNewTaskRow(((User) leadComboBox.getSelectedItem()), (UserStory) newTaskUserStoryComboBox.getSelectedItem(), addTasksTaskTextField.getText(), addTasksEstimatedTextField.getText(), addTasksActualTextField.getText()));//new Object[]{addTasksLeadTextField.getText(), });
         addTasksJFrame.setVisible(false);
     }//GEN-LAST:event_addTasksDialogButtonActionPerformed
 
@@ -2732,7 +2771,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void createProjectJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProjectJButtonActionPerformed
         String projectTitle = createProjectNameTextField.getText();
-            if (!projectTitle.isEmpty()) {
+        if (!projectTitle.isEmpty()) {
             Project newProj = engine.createProject(projectTitle);
             projectComboBox.addItem(newProj);
             createNewProjectJFrame.setVisible(true);
@@ -2744,14 +2783,14 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_createProjectJButtonActionPerformed
 
     private void joinExistingTeamJoinJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinExistingTeamJoinJButtonActionPerformed
-        engine.addUserToTeam((Team)joinExistingComboBox.getSelectedItem());
+        engine.addUserToTeam((Team) joinExistingComboBox.getSelectedItem());
     }//GEN-LAST:event_joinExistingTeamJoinJButtonActionPerformed
 
     private void createNewTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewTeamButtonActionPerformed
         String teamName = newTeamNameTextField.getText();
         String password = String.copyValueOf(newTeamPasswordField.getPassword());
         String confirmPass = String.copyValueOf(newTeamConfirmPasswordField.getPassword());
-        if(password.equals(confirmPass)){
+        if (password.equals(confirmPass)) {
             Team newTeam = engine.createTeam(teamName, password);
             engine.addUserToTeam(newTeam);
             createNewTeamJFrame.setVisible(false);
@@ -2776,13 +2815,13 @@ public class mainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a starting time.");
         } else if (addEntryEndTimeTextField.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please enter a ending time.");
-        } else{
+        } else {
             String name = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
-            if (engine.addNewEntry(name, addEntryTitleTextField.getText(), addEntryDescriptionTextArea.getText(), 
-                                        addEntryStartTimeTextField.getText(), addEntryEndTimeTextField.getText())) {
+            if (engine.addNewEntry(name, addEntryTitleTextField.getText(), addEntryDescriptionTextArea.getText(),
+                    addEntryStartTimeTextField.getText(), addEntryEndTimeTextField.getText())) {
                 calendarTextArea.setText("Entry: "
                         + addEntryTitleTextField.getText() + " was created\nin calendar: "
-                                    + name + "\n\n");
+                        + name + "\n\n");
                 gCalendarAddEntryJFrame.setVisible(false);
                 addEntryTitleTextField.setText("");
                 addEntryDescriptionTextArea.setText("");
@@ -2806,12 +2845,12 @@ public class mainView extends javax.swing.JFrame {
 
     private void togglButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglButtonActionPerformed
         String command = evt.getActionCommand();
-        JToggleButton button = (JToggleButton)evt.getSource();
-        if(command.equals("Start")){
+        JToggleButton button = (JToggleButton) evt.getSource();
+        if (command.equals("Start")) {
             this.togglHelper.startNewTimeEntry(this.togglTaskTextField.getText());
             button.setText("Stop");
             button.setBackground(Color.red);
-        }else if(command.equals("Stop")){
+        } else if (command.equals("Stop")) {
             button.setText("Start");
             this.togglHelper.endNewTimeEntry();
             button.setBackground(Color.green);
@@ -2824,14 +2863,14 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_togglUserFieldActionPerformed
 
     private void togglLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglLoginButtonActionPerformed
-        try{
-            togglHelper = new JTogglHelper(this.togglUserField.getText(),String.copyValueOf(this.togglPasswordField.getPassword()));
-            
+        try {
+            togglHelper = new JTogglHelper(this.togglUserField.getText(), String.copyValueOf(this.togglPasswordField.getPassword()));
+
             this.togglButton.setEnabled(true);
             this.togglStatusText.setEnabled(true);
             this.togglTaskTextField.setEnabled(true);
-            this.togglStatusText.setText("Successfully logged in as "+this.togglHelper.getFullName());
-        }catch(Exception e){
+            this.togglStatusText.setText("Successfully logged in as " + this.togglHelper.getFullName());
+        } catch (Exception e) {
             System.out.println("Unable to login to Toggl");
         }
     }//GEN-LAST:event_togglLoginButtonActionPerformed
