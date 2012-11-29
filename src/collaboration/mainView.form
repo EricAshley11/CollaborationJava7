@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.7" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -284,7 +284,7 @@
                           <Component id="leadComboBox" alignment="0" max="32767" attributes="0"/>
                           <Component id="newTaskUserStoryComboBox" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <EmptySpace pref="71" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -323,7 +323,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="addTasksDialogButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <EmptySpace pref="63" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -386,6 +386,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="leadComboBox.setRenderer(new ListCellRenderer(){&#xa;    @Override&#xa;    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {&#xa;        JLabel label = new JLabel();&#xa;        label.setOpaque(true);&#xa;        if (isSelected) {&#xa;            label.setBackground(list.getSelectionBackground());&#xa;            label.setForeground(list.getSelectionForeground());&#xa;        }&#xa;        else {&#xa;            label.setBackground(list.getBackground());&#xa;            label.setForeground(list.getForeground());&#xa;        }&#xa;&#xa;        label.setText(((User)value).getName());&#xa;        Border border = null;&#xa;        if (cellHasFocus) {&#xa;            if (isSelected) {&#xa;                border = UIManager.getBorder(&quot;List.focusSelectedCellHighlightBorder&quot;);&#xa;            }&#xa;            if (border == null) {&#xa;                border = UIManager.getBorder(&quot;List.focusCellHighlightBorder&quot;);&#xa;            }&#xa;        } else {&#xa;            border = new EmptyBorder(1, 1, 1, 1);&#xa;        }&#xa;        label.setBorder(border);&#xa;        return label;&#xa;    }&#xa;});"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JComboBox" name="newTaskUserStoryComboBox">
               <Properties>
@@ -398,6 +401,12 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newTaskUserStoryComboBoxActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="newTaskUserStoryComboBox.setRenderer(new ListCellRenderer(){&#xa;    @Override&#xa;    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {    &#xa;        JLabel label = new JLabel();&#xa;        label.setOpaque(true);&#xa;        if (isSelected) {&#xa;            label.setBackground(list.getSelectionBackground());&#xa;            label.setForeground(list.getSelectionForeground());&#xa;        }&#xa;        else {&#xa;            label.setBackground(list.getBackground());&#xa;            label.setForeground(list.getForeground());&#xa;        }&#xa;        label.setText(((UserStory)value).getName());&#xa;        Border border = null;&#xa;        if (cellHasFocus) {&#xa;            if (isSelected) {&#xa;                border = UIManager.getBorder(&quot;List.focusSelectedCellHighlightBorder&quot;);&#xa;            }&#xa;            if (border == null) {&#xa;                border = UIManager.getBorder(&quot;List.focusCellHighlightBorder&quot;);&#xa;            }&#xa;        } else {&#xa;            border = new EmptyBorder(1, 1, 1, 1);&#xa;        }&#xa;        label.setBorder(border);&#xa;        return label;&#xa;    }&#xa;});"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -2381,7 +2390,7 @@
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="318" max="32767" attributes="0"/>
+                              <EmptySpace pref="241" max="32767" attributes="0"/>
                               <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -2405,7 +2414,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="teamTableScrollPane" pref="478" max="32767" attributes="0"/>
+                      <Component id="teamTableScrollPane" pref="482" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2546,7 +2555,7 @@
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="318" max="32767" attributes="0"/>
+                              <EmptySpace pref="241" max="32767" attributes="0"/>
                               <Component id="filterTasksButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -2571,7 +2580,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tasksTableScrollPane" pref="478" max="32767" attributes="0"/>
+                      <Component id="tasksTableScrollPane" pref="482" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2758,7 +2767,7 @@
                               </Group>
                               <Component id="createCalendarButton" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="61" max="32767" attributes="0"/>
+                          <EmptySpace pref="68" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2777,14 +2786,14 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                                  <EmptySpace pref="27" max="32767" attributes="0"/>
                                   <Component id="removeCalendarButton" min="-2" pref="42" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="deleteEventButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                                  <EmptySpace pref="42" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -3007,7 +3016,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="802" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="805" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -3033,7 +3042,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="802" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="805" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
