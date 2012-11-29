@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.7" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -2390,7 +2390,7 @@
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="241" max="32767" attributes="0"/>
+                              <EmptySpace pref="318" max="32767" attributes="0"/>
                               <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -2414,7 +2414,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="teamTableScrollPane" pref="482" max="32767" attributes="0"/>
+                      <Component id="teamTableScrollPane" pref="490" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2465,9 +2465,8 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="0">
+                      <Table columnCount="4" rowCount="0">
                         <Column editable="false" title="Username" type="java.lang.String"/>
-                        <Column editable="false" title="Full Name" type="java.lang.String"/>
                         <Column editable="false" title="Phone" type="java.lang.String"/>
                         <Column editable="false" title="Email" type="java.lang.String"/>
                         <Column editable="false" title="Tasks" type="java.lang.Object"/>
@@ -2475,11 +2474,6 @@
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -2555,7 +2549,7 @@
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="241" max="32767" attributes="0"/>
+                              <EmptySpace pref="318" max="32767" attributes="0"/>
                               <Component id="filterTasksButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -2580,7 +2574,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tasksTableScrollPane" pref="482" max="32767" attributes="0"/>
+                      <Component id="tasksTableScrollPane" pref="490" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2767,7 +2761,7 @@
                               </Group>
                               <Component id="createCalendarButton" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="68" max="32767" attributes="0"/>
+                          <EmptySpace pref="61" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3016,12 +3010,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="805" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="802" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="538" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="550" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -3042,12 +3036,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="805" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="802" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="538" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="550" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

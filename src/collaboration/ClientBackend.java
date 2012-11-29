@@ -171,8 +171,8 @@ public class ClientBackend implements IBackend{
         remoteObj.editProjectName(proj, editedProjectName);
     }
 
-    void updateUser(User user, String newName, String newPhone, String newEmail) {
-        remoteObj.updateUser(user, newName, newPhone, newEmail);
+    void updateUser(User user, String newPhone, String newEmail) {
+        remoteObj.updateUser(user, newPhone, newEmail);
     }
 
     @Override

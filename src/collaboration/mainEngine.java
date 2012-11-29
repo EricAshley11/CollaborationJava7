@@ -82,9 +82,9 @@ public class mainEngine {
 
     public boolean addMember(JTable teamTable, String userString) {
         try {
-            DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
             User user = ClientBackend.getInstance().getUser(userString);
-            model.addRow(new Object[]{userString, user.getName(), user.getPhoneNum(), user.getEmail()});
+            ClientBackend.getInstance().addUserToTeam(user, this.user.getTeam());
+            this.loadTeamTable(teamTable);
             return true;
         } catch (Exception e) {
             return false;
@@ -127,13 +127,13 @@ public class mainEngine {
         teamTable.setModel(new javax.swing.table.DefaultTableModel(
                 ClientBackend.getInstance().getUserTableData(selectedProj),
                 new String[]{
-                    "Username", "Full Name", "Phone", "Email", "Tasks"
+                    "Username", "Phone", "Email", "Tasks"
                 }) {
             Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -149,14 +149,12 @@ public class mainEngine {
     void loadTasksTable(JTable tasksTable) {
         tasksTable.setModel(new javax.swing.table.DefaultTableModel(
                 ClientBackend.getInstance().getTasksTableData(selectedProj),
-                new String [] {
-        "Lead", "User Story", "Task", "Status", "Estimated Completion", "Actual Completion"
-    }
-) {
-    boolean[] canEdit = new boolean [] {
-        false, false, false, false, false, false
-    };
-
+                new String[]{
+                    "Lead", "User Story", "Task", "Status", "Estimated Completion", "Actual Completion"
+                }) {
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false, false, false
+            };
             Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
@@ -211,7 +209,7 @@ public class mainEngine {
         //TODO: Cam integrate backend to delete user from database
     }
 
-    public boolean editUser(JTable teamTable, JTextField[] textFields) {
+    public boolean populateEditUserFields(JTable teamTable, JTextField[] textFields) {
         boolean isAnyRowSelected = false;
         for (int i = 0; i < teamTable.getRowCount(); i++) {
             if (teamTable.isRowSelected(i)) {
@@ -220,9 +218,10 @@ public class mainEngine {
             }
         }
         if (isAnyRowSelected) {
-            textFields[0].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());
-            textFields[1].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 1).toString());
-            textFields[2].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 2).toString());
+            textFields[0].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 0).toString());//name
+            textFields[0].setEditable(false);
+            textFields[1].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 1).toString());//phoneNum
+            textFields[2].setText(teamTable.getValueAt(teamTable.getSelectedRow(), 2).toString());//email
         }
         return isAnyRowSelected;
     }
@@ -323,10 +322,6 @@ public class mainEngine {
         ClientBackend.getInstance().editProjectName(proj, editedProjectName);
     }
 
-    void updateUser(User user, String newName, String newPhone, String newEmail) {
-        ClientBackend.getInstance().updateUser(user, newName, newPhone, newEmail);
-    }
-
     boolean userHasTeam() {
         if (user.getTeam() != null) {
             return true;
@@ -385,5 +380,10 @@ public class mainEngine {
 
     boolean addNewEntry(String name, String text, String text0, String text1, String text2) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    void editUser(String name, String phone, String email) {
+        User u = ClientBackend.getInstance().getUser(name);
+        ClientBackend.getInstance().updateUser(user, phone, email);
     }
 }
