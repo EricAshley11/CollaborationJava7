@@ -21,7 +21,7 @@ public class UserStory implements Serializable {
     private ArrayList<Task> tasks;
     @ManyToOne
     private Milestone milestone;
-    private Status state;
+    private Status status;
     private String name;
 
     public UserStory() {

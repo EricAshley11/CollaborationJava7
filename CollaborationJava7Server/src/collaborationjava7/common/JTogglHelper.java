@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package collaborationjava7server;
+package collaborationjava7.common;
 
 import ch.simas.jtoggl.*;
 import java.text.DateFormat;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  *
@@ -19,6 +20,8 @@ public class JTogglHelper {
     String userName;
     String password;
     JToggl jToggl;
+    ch.simas.jtoggl.User user;
+    String fullName;
     
     //---------------------------
     //required for new time entry
@@ -32,23 +35,26 @@ public class JTogglHelper {
     ch.simas.jtoggl.Project project;    
     Date endTime;
     
-    JTogglHelper(String userName, String password){
+    public JTogglHelper(String userName, String password){
         this.userName = userName;
         this.password = password;
         this.jToggl = new JToggl(userName, password);
+        user = jToggl.getCurrentUser();
+        fullName = user.getFullname();        
     }
-    String startNewTimeEntry(String description){
+    public String startNewTimeEntry(String description){
         this.description = description;
+        Calendar.getInstance().setTimeZone(TimeZone.getDefault());
         startTime = Calendar.getInstance().getTime();
         return DateFormat.getDateInstance().format(startTime);
     }
-    String endNewTimeEntry(){
+    public String endNewTimeEntry(){
         endTime = Calendar.getInstance().getTime();
         duration = (endTime.getTime() - startTime.getTime())/1000;
         billable = false;
         return sendTimeEntry();        
     }
-    String sendTimeEntry(){
+    public String sendTimeEntry(){
         TimeEntry t = new TimeEntry();
         t.setStart(startTime);
         t.setStop(endTime);
@@ -63,7 +69,7 @@ public class JTogglHelper {
         }
     }
     
-    ArrayList<String> getProjectNames(){
+    public ArrayList<String> getProjectNames(){
         List<ch.simas.jtoggl.Project> projs = jToggl.getProjects();
         ArrayList<String> retVal = new ArrayList<>();
         for(ch.simas.jtoggl.Project p : projs){
@@ -71,7 +77,7 @@ public class JTogglHelper {
         }
         return retVal;
     }
-    private ch.simas.jtoggl.Project getProjectByName(String name){
+    public ch.simas.jtoggl.Project getProjectByName(String name){
         List<ch.simas.jtoggl.Project> projs = jToggl.getProjects();
         for(ch.simas.jtoggl.Project p : projs){
             if(p.getName().equals(name)){
@@ -80,7 +86,7 @@ public class JTogglHelper {
         }
         return null;
     }
-    boolean selectProjectByName(String name){
+    public boolean selectProjectByName(String name){
         boolean flag = false;
         ch.simas.jtoggl.Project p = getProjectByName(name);
         if(p != null){
@@ -88,6 +94,9 @@ public class JTogglHelper {
             flag = true;
         }
         return flag;
+    }
+    public String getFullName(){
+        return this.fullName;
     }
     
     public static void main(String[] args) throws InterruptedException{

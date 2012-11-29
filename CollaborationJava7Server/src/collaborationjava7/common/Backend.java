@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.restlet.resource.ClientResource;
 
@@ -93,7 +94,7 @@ public class Backend implements Serializable, IBackend{
         p = this.getProjectFromId(p.getID());
         ArrayList<User> users = retrieveUsers(p);
         int numUsers = users.size();
-        int userFields = 4; 
+        int userFields = 5; 
         if(users.get(0) != null) {
             userFields = users.get(0).toString().split(",").length;
         }
@@ -101,8 +102,12 @@ public class Backend implements Serializable, IBackend{
         for (int i = 0; i < numUsers; i++) {
             User user = users.get(i);
             String userString = user.toString();
-            String[] userInfo = userString.split(", ");
-            tableData[i] = userInfo;
+            userString = userString.trim();
+            ArrayList<String> userInfo = new ArrayList<String>();
+            userInfo.addAll(Arrays.asList(userString.split(", ")));
+            userInfo.add(user.getTasks().size()+ " tasks pending (click to view)");
+            String[] strArray = new String[userFields];
+            tableData[i] = userInfo.toArray(strArray);
         }
         return tableData;
     }
@@ -346,8 +351,10 @@ public class Backend implements Serializable, IBackend{
         this.saveEntity(proj);
     }
 
-    public void updateUser(User user, String newName, String newPhone, String newEmail) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public void updateUser(User user, String newPhone, String newEmail) {
+        user.setEmail(newEmail);
+        user.setPhoneNum(newPhone);
+        this.saveEntity(user);
     }
 
     @Override

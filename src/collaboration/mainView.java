@@ -5,6 +5,7 @@ import collaborationjava7.common.*;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -23,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" Class declaration and constructor ">
 public class mainView extends javax.swing.JFrame {
-
+    JTogglHelper togglHelper = null;
     mainEngine engine = new mainEngine();
 
     /**
@@ -270,6 +271,17 @@ public class mainView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
+        jTogglPanel = new JTogglPanel();
+        togglTaskLabel = new javax.swing.JLabel();
+        togglTaskTextField = new javax.swing.JTextField();
+        togglButton = new javax.swing.JToggleButton();
+        togglStatusText = new javax.swing.JLabel();
+        togglPasswordField = new javax.swing.JPasswordField();
+        togglUserField = new javax.swing.JTextField();
+        togglLoginButton = new javax.swing.JButton();
+        togglLoginLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         addMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMemberJFrame.setTitle("Add Member - ProjectTracker");
@@ -527,7 +539,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                     .addComponent(leadComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(newTaskUserStoryComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         addTasksJPanelLayout.setVerticalGroup(
             addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,7 +570,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(addTasksDialogButton)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addTasksJFrameLayout = new javax.swing.GroupLayout(addTasksJFrame.getContentPane());
@@ -2187,6 +2199,55 @@ public class mainView extends javax.swing.JFrame {
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/overview75.png")), jPanel1, "Project Overview"); // NOI18N
 
+        jTogglPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        togglTaskLabel.setText("Toggl Task");
+        jTogglPanel.add(togglTaskLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 793, 27));
+
+        togglTaskTextField.setEnabled(false);
+        jTogglPanel.add(togglTaskTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 160, -1));
+
+        togglButton.setBackground(java.awt.Color.green);
+        togglButton.setText("Start");
+        togglButton.setEnabled(false);
+        togglButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglButtonActionPerformed(evt);
+            }
+        });
+        jTogglPanel.add(togglButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 70, -1));
+
+        togglStatusText.setText("Waiting...");
+        togglStatusText.setEnabled(false);
+        jTogglPanel.add(togglStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 370, 30));
+        jTogglPanel.add(togglPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 160, -1));
+
+        togglUserField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglUserFieldActionPerformed(evt);
+            }
+        });
+        jTogglPanel.add(togglUserField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 200, -1));
+
+        togglLoginButton.setText("Login");
+        togglLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglLoginButtonActionPerformed(evt);
+            }
+        });
+        jTogglPanel.add(togglLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
+
+        togglLoginLabel.setText("Login");
+        jTogglPanel.add(togglLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel3.setText("Name");
+        jTogglPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        jLabel5.setText("Password");
+        jTogglPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
+
+        tabbedPane.addTab("tab6", jTogglPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2701,6 +2762,38 @@ public class mainView extends javax.swing.JFrame {
     private void newTaskUserStoryComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newTaskUserStoryComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_newTaskUserStoryComboBoxActionPerformed
+
+    private void togglButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglButtonActionPerformed
+        String command = evt.getActionCommand();
+        JToggleButton button = (JToggleButton)evt.getSource();
+        if(command.equals("Start")){
+            this.togglHelper.startNewTimeEntry(this.togglTaskTextField.getText());
+            button.setText("Stop");
+            button.setBackground(Color.red);
+        }else if(command.equals("Stop")){
+            button.setText("Start");
+            this.togglHelper.endNewTimeEntry();
+            button.setBackground(Color.green);
+        }
+        int i = 0;
+    }//GEN-LAST:event_togglButtonActionPerformed
+
+    private void togglUserFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglUserFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_togglUserFieldActionPerformed
+
+    private void togglLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglLoginButtonActionPerformed
+        try{
+            togglHelper = new JTogglHelper(this.togglUserField.getText(),String.copyValueOf(this.togglPasswordField.getPassword()));
+            
+            this.togglButton.setEnabled(true);
+            this.togglStatusText.setEnabled(true);
+            this.togglTaskTextField.setEnabled(true);
+            this.togglStatusText.setText("Successfully logged in as "+this.togglHelper.getFullName());
+        }catch(Exception e){
+            System.out.println("Unable to login to Toggl");
+        }
+    }//GEN-LAST:event_togglLoginButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -2872,13 +2965,16 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel jTogglPanel;
     private javax.swing.JTree jTree1;
     private javax.swing.JComboBox joinExistingComboBox;
     private javax.swing.JFrame joinExistingTeamJFrame;
@@ -2924,6 +3020,14 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTable teamTable;
     private javax.swing.JScrollPane teamTableScrollPane;
     private javax.swing.JComboBox themeComboBox;
+    private javax.swing.JToggleButton togglButton;
+    private javax.swing.JButton togglLoginButton;
+    private javax.swing.JLabel togglLoginLabel;
+    private javax.swing.JPasswordField togglPasswordField;
+    private javax.swing.JLabel togglStatusText;
+    private javax.swing.JLabel togglTaskLabel;
+    private javax.swing.JTextField togglTaskTextField;
+    private javax.swing.JTextField togglUserField;
     private javax.swing.JLabel usernameJLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
