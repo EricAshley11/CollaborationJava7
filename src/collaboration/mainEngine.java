@@ -377,6 +377,11 @@ public class mainEngine {
             newTaskUserStoryComboBox.addItem(us);
         }
     }
+    
+    UserStory createNewUserStory(String storyName) {
+        //TODO: MAKE THIS WORK
+        return null;
+    }
 
     boolean addNewEntry(String name, String text, String text0, String text1, String text2) {
         throw new UnsupportedOperationException("Not yet implemented");

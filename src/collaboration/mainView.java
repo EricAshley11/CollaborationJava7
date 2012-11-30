@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" Class declaration and constructor ">
 public class mainView extends javax.swing.JFrame {
-
+    
     JTogglHelper togglHelper = null;
     mainEngine engine = new mainEngine();
 
@@ -67,7 +67,7 @@ public class mainView extends javax.swing.JFrame {
             //System.out.println(e.toString());
         }
     }
-
+    
     public void clearAllFields() {
         addEntryEndTimeTextField.setText("");
         addEntryStartTimeTextField.setText("");
@@ -139,6 +139,7 @@ public class mainView extends javax.swing.JFrame {
         addTasksActualTextField = new javax.swing.JTextField();
         leadComboBox = new javax.swing.JComboBox();
         newTaskUserStoryComboBox = new javax.swing.JComboBox();
+        newUserStoryButton = new javax.swing.JButton();
         editTasksJFrame = new javax.swing.JFrame();
         editTasksJPanel = new javax.swing.JPanel();
         editTasksDialogButton = new javax.swing.JButton();
@@ -467,7 +468,8 @@ public class mainView extends javax.swing.JFrame {
         addTasksJFrame.setMinimumSize(new java.awt.Dimension(450, 400));
         addTasksJFrame.setName("Add Member"); // NOI18N
 
-        addTasksJPanel.setPreferredSize(new java.awt.Dimension(400, 400));
+        addTasksJPanel.setMinimumSize(new java.awt.Dimension(500, 0));
+        addTasksJPanel.setPreferredSize(new java.awt.Dimension(500, 400));
 
         addTasksDialogButton.setText("Add Task");
         addTasksDialogButton.addActionListener(new java.awt.event.ActionListener() {
@@ -556,6 +558,13 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
+        newUserStoryButton.setText("+");
+        newUserStoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newUserStoryButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout addTasksJPanelLayout = new javax.swing.GroupLayout(addTasksJPanel);
         addTasksJPanel.setLayout(addTasksJPanelLayout);
         addTasksJPanelLayout.setHorizontalGroup(
@@ -570,15 +579,20 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addTasksTaskJLabel)
                     .addComponent(addTasksLeadJLabel))
                 .addGap(18, 18, 18)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addTasksDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(addTasksActualTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(addTasksStatusTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(leadComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(newTaskUserStoryComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(addTasksDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                        .addComponent(addTasksActualTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                        .addComponent(addTasksStatusTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                        .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
+                    .addGroup(addTasksJPanelLayout.createSequentialGroup()
+                        .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(leadComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 229, Short.MAX_VALUE)
+                            .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newUserStoryButton)))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         addTasksJPanelLayout.setVerticalGroup(
             addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -590,8 +604,9 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTasksUserStoryJLabel)
-                    .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newUserStoryButton))
+                .addGap(21, 21, 21)
                 .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTasksTaskJLabel)
                     .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -609,14 +624,14 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(addTasksDialogButton)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addTasksJFrameLayout = new javax.swing.GroupLayout(addTasksJFrame.getContentPane());
         addTasksJFrame.getContentPane().setLayout(addTasksJFrameLayout);
         addTasksJFrameLayout.setHorizontalGroup(
             addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(addTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         addTasksJFrameLayout.setVerticalGroup(
             addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1890,7 +1905,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1985,7 +2000,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2129,7 +2144,7 @@ public class mainView extends javax.swing.JFrame {
                                 .addComponent(gCalWeeklyAgendaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(feedLabel)))
                     .addComponent(createCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         calendarPanelLayout.setVerticalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2144,7 +2159,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(createEventButton))
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(calendarPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addComponent(removeCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(calendarPanelLayout.createSequentialGroup()
@@ -2188,7 +2203,7 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2229,7 +2244,7 @@ public class mainView extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2253,12 +2268,6 @@ public class mainView extends javax.swing.JFrame {
 
         togglStatusText.setText("Waiting...");
         togglStatusText.setEnabled(false);
-
-        togglUserField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                togglUserFieldActionPerformed(evt);
-            }
-        });
 
         togglLoginButton.setText("Login");
         togglLoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -2371,14 +2380,15 @@ public class mainView extends javax.swing.JFrame {
 //<editor-fold defaultstate="collapsed" desc=" Actions ">
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
         clearAllFields();
+        tabbedPane.setSelectedIndex(0);
         loginJFrame.setVisible(true);
     }//GEN-LAST:event_signOutButtonActionPerformed
-
+    
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
         addMemberUsernameTextField.setText("");
         addMemberJFrame.setVisible(true);
     }//GEN-LAST:event_addMemberButtonActionPerformed
-
+    
     private void addTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTasksButtonActionPerformed
         engine.createProjectUsersComboBox(leadComboBox);
         engine.createProjectUserStoriesComboBox(newTaskUserStoryComboBox);
@@ -2388,7 +2398,7 @@ public class mainView extends javax.swing.JFrame {
         addTasksActualTextField.setText("");
         addTasksJFrame.setVisible(true);
     }//GEN-LAST:event_addTasksButtonActionPerformed
-
+    
     private void removeTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeTaskButtonActionPerformed
         if (!engine.removeTask(tasksTable)) {
             JOptionPane.showMessageDialog(this,
@@ -2396,7 +2406,7 @@ public class mainView extends javax.swing.JFrame {
                     "No Task Selected", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_removeTaskButtonActionPerformed
-
+    
     private void removeMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMemberButtonActionPerformed
         if (!engine.removeMember(teamTable)) {
             JOptionPane.showMessageDialog(this,
@@ -2404,11 +2414,11 @@ public class mainView extends javax.swing.JFrame {
                     "No Member Selected", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_removeMemberButtonActionPerformed
-
+    
     private void tabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPaneMouseClicked
         engine.updateChart(progressPanel);
     }//GEN-LAST:event_tabbedPaneMouseClicked
-
+    
     private void addMemberDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberDialogButtonActionPerformed
         String userString = addMemberUsernameTextField.getText();
         if (engine.addMember(teamTable, userString)) {
@@ -2419,7 +2429,7 @@ public class mainView extends javax.swing.JFrame {
         }
         addMemberJFrame.setVisible(false);
     }//GEN-LAST:event_addMemberDialogButtonActionPerformed
-
+    
     private void saveEditMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEditMemberButtonActionPerformed
 //        DefaultTableModel model = (DefaultTableModel) teamTable.getModel();
 //        model.setValueAt(editNameTextField.getText(), teamTable.getSelectedRow(), 0);
@@ -2432,7 +2442,7 @@ public class mainView extends javax.swing.JFrame {
         engine.loadTeamTable(teamTable);
         editMemberJFrame.setVisible(false);
     }//GEN-LAST:event_saveEditMemberButtonActionPerformed
-
+    
     private void editMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberButtonActionPerformed
         JTextField[] textFields = {editNameTextField, editPhoneTextField, editEmailTextField};
         if (engine.populateEditUserFields(teamTable, textFields)) {
@@ -2443,7 +2453,7 @@ public class mainView extends javax.swing.JFrame {
                     "No Member Selected", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_editMemberButtonActionPerformed
-
+    
     private void editTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTaskButtonActionPerformed
         boolean isAnyRowSelected = false;
         for (int i = 0; i < tasksTable.getRowCount(); i++) {
@@ -2465,13 +2475,13 @@ public class mainView extends javax.swing.JFrame {
                     "No Task Selected", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_editTaskButtonActionPerformed
-
+    
     private void addTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTasksDialogButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
         model.addRow(engine.getNewTaskRow(((User) leadComboBox.getSelectedItem()), (UserStory) newTaskUserStoryComboBox.getSelectedItem(), addTasksTaskTextField.getText(), addTasksEstimatedTextField.getText(), addTasksActualTextField.getText()));//new Object[]{addTasksLeadTextField.getText(), });
         addTasksJFrame.setVisible(false);
     }//GEN-LAST:event_addTasksDialogButtonActionPerformed
-
+    
     private void editTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTasksDialogButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
         model.setValueAt(editTasksLeadTextField.getText(), tasksTable.getSelectedRow(), 0);
@@ -2482,7 +2492,7 @@ public class mainView extends javax.swing.JFrame {
         model.setValueAt(editTasksActualTextField.getText(), tasksTable.getSelectedRow(), 5);
         editTasksJFrame.setVisible(false);
     }//GEN-LAST:event_editTasksDialogButtonActionPerformed
-
+    
     private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
         JOptionPane.showMessageDialog(this,
                 "ProjectTracker is an open source project of six GVSU students for CIS 467\n"
@@ -2496,7 +2506,7 @@ public class mainView extends javax.swing.JFrame {
                 + "Zach Burnside - Object Oriented Database/Server Back End",
                 "About ProjectTracker", JOptionPane.DEFAULT_OPTION);
     }//GEN-LAST:event_aboutButtonActionPerformed
-
+    
     private void newProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProjectButtonActionPerformed
 //        try {
 //            String projectTitle = JOptionPane.showInputDialog("Project Title");
@@ -2513,13 +2523,13 @@ public class mainView extends javax.swing.JFrame {
         createProjectNameTextField.setText("");
         createNewProjectJFrame.setVisible(true);
     }//GEN-LAST:event_newProjectButtonActionPerformed
-
+    
     private void editProjectSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectSaveButtonActionPerformed
         String editedProjectName = editProjectTextField.getText();
         engine.processProjectNameChanged(projectComboBox, editedProjectName);
         editProjectJFrame.setVisible(false);
     }//GEN-LAST:event_editProjectSaveButtonActionPerformed
-
+    
     private void editProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectButtonActionPerformed
         editProjectJFrame.setVisible(true);
         Object selectedProject = projectComboBox.getSelectedItem();
@@ -2527,7 +2537,7 @@ public class mainView extends javax.swing.JFrame {
             editProjectTextField.setText(selectedProject.toString());
         }
     }//GEN-LAST:event_editProjectButtonActionPerformed
-
+    
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         if (!this.usernameTextField.getText().isEmpty()
                 && engine.validCredentials(this.usernameTextField.getText(), String.copyValueOf(this.passwordTextField.getPassword()))) {
@@ -2548,25 +2558,25 @@ public class mainView extends javax.swing.JFrame {
             //loginJFrame.setVisible(true);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
-
+    
     private void loginJFrameComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_loginJFrameComponentShown
         this.setVisible(false);
     }//GEN-LAST:event_loginJFrameComponentShown
-
+    
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
         engine.updateChart(progressPanel);
     }//GEN-LAST:event_formComponentResized
-
+    
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
         settingsJFrame.setVisible(true);
     }//GEN-LAST:event_settingsButtonActionPerformed
-
+    
     private void saveSettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSettingsButtonActionPerformed
         updateLookAndFeel(themeComboBox.getSelectedItem().toString());
         settingsJFrame.setVisible(false);
         this.setVisible(true);
     }//GEN-LAST:event_saveSettingsButtonActionPerformed
-
+    
     private void projectComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_projectComboBoxItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) { // this should fix the event happening multiple times
             engine.setSeletedProj((Project) this.projectComboBox.getSelectedItem());
@@ -2574,7 +2584,7 @@ public class mainView extends javax.swing.JFrame {
             engine.loadTasksTable(tasksTable);
         }
     }//GEN-LAST:event_projectComboBoxItemStateChanged
-
+    
     private void createUserDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserDialogButtonActionPerformed
         JTextField[] textFields = {createUserUsernameTextField,
             firstPasswordField,
@@ -2586,16 +2596,16 @@ public class mainView extends javax.swing.JFrame {
         createUserJFrame.setVisible(false);
         loginJFrame.setVisible(true);
     }//GEN-LAST:event_createUserDialogButtonActionPerformed
-
+    
     private void createUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserButtonActionPerformed
         loginJFrame.setVisible(false);
         createUserJFrame.setVisible(true);
     }//GEN-LAST:event_createUserButtonActionPerformed
-
+    
     private void createUserJFrameWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_createUserJFrameWindowClosed
         loginJFrame.setVisible(true);
     }//GEN-LAST:event_createUserJFrameWindowClosed
-
+    
     private void teamTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teamTableMouseClicked
         if (teamTable.getSelectedColumn() == 3) { //last column
             tabbedPane.setSelectedIndex(1); //tasks pane
@@ -2603,19 +2613,19 @@ public class mainView extends javax.swing.JFrame {
             engine.filterTable(tasksTable, tasksFilterTextField.getText());
         }
     }//GEN-LAST:event_teamTableMouseClicked
-
+    
     private void teamFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teamFilterTextFieldKeyReleased
         engine.filterTable(teamTable, teamFilterTextField.getText());
     }//GEN-LAST:event_teamFilterTextFieldKeyReleased
-
+    
     private void tasksFilterTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasksFilterTextFieldKeyReleased
         engine.filterTable(tasksTable, tasksFilterTextField.getText());
     }//GEN-LAST:event_tasksFilterTextFieldKeyReleased
-
+    
     private void filterTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTeamButtonActionPerformed
         filterTeamJFrame.setVisible(true);
     }//GEN-LAST:event_filterTeamButtonActionPerformed
-
+    
     private void filterTeamSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTeamSaveButtonActionPerformed
         boolean[] checkedBoxes = {filterTeamUsernameJCheckBox.isSelected(),
             filterTeamFullNameJCheckBox.isSelected(),
@@ -2625,7 +2635,7 @@ public class mainView extends javax.swing.JFrame {
         engine.setFilterColumns(checkedBoxes);
         filterTeamJFrame.setVisible(false);
     }//GEN-LAST:event_filterTeamSaveButtonActionPerformed
-
+    
     private void filterTasksSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTasksSaveButtonActionPerformed
         boolean[] checkedBoxes = {filterTasksLeadJCheckBox.isSelected(),
             filterTasksUserStoryJCheckBox.isSelected(),
@@ -2637,23 +2647,23 @@ public class mainView extends javax.swing.JFrame {
         engine.setFilterColumns(checkedBoxes);
         filterTasksJFrame.setVisible(false);
     }//GEN-LAST:event_filterTasksSaveButtonActionPerformed
-
+    
     private void filterTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTasksButtonActionPerformed
         filterTasksJFrame.setVisible(true);
     }//GEN-LAST:event_filterTasksButtonActionPerformed
-
+    
     private void gCalLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalLoginButtonActionPerformed
         gCalendarLoginJFrame.setVisible(true);
         gCalUserNameTextField.setText("");
         gCalPasswordField.setText("");
     }//GEN-LAST:event_gCalLoginButtonActionPerformed
-
+    
     private void gCalLoginScreenCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalLoginScreenCancelButtonActionPerformed
         gCalendarLoginJFrame.setVisible(false);
         gCalUserNameTextField.setText("");
         gCalPasswordField.setText("");
     }//GEN-LAST:event_gCalLoginScreenCancelButtonActionPerformed
-
+    
     private void gCalLoginScreenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalLoginScreenButtonActionPerformed
         if (engine.calendarLogin(gCalUserNameTextField.getText(), new String(gCalPasswordField.getPassword()))) {
             calendarTextArea.setText("Login Successful...\n");
@@ -2672,12 +2682,12 @@ public class mainView extends javax.swing.JFrame {
         } else {
             calendarTextArea.setText("Login Failed... Try Again\n");
         }
-
+        
         gCalendarLoginJFrame.setVisible(false);
         gCalUserNameTextField.setText("");
         gCalPasswordField.setText("");
     }//GEN-LAST:event_gCalLoginScreenButtonActionPerformed
-
+    
     private void gCalLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalLogoutButtonActionPerformed
         createCalendarButton.setEnabled(false);
         removeCalendarButton.setEnabled(false);
@@ -2690,22 +2700,22 @@ public class mainView extends javax.swing.JFrame {
         entryTable.setEnabled(false);
         calendarTextArea.setText("");
     }//GEN-LAST:event_gCalLogoutButtonActionPerformed
-
+    
     private void printCalendarsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printCalendarsButtonActionPerformed
         calendarTextArea.setText(engine.printCalendars());
     }//GEN-LAST:event_printCalendarsButtonActionPerformed
-
+    
     private void gCalWeeklyAgendaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalWeeklyAgendaButtonActionPerformed
         calendarTextArea.setText(engine.printWeeklyAgenda());
     }//GEN-LAST:event_gCalWeeklyAgendaButtonActionPerformed
-
+    
     private void gCalAddCalendarCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalAddCalendarCancelButtonActionPerformed
         gCalendarAddCalendarJFrame.setVisible(false);
         gCalCalendarTitleTextField.setText("");
         gCalCalendarDescriptionTextArea.setText("");
         gCalLocationTextField.setText("");
     }//GEN-LAST:event_gCalAddCalendarCancelButtonActionPerformed
-
+    
     private void gCalAddCalendarDoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalAddCalendarDoneButtonActionPerformed
         if (gCalCalendarTitleTextField.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please enter a title.");
@@ -2733,19 +2743,19 @@ public class mainView extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_gCalAddCalendarDoneButtonActionPerformed
-
+    
     private void calTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calTableMouseClicked
         String name = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
         engine.loadCalendarEntryTable(entryTable, name);
     }//GEN-LAST:event_calTableMouseClicked
-
+    
     private void createCalendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCalendarButtonActionPerformed
         gCalendarAddCalendarJFrame.setVisible(true);
         gCalCalendarTitleTextField.setText("");
         gCalCalendarDescriptionTextArea.setText("");
         gCalLocationTextField.setText("");
     }//GEN-LAST:event_createCalendarButtonActionPerformed
-
+    
     private void removeCalendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCalendarButtonActionPerformed
         String name = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
         if (engine.deleteCalendar(name)) {
@@ -2755,20 +2765,20 @@ public class mainView extends javax.swing.JFrame {
             calendarTextArea.setText("Unable to delete...\n\n");
         }
     }//GEN-LAST:event_removeCalendarButtonActionPerformed
-
+    
     private void noTeamCreateNewTeamJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTeamCreateNewTeamJButtonActionPerformed
         newTeamNameTextField.setText("");
         newTeamPasswordField.setText("");
         newTeamConfirmPasswordField.setText("");
         createNewTeamJFrame.setVisible(true);
     }//GEN-LAST:event_noTeamCreateNewTeamJButtonActionPerformed
-
+    
     private void noTeamJoinExistingTeamJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTeamJoinExistingTeamJButtonActionPerformed
         engine.createTeamComboBox(joinExistingComboBox);//.setModel(new javax.swing.DefaultComboBoxModel(engine.createTeamComboBox()));
         //joinExistingComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Team1" }));
         joinExistingTeamJFrame.setVisible(true);
     }//GEN-LAST:event_noTeamJoinExistingTeamJButtonActionPerformed
-
+    
     private void createProjectJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProjectJButtonActionPerformed
         String projectTitle = createProjectNameTextField.getText();
         if (!projectTitle.isEmpty()) {
@@ -2781,11 +2791,13 @@ public class mainView extends javax.swing.JFrame {
                     "Title Required", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_createProjectJButtonActionPerformed
-
+    
     private void joinExistingTeamJoinJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinExistingTeamJoinJButtonActionPerformed
         engine.addUserToTeam((Team) joinExistingComboBox.getSelectedItem());
+        noTeamJFrame.setVisible(false);
+        joinExistingTeamJFrame.setVisible(false);
     }//GEN-LAST:event_joinExistingTeamJoinJButtonActionPerformed
-
+    
     private void createNewTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewTeamButtonActionPerformed
         String teamName = newTeamNameTextField.getText();
         String password = String.copyValueOf(newTeamPasswordField.getPassword());
@@ -2797,7 +2809,7 @@ public class mainView extends javax.swing.JFrame {
             this.setVisible(true);
         }
     }//GEN-LAST:event_createNewTeamButtonActionPerformed
-
+    
     private void addEntryCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEntryCancelButtonActionPerformed
         gCalendarAddEntryJFrame.setEnabled(false);
         addEntryTitleTextField.setText("");
@@ -2805,7 +2817,7 @@ public class mainView extends javax.swing.JFrame {
         addEntryStartTimeTextField.setText("12:00");
         addEntryEndTimeTextField.setText("1:00");
     }//GEN-LAST:event_addEntryCancelButtonActionPerformed
-
+    
     private void addEntryAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEntryAddButtonActionPerformed
         if (addEntryTitleTextField.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please enter a title.");
@@ -2838,11 +2850,11 @@ public class mainView extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_addEntryAddButtonActionPerformed
-
+    
     private void newTaskUserStoryComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newTaskUserStoryComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_newTaskUserStoryComboBoxActionPerformed
-
+    
     private void togglButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglButtonActionPerformed
         String command = evt.getActionCommand();
         JToggleButton button = (JToggleButton) evt.getSource();
@@ -2857,15 +2869,11 @@ public class mainView extends javax.swing.JFrame {
         }
         int i = 0;
     }//GEN-LAST:event_togglButtonActionPerformed
-
-    private void togglUserFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglUserFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_togglUserFieldActionPerformed
-
+    
     private void togglLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglLoginButtonActionPerformed
         try {
             togglHelper = new JTogglHelper(this.togglUserField.getText(), String.copyValueOf(this.togglPasswordField.getPassword()));
-
+            
             this.togglButton.setEnabled(true);
             this.togglStatusText.setEnabled(true);
             this.togglTaskTextField.setEnabled(true);
@@ -2874,6 +2882,21 @@ public class mainView extends javax.swing.JFrame {
             System.out.println("Unable to login to Toggl");
         }
     }//GEN-LAST:event_togglLoginButtonActionPerformed
+    
+    private void newUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserStoryButtonActionPerformed
+        try {
+            String userStoryName = JOptionPane.showInputDialog("New User Story Name: ");
+            if (!userStoryName.isEmpty()) {
+                UserStory userStory = engine.createNewUserStory(userStoryName);
+                newTaskUserStoryComboBox.addItem(userStory);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "User story name is required to create a new user story",
+                        "User Story Name Required", JOptionPane.DEFAULT_OPTION);
+            }
+        } catch (Exception e) {//do nothing if canceled
+        }
+    }//GEN-LAST:event_newUserStoryButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -3069,6 +3092,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPasswordField newTeamConfirmPasswordField;
     private javax.swing.JTextField newTeamNameTextField;
     private javax.swing.JPasswordField newTeamPasswordField;
+    private javax.swing.JButton newUserStoryButton;
     private javax.swing.JButton noTeamCreateNewTeamJButton;
     private javax.swing.JFrame noTeamJFrame;
     private javax.swing.JButton noTeamJoinExistingTeamJButton;
@@ -3113,3 +3137,4 @@ public class mainView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 //</editor-fold>
+
