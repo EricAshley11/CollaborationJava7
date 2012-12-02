@@ -390,6 +390,11 @@ public class mainEngine {
         //TODO: MAKE THIS WORK
         return null;
     }
+    
+    Milestone createMilestone(String milestoneName) {
+        //TODO: MAKE THIS WORK
+        return null;
+    }
 
     boolean addNewEntry(String calendarName, String eventTitle, String eventDescription, int startTime, int endTime) {
         boolean flag = false;

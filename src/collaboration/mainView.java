@@ -161,6 +161,9 @@ public class mainView extends javax.swing.JFrame {
         editProjectTextField = new javax.swing.JTextField();
         editProjectDeleteJLabel = new javax.swing.JLabel();
         editProjectRenameJLabel = new javax.swing.JLabel();
+        milestoneComboBox = new javax.swing.JComboBox();
+        JLabelmilestone = new javax.swing.JLabel();
+        addMilestoneJButton = new javax.swing.JButton();
         loginJFrame = new javax.swing.JFrame();
         loginJPanel = new javax.swing.JPanel();
         usernameJLabel = new javax.swing.JLabel();
@@ -740,12 +743,14 @@ public class mainView extends javax.swing.JFrame {
 
         editProjectJFrame.setTitle("Edit Project - ProjectTracker");
         editProjectJFrame.setAlwaysOnTop(true);
-        editProjectJFrame.setBounds(new java.awt.Rectangle(50, 50, 210, 150));
+        editProjectJFrame.setBounds(new java.awt.Rectangle(50, 50, 210, 210));
         editProjectJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        editProjectJFrame.setMinimumSize(new java.awt.Dimension(285, 104));
+        editProjectJFrame.setMinimumSize(new java.awt.Dimension(285, 205));
+        editProjectJFrame.setPreferredSize(new java.awt.Dimension(277, 205));
         editProjectJFrame.setResizable(false);
 
-        editProjectJPanel.setMinimumSize(new java.awt.Dimension(210, 104));
+        editProjectJPanel.setMinimumSize(new java.awt.Dimension(210, 170));
+        editProjectJPanel.setPreferredSize(new java.awt.Dimension(277, 200));
 
         editProjectSaveButton.setText("Save");
         editProjectSaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -758,6 +763,17 @@ public class mainView extends javax.swing.JFrame {
 
         editProjectRenameJLabel.setText("Rename Project:");
 
+        milestoneComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Project Milestone 1", "Project Milestone 2", "Project Milestone 3" }));
+
+        JLabelmilestone.setText("Milestones:");
+
+        addMilestoneJButton.setText("+");
+        addMilestoneJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMilestoneJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout editProjectJPanelLayout = new javax.swing.GroupLayout(editProjectJPanel);
         editProjectJPanel.setLayout(editProjectJPanelLayout);
         editProjectJPanelLayout.setHorizontalGroup(
@@ -767,48 +783,62 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(editProjectJPanelLayout.createSequentialGroup()
                         .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(editProjectDeleteJLabel))
+                                .addGap(93, 93, 93)
+                                .addComponent(editProjectSaveButton))
                             .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addComponent(editProjectRenameJLabel)))
-                        .addGap(0, 16, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addComponent(JLabelmilestone)))
+                        .addGap(0, 0, 0))
                     .addGroup(editProjectJPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(editProjectTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
+                        .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editProjectTextField)
+                            .addGroup(editProjectJPanelLayout.createSequentialGroup()
+                                .addComponent(editProjectRenameJLabel)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editProjectJPanelLayout.createSequentialGroup()
+                .addGap(0, 76, Short.MAX_VALUE)
+                .addComponent(editProjectDeleteJLabel)
+                .addGap(35, 35, 35))
             .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(editProjectSaveButton)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(milestoneComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(3, 3, 3)
+                .addComponent(addMilestoneJButton)
+                .addContainerGap())
         );
         editProjectJPanelLayout.setVerticalGroup(
             editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editProjectJPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(editProjectRenameJLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editProjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editProjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(editProjectDeleteJLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JLabelmilestone)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(milestoneComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addMilestoneJButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(editProjectSaveButton)
-                .addContainerGap())
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout editProjectJFrameLayout = new javax.swing.GroupLayout(editProjectJFrame.getContentPane());
         editProjectJFrame.getContentPane().setLayout(editProjectJFrameLayout);
         editProjectJFrameLayout.setHorizontalGroup(
             editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 212, Short.MAX_VALUE)
-            .addGroup(editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(editProjectJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(editProjectJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         editProjectJFrameLayout.setVerticalGroup(
             editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 129, Short.MAX_VALUE)
-            .addGroup(editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(editProjectJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(editProjectJFrameLayout.createSequentialGroup()
+                .addComponent(editProjectJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         loginJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2507,13 +2537,7 @@ public class mainView extends javax.swing.JFrame {
         createProjectNameTextField.setText("");
         createNewProjectJFrame.setVisible(true);
     }//GEN-LAST:event_newProjectButtonActionPerformed
-    
-    private void editProjectSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectSaveButtonActionPerformed
-        String editedProjectName = editProjectTextField.getText();
-        engine.processProjectNameChanged(projectComboBox, editedProjectName);
-        editProjectJFrame.setVisible(false);
-    }//GEN-LAST:event_editProjectSaveButtonActionPerformed
-    
+        
     private void editProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectButtonActionPerformed
         editProjectJFrame.setVisible(true);
         Object selectedProject = projectComboBox.getSelectedItem();
@@ -2897,6 +2921,27 @@ public class mainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Nothing Selected.");
         }
     }//GEN-LAST:event_deleteEventButtonActionPerformed
+
+    private void editProjectSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectSaveButtonActionPerformed
+        String editedProjectName = editProjectTextField.getText();
+        engine.processProjectNameChanged(projectComboBox, editedProjectName);
+        editProjectJFrame.setVisible(false);
+    }//GEN-LAST:event_editProjectSaveButtonActionPerformed
+
+    private void addMilestoneJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMilestoneJButtonActionPerformed
+        try {
+            String milestoneName = JOptionPane.showInputDialog("New User Story Name: ");
+            if (!milestoneName.isEmpty()) {
+                Milestone milestone = engine.createMilestone(milestoneName);
+                milestoneComboBox.addItem(milestone);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Milestone name is required to create a new user story",
+                        "Milestone Name Required", JOptionPane.DEFAULT_OPTION);
+            }
+        } catch (Exception e) {//do nothing if canceled
+        }
+    }//GEN-LAST:event_addMilestoneJButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -2922,6 +2967,7 @@ public class mainView extends javax.swing.JFrame {
     //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" Variable declarations ">
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLabelmilestone;
     private javax.swing.JButton aboutButton;
     private javax.swing.JButton addEntryAddButton;
     private javax.swing.JButton addEntryCancelButton;
@@ -2941,6 +2987,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPanel addMemberJPanel;
     private javax.swing.JLabel addMemberNameJLabel;
     private javax.swing.JTextField addMemberUsernameTextField;
+    private javax.swing.JButton addMilestoneJButton;
     private javax.swing.JLabel addTasksActualJLabel;
     private javax.swing.JTextField addTasksActualTextField;
     private javax.swing.JButton addTasksButton;
@@ -3086,6 +3133,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JFrame loginJFrame;
     private javax.swing.JPanel loginJPanel;
     private javax.swing.JPanel loginJPanel1;
+    private javax.swing.JComboBox milestoneComboBox;
     private javax.swing.JButton newProjectButton;
     private javax.swing.JComboBox newTaskUserStoryComboBox;
     private javax.swing.JPasswordField newTeamConfirmPasswordField;
