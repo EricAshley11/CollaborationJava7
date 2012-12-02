@@ -2051,55 +2051,53 @@
     </Container>
     <Container class="javax.swing.JFrame" name="gCalendarAddEntryJFrame">
       <Properties>
+        <Property name="title" type="java.lang.String" value="Add Entry"/>
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
-          <Rectangle value="[300, 400, 410, 370]"/>
+          <Rectangle value="[300, 400, 420, 430]"/>
         </Property>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="addEntryDescriptionLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="addEntryNameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addEntryEndTimeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addEntryStartTimeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="addEntryNameLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addEntryDescriptionLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="addEntryStartTimeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="addEntryEndTimeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="addEntryStartTimeTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="startTimeComboBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="addEntryDescriptionScrollPane" pref="214" max="32767" attributes="0"/>
+                                  <Component id="addEntryTitleTextField" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="addEntryEndTimeTextField" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="endTimeComboBox" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="addEntryStartTimeTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="addEntryEndTimeTextField" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="startTimeComboBox" min="-2" max="-2" attributes="0"/>
-                                      <Component id="endTimeComboBox" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="addEntryDescriptionScrollPane" max="32767" attributes="0"/>
-                              <Component id="addEntryTitleTextField" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="addEntryAddButton" min="-2" pref="89" max="-2" attributes="0"/>
+                                  <Component id="addEntryAddButton" min="-2" pref="105" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="addEntryCancelButton" min="-2" pref="106" max="-2" attributes="0"/>
                               </Group>
@@ -2127,21 +2125,21 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="addEntryDescriptionLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="addEntryDescriptionScrollPane" min="-2" pref="113" max="-2" attributes="0"/>
+                      <Component id="addEntryDescriptionScrollPane" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="startTimeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="addEntryStartTimeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="addEntryStartTimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="addEntryEndTimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="addEntryEndTimeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="endTimeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addEntryStartTimeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startTimeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="endTimeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addEntryEndTimeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addEntryEndTimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="addEntryCancelButton" max="32767" attributes="0"/>
                       <Component id="addEntryAddButton" max="32767" attributes="0"/>
@@ -2179,7 +2177,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="addEntryStartTimeLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Start Time"/>
+            <Property name="text" type="java.lang.String" value="Start Time:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="addEntryEndTimeTextField">
@@ -2189,7 +2187,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="addEntryEndTimeLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="End Time"/>
+            <Property name="text" type="java.lang.String" value="End Time:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="startTimeComboBox">
@@ -2729,7 +2727,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="calendarPanel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="calendarPanel" alignment="0" pref="805" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -2747,7 +2745,6 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="removeCalendarButton" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
@@ -2757,31 +2754,35 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="calTableScrollPane" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
-                                              <Component id="calendarTableLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="calTableScrollPane" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
+                                                      <Component id="calendarTableLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="removeCalendarButton" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="entryTableLabel" min="-2" max="-2" attributes="0"/>
                                               <Component id="entryTableScrollPane" min="-2" pref="204" max="-2" attributes="0"/>
-                                              <Component id="createEventButton" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="deleteEventButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="createEventButton" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="printCalendarsButton" min="-2" max="-2" attributes="0"/>
-                                          <Component id="calendarScrollPane" min="-2" pref="283" max="-2" attributes="0"/>
-                                          <Component id="gCalWeeklyAgendaButton" alignment="1" min="-2" pref="156" max="-2" attributes="0"/>
-                                      </Group>
                                       <Component id="feedLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="calendarScrollPane" min="-2" pref="283" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="createCalendarButton" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="68" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2794,22 +2795,16 @@
                               <Component id="gCalLogoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="createCalendarButton" min="-2" max="-2" attributes="0"/>
-                              <Component id="createEventButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="createCalendarButton" max="32767" attributes="0"/>
+                              <Component id="createEventButton" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace pref="39" max="32767" attributes="0"/>
-                                  <Component id="removeCalendarButton" min="-2" pref="42" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="deleteEventButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="42" max="32767" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="deleteEventButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="removeCalendarButton" alignment="3" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace pref="51" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -2823,10 +2818,6 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="gCalWeeklyAgendaButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="printCalendarsButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Component id="feedLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="calendarScrollPane" min="-2" pref="166" max="-2" attributes="0"/>
@@ -2875,24 +2866,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gCalLogoutButtonActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="printCalendarsButton">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Print Owned Calendars"/>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printCalendarsButtonActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="gCalWeeklyAgendaButton">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Print Weekly Agenda"/>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gCalWeeklyAgendaButtonActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="calTableScrollPane">
@@ -3000,6 +2973,9 @@
                     <Property name="text" type="java.lang.String" value="Create Event"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createEventButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="deleteEventButton">
                   <Properties>
@@ -3009,6 +2985,9 @@
                     <Property name="text" type="java.lang.String" value="Delete Event"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteEventButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

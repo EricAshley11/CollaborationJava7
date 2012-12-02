@@ -276,8 +276,16 @@ public class mainEngine {
     public boolean deleteCalendar(String name) {
         boolean flag = false;
         try {
-            calendar.deleteCalendar(name);
-            flag = true;
+            flag = calendar.deleteCalendar(name);
+        } catch (ServiceException | IOException e) {
+        }
+        return flag;
+    }
+    
+    boolean deleteEntry(String calendarName, String entryName) {
+        boolean flag = false;
+        try {
+            flag = calendar.deleteEntryFromCalendar(calendarName, entryName);
         } catch (ServiceException | IOException e) {
         }
         return flag;
@@ -383,8 +391,15 @@ public class mainEngine {
         return null;
     }
 
-    boolean addNewEntry(String name, String text, String text0, String text1, String text2) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    boolean addNewEntry(String calendarName, String eventTitle, String eventDescription, int startTime, int endTime) {
+        boolean flag = false;
+        try {
+            if (calendar.addEntryToCalendar(calendarName, eventTitle, eventDescription, startTime, endTime)) {
+                flag = true;
+            }
+        } catch (ServiceException | IOException e) {
+        }
+        return flag;
     }
 
     void editUser(String name, String phone, String email) {

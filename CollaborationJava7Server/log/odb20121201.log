@@ -1,0 +1,67 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-12-01 16:20:40 #1 store] 
+Database 'C:\Users\Mike\Documents\NetBeansProjects\CollaborationJava7\CollaborationJava7Server\db\ProjectDB.odb' is opened by 5100@Vokes-HP
+
+[2012-12-01 16:20:40 #2 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-12-01 16:20:40 #3 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-12-01 16:20:40 #4 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-12-01 16:20:40 #5 type] 
+Type collaborationjava7.common.Status is not enhanced.
+
+[2012-12-01 16:20:40 #6 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-12-01 16:20:40 #7 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-12-01 16:20:40 #8 type] 
+Type collaborationjava7.common.Milestone is not enhanced.
+
+[2012-12-01 16:20:40 #9 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-12-01 16:21:06 #10 type] 
+Type collaborationjava7server.Password is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-12-01 19:38:45 #1 store] 
+Database 'C:\Users\Mike\Documents\NetBeansProjects\CollaborationJava7\CollaborationJava7Server\db\ProjectDB.odb' has been recovered (tr. 1-10)
+
+[2012-12-01 19:38:46 #2 store] 
+Database 'C:\Users\Mike\Documents\NetBeansProjects\CollaborationJava7\CollaborationJava7Server\db\ProjectDB.odb' is opened by 4232@Vokes-HP
+
+[2012-12-01 19:38:46 #3 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-12-01 19:38:46 #4 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-12-01 19:38:46 #5 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-12-01 19:38:46 #6 type] 
+Type collaborationjava7.common.Status is not enhanced.
+
+[2012-12-01 19:38:46 #7 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-12-01 19:38:46 #8 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-12-01 19:38:46 #9 type] 
+Type collaborationjava7.common.Milestone is not enhanced.
+
+[2012-12-01 19:38:46 #10 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-12-01 19:38:46 #11 type] 
+Type collaborationjava7server.Password is not enhanced.
+
