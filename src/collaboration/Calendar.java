@@ -1,4 +1,5 @@
 package collaboration;
+
 import com.google.gdata.client.*;
 import com.google.gdata.client.calendar.*;
 import com.google.gdata.data.*;
@@ -15,7 +16,7 @@ import java.io.*;
  * @author vokesm
  */
 public class Calendar {
-    
+
     private static final String privateURL = "https://www.google.com/calendar/feeds/default/owncalendars/full";
     //private static final String baseFeed_URL = "https://www.google.com/calendar/feeds/";
     //private static final String eventFeed_URL = "/private/full";
@@ -28,7 +29,7 @@ public class Calendar {
     CalendarQuery myQuery;
     CalendarService myService;
     long time;
-    
+
     public Calendar() {
         googleDF = new SimpleDateFormat("yyyy-MM-dd'T00:00:00'");
         currentDate = java.util.Calendar.getInstance().getTime();
@@ -37,7 +38,7 @@ public class Calendar {
         time = System.currentTimeMillis() + (86400 * 7 * 1000);
         weekAheadDate = new java.util.Date(time);
     }
-    
+
     public boolean validate(String user, String pass) {
         boolean flag = false;
         try {
@@ -48,10 +49,10 @@ public class Calendar {
             return flag;
         } catch (AuthenticationException e) {
             return flag;
-        }    
+        }
     }
-    
-     public String printWeeklyAgenda()
+
+    public String printWeeklyAgenda()
             throws ServiceException, IOException {
         String agenda;
         CalendarEventFeed result;
@@ -62,13 +63,13 @@ public class Calendar {
         myQuery.setMaximumStartTime(DateTime.parseDateTime(googleDF.format(weekAheadDate)));
         result = myService.query(myQuery, CalendarEventFeed.class);
         agenda = "Upcoming events: \n\n";
-        for (int i = 0; i< result.getEntries().size(); i++) {
+        for (int i = 0; i < result.getEntries().size(); i++) {
             CalendarEventEntry entry = result.getEntries().get(i);
             agenda += "\t" + entry.getTitle().getPlainText() + "\n";
-        }   
+        }
         return agenda;
     }
-    
+
     public boolean LoginSuccess(CalendarService service) {
         boolean flag = false;
         if (service != null) {
@@ -76,9 +77,9 @@ public class Calendar {
         }
         return flag;
     }
-    
-    public String printUserCalendars() 
-           throws ServiceException, IOException {
+
+    public String printUserCalendars()
+            throws ServiceException, IOException {
 
         String ownedCalendars = "Your Calendars:\n\n";
         URL feed = new URL(privateURL);
@@ -89,11 +90,11 @@ public class Calendar {
         }
         return ownedCalendars;
     }
-    
+
     public CalendarService getService() {
         return myService;
     }
-    
+
     public boolean createNewCalendar(String title, String description, String location) {
         boolean flag = false;
         try {
@@ -103,7 +104,7 @@ public class Calendar {
             newCal.setTimeZone(new TimeZoneProperty("EST"));
             newCal.setHidden(HiddenProperty.FALSE);
             newCal.setColor(new ColorProperty("#2952A3"));
-            newCal.addLocation(new Where("","",location));
+            newCal.addLocation(new Where("", "", location));
 
             URL postUrl = new URL(privateURL);
             CalendarEntry newCalendar = myService.insert(postUrl, newCal);
@@ -113,8 +114,8 @@ public class Calendar {
 
         return flag;
     }
-    
-    public String[][] getUserCalendars() 
+
+    public String[][] getUserCalendars()
             throws ServiceException, IOException {
 
         URL feed = new URL(privateURL);
@@ -124,11 +125,11 @@ public class Calendar {
             CalendarEntry entry = result.getEntries().get(i);
             calendars[i][0] = entry.getTitle().getPlainText();
         }
-            
+
         return calendars;
     }
-    
-    public String[][] getEntryData(String calendarName) 
+
+    public String[][] getEntryData(String calendarName)
             throws ServiceException, IOException {
         URL postURL = null;
         URL feed = new URL(privateURL);
@@ -140,24 +141,24 @@ public class Calendar {
                 postURL = new URL(calendarEntry.getLink(Link.Rel.ALTERNATE, Link.Type.ATOM).getHref());
             }
         }
-        
+
         myQuery = new CalendarQuery(postURL);
         myQuery.setMinimumStartTime(DateTime.parseDateTime(googleDF.format(currentDate)));
         myQuery.setMaximumStartTime(DateTime.parseDateTime(googleDF.format(weekAheadDate)));
         CalendarEventFeed entryResult = myService.query(myQuery, CalendarEventFeed.class);
         String[][] entries = new String[entryResult.getEntries().size()][entryResult.getEntries().size()];
-        for (int i = 0; i< entryResult.getEntries().size(); i++) {
+        for (int i = 0; i < entryResult.getEntries().size(); i++) {
             CalendarEventEntry entry = entryResult.getEntries().get(i);
             entries[i][0] = entry.getTitle().getPlainText();
         }
-        
+
         return entries;
     }
-    
-    public boolean deleteCalendar(String name) 
+
+    public boolean deleteCalendar(String name)
             throws ServiceException, IOException {
         boolean flag = false;
-        
+
         URL url = new URL(privateURL);
         CalendarFeed result = myService.getFeed(url, CalendarFeed.class);
         for (int i = 0; i < result.getEntries().size(); i++) {
@@ -167,18 +168,18 @@ public class Calendar {
                 flag = true;
             }
         }
-        
+
         return flag;
     }
-    
-    public boolean addEntryToCalendar(String calendarName, 
-            String eventTitle, String eventDescription, int startTime, int endTime) 
+
+    public boolean addEntryToCalendar(String calendarName,
+            String eventTitle, String eventDescription, int startTime, int endTime)
             throws ServiceException, IOException {
         boolean flag = true;
         URL postURL = null;
         URL feed = new URL(privateURL);
         CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
-        
+
         for (int i = 0; i < result.getEntries().size(); i++) {
             CalendarEntry calendarEntry = result.getEntries().get(i);
             if (calendarEntry.getTitle().getPlainText().equals(calendarName)) {
@@ -187,18 +188,18 @@ public class Calendar {
         }
 
         CalendarEventEntry myEntry = new CalendarEventEntry();
-        
-        
+
+
         return flag;
     }
-    
-    public boolean deleteEntryFromCalendar(String calendarName, String entryName) 
+
+    public boolean deleteEntryFromCalendar(String calendarName, String entryName)
             throws ServiceException, IOException {
         boolean flag = true;
         URL postURL = null;
         URL feed = new URL(privateURL);
         CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
-        
+
         for (int i = 0; i < result.getEntries().size(); i++) {
             CalendarEntry calendarEntry = result.getEntries().get(i);
             if (calendarEntry.getTitle().getPlainText().equals(calendarName)) {
@@ -206,14 +207,13 @@ public class Calendar {
             }
         }
         CalendarEventFeed temp = myService.getFeed(postURL, CalendarEventFeed.class);
-        for (int i = 0; i< temp.getEntries().size(); i++) {
+        for (int i = 0; i < temp.getEntries().size(); i++) {
             CalendarEventEntry entry = temp.getEntries().get(i);
             if (entry.getTitle().getPlainText().equals(entryName)) {
                 entry.delete();
                 flag = true;
             }
-        }         
+        }
         return flag;
     }
 }
-

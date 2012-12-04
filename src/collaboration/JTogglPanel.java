@@ -10,9 +10,10 @@ import javax.swing.JPanel;
  *
  * @author Cam Warner
  */
-public class JTogglPanel extends JPanel{
+public class JTogglPanel extends JPanel {
     //new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl.png")), teamPanel, "Toggl");
-    public JTogglPanel(){
+
+    public JTogglPanel() {
         super();
     }
 }

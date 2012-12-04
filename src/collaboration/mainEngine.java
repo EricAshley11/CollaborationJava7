@@ -5,12 +5,9 @@
 package collaboration;
 
 import collaborationjava7.common.*;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.google.gdata.util.ServiceException;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.DefaultRowSorter;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -21,8 +18,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import org.jfree.chart.ChartPanel;
-import com.google.gdata.client.*;
-import com.google.gdata.util.ServiceException;
 
 /**
  *
@@ -168,6 +163,7 @@ public class mainEngine {
             }
         });
     }
+
     public boolean validCredentials(String userName, String password) {
         boolean validCreds = false;
         User u = ClientBackend.getInstance().loginUser(userName, password);
@@ -281,7 +277,7 @@ public class mainEngine {
         }
         return flag;
     }
-    
+
     boolean deleteEntry(String calendarName, String entryName) {
         boolean flag = false;
         try {
@@ -352,7 +348,7 @@ public class mainEngine {
     }
 
     boolean loginTeam(Team team, String password) {
-        if(ClientBackend.getInstance().loginTeam(team, password)){
+        if (ClientBackend.getInstance().loginTeam(team, password)) {
             addUserToTeam(team);
             return true;
         }
@@ -362,35 +358,39 @@ public class mainEngine {
     void addUserToTeam(User user, Team team) {
         ClientBackend.getInstance().addUserToTeam(user, team);
     }
+
     void addUserToTeam(Team team) {
         addUserToTeam(user, team);
     }
-    Team createTeam(String teamName, String password){
+
+    Team createTeam(String teamName, String password) {
         return ClientBackend.getInstance().createTeam(teamName, password);
     }
-    void createProjectUsersComboBox(JComboBox comboBox){
+
+    void createProjectUsersComboBox(JComboBox comboBox) {
         comboBox.removeAllItems();
-        for(User u : ClientBackend.getInstance().retrieveUsers(selectedProj)){
+        for (User u : ClientBackend.getInstance().retrieveUsers(selectedProj)) {
             comboBox.addItem(u);
         }
     }
-    Object[] getNewTaskRow(User lead, UserStory userStory, String taskName, String estimated, String actual){
+
+    Object[] getNewTaskRow(User lead, UserStory userStory, String taskName, String estimated, String actual) {
         Task task = ClientBackend.getInstance().createTask(lead, userStory, taskName, Integer.parseInt(estimated), Integer.parseInt(actual));
         return task.toString().split(",");
     }
 
     void createProjectUserStoriesComboBox(JComboBox newTaskUserStoryComboBox) {
         newTaskUserStoryComboBox.removeAllItems();
-        for(UserStory us : ClientBackend.getInstance().getUserStories(selectedProj)){
+        for (UserStory us : ClientBackend.getInstance().getUserStories(selectedProj)) {
             newTaskUserStoryComboBox.addItem(us);
         }
     }
-    
+
     UserStory createNewUserStory(String storyName) {
         //TODO: MAKE THIS WORK
         return null;
     }
-    
+
     Milestone createMilestone(String milestoneName) {
         //TODO: MAKE THIS WORK
         return null;

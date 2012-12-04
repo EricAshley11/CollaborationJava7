@@ -13,20 +13,21 @@ import org.restlet.resource.ClientResource;
  *
  * @author Cam
  */
-public class ClientBackend implements IBackend{
+public class ClientBackend implements IBackend {
 
     private static ClientBackend instance = null;
     private Backend remoteObj;
     private static String serverAddr = "localhost";
-    public static ClientBackend getInstance(){
-        if(instance == null){
+
+    public static ClientBackend getInstance() {
+        if (instance == null) {
             //make a single backend for the client
             instance = new ClientBackend();
         }
         return instance;
     }
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         //Make some test data and put it in the database
         User cam = getInstance().createUser("cam", "abc", "616-1111", "cam@test");
         User zach = getInstance().createUser("zach", "abc", "616-2222", "zach@test");
@@ -41,112 +42,114 @@ public class ClientBackend implements IBackend{
         getInstance().addUserToTeam(tommy, team);
         getInstance().addUserToTeam(ericM, team);
         getInstance().addUserToTeam(mike, team);
-        
+
         Project proj1 = getInstance().createProject("testProj1", cam);
         Project proj2 = getInstance().createProject("testProj2", cam);
-        
+
         UserStory us1 = getInstance().createUserStory("testUS1");
         UserStory us2 = getInstance().createUserStory("testUS2");
-        
+
         Milestone ms1 = getInstance().createMilestone("testMS1", proj1.getSchedule());
         Milestone ms2 = getInstance().createMilestone("testMS2", proj2.getSchedule());
-        
+
         ms1.addUserStory(us1);
         ms2.addUserStory(us2);
-        
+
         getInstance().saveEntity(proj1);
         getInstance().saveEntity(proj2);
         getInstance().saveEntity(us1);
         getInstance().saveEntity(us2);
         getInstance().saveEntity(ms1);
         getInstance().saveEntity(ms2);
-        
+
         Task t1 = getInstance().createTask(cam, us1, "testTask1", 1, 0);
         Task t2 = getInstance().createTask(zach, us2, "testTask2", 2, 0);
-        
+
     }
     //This constructor is private because we want this class to be a singleton
-    private ClientBackend(){
+
+    private ClientBackend() {
         //Realized we don't really need to get a remote object here, we can just use the ClientBackend as a wrapper
         //try {
-            // Define our Restlet client resources.  
-            //ClientResource cr = new ClientResource(  
-            //    "http://"+serverAddr+":8182/collab/backend");  
-            //IBackendResource br = cr.wrap(IBackendResource.class);
-            remoteObj = new Backend(serverAddr);//br.retrieve(serverAddr);
+        // Define our Restlet client resources.  
+        //ClientResource cr = new ClientResource(  
+        //    "http://"+serverAddr+":8182/collab/backend");  
+        //IBackendResource br = cr.wrap(IBackendResource.class);
+        remoteObj = new Backend(serverAddr);//br.retrieve(serverAddr);
             /*
-            System.out.println("Got the object from the server.");
-        } catch (Exception e) {
-            System.err.println("Error getting the object from server");
-            e.printStackTrace();
-        }*/
+         System.out.println("Got the object from the server.");
+         } catch (Exception e) {
+         System.err.println("Error getting the object from server");
+         e.printStackTrace();
+         }*/
     }
 
-    public void removeProject(Project project){
-         remoteObj.removeProject(project);
+    public void removeProject(Project project) {
+        remoteObj.removeProject(project);
     }
 
-    public ArrayList<Project> retrieveUserProjects(User u){
-         return remoteObj.retrieveProjects(u);
-
-    }
-
-    public ArrayList<Project> getDummyProjects(){
-         return null;//remoteObj.getDummyProjects();
+    public ArrayList<Project> retrieveUserProjects(User u) {
+        return remoteObj.retrieveProjects(u);
 
     }
 
-    public ArrayList<User> retrieveUsers(Project p){
+    public ArrayList<Project> getDummyProjects() {
+        return null;//remoteObj.getDummyProjects();
+
+    }
+
+    public ArrayList<User> retrieveUsers(Project p) {
         return remoteObj.retrieveUsers(p);
     }
 
-    public String[][] getUserTableData(Project p){
+    public String[][] getUserTableData(Project p) {
         return remoteObj.getUserTableData(p);
     }
+
     public String[][] getTasksTableData(Project p) {
         return remoteObj.getTasksTableData(p);
     }
 
-    public ArrayList<Task> retrieveUserTasks(){
-         return null;//remoteObj.retrieveUserTasks();
+    public ArrayList<Task> retrieveUserTasks() {
+        return null;//remoteObj.retrieveUserTasks();
     }
 
-    public ArrayList<Task> retrieveUserTasks(User user){
-         return remoteObj.retrieveUserTasks(user);
+    public ArrayList<Task> retrieveUserTasks(User user) {
+        return remoteObj.retrieveUserTasks(user);
     }
 
-    public void removeUser(String name){
-         remoteObj.removeUser(name);
+    public void removeUser(String name) {
+        remoteObj.removeUser(name);
     }
 
-    public Project createProject(String projectName, User u){
-         return remoteObj.createProject(projectName, u);
+    public Project createProject(String projectName, User u) {
+        return remoteObj.createProject(projectName, u);
     }
 
-    public Team createTeam(String teamName, String password){
-         return remoteObj.createTeam(teamName, password);
+    public Team createTeam(String teamName, String password) {
+        return remoteObj.createTeam(teamName, password);
     }
 
     public UserStory createUserStory(String usName) {
-         return remoteObj.createUserStory(usName);
+        return remoteObj.createUserStory(usName);
     }
 
-    public User createUser(String user, String password, String phoneNum, String email){
-         return remoteObj.createUser(user, password, phoneNum, email);
+    public User createUser(String user, String password, String phoneNum, String email) {
+        return remoteObj.createUser(user, password, phoneNum, email);
     }
 
     public User getUserFromId(long id) {
         return remoteObj.getUserFromId(id);
     }
-    
+
     public User getUser(String name) {
         List<User> users = remoteObj.getUsersFromName(name);
-        if(users!=null && users.size()==1){
+        if (users != null && users.size() == 1) {
             return users.iterator().next();
         }
         return null;
     }
-    
+
     @Override
     public List<User> getUsersFromName(String name) {
         return remoteObj.getUsersFromName(name);
