@@ -308,20 +308,18 @@ public class mainView extends javax.swing.JFrame {
         createEventButton = new javax.swing.JButton();
         deleteEventButton = new javax.swing.JButton();
         progressPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
         jTogglPanel = new JTogglPanel();
         togglTaskLabel = new javax.swing.JLabel();
         togglTaskTextField = new javax.swing.JTextField();
         togglButton = new javax.swing.JToggleButton();
-        togglStatusText = new javax.swing.JLabel();
+        togglStatusTextBox = new javax.swing.JLabel();
         togglPasswordField = new javax.swing.JPasswordField();
         togglUserField = new javax.swing.JTextField();
         togglLoginButton = new javax.swing.JButton();
         togglLoginLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        loginStatusTextBox = new javax.swing.JLabel();
 
         addMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMemberJFrame.setTitle("Add Member - ProjectTracker");
@@ -745,7 +743,6 @@ public class mainView extends javax.swing.JFrame {
         editProjectJFrame.setBounds(new java.awt.Rectangle(50, 50, 210, 210));
         editProjectJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
         editProjectJFrame.setMinimumSize(new java.awt.Dimension(285, 205));
-        editProjectJFrame.setPreferredSize(new java.awt.Dimension(277, 205));
         editProjectJFrame.setResizable(false);
 
         editProjectJPanel.setMinimumSize(new java.awt.Dimension(210, 170));
@@ -1906,14 +1903,14 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, teamPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
                     .addGroup(teamPanelLayout.createSequentialGroup()
                         .addComponent(addMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                         .addComponent(filterTeamButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1931,7 +1928,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1973,7 +1970,7 @@ public class mainView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Lead", "User Story", "Task", "Status", "Estimated Completion", "Actual Completion"
+                "Lead", "User Story", "Task", "Status", "Estimated Duration", "Actual Duration"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -2007,11 +2004,11 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeTaskButton)
                         .addGap(18, 18, 18)
                         .addComponent(editTaskButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                         .addComponent(filterTasksButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE))
+                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tasksPanelLayout.setVerticalGroup(
@@ -2026,7 +2023,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2138,33 +2135,24 @@ public class mainView extends javax.swing.JFrame {
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(calendarPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(gCalLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(calTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                    .addComponent(calendarTableLabel)
+                    .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(createCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(gCalLogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                    .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(entryTableLabel)
+                        .addComponent(entryTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                        .addComponent(createEventButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteEventButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(42, 42, 42)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(calendarPanelLayout.createSequentialGroup()
-                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                .addComponent(gCalLoginButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gCalLogoutButton))
-                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(calendarPanelLayout.createSequentialGroup()
-                                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(calTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(calendarTableLabel))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(calendarPanelLayout.createSequentialGroup()
-                                        .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(55, 55, 55)))
-                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(entryTableLabel)
-                                    .addComponent(entryTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(deleteEventButton)
-                                    .addComponent(createEventButton))))
-                        .addGap(42, 42, 42)
-                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(feedLabel)
-                            .addComponent(calendarScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(createCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(feedLabel)
+                    .addComponent(calendarScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
         );
         calendarPanelLayout.setVerticalGroup(
@@ -2172,8 +2160,8 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(calendarPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gCalLoginButton)
-                    .addComponent(gCalLogoutButton))
+                    .addComponent(gCalLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gCalLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(createCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2182,20 +2170,16 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteEventButton)
                     .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(calendarPanelLayout.createSequentialGroup()
-                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(calendarTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(entryTableLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(calTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(entryTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(calendarPanelLayout.createSequentialGroup()
-                        .addComponent(feedLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(calendarScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(calendarTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(entryTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(feedLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(calendarScrollPane)
+                    .addComponent(calTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addComponent(entryTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
 
@@ -2216,55 +2200,14 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 805, Short.MAX_VALUE)
+            .addGap(0, 798, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 556, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/graph75.png")), progressPanel, "Progress"); // NOI18N
-
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Project");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Team");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Eric Ashley");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cam Warner");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Mike Vokes");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Eric Munson");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Zach Burnside");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Thomas Rankin");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Tasks");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("User Story 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("User Story 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("User Story 3");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("User Story 4");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane1.setViewportView(jTree1);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-        );
-
-        tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/overview75.png")), jPanel1, "Project Overview"); // NOI18N
 
         togglTaskLabel.setText("Toggl Task");
 
@@ -2279,8 +2222,8 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        togglStatusText.setText("Waiting...");
-        togglStatusText.setEnabled(false);
+        togglStatusTextBox.setText("Waiting...");
+        togglStatusTextBox.setEnabled(false);
 
         togglLoginButton.setText("Login");
         togglLoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -2289,9 +2232,9 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        togglLoginLabel.setText("Login");
+        togglLoginLabel.setText("Login with your Toggl Email and password");
 
-        jLabel3.setText("Name");
+        jLabel3.setText("Email");
 
         jLabel5.setText("Password");
 
@@ -2300,55 +2243,68 @@ public class mainView extends javax.swing.JFrame {
         jTogglPanelLayout.setHorizontalGroup(
             jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(togglLoginLabel))
+                .addContainerGap()
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jTogglPanelLayout.createSequentialGroup()
+                        .addComponent(togglTaskTextField)
+                        .addGap(18, 18, 18)
+                        .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(togglStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56))
+                    .addGroup(jTogglPanelLayout.createSequentialGroup()
+                        .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(togglTaskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addGroup(jTogglPanelLayout.createSequentialGroup()
+                                        .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(loginStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel3)
-                .addGap(171, 171, 171)
-                .addComponent(jLabel5))
-            .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(togglLoginButton))
-            .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(togglTaskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(togglStatusText, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jTogglPanelLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(togglLoginLabel))
+                    .addGroup(jTogglPanelLayout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(togglLoginButton)))
+                .addContainerGap())
         );
         jTogglPanelLayout.setVerticalGroup(
             jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(40, 40, 40)
                 .addComponent(togglLoginLabel)
-                .addGap(23, 23, 23)
-                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5))
-                .addGap(3, 3, 3)
-                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(6, 6, 6)
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(togglLoginButton))
-                .addGap(101, 101, 101)
+                    .addComponent(loginStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(togglLoginButton)
+                .addGap(64, 64, 64)
                 .addComponent(togglTaskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(togglButton)
-                    .addComponent(togglStatusText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(togglStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(281, Short.MAX_VALUE))
         );
 
-        tabbedPane.addTab("tab6", jTogglPanel);
+        tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl.png")), jTogglPanel, ""); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2867,7 +2823,6 @@ public class mainView extends javax.swing.JFrame {
             this.togglHelper.endNewTimeEntry();
             button.setBackground(Color.green);
         }
-        int i = 0;
     }//GEN-LAST:event_togglButtonActionPerformed
 
     private void togglLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglLoginButtonActionPerformed
@@ -2875,11 +2830,11 @@ public class mainView extends javax.swing.JFrame {
             togglHelper = new JTogglHelper(this.togglUserField.getText(), String.copyValueOf(this.togglPasswordField.getPassword()));
 
             this.togglButton.setEnabled(true);
-            this.togglStatusText.setEnabled(true);
+            this.loginStatusTextBox.setEnabled(true);
             this.togglTaskTextField.setEnabled(true);
-            this.togglStatusText.setText("Successfully logged in as " + this.togglHelper.getFullName());
+            this.loginStatusTextBox.setText("Successfully logged in as " + this.togglHelper.getFullName());
         } catch (Exception e) {
-            System.out.println("Unable to login to Toggl");
+            this.loginStatusTextBox.setText("Unable to login to Toggl");
         }
     }//GEN-LAST:event_togglLoginButtonActionPerformed
 
@@ -3118,12 +3073,9 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel jTogglPanel;
-    private javax.swing.JTree jTree1;
     private javax.swing.JComboBox joinExistingComboBox;
     private javax.swing.JFrame joinExistingTeamJFrame;
     private javax.swing.JButton joinExistingTeamJoinJButton;
@@ -3132,6 +3084,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JFrame loginJFrame;
     private javax.swing.JPanel loginJPanel;
     private javax.swing.JPanel loginJPanel1;
+    private javax.swing.JLabel loginStatusTextBox;
     private javax.swing.JComboBox milestoneComboBox;
     private javax.swing.JButton newProjectButton;
     private javax.swing.JComboBox newTaskUserStoryComboBox;
@@ -3173,7 +3126,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton togglLoginButton;
     private javax.swing.JLabel togglLoginLabel;
     private javax.swing.JPasswordField togglPasswordField;
-    private javax.swing.JLabel togglStatusText;
+    private javax.swing.JLabel togglStatusTextBox;
     private javax.swing.JLabel togglTaskLabel;
     private javax.swing.JTextField togglTaskTextField;
     private javax.swing.JTextField togglUserField;

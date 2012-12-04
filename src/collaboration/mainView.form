@@ -2445,7 +2445,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="teamTableScrollPane" pref="785" max="32767" attributes="0"/>
+                          <Component id="teamTableScrollPane" pref="774" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="addMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -2616,7 +2616,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tasksTableScrollPane" pref="785" max="32767" attributes="0"/>
+                          <Component id="tasksTableScrollPane" pref="774" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -2697,8 +2697,8 @@
                         <Column editable="false" title="User Story" type="java.lang.Object"/>
                         <Column editable="false" title="Task" type="java.lang.Object"/>
                         <Column editable="false" title="Status" type="java.lang.Object"/>
-                        <Column editable="false" title="Estimated Completion" type="java.lang.Object"/>
-                        <Column editable="false" title="Actual Completion" type="java.lang.Object"/>
+                        <Column editable="false" title="Estimated Duration" type="java.lang.Object"/>
+                        <Column editable="false" title="Actual Duration" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -2786,45 +2786,29 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="gCalLoginButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="gCalLogoutButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="calTableScrollPane" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
-                                                      <Component id="calendarTableLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="removeCalendarButton" max="32767" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="entryTableLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="entryTableScrollPane" min="-2" pref="204" max="-2" attributes="0"/>
-                                              <Component id="deleteEventButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="createEventButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="feedLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="calendarScrollPane" min="-2" pref="283" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="gCalLoginButton" max="32767" attributes="0"/>
+                              <Component id="calTableScrollPane" alignment="0" pref="204" max="32767" attributes="0"/>
+                              <Component id="calendarTableLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="removeCalendarButton" max="32767" attributes="0"/>
+                              <Component id="createCalendarButton" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="gCalLogoutButton" pref="204" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="entryTableLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="entryTableScrollPane" pref="204" max="32767" attributes="0"/>
+                                  <Component id="createEventButton" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="deleteEventButton" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="createCalendarButton" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="feedLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="calendarScrollPane" min="-2" pref="283" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
@@ -2835,8 +2819,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="gCalLoginButton" min="-2" max="-2" attributes="0"/>
-                              <Component id="gCalLogoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="gCalLoginButton" min="-2" pref="65" max="-2" attributes="0"/>
+                              <Component id="gCalLogoutButton" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2848,24 +2832,17 @@
                               <Component id="deleteEventButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="removeCalendarButton" alignment="3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="51" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="calendarTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="entryTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="calTableScrollPane" min="-2" pref="248" max="-2" attributes="0"/>
-                                      <Component id="entryTableScrollPane" min="-2" pref="248" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="feedLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="calendarScrollPane" min="-2" pref="166" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace pref="74" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="calendarTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="entryTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="feedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="calendarScrollPane" max="32767" attributes="0"/>
+                              <Component id="calTableScrollPane" pref="248" max="32767" attributes="0"/>
+                              <Component id="entryTableScrollPane" pref="248" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
@@ -3063,58 +3040,18 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel1">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="" toolTip="Project Overview">
-                <Property name="tabTitle" type="java.lang.String" value=""/>
-                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/overview75.png"/>
-                </Property>
-                <Property name="tabToolTip" type="java.lang.String" value="Project Overview"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="798" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="556" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTree" name="jTree1">
-                  <Properties>
-                    <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                      <TreeModel code="Project&#xa; Team&#xa;  Eric Ashley&#xa;  Cam Warner&#xa;  Mike Vokes&#xa;  Eric Munson&#xa;  Zach Burnside&#xa;  Thomas Rankin&#xa; Tasks&#xa;  User Story 1&#xa;  User Story 2&#xa;  User Story 3&#xa;  User Story 4"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JPanel" name="jTogglPanel">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JTogglPanel()"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab6">
-                <Property name="tabTitle" type="java.lang.String" value="tab6"/>
+              <JTabbedPaneConstraints tabName="" toolTip="">
+                <Property name="tabTitle" type="java.lang.String" value=""/>
+                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/toggl.png"/>
+                </Property>
+                <Property name="tabToolTip" type="java.lang.String" value=""/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -3123,61 +3060,82 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                      <Component id="togglLoginLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="togglTaskTextField" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="togglButton" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="togglStatusTextBox" min="-2" pref="300" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="togglTaskLabel" min="-2" pref="793" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="togglUserField" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="togglPasswordField" min="-2" pref="204" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="loginStatusTextBox" min="-2" pref="300" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="171" pref="171" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="togglUserField" min="-2" pref="200" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="togglPasswordField" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                      <Component id="togglLoginButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="togglTaskLabel" min="-2" pref="793" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Component id="togglTaskTextField" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Component id="togglButton" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Component id="togglStatusText" min="-2" pref="370" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                              <Component id="togglLoginLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
+                              <Component id="togglLoginButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="togglLoginLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="togglUserField" min="-2" max="-2" attributes="0"/>
-                          <Component id="togglPasswordField" min="-2" max="-2" attributes="0"/>
-                          <Component id="togglLoginButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="togglUserField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="togglPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="loginStatusTextBox" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="101" pref="101" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="togglLoginButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Component id="togglTaskLabel" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="togglTaskTextField" min="-2" max="-2" attributes="0"/>
-                          <Component id="togglButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="togglStatusText" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="togglTaskTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="togglButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="togglStatusTextBox" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="281" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3205,7 +3163,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="togglButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="togglStatusText">
+            <Component class="javax.swing.JLabel" name="togglStatusTextBox">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Waiting..."/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -3225,18 +3183,20 @@
             </Component>
             <Component class="javax.swing.JLabel" name="togglLoginLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Login"/>
+                <Property name="text" type="java.lang.String" value="Login with your Toggl Email and password"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Name"/>
+                <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="loginStatusTextBox">
             </Component>
           </SubComponents>
         </Container>
