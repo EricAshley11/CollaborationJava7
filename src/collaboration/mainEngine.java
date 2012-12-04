@@ -145,7 +145,7 @@ public class mainEngine {
         tasksTable.setModel(new javax.swing.table.DefaultTableModel(
                 ClientBackend.getInstance().getTasksTableData(selectedProj),
                 new String[]{
-                    "Lead", "User Story", "Task", "Status", "Estimated Completion", "Actual Completion"
+                    "Lead", "User Story", "Task", "Status", "Estimated Duration", "Actual Duration"
                 }) {
             boolean[] canEdit = new boolean[]{
                 false, false, false, false, false, false
