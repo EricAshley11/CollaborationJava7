@@ -67,6 +67,19 @@ public class GitHubManager {
     }
 
     public static void main(String[] args) throws IOException {
+        GitHubClient client = new GitHubClient();
+        client.setCredentials("akie311", "bd349557");
+        CommitService cServ = new CommitService(client);
+        RepositoryService rServ = new RepositoryService(client);
+        RepositoryId rID = new RepositoryId("ericashley11","CollaborationJava7");
+        Repository repo = new Repository();
+        List<RepositoryCommit> commit = cServ.getCommits(rID);
+        System.out.println(commit.get(3).getAuthor().getLogin()+ " pushed to " + 
+                rServ.getBranches(rID).get(3).getName() + "\n" + commit.get(3).getCommit().getMessage());
         
+        
+        
+        
+       
     }
 }
