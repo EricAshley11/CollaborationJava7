@@ -2445,14 +2445,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="teamTableScrollPane" pref="774" max="32767" attributes="0"/>
+                          <Component id="teamTableScrollPane" pref="785" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="addMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="226" max="32767" attributes="0"/>
+                              <EmptySpace pref="241" max="32767" attributes="0"/>
                               <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -2476,7 +2476,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="teamTableScrollPane" pref="498" max="32767" attributes="0"/>
+                      <Component id="teamTableScrollPane" pref="500" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2611,12 +2611,12 @@
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="226" max="32767" attributes="0"/>
+                              <EmptySpace pref="241" max="32767" attributes="0"/>
                               <Component id="filterTasksButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tasksTableScrollPane" pref="774" max="32767" attributes="0"/>
+                          <Component id="tasksTableScrollPane" pref="785" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -2636,7 +2636,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tasksTableScrollPane" pref="498" max="32767" attributes="0"/>
+                      <Component id="tasksTableScrollPane" pref="500" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2798,12 +2798,10 @@
                           <EmptySpace type="unrelated" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="gCalLogoutButton" pref="204" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="entryTableLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="entryTableScrollPane" pref="204" max="32767" attributes="0"/>
-                                  <Component id="createEventButton" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="deleteEventButton" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="entryTableLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="entryTableScrollPane" pref="204" max="32767" attributes="0"/>
+                              <Component id="createEventButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="deleteEventButton" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -2832,7 +2830,7 @@
                               <Component id="deleteEventButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="removeCalendarButton" alignment="3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="74" max="32767" attributes="0"/>
+                          <EmptySpace pref="76" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="calendarTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="entryTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -3030,7 +3028,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="798" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="805" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -3046,12 +3044,12 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="" toolTip="">
+              <JTabbedPaneConstraints tabName="" toolTip="Toggl">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/toggl.png"/>
+                  <Image iconType="3" name="/resources/icons/toggl75.png"/>
                 </Property>
-                <Property name="tabToolTip" type="java.lang.String" value=""/>
+                <Property name="tabToolTip" type="java.lang.String" value="Toggl"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -3130,12 +3128,14 @@
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Component id="togglTaskLabel" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="togglTaskTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="togglButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="togglStatusTextBox" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="togglTaskTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="togglButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="281" max="32767" attributes="0"/>
+                      <EmptySpace pref="284" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3183,7 +3183,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="togglLoginLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Login with your Toggl Email and password"/>
+                <Property name="text" type="java.lang.String" value="Login with your Toggl Email and Password"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
