@@ -1520,8 +1520,8 @@ public class mainView extends javax.swing.JFrame {
         );
 
         createNewTeamJFrame.setTitle("Create Team");
-        createNewTeamJFrame.setBounds(new java.awt.Rectangle(55, 55, 369, 150));
-        createNewTeamJFrame.setMinimumSize(new java.awt.Dimension(369, 150));
+        createNewTeamJFrame.setBounds(new java.awt.Rectangle(55, 55, 377, 158));
+        createNewTeamJFrame.setMinimumSize(new java.awt.Dimension(377, 158));
 
         createNewTeamButton.setText("Create Team");
         createNewTeamButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1545,7 +1545,7 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(createNewTeamJFrameLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(createNewTeamButton, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                    .addComponent(createNewTeamButton, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                     .addGroup(createNewTeamJFrameLayout.createSequentialGroup()
                         .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
@@ -1557,7 +1557,7 @@ public class mainView extends javax.swing.JFrame {
                             .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(newTeamPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                                 .addComponent(newTeamConfirmPasswordField)))
-                        .addGap(0, 15, Short.MAX_VALUE)))
+                        .addGap(0, 23, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         createNewTeamJFrameLayout.setVerticalGroup(
@@ -1571,7 +1571,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(newTeamPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(newTeamConfirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1733,7 +1733,6 @@ public class mainView extends javax.swing.JFrame {
         addUserStoryJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
         addUserStoryJFrame.setMinimumSize(new java.awt.Dimension(350, 200));
         addUserStoryJFrame.setName("Add Member"); // NOI18N
-        addUserStoryJFrame.setPreferredSize(new java.awt.Dimension(349, 200));
 
         jLabel7.setText("User Story Name:");
 
@@ -1963,7 +1962,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2058,7 +2057,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2204,7 +2203,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteEventButton)
                     .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(calendarTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(entryTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2238,7 +2237,7 @@ public class mainView extends javax.swing.JFrame {
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
+            .addGap(0, 486, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/graph75.png")), progressPanel, "Progress"); // NOI18N
@@ -2336,7 +2335,7 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(togglButton)))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl75.png")), jTogglPanel, "Toggl"); // NOI18N
@@ -2375,7 +2374,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(signOutButton)
                     .addComponent(editProjectButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2605,7 +2604,15 @@ public class mainView extends javax.swing.JFrame {
             createUserNameTextField,
             createUserPhoneTextField,
             createUserEmailTextField};
-        engine.createUser(textFields);
+        if (engine.createUser(textFields)) {
+            JOptionPane.showMessageDialog(this,
+                    "User \"" + createUserUsernameTextField.getText() + "\" bas been created",
+                    "User Created", JOptionPane.DEFAULT_OPTION);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "User \"" + createUserUsernameTextField.getText() + "\" is invalid or already taken",
+                    "User Creation Failure", JOptionPane.DEFAULT_OPTION);
+        }
         createUserJFrame.setVisible(false);
         loginJFrame.setVisible(true);
     }//GEN-LAST:event_createUserDialogButtonActionPerformed
@@ -2802,6 +2809,7 @@ public class mainView extends javax.swing.JFrame {
         engine.addUserToTeam((Team) joinExistingComboBox.getSelectedItem());
         noTeamJFrame.setVisible(false);
         joinExistingTeamJFrame.setVisible(false);
+        loginButtonActionPerformed(evt);
     }//GEN-LAST:event_joinExistingTeamJoinJButtonActionPerformed
 
     private void createNewTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewTeamButtonActionPerformed
@@ -2937,7 +2945,7 @@ public class mainView extends javax.swing.JFrame {
     private void addUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserStoryButtonActionPerformed
         String userStoryName = userStoryNameTextField.getText();
         String milestone = userStoryMilestoneComboBox.getSelectedItem().toString();
-        if (engine.createNewUserStory(userStoryName, milestone)){
+        if (engine.createNewUserStory(userStoryName, milestone)) {
             newTaskUserStoryComboBox.addItem(userStoryName);
         } else {
             JOptionPane.showMessageDialog(this,
@@ -2954,6 +2962,10 @@ public class mainView extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,
                             milestoneString + " has been added to the project",
                             "Success", JOptionPane.DEFAULT_OPTION);
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Milestone name is already taken or is invalid",
+                            "Milestone Name Taken or Invalid", JOptionPane.DEFAULT_OPTION);
                 }
             } else {
                 JOptionPane.showMessageDialog(this,
