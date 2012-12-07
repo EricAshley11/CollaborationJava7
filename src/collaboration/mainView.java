@@ -155,14 +155,10 @@ public class mainView extends javax.swing.JFrame {
         editTasksEstimatedTextField = new javax.swing.JTextField();
         editTasksActualTextField = new javax.swing.JTextField();
         editProjectJFrame = new javax.swing.JFrame();
-        editProjectJPanel = new javax.swing.JPanel();
         editProjectSaveButton = new javax.swing.JButton();
+        editProjectRenameJLabel = new javax.swing.JLabel();
         editProjectTextField = new javax.swing.JTextField();
         editProjectDeleteJLabel = new javax.swing.JLabel();
-        editProjectRenameJLabel = new javax.swing.JLabel();
-        milestoneComboBox = new javax.swing.JComboBox();
-        JLabelmilestone = new javax.swing.JLabel();
-        addMilestoneJButton = new javax.swing.JButton();
         loginJFrame = new javax.swing.JFrame();
         loginJPanel = new javax.swing.JPanel();
         usernameJLabel = new javax.swing.JLabel();
@@ -267,6 +263,13 @@ public class mainView extends javax.swing.JFrame {
         addEntryDescriptionTextArea = new javax.swing.JTextArea();
         addEntryCancelButton = new javax.swing.JButton();
         addEntryAddButton = new javax.swing.JButton();
+        addUserStoryJFrame = new javax.swing.JFrame();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        addUserStoryButton = new javax.swing.JButton();
+        userStoryMilestoneComboBox = new javax.swing.JComboBox();
+        addMilestoneButton = new javax.swing.JButton();
+        userStoryNameTextField = new javax.swing.JTextField();
         projectComboBox = new javax.swing.JComboBox();
         signOutButton = new javax.swing.JButton();
         newProjectButton = new javax.swing.JButton();
@@ -379,7 +382,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         editMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        editMemberJFrame.setTitle("Add Member - ProjectTracker");
+        editMemberJFrame.setTitle("Edit Member - ProjectTracker");
         editMemberJFrame.setAlwaysOnTop(true);
         editMemberJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         editMemberJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
@@ -745,9 +748,6 @@ public class mainView extends javax.swing.JFrame {
         editProjectJFrame.setMinimumSize(new java.awt.Dimension(285, 205));
         editProjectJFrame.setResizable(false);
 
-        editProjectJPanel.setMinimumSize(new java.awt.Dimension(210, 170));
-        editProjectJPanel.setPreferredSize(new java.awt.Dimension(277, 200));
-
         editProjectSaveButton.setText("Save");
         editProjectSaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -755,86 +755,45 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        editProjectDeleteJLabel.setText("To delete this project type DELETE");
-
         editProjectRenameJLabel.setText("Rename Project:");
 
-        milestoneComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Project Milestone 1", "Project Milestone 2", "Project Milestone 3" }));
-
-        JLabelmilestone.setText("Milestones:");
-
-        addMilestoneJButton.setText("+");
-        addMilestoneJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addMilestoneJButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout editProjectJPanelLayout = new javax.swing.GroupLayout(editProjectJPanel);
-        editProjectJPanel.setLayout(editProjectJPanelLayout);
-        editProjectJPanelLayout.setHorizontalGroup(
-            editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                        .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(editProjectSaveButton))
-                            .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(JLabelmilestone)))
-                        .addGap(0, 0, 0))
-                    .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editProjectTextField)
-                            .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                                .addComponent(editProjectRenameJLabel)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editProjectJPanelLayout.createSequentialGroup()
-                .addGap(0, 76, Short.MAX_VALUE)
-                .addComponent(editProjectDeleteJLabel)
-                .addGap(35, 35, 35))
-            .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(milestoneComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(3, 3, 3)
-                .addComponent(addMilestoneJButton)
-                .addContainerGap())
-        );
-        editProjectJPanelLayout.setVerticalGroup(
-            editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editProjectJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(editProjectRenameJLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editProjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(editProjectDeleteJLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JLabelmilestone)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(editProjectJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(milestoneComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addMilestoneJButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editProjectSaveButton)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        editProjectDeleteJLabel.setText("To delete this project type DELETE");
 
         javax.swing.GroupLayout editProjectJFrameLayout = new javax.swing.GroupLayout(editProjectJFrame.getContentPane());
         editProjectJFrame.getContentPane().setLayout(editProjectJFrameLayout);
         editProjectJFrameLayout.setHorizontalGroup(
             editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(editProjectJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(editProjectJFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editProjectJFrameLayout.createSequentialGroup()
+                        .addComponent(editProjectTextField)
+                        .addContainerGap())
+                    .addGroup(editProjectJFrameLayout.createSequentialGroup()
+                        .addComponent(editProjectRenameJLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(editProjectJFrameLayout.createSequentialGroup()
+                .addGroup(editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editProjectJFrameLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(editProjectDeleteJLabel))
+                    .addGroup(editProjectJFrameLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(editProjectSaveButton)))
+                .addGap(0, 63, Short.MAX_VALUE))
         );
         editProjectJFrameLayout.setVerticalGroup(
             editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editProjectJFrameLayout.createSequentialGroup()
-                .addComponent(editProjectJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(editProjectRenameJLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(editProjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editProjectDeleteJLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(editProjectSaveButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         loginJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -996,7 +955,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         createUserJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        createUserJFrame.setTitle("Add Member - ProjectTracker");
+        createUserJFrame.setTitle("Create User - ProjectTracker");
         createUserJFrame.setAlwaysOnTop(true);
         createUserJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         createUserJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
@@ -1767,6 +1726,82 @@ public class mainView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        addUserStoryJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addUserStoryJFrame.setTitle("Add User Story - ProjectTracker");
+        addUserStoryJFrame.setAlwaysOnTop(true);
+        addUserStoryJFrame.setBounds(new java.awt.Rectangle(50, 50, 350, 200));
+        addUserStoryJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
+        addUserStoryJFrame.setMinimumSize(new java.awt.Dimension(350, 200));
+        addUserStoryJFrame.setName("Add Member"); // NOI18N
+        addUserStoryJFrame.setPreferredSize(new java.awt.Dimension(349, 200));
+
+        jLabel7.setText("User Story Name:");
+
+        jLabel8.setText("Milestone:");
+
+        addUserStoryButton.setText("Add User Story");
+        addUserStoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserStoryButtonActionPerformed(evt);
+            }
+        });
+
+        userStoryMilestoneComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        addMilestoneButton.setText("+");
+        addMilestoneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMilestoneButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addUserStoryJFrameLayout = new javax.swing.GroupLayout(addUserStoryJFrame.getContentPane());
+        addUserStoryJFrame.getContentPane().setLayout(addUserStoryJFrameLayout);
+        addUserStoryJFrameLayout.setHorizontalGroup(
+            addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                        .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel7))
+                            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel8)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                                .addComponent(userStoryMilestoneComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addMilestoneButton))
+                            .addComponent(userStoryNameTextField))))
+                .addContainerGap())
+            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(addUserStoryButton)
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        addUserStoryJFrameLayout.setVerticalGroup(
+            addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userStoryNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userStoryMilestoneComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addMilestoneButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addUserStoryButton)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ProjectTracker");
         setBounds(new java.awt.Rectangle(50, 50, 0, 0));
@@ -2355,7 +2390,22 @@ public class mainView extends javax.swing.JFrame {
 
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
         addMemberUsernameTextField.setText("");
-        addMemberJFrame.setVisible(true);
+        try {
+            String userString = JOptionPane.showInputDialog("Username of team member to add: ");
+            if (!userString.isEmpty()) {
+                if (engine.addMember(teamTable, userString)) {
+                    JOptionPane.showMessageDialog(this,
+                            userString + " has been added as a member of this team.",
+                            "Success", JOptionPane.DEFAULT_OPTION);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Milestone name is required to create a new user story",
+                        "Milestone Name Required", JOptionPane.DEFAULT_OPTION);
+            }
+        } catch (Exception e) {//do nothing if canceled
+        }
+        //addMemberJFrame.setVisible(true);
     }//GEN-LAST:event_addMemberButtonActionPerformed
 
     private void addTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTasksButtonActionPerformed
@@ -2839,18 +2889,20 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_togglLoginButtonActionPerformed
 
     private void newUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserStoryButtonActionPerformed
-        try {
-            String userStoryName = JOptionPane.showInputDialog("New User Story Name: ");
-            if (!userStoryName.isEmpty()) {
-                UserStory userStory = engine.createNewUserStory(userStoryName);
-                newTaskUserStoryComboBox.addItem(userStory);
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "User story name is required to create a new user story",
-                        "User Story Name Required", JOptionPane.DEFAULT_OPTION);
-            }
-        } catch (Exception e) {//do nothing if canceled
-        }
+        userStoryNameTextField.setText("");
+        addUserStoryJFrame.setVisible(true);
+//        try {
+//            String userStoryName = JOptionPane.showInputDialog("New User Story Name: ");
+//            if (!userStoryName.isEmpty()) {
+//                UserStory userStory = engine.createNewUserStory(userStoryName);
+//                newTaskUserStoryComboBox.addItem(userStory);
+//            } else {
+//                JOptionPane.showMessageDialog(this,
+//                        "User story name is required to create a new user story",
+//                        "User Story Name Required", JOptionPane.DEFAULT_OPTION);
+//            }
+//        } catch (Exception e) {//do nothing if canceled
+//        }
     }//GEN-LAST:event_newUserStoryButtonActionPerformed
 
     private void createEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventButtonActionPerformed
@@ -2882,20 +2934,35 @@ public class mainView extends javax.swing.JFrame {
         editProjectJFrame.setVisible(false);
     }//GEN-LAST:event_editProjectSaveButtonActionPerformed
 
-    private void addMilestoneJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMilestoneJButtonActionPerformed
+    private void addUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserStoryButtonActionPerformed
+        String userStoryName = userStoryNameTextField.getText();
+        String milestone = userStoryMilestoneComboBox.getSelectedItem().toString();
+        if (engine.createNewUserStory(userStoryName, milestone)){
+            newTaskUserStoryComboBox.addItem(userStoryName);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "User story name is invalid or already taken",
+                    "Input Error", JOptionPane.DEFAULT_OPTION);
+        }
+    }//GEN-LAST:event_addUserStoryButtonActionPerformed
+
+    private void addMilestoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMilestoneButtonActionPerformed
         try {
-            String milestoneName = JOptionPane.showInputDialog("New User Story Name: ");
-            if (!milestoneName.isEmpty()) {
-                Milestone milestone = engine.createMilestone(milestoneName);
-                milestoneComboBox.addItem(milestone);
+            String milestoneString = JOptionPane.showInputDialog("Name of new milstone: ");
+            if (!milestoneString.isEmpty()) {
+                if (engine.createMilestone(milestoneString)) {
+                    JOptionPane.showMessageDialog(this,
+                            milestoneString + " has been added to the project",
+                            "Success", JOptionPane.DEFAULT_OPTION);
+                }
             } else {
                 JOptionPane.showMessageDialog(this,
-                        "Milestone name is required to create a new user story",
+                        "Milestone name is required",
                         "Milestone Name Required", JOptionPane.DEFAULT_OPTION);
             }
         } catch (Exception e) {//do nothing if canceled
         }
-    }//GEN-LAST:event_addMilestoneJButtonActionPerformed
+    }//GEN-LAST:event_addMilestoneButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -2921,7 +2988,6 @@ public class mainView extends javax.swing.JFrame {
     //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" Variable declarations ">
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JLabelmilestone;
     private javax.swing.JButton aboutButton;
     private javax.swing.JButton addEntryAddButton;
     private javax.swing.JButton addEntryCancelButton;
@@ -2941,7 +3007,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPanel addMemberJPanel;
     private javax.swing.JLabel addMemberNameJLabel;
     private javax.swing.JTextField addMemberUsernameTextField;
-    private javax.swing.JButton addMilestoneJButton;
+    private javax.swing.JButton addMilestoneButton;
     private javax.swing.JLabel addTasksActualJLabel;
     private javax.swing.JTextField addTasksActualTextField;
     private javax.swing.JButton addTasksButton;
@@ -2956,6 +3022,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel addTasksTaskJLabel;
     private javax.swing.JTextField addTasksTaskTextField;
     private javax.swing.JLabel addTasksUserStoryJLabel;
+    private javax.swing.JButton addUserStoryButton;
+    private javax.swing.JFrame addUserStoryJFrame;
     private javax.swing.JTable calTable;
     private javax.swing.JScrollPane calTableScrollPane;
     private javax.swing.JPanel calendarPanel;
@@ -2996,7 +3064,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton editProjectButton;
     private javax.swing.JLabel editProjectDeleteJLabel;
     private javax.swing.JFrame editProjectJFrame;
-    private javax.swing.JPanel editProjectJPanel;
     private javax.swing.JLabel editProjectRenameJLabel;
     private javax.swing.JButton editProjectSaveButton;
     private javax.swing.JTextField editProjectTextField;
@@ -3072,6 +3139,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3085,7 +3154,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPanel loginJPanel;
     private javax.swing.JPanel loginJPanel1;
     private javax.swing.JLabel loginStatusTextBox;
-    private javax.swing.JComboBox milestoneComboBox;
     private javax.swing.JButton newProjectButton;
     private javax.swing.JComboBox newTaskUserStoryComboBox;
     private javax.swing.JPasswordField newTeamConfirmPasswordField;
@@ -3130,6 +3198,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel togglTaskLabel;
     private javax.swing.JTextField togglTaskTextField;
     private javax.swing.JTextField togglUserField;
+    private javax.swing.JComboBox userStoryMilestoneComboBox;
+    private javax.swing.JTextField userStoryNameTextField;
     private javax.swing.JLabel usernameJLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables

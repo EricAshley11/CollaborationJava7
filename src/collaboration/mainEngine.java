@@ -386,14 +386,14 @@ public class mainEngine {
         }
     }
 
-    UserStory createNewUserStory(String storyName) {
+    boolean createNewUserStory(String newStoryName, String milestone) {
         //TODO: MAKE THIS WORK
-        return null;
+        return true;
     }
 
-    Milestone createMilestone(String milestoneName) {
+    boolean createMilestone(String newMilestoneName) {
         //TODO: MAKE THIS WORK
-        return null;
+        return true;
     }
 
     boolean addNewEntry(String calendarName, String eventTitle, String eventDescription, int startTime, int endTime) {
