@@ -2,21 +2,21 @@ package collaborationjava7.common;
 
 import java.util.*;
 import java.io.*;
-import javax.persistence.*;
+
 
 /**
  *
  */
-@Entity
+
 public class Schedule implements Serializable {
 
-    @Id @GeneratedValue
+    
     private long id;
     
-    @OneToOne
+    
     private Project project;
     
-    @OneToMany(cascade=CascadeType.ALL)
+    
     private ArrayList<Milestone> milestones;
 
     

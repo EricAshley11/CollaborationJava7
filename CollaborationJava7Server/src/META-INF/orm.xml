@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+	version="2.0">
+    <entity class="collaborationjava7.common.Milestone">
+        <table name="Milestone" />
+	<attributes>
+            <id name="id">
+                <generated-value />
+            </id>
+            <basic name="name" />
+            <basic name="description" />
+            <basic name="isCompleted" />
+            <basic name="estimatedCompDate">
+                <temporal>DATE</temporal>    
+            </basic>
+            <basic name="completeDate">
+                <temporal>DATE</temporal>    
+            </basic>
+            <one-to-many name="userStories" mapped-by="milestone">
+                <cascade>
+                    <cascade-all />
+		</cascade>
+            </one-to-many>
+	</attributes>
+    </entity>
+    <entity class="collaborationjava7.common.Project">
+        <table name="Project" />
+	<attributes>
+            <id name="id">
+                <generated-value />
+            </id>
+            <basic name="name" />
+            <many-to-one name="team" />
+            <one-to-one name="schedule" />
+	</attributes>
+    </entity>
+    <entity class="collaborationjava7.common.Schedule">
+        <table name="Schedule" />
+	<attributes>
+            <id name="id">
+                <generated-value />
+            </id>
+            <one-to-many name="milestones">
+                <cascade>
+                    <cascade-all />
+                </cascade>
+            </one-to-many>
+            <one-to-one name="project" />
+	</attributes>
+    </entity>
+    <entity class="collaborationjava7server.Password">
+       	<table name="Password" />
+	<attributes>
+            <id name="id">
+                <generated-value />
+            </id>
+            <basic name="userName" />
+            <basic name="password" />
+	</attributes>
+    </entity>
+    <entity class="collaborationjava7.common.Task">
+       	<table name="Task" />
+	<attributes>
+            <id name="id">
+                <generated-value />
+            </id>
+            <basic name="timeEstimate" />
+            <basic name="timeActual" />
+            <basic name="description" />
+            <basic name="name" />
+            <basic name="doneStatus" />
+            <many-to-one name="user" />
+            <many-to-one name="userStory" />
+	</attributes>
+    </entity>
+    <entity class="collaborationjava7.common.Team">
+       	<table name="Team" />
+	<attributes>
+            <id name="id">
+                <generated-value />
+            </id>
+            <basic name="name" />
+            <basic name="password" />
+            <one-to-many name="users" mapped-by="team">
+                <cascade>
+                    <cascade-all />
+                </cascade>
+            </one-to-many>
+            <one-to-many name="projects" mapped-by="team">
+                <cascade>
+                    <cascade-all />
+                </cascade>
+            </one-to-many>
+	</attributes>
+    </entity>
+    <entity class="collaborationjava7.common.User">
+       	<table name="User" />
+	<attributes>
+            <id name="id">
+                <generated-value />
+            </id>
+            <basic name="name" />
+            <basic name="email" />
+            <basic name="phoneNum" />
+            <many-to-one name="team">
+                <cascade>
+                    <cascade-all />
+                </cascade>
+            </many-to-one>
+            <one-to-many name="tasks" mapped-by="user">
+                <cascade>
+                    <cascade-all />
+                </cascade>
+            </one-to-many>
+	</attributes>
+    </entity>
+    <entity class="collaborationjava7.common.UserStory">
+       	<table name="UserStory" />
+	<attributes>
+            <id name="id">
+                <generated-value />
+            </id>
+            <basic name="status" />
+            <basic name="name" />
+            <many-to-one name="milestone" />
+            <one-to-many name="tasks" mapped-by="userStory">
+                <cascade>
+                    <cascade-all />
+                </cascade>
+            </one-to-many>
+	</attributes>
+    </entity>
+    <embeddable class="collaborationjava7.common.Status">
+	<attributes>
+            <basic name="blocked" />
+            <basic name="state" />
+	</attributes>
+    </embeddable>
+</entity-mappings>

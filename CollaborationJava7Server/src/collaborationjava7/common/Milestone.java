@@ -3,27 +3,27 @@ package collaborationjava7.common;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.persistence.*;
+
 
 /**
  * This object contains milestone information to be used in projects
  */
-@Entity
+
 public class Milestone implements Serializable{
 
-    @Id @GeneratedValue
+    
     private long id;
-    @OneToMany(cascade=CascadeType.ALL)
+    
     private ArrayList<UserStory> userStories;
     
     String name;
     String description;
     boolean isCompleted;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    
     Date estimatedCompDate;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    
     Date completeDate;
 
     public Milestone() {

@@ -7,19 +7,19 @@ package collaborationjava7.common;
 import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.*;
+
 
 
 /**
  *
  */
-@Entity
+
 public class Project implements Serializable{
-    @Id @GeneratedValue
+    
     private long id;
-    @ManyToOne
+    
     private Team team;
-    @OneToOne
+    
     private Schedule schedule;
     
     private String name;

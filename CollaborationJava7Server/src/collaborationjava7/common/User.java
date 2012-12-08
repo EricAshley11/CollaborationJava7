@@ -7,22 +7,20 @@ package collaborationjava7.common;
 import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.*;
+
 
 /**
  *
  */
-@Entity(name = "User") //entity name
 public class User implements Serializable {
 
-    @Id @GeneratedValue //primary key
-    @Column(nullable = false)
+     //primary key
+    
     private long id;
     private String name, email;
     private String phoneNum;
-    @ManyToOne(cascade=CascadeType.ALL)
+    
     private Team team;
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="user")
     private ArrayList<Task> tasks;
 
     public User() {}

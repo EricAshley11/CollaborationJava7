@@ -5,21 +5,20 @@
 package collaborationjava7.common;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
 
 /**
  *
  */
-@Entity(name = "Task") //Entity name
 public class Task implements Serializable{
 
-    @Id @GeneratedValue
+    
     private long id;
     private int timeEstimate, timeActual;
-    @ManyToOne
+    
     private User user;
     private String description, name;
-    @ManyToOne
+    
     private UserStory userStory;
     private Status doneStatus;
 

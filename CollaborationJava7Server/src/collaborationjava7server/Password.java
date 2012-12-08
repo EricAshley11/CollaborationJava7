@@ -7,15 +7,14 @@ package collaborationjava7server;
 
 //import java.util.ArrayList;
 import java.io.Serializable;
-import javax.persistence.*;
+
 
 /**
  *
  */
-@Entity(name = "Password")
 public class Password implements Serializable {
 
-    @Id @GeneratedValue
+    
     private long id;
     private String userName;
     private String password;

@@ -5,13 +5,13 @@
 package collaborationjava7.common;
 
 import java.io.Serializable;
-import javax.persistence.Embeddable;
-import javax.persistence.Id;
+
+
 
 /**
  *
  */
-@Embeddable
+
 public class Status implements Serializable {
 
     public enum States {

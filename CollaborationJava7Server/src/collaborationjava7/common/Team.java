@@ -6,19 +6,16 @@ package collaborationjava7.common;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.*;
+
 
 /**
  *
  */
-@Entity(name = "Team") //Entity name
 public class Team implements Serializable{
     
-    @Id @GeneratedValue
+    
     private long id;
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="team")
     private ArrayList<User> users;
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="team")
     private ArrayList<Project> projects;
     private String name;
     private String password;
