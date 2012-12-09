@@ -276,7 +276,7 @@ public class mainView extends javax.swing.JFrame {
         editProjectButton = new javax.swing.JButton();
         settingsButton = new javax.swing.JButton();
         aboutButton = new javax.swing.JButton();
-        tabbedPane = new GitHubPanel();
+        tabbedPane = new javax.swing.JTabbedPane();
         teamPanel = new javax.swing.JPanel();
         addMemberButton = new javax.swing.JButton();
         removeMemberButton = new javax.swing.JButton();
@@ -323,7 +323,7 @@ public class mainView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         loginStatusTextBox = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        gitHubPanel = new GitHubPanel();
 
         addMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMemberJFrame.setTitle("Add Member - ProjectTracker");
@@ -2340,18 +2340,18 @@ public class mainView extends javax.swing.JFrame {
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl75.png")), jTogglPanel, "Toggl"); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout gitHubPanelLayout = new javax.swing.GroupLayout(gitHubPanel);
+        gitHubPanel.setLayout(gitHubPanelLayout);
+        gitHubPanelLayout.setHorizontalGroup(
+            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 805, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        gitHubPanelLayout.setVerticalGroup(
+            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 486, Short.MAX_VALUE)
         );
 
-        tabbedPane.addTab("tab6", jPanel1);
+        tabbedPane.addTab("tab6", gitHubPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -3155,6 +3155,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JFrame gCalendarAddEntryJFrame;
     private javax.swing.JFrame gCalendarLoginJFrame;
     private javax.swing.JPanel gCalendarLoginPanel;
+    private javax.swing.JPanel gitHubPanel;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -3167,7 +3168,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel jTogglPanel;
