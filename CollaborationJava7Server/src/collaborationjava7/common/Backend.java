@@ -91,7 +91,7 @@ public class Backend implements Serializable, IBackend{
     
     @Override
     public String[][] getUserTableData(Project p) {
-        p = this.getProjectFromId(p.getID());
+        //p = this.getProjectFromId(p.getID());
         ArrayList<User> users = retrieveUsers(p);
         int numUsers = users.size();
         int userFields = 5; 
@@ -113,7 +113,7 @@ public class Backend implements Serializable, IBackend{
     }
     
     public String[][] getTasksTableData(Project p) {
-        p = this.getProjectFromId(p.getID());
+        //p = this.getProjectFromId(p.getID());
         ArrayList<UserStory> userStories = this.getUserStories(p);
         ArrayList<Task> tasks = new ArrayList<Task>();
         for(UserStory us : userStories){
@@ -235,21 +235,26 @@ public class Backend implements Serializable, IBackend{
 
     
     @Override
-    public UserStory createUserStory(String usName)  {
+    public UserStory createUserStory(String usName, Milestone ms)  {
             ClientResource cr = new ClientResource(  
                 "http://"+serverAddr+":8182/collab/userstory");  
             IUserStoriesResource ur = cr.wrap(IUserStoriesResource.class);
             UserStory us = ur.create(usName);
             cr.release();
+            ms.addUserStory(us);
+            us.changeMilestone(ms);
+            this.saveEntity(ms);
+            this.saveEntity(us);
             return us;
     }
 
     
-    private Task createTask(String taskName)  {
+    private Task createTask(String taskName, User u, UserStory us)  {
         ClientResource cr = new ClientResource(  
             "http://"+serverAddr+":8182/collab/task");  
         ITasksResource ur = cr.wrap(ITasksResource.class);
-        Task t =ur.create(taskName);
+        
+        Task t =ur.create(new Object[]{taskName,u,us});
         cr.release();
         return t;
     }
@@ -396,9 +401,7 @@ public class Backend implements Serializable, IBackend{
 
     @Override
     public Task createTask(User lead, UserStory userStory, String taskName, int estimated, int actual) {
-        Task retVal = this.createTask(taskName);
-        retVal.changeUser(lead);
-        retVal.changeUserStory(userStory);
+        Task retVal = this.createTask(taskName, lead, userStory);
         retVal.setTimeEstimate(estimated);
         retVal.setTimeActual(actual);
         this.saveEntity(lead);

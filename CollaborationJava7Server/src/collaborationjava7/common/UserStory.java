@@ -61,7 +61,8 @@ public class UserStory implements Serializable {
     
     public boolean changeMilestone(Milestone milestone) {
         if (milestone != null && !milestone.equals(this.milestone)) {
-            this.milestone.remUserStory(this);
+            if(this.milestone != null)
+                this.milestone.remUserStory(this);
             Milestone oldMilestone = this.milestone;
             this.milestone = milestone;
             milestone.addUserStory(this);
@@ -82,5 +83,8 @@ public class UserStory implements Serializable {
 
     public ArrayList<Task> getTasks() {
         return tasks;
+    }
+    public Milestone getMilestone(){
+        return milestone;
     }
 }

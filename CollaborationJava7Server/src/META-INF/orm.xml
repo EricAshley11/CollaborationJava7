@@ -108,6 +108,7 @@
                 <cascade>
                     <cascade-all />
                 </cascade>
+                <join-column name="users" />   
             </many-to-one>
             <one-to-many name="tasks" mapped-by="user">
                 <cascade>
@@ -124,7 +125,9 @@
             </id>
             <basic name="status" />
             <basic name="name" />
-            <many-to-one name="milestone" />
+            <many-to-one name="milestone">
+                <join-column name="userStories" />    
+            </many-to-one>
             <one-to-many name="tasks" mapped-by="userStory">
                 <cascade>
                     <cascade-all />

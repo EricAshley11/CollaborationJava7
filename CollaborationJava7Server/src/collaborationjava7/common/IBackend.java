@@ -21,7 +21,7 @@ public interface IBackend {
 
     User createUser(String userName, String password, String phoneNum, String email);
 
-    UserStory createUserStory(String usName);
+    UserStory createUserStory(String usName, Milestone ms);
 
     User getUserFromId(long id);
 

@@ -172,9 +172,11 @@ class QueryManager {
         return getByID(id, Status.class);
     }
 
-    Task createTask(String name) {
+    Task createTask(String name, User u, UserStory us) {
         em.getTransaction().begin();
         Task t = new Task(name);
+        t.changeUser(u);
+        t.changeUserStory(us);
         em.persist(t);
         em.getTransaction().commit();
         //System.out.println("Created Task " + name+", id: "+t.getID());

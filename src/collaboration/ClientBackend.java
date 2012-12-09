@@ -46,25 +46,24 @@ public class ClientBackend implements IBackend {
         Project proj1 = getInstance().createProject("testProj1", cam);
         Project proj2 = getInstance().createProject("testProj2", cam);
 
-        UserStory us1 = getInstance().createUserStory("testUS1");
-        UserStory us2 = getInstance().createUserStory("testUS2");
-
         Milestone ms1 = getInstance().createMilestone("testMS1", proj1.getSchedule());
         Milestone ms2 = getInstance().createMilestone("testMS2", proj2.getSchedule());
+        
+        UserStory us1 = getInstance().createUserStory("testUS1", ms1);
+        UserStory us2 = getInstance().createUserStory("testUS2", ms2);
 
-        ms1.addUserStory(us1);
-        ms2.addUserStory(us2);
-
-        getInstance().saveEntity(proj1);
-        getInstance().saveEntity(proj2);
-        getInstance().saveEntity(us1);
-        getInstance().saveEntity(us2);
         getInstance().saveEntity(ms1);
         getInstance().saveEntity(ms2);
+        getInstance().saveEntity(proj1);
+        getInstance().saveEntity(proj2);
+        getInstance().saveEntity(proj1.getSchedule());
+        getInstance().saveEntity(proj2.getSchedule());
+        getInstance().saveEntity(us1);
+        getInstance().saveEntity(us2);
+
 
         Task t1 = getInstance().createTask(cam, us1, "testTask1", 1, 0);
         Task t2 = getInstance().createTask(zach, us2, "testTask2", 2, 0);
-
     }
     //This constructor is private because we want this class to be a singleton
 
@@ -130,8 +129,8 @@ public class ClientBackend implements IBackend {
         return remoteObj.createTeam(teamName, password);
     }
 
-    public UserStory createUserStory(String usName) {
-        return remoteObj.createUserStory(usName);
+    public UserStory createUserStory(String usName, Milestone ms) {
+        return remoteObj.createUserStory(usName, ms);
     }
 
     public User createUser(String user, String password, String phoneNum, String email) {

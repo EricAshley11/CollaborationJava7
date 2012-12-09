@@ -22,6 +22,7 @@ public class ProjectsResource extends ServerResource implements IProjectsResourc
         User u = QueryManager.getInstance().getUserByID(userID);
         Team t = u.getTeam();
         try{
+            System.out.println("Got projects for user: "+u.getName());
             return u.getTeam().getProjects();
         }catch(Exception e){
             e.printStackTrace();
