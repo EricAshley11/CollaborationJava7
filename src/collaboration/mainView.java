@@ -323,7 +323,7 @@ public class mainView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         loginStatusTextBox = new javax.swing.JLabel();
-        gitHubPanel = new GitHubPanel();
+        gitHubPanel1 = new collaboration.GitHubPanel();
 
         addMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMemberJFrame.setTitle("Add Member - ProjectTracker");
@@ -2220,7 +2220,7 @@ public class mainView extends javax.swing.JFrame {
         schedulePanel.setLayout(schedulePanelLayout);
         schedulePanelLayout.setHorizontalGroup(
             schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(calendarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
+            .addComponent(calendarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         schedulePanelLayout.setVerticalGroup(
             schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2339,19 +2339,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl75.png")), jTogglPanel, "Toggl"); // NOI18N
-
-        javax.swing.GroupLayout gitHubPanelLayout = new javax.swing.GroupLayout(gitHubPanel);
-        gitHubPanel.setLayout(gitHubPanelLayout);
-        gitHubPanelLayout.setHorizontalGroup(
-            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 805, Short.MAX_VALUE)
-        );
-        gitHubPanelLayout.setVerticalGroup(
-            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 486, Short.MAX_VALUE)
-        );
-
-        tabbedPane.addTab("tab6", gitHubPanel);
+        tabbedPane.addTab("tab6", gitHubPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -3155,7 +3143,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JFrame gCalendarAddEntryJFrame;
     private javax.swing.JFrame gCalendarLoginJFrame;
     private javax.swing.JPanel gCalendarLoginPanel;
-    private javax.swing.JPanel gitHubPanel;
+    private collaboration.GitHubPanel gitHubPanel1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

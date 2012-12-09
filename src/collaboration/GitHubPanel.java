@@ -8,6 +8,7 @@ import collaborationjava7.common.GitHubManager;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,6 +57,7 @@ public class GitHubPanel extends javax.swing.JPanel {
         GitHubResultPane = new javax.swing.JTextPane();
         GitHubIssueReport = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(805, 486));
         setPreferredSize(new java.awt.Dimension(805, 486));
 
         jLabel1.setText("Repo Name");
@@ -163,7 +165,7 @@ public class GitHubPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(GitHubIssueReport)))
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +213,7 @@ public class GitHubPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(GitHubIssueReport))
-                        .addContainerGap(24, Short.MAX_VALUE))
+                        .addContainerGap(371, Short.MAX_VALUE))
                     .addComponent(jScrollPane2)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -219,7 +221,7 @@ public class GitHubPanel extends javax.swing.JPanel {
     private void GitHubNewsFeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubNewsFeedActionPerformed
         GitHubManager GHM = new GitHubManager();
         try {
-            GHM.newsFeed(GitHubRepoName.getText(),GitHubRepoOwner.getText());
+            GitHubResultPane.setText(GHM.newsFeed(GitHubRepoName.getText(),GitHubRepoOwner.getText()));
         } catch (IOException ex) {
             Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -229,7 +231,7 @@ public class GitHubPanel extends javax.swing.JPanel {
     private void GitHubBranchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubBranchesActionPerformed
         GitHubManager GHM = new GitHubManager();
         try {
-            GHM.getBranches(GitHubRepoName.getText(),GitHubRepoOwner.getText());
+            GitHubResultPane.setText(GHM.getBranches(GitHubRepoName.getText(),GitHubRepoOwner.getText()));
         } catch (IOException ex) {
             Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -238,7 +240,7 @@ public class GitHubPanel extends javax.swing.JPanel {
     private void GitHubContributeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubContributeActionPerformed
         GitHubManager GHM = new GitHubManager();
         try {
-            GHM.getContributors(GitHubRepoName.getText(),GitHubRepoOwner.getText());
+            GitHubResultPane.setText(GHM.getContributors(GitHubRepoName.getText(),GitHubRepoOwner.getText()));
         } catch (IOException ex) {
             Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -247,7 +249,7 @@ public class GitHubPanel extends javax.swing.JPanel {
     private void GitHubGetIssuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubGetIssuesActionPerformed
         GitHubManager GHM = new GitHubManager();
         try {
-            GHM.getIssues(GitHubRepoName.getText(),GitHubRepoOwner.getText());
+            GitHubResultPane.setText(GHM.getIssues(GitHubRepoName.getText(),GitHubRepoOwner.getText()));
         } catch (IOException ex) {
             Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -256,11 +258,12 @@ public class GitHubPanel extends javax.swing.JPanel {
     private void GitHubIssueReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubIssueReportActionPerformed
         GitHubManager GHM = new GitHubManager();
         try {
-            GHM.createIssue(GitHubRepoName2.getText(),GitHubRepoOwner2.getText(),GitHubUsername.getText()
-                    ,GitHubPassword.getText(),GitHubIssueTitle.getText(),GitHubIssueBody.getText());
+            GHM.createIssue(GitHubUsername.getText(),GitHubPassword.getText(),GitHubRepoName2.getText()
+                    ,GitHubRepoOwner2.getText(),GitHubIssueTitle.getText(),GitHubIssueBody.getText());
         } catch (IOException ex) {
             Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JOptionPane.showMessageDialog(GitHubContribute, "Sent To GitHub");
     }//GEN-LAST:event_GitHubIssueReportActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

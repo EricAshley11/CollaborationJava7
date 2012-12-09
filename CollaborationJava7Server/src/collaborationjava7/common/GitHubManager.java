@@ -57,7 +57,7 @@ public class GitHubManager {
         return results;
     }
 
-    public void createIssue(String username, String password, String repoOwner, String reponame, String title, String body) throws IOException {
+    public void createIssue(String username, String password, String reponame, String repoOwner, String title, String body) throws IOException {
         GitHubClient client = new GitHubClient();
         client.setCredentials(username, password);
         IssueService iServ = new IssueService(client);
