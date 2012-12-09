@@ -26,8 +26,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
  
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
  
 
 public class TeamActivity extends Activity
@@ -35,19 +41,39 @@ public class TeamActivity extends Activity
     private ArrayList<HashMap> list;
  
     public void onCreate(Bundle savedInstanceState)
-    { System.out.println("1");
-        super.onCreate(savedInstanceState);
-        //setContentView(R.layout.main);
-        setContentView(R.layout.team_layout);
-
-        System.out.println("2");
-        ListView lview = (ListView) findViewById(R.id.listview);
-        populateList();
-        System.out.println("5");
-        listviewAdapter adapter = new listviewAdapter(this, list);
-        lview.setAdapter(adapter);
+    { 
+    	super.onCreate(savedInstanceState);
+        TableLayout table = new TableLayout(this);
+        table.setStretchAllColumns(true);
+        table.setShrinkAllColumns(true);
+        createTeamRows(table); 
+        setContentView(table);
+//    	System.out.println("1");
+//        super.onCreate(savedInstanceState);
+//        //setContentView(R.layout.main);
+//        setContentView(R.layout.team_layout);
+//
+//        System.out.println("2");
+//        ListView lview = (ListView) findViewById(R.id.listview);
+//        populateList();
+//        System.out.println("5");
+//        listviewAdapter adapter = new listviewAdapter(this, list);
+//        lview.setAdapter(adapter);
     }
  
+    private void createTeamRows(TableLayout table){
+        String[][] userTableData = ClientBackend.getBackend().getUserTableData(ClientBackend.getProj());
+        for(String[] user : userTableData){
+        	TableRow teamRow = new TableRow(this);
+            for(String str : user){
+            	TextView view = new TextView(this);
+            	view.setText(str);
+            	teamRow.addView(view);
+            }
+            table.addView(teamRow);
+    	}
+    }
+    
     private void populateList() {
     	System.out.println("3");
         list = new ArrayList<HashMap>();
