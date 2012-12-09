@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import collaborationjava7.common.*;
 
 import org.restlet.engine.Engine;
-import org.restlet.engine.http.connector.*;
+import org.restlet.engine.http.connector.HttpClientHelper;;
 
 public class ClientBackend {
 	private static Backend backend = null;
@@ -15,11 +15,24 @@ public class ClientBackend {
 	public static Backend getBackend(){
 		if(backend == null){			
 			backend = new Backend(serverAddr);
-			Engine.getInstance().getRegisteredClients().clear();
-			Engine.getInstance().getRegisteredClients().add(new HttpClientHelper(null)); 
+			//Engine.getInstance().getRegisteredClients().clear();
+			//Engine.getInstance().getRegisteredClients().add(new HttpClientHelper(null)); 
 			currentUser = backend.loginUser("cam", "abc");
 			System.out.println("Got user: "+currentUser);
-			currentProj = backend.retrieveProjects(currentUser).get(0);
+			boolean done = false;
+			while(!done){
+				try{
+					Team team = currentUser.getTeam();
+					System.out.println("Got team");
+					ArrayList<Project> projs = team.getProjects();
+					System.out.println("Got proj");
+					currentProj = projs.get(0);
+					done = true;
+				}catch(Exception e){
+					System.out.println("FAILED----------------------------");
+					System.gc();
+				}
+			}
 		}
 		return backend;
 	}
