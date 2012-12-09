@@ -108,7 +108,7 @@
                 <cascade>
                     <cascade-all />
                 </cascade>
-                <join-column name="users" />   
+                <!--<join-column name="users" />   -->
             </many-to-one>
             <one-to-many name="tasks" mapped-by="user">
                 <cascade>
