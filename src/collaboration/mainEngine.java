@@ -65,7 +65,7 @@ public class mainEngine {
 
     public void updateChart(JPanel progressPanel) {
         progressJFreeChart progressChart = new progressJFreeChart();
-        JPanel chartPanel = new ChartPanel(progressChart.createChart());
+        JPanel chartPanel = new ChartPanel(progressChart.createChart("Tasks for each project team member"));
         chartPanel.setSize(progressPanel.getSize());
         try {
             progressPanel.remove(progressPanel.getComponent(0));
