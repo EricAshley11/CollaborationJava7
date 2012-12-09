@@ -31,7 +31,7 @@ public class Milestone implements Serializable{
 
     public Milestone(String name) {
         this.name = name;
-        userStories = new ArrayList<>();
+        userStories = new ArrayList<UserStory>();
         isCompleted = false;
         estimatedCompDate = null;
         completeDate = null;

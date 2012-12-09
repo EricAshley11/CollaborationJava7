@@ -71,7 +71,7 @@ public class JTogglHelper {
     
     public ArrayList<String> getProjectNames(){
         List<ch.simas.jtoggl.Project> projs = jToggl.getProjects();
-        ArrayList<String> retVal = new ArrayList<>();
+        ArrayList<String> retVal = new ArrayList<String>();
         for(ch.simas.jtoggl.Project p : projs){
             retVal.add(p.getName());
         }

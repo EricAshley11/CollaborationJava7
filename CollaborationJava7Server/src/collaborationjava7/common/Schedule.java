@@ -21,7 +21,7 @@ public class Schedule implements Serializable {
 
     
     public Schedule() {
-        this.milestones = new ArrayList<>();
+        this.milestones = new ArrayList<Milestone>();
     }
 
     public boolean changeProject(Project proj){

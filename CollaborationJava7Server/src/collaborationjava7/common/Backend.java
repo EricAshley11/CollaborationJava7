@@ -281,7 +281,7 @@ public class Backend implements Serializable, IBackend{
         try {
             String name = entityClass.getSimpleName();
             Method saveMethod = this.getClass().getDeclaredMethod("save"+name,new Class[]{entityClass});
-            flag = (boolean) saveMethod.invoke(this, entity);
+            flag = Boolean.parseBoolean(saveMethod.invoke(this, entity).toString());
         } catch (Exception ex) {
             ex.printStackTrace();
         } 
