@@ -2435,7 +2435,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_removeMemberButtonActionPerformed
 
     private void tabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPaneMouseClicked
-        engine.updateChart(progressPanel);
+        engine.updateChart(progressPanel, tasksTable);
     }//GEN-LAST:event_tabbedPaneMouseClicked
 
     private void addMemberDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberDialogButtonActionPerformed
@@ -2577,7 +2577,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_loginJFrameComponentShown
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-        engine.updateChart(progressPanel);
+        engine.updateChart(progressPanel, tasksTable);
     }//GEN-LAST:event_formComponentResized
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
