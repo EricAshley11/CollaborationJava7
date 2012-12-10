@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.7" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -241,13 +241,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="addTasksJPanel" min="-2" pref="501" max="-2" attributes="0"/>
+              <Component id="addTasksJPanel" min="-2" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="addTasksJPanel" min="-2" pref="345" max="-2" attributes="0"/>
+                  <Component id="addTasksJPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -295,7 +295,7 @@
                               <Component id="newUserStoryButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="94" max="32767" attributes="0"/>
+                      <EmptySpace pref="93" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -335,7 +335,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="addTasksDialogButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                      <EmptySpace pref="117" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -413,9 +413,6 @@
                   </StringArray>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newTaskUserStoryComboBoxActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="newTaskUserStoryComboBox.setRenderer(new ListCellRenderer(){&#xa;    @Override&#xa;    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {    &#xa;        JLabel label = new JLabel();&#xa;        label.setOpaque(true);&#xa;        if (isSelected) {&#xa;            label.setBackground(list.getSelectionBackground());&#xa;            label.setForeground(list.getSelectionForeground());&#xa;        }&#xa;        else {&#xa;            label.setBackground(list.getBackground());&#xa;            label.setForeground(list.getForeground());&#xa;        }&#xa;        label.setText(((UserStory)value).getName());&#xa;        Border border = null;&#xa;        if (cellHasFocus) {&#xa;            if (isSelected) {&#xa;                border = UIManager.getBorder(&quot;List.focusSelectedCellHighlightBorder&quot;);&#xa;            }&#xa;            if (border == null) {&#xa;                border = UIManager.getBorder(&quot;List.focusCellHighlightBorder&quot;);&#xa;            }&#xa;        } else {&#xa;            border = new EmptyBorder(1, 1, 1, 1);&#xa;        }&#xa;        label.setBorder(border);&#xa;        return label;&#xa;    }&#xa;});"/>
               </AuxValues>
@@ -2250,17 +2247,17 @@
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="244" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="userStoryMilestoneComboBox" max="32767" attributes="0"/>
+                                  <Component id="userStoryMilestoneComboBox" pref="282" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="addMilestoneButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="userStoryNameTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="userStoryNameTextField" alignment="0" pref="329" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -2324,6 +2321,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="userStoryMilestoneComboBox.setRenderer(new ListCellRenderer(){&#xa;    @Override&#xa;    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {    &#xa;        JLabel label = new JLabel();&#xa;        label.setOpaque(true);&#xa;        if (isSelected) {&#xa;            label.setBackground(list.getSelectionBackground());&#xa;            label.setForeground(list.getSelectionForeground());&#xa;        }&#xa;        else {&#xa;            label.setBackground(list.getBackground());&#xa;            label.setForeground(list.getForeground());&#xa;        }&#xa;        label.setText(((Milestone)value).getName());&#xa;        Border border = null;&#xa;        if (cellHasFocus) {&#xa;            if (isSelected) {&#xa;                border = UIManager.getBorder(&quot;List.focusSelectedCellHighlightBorder&quot;);&#xa;            }&#xa;            if (border == null) {&#xa;                border = UIManager.getBorder(&quot;List.focusCellHighlightBorder&quot;);&#xa;            }&#xa;        } else {&#xa;            border = new EmptyBorder(1, 1, 1, 1);&#xa;        }&#xa;        label.setBorder(border);&#xa;        return label;&#xa;    }&#xa;});"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="addMilestoneButton">
           <Properties>
@@ -2492,14 +2492,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="teamTableScrollPane" pref="820" max="32767" attributes="0"/>
+                          <Component id="teamTableScrollPane" pref="785" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="addMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="276" max="32767" attributes="0"/>
+                              <EmptySpace pref="241" max="32767" attributes="0"/>
                               <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -2657,12 +2657,12 @@
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="276" max="32767" attributes="0"/>
+                              <EmptySpace pref="241" max="32767" attributes="0"/>
                               <Component id="filterTasksButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tasksTableScrollPane" pref="820" max="32767" attributes="0"/>
+                          <Component id="tasksTableScrollPane" pref="785" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -2841,7 +2841,7 @@
                               <Component id="removeCalendarButton" max="32767" attributes="0"/>
                               <Component id="createCalendarButton" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" pref="43" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="gCalLogoutButton" pref="204" max="32767" attributes="0"/>
                               <Component id="entryTableLabel" min="-2" max="-2" attributes="0"/>
@@ -3074,7 +3074,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="840" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="805" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -3107,7 +3107,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="togglTaskTextField" max="32767" attributes="0"/>
+                              <Component id="togglTaskTextField" pref="349" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="togglButton" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -3134,7 +3134,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="37" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -3149,7 +3149,7 @@
                               <Component id="togglLoginButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="525" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

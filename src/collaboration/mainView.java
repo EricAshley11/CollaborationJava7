@@ -554,11 +554,6 @@ public class mainView extends javax.swing.JFrame {
                 return label;
             }
         });
-        newTaskUserStoryComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newTaskUserStoryComboBoxActionPerformed(evt);
-            }
-        });
 
         newUserStoryButton.setText("+");
         newUserStoryButton.addActionListener(new java.awt.event.ActionListener() {
@@ -594,7 +589,7 @@ public class mainView extends javax.swing.JFrame {
                             .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(newUserStoryButton)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         addTasksJPanelLayout.setVerticalGroup(
             addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -626,19 +621,19 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(addTasksDialogButton)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addTasksJFrameLayout = new javax.swing.GroupLayout(addTasksJFrame.getContentPane());
         addTasksJFrame.getContentPane().setLayout(addTasksJFrameLayout);
         addTasksJFrameLayout.setHorizontalGroup(
             addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(addTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         addTasksJFrameLayout.setVerticalGroup(
             addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addTasksJFrameLayout.createSequentialGroup()
-                .addComponent(addTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1251,10 +1246,10 @@ public class mainView extends javax.swing.JFrame {
 
         gCalendarLoginPanel.setMinimumSize(new java.awt.Dimension(300, 300));
 
-        gCalUserNameLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        gCalUserNameLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         gCalUserNameLabel.setText("Username:");
 
-        gCalPasswordLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        gCalPasswordLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         gCalPasswordLabel.setText("Password:");
 
         gCalLoginScreenButton.setText("Login");
@@ -1336,21 +1331,21 @@ public class mainView extends javax.swing.JFrame {
 
         gCalendarAddCalendarPanel.setMinimumSize(new java.awt.Dimension(400, 370));
 
-        gCalAddCalendarTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        gCalAddCalendarTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18));
         gCalAddCalendarTitleLabel.setText(" Enter Calendar Information");
         gCalAddCalendarTitleLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        gCalCalendarTitleLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        gCalCalendarTitleLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
         gCalCalendarTitleLabel.setText("Calendar Title:");
 
         gCalCalendarDescriptionTextArea.setColumns(20);
         gCalCalendarDescriptionTextArea.setRows(5);
         jScrollPane3.setViewportView(gCalCalendarDescriptionTextArea);
 
-        gCalCalendarDescriptionLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        gCalCalendarDescriptionLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
         gCalCalendarDescriptionLabel.setText("Calendar Description:");
 
-        gCalCalendarLocationLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        gCalCalendarLocationLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
         gCalCalendarLocationLabel.setText("Location:");
 
         gCalAddCalendarCancelButton.setText("Cancel");
@@ -1618,7 +1613,7 @@ public class mainView extends javax.swing.JFrame {
         gCalendarAddEntryJFrame.setTitle("Add Entry");
         gCalendarAddEntryJFrame.setBounds(new java.awt.Rectangle(300, 400, 420, 430));
 
-        addEntryTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        addEntryTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18));
         addEntryTitleLabel.setText("Add Calendar Entry");
 
         addEntryNameLabel.setText("Entry Title:");
@@ -1746,6 +1741,35 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
+        userStoryMilestoneComboBox.setRenderer(new ListCellRenderer(){
+            @Override
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                JLabel label = new JLabel();
+                label.setOpaque(true);
+                if (isSelected) {
+                    label.setBackground(list.getSelectionBackground());
+                    label.setForeground(list.getSelectionForeground());
+                }
+                else {
+                    label.setBackground(list.getBackground());
+                    label.setForeground(list.getForeground());
+                }
+                label.setText(((Milestone)value).getName());
+                Border border = null;
+                if (cellHasFocus) {
+                    if (isSelected) {
+                        border = UIManager.getBorder("List.focusSelectedCellHighlightBorder");
+                    }
+                    if (border == null) {
+                        border = UIManager.getBorder("List.focusCellHighlightBorder");
+                    }
+                } else {
+                    border = new EmptyBorder(1, 1, 1, 1);
+                }
+                label.setBorder(border);
+                return label;
+            }
+        });
         userStoryMilestoneComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         addMilestoneButton.setText("+");
@@ -1769,15 +1793,15 @@ public class mainView extends javax.swing.JFrame {
                             .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel8)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 244, Short.MAX_VALUE))
                     .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
-                                .addComponent(userStoryMilestoneComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(userStoryMilestoneComboBox, 0, 282, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(addMilestoneButton))
-                            .addComponent(userStoryNameTextField))))
+                            .addComponent(userStoryNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
                 .addGap(113, 113, 113)
@@ -1938,14 +1962,14 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, teamPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
+                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
                     .addGroup(teamPanelLayout.createSequentialGroup()
                         .addComponent(addMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
                         .addComponent(filterTeamButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2038,11 +2062,11 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeTaskButton)
                         .addGap(18, 18, 18)
                         .addComponent(editTaskButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
                         .addComponent(filterTasksButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE))
+                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tasksPanelLayout.setVerticalGroup(
@@ -2104,10 +2128,10 @@ public class mainView extends javax.swing.JFrame {
         });
         calTableScrollPane.setViewportView(calTable);
 
-        calendarTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        calendarTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         calendarTableLabel.setText("Your Calendars");
 
-        entryTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        entryTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         entryTableLabel.setText("Upcoming Events");
 
         entryTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -2124,7 +2148,7 @@ public class mainView extends javax.swing.JFrame {
         entryTable.setEnabled(false);
         entryTableScrollPane.setViewportView(entryTable);
 
-        feedLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 13)); // NOI18N
+        feedLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
         feedLabel.setText("Feed");
 
         createCalendarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add30.png"))); // NOI18N
@@ -2175,7 +2199,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(calendarTableLabel)
                     .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(createCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(gCalLogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                     .addComponent(entryTableLabel)
@@ -2233,7 +2257,7 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2279,7 +2303,7 @@ public class mainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jTogglPanelLayout.createSequentialGroup()
-                        .addComponent(togglTaskTextField)
+                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2300,7 +2324,7 @@ public class mainView extends javax.swing.JFrame {
                                         .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(loginStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(37, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jTogglPanelLayout.createSequentialGroup()
                 .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jTogglPanelLayout.createSequentialGroup()
@@ -2309,7 +2333,7 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(jTogglPanelLayout.createSequentialGroup()
                         .addGap(203, 203, 203)
                         .addComponent(togglLoginButton)))
-                .addContainerGap())
+                .addContainerGap(525, Short.MAX_VALUE))
         );
         jTogglPanelLayout.setVerticalGroup(
             jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2866,10 +2890,6 @@ public class mainView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addEntryAddButtonActionPerformed
 
-    private void newTaskUserStoryComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newTaskUserStoryComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newTaskUserStoryComboBoxActionPerformed
-
     private void togglButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglButtonActionPerformed
         String command = evt.getActionCommand();
         JToggleButton button = (JToggleButton) evt.getSource();
@@ -2899,6 +2919,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void newUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserStoryButtonActionPerformed
         userStoryNameTextField.setText("");
+        engine.populateMilestoneComboBox(this.userStoryMilestoneComboBox);
         addUserStoryJFrame.setVisible(true);
 //        try {
 //            String userStoryName = JOptionPane.showInputDialog("New User Story Name: ");
@@ -2945,9 +2966,10 @@ public class mainView extends javax.swing.JFrame {
 
     private void addUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserStoryButtonActionPerformed
         String userStoryName = userStoryNameTextField.getText();
-        String milestone = userStoryMilestoneComboBox.getSelectedItem().toString();
-        if (engine.createNewUserStory(userStoryName, milestone)) {
-            newTaskUserStoryComboBox.addItem(userStoryName);
+        Milestone milestone = (Milestone)userStoryMilestoneComboBox.getSelectedItem();
+        UserStory us = engine.createNewUserStory(userStoryName, milestone);
+        if (us != null) {
+            newTaskUserStoryComboBox.addItem(us);
         } else {
             JOptionPane.showMessageDialog(this,
                     "User story name is invalid or already taken",
@@ -2957,9 +2979,11 @@ public class mainView extends javax.swing.JFrame {
 
     private void addMilestoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMilestoneButtonActionPerformed
         try {
-            String milestoneString = JOptionPane.showInputDialog("Name of new milstone: ");
+            String milestoneString = JOptionPane.showInputDialog("Name of new milestone: ");
             if (!milestoneString.isEmpty()) {
-                if (engine.createMilestone(milestoneString)) {
+                Milestone ms = engine.createMilestone(milestoneString);
+                if (ms != null) {
+                    this.userStoryMilestoneComboBox.addItem(ms);
                     JOptionPane.showMessageDialog(this,
                             milestoneString + " has been added to the project",
                             "Success", JOptionPane.DEFAULT_OPTION);

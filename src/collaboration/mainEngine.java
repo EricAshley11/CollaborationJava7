@@ -386,14 +386,12 @@ public class mainEngine {
         }
     }
 
-    boolean createNewUserStory(String newStoryName, String milestone) {
-        //TODO: MAKE THIS WORK
-        return true;
+    UserStory createNewUserStory(String newStoryName, Milestone milestone) {
+        return ClientBackend.getInstance().createUserStory(newStoryName, milestone);
     }
 
-    boolean createMilestone(String newMilestoneName) {
-        //TODO: MAKE THIS WORK
-        return true;
+    Milestone createMilestone(String newMilestoneName) {
+        return ClientBackend.getInstance().createMilestone(newMilestoneName, this.selectedProj.getSchedule());
     }
 
     boolean addNewEntry(String calendarName, String eventTitle, String eventDescription, int startTime, int endTime) {
@@ -410,5 +408,12 @@ public class mainEngine {
     void editUser(String name, String phone, String email) {
         User u = ClientBackend.getInstance().getUser(name);
         ClientBackend.getInstance().updateUser(user, phone, email);
+    }
+
+    void populateMilestoneComboBox(JComboBox milestoneComboBox) {
+        milestoneComboBox.removeAllItems();
+        for(Milestone ms : ClientBackend.getInstance().getMilestones(selectedProj)){
+            milestoneComboBox.addItem(ms);
+        }
     }
 }
