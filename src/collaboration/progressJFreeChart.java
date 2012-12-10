@@ -1,5 +1,7 @@
 package collaboration;
 
+import java.util.ArrayList;
+import javax.swing.JTable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -19,15 +21,15 @@ public class progressJFreeChart {
     /**
      * Creates a chart
      */
-    public JFreeChart createChart(String title) {
+    public JFreeChart createChart(String title, JTable tasksTable) {
         JFreeChart chart = ChartFactory.createPieChart(title, // chart title
-                createDataset(), // data
+                createDataset(tasksTable), // data
                 true, // include legend
                 true,
                 false);
 //ChartFactory.createp
         PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setStartAngle(290);
+        plot.setStartAngle(0);
         plot.setDirection(Rotation.CLOCKWISE);
         plot.setForegroundAlpha(0.5f);
         return chart;
@@ -37,11 +39,28 @@ public class progressJFreeChart {
     /**
      * Creates a sample dataset
      */
-    private PieDataset createDataset() {
+    private PieDataset createDataset(JTable tasksTable) {
+        String lead;
+        ArrayList<String> leads = new ArrayList<String>();
+        ArrayList<Integer> count = new ArrayList<Integer>();
+        for (int i = 0; i < tasksTable.getRowCount(); i++) {
+            lead = (String) tasksTable.getValueAt(i, 0);
+            //System.out.println(lead);
+            int indexOfValue = leads.indexOf((Object) lead);
+            if (indexOfValue == -1) { // IS NOT found in list of leads
+                leads.add(lead);
+                count.add(1);
+            } else { // IS found in list of leads
+                count.set(indexOfValue, count.get(indexOfValue) + 1); //increase count of times found by 1
+            }
+        }
         DefaultPieDataset result = new DefaultPieDataset();
-        result.setValue("Cam", 95);
-        result.setValue("Eric", 4);
-        result.setValue("Everyone else", 1);
+        for(int i=0; i<leads.size();i++){
+            result.setValue(leads.get(i), count.get(i));
+        }
+//        result.setValue("Cam", 95);
+//        result.setValue("Eric", 4);
+//        result.setValue("Everyone else", 1);
         return result;
     }
 //
