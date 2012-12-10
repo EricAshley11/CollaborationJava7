@@ -60,8 +60,13 @@ public class mainView extends javax.swing.JFrame {
             javax.swing.SwingUtilities.updateComponentTreeUI(editProjectJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(settingsJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(loginJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(createUserJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(filterTeamJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(filterTasksJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(gCalendarLoginJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(gCalendarAddCalendarJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(gCalendarAddEntryJFrame);
+            javax.swing.SwingUtilities.updateComponentTreeUI(addUserStoryJFrame);
         } catch (Exception e) {
             //System.out.println(e.toString());
         }
@@ -2520,9 +2525,15 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_editTaskButtonActionPerformed
 
     private void addTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTasksDialogButtonActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-        model.addRow(engine.getNewTaskRow(((User) leadComboBox.getSelectedItem()), (UserStory) newTaskUserStoryComboBox.getSelectedItem(), addTasksTaskTextField.getText(), addTasksEstimatedTextField.getText(), addTasksActualTextField.getText()));//new Object[]{addTasksLeadTextField.getText(), });
-        addTasksJFrame.setVisible(false);
+        try {
+            DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
+            model.addRow(engine.getNewTaskRow(((User) leadComboBox.getSelectedItem()), (UserStory) newTaskUserStoryComboBox.getSelectedItem(), addTasksTaskTextField.getText(), addTasksEstimatedTextField.getText(), addTasksActualTextField.getText()));//new Object[]{addTasksLeadTextField.getText(), });
+            addTasksJFrame.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "One or more fields have an invalid entry",
+                    "Invalid Entry", JOptionPane.DEFAULT_OPTION);
+        }
     }//GEN-LAST:event_addTasksDialogButtonActionPerformed
 
     private void editTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTasksDialogButtonActionPerformed
@@ -2541,12 +2552,12 @@ public class mainView extends javax.swing.JFrame {
                 "ProjectTracker is an open source project of six GVSU students for CIS 467\n"
                 + "Please direct comments and suggestions to ProjectTrackerApp@gmail.com\n"
                 + "Credits:\n"
-                + "Eric Ashley - GUI and Graph integration\n"
-                + "Eric Munson - Android GUI port\n"
-                + "Cam Warner - Client backend and gCal, Toggl integration\n"
-                + "Tommy Rankin - Testing and documentation\n"
-                + "Mike Vokes - Client/Server Backend\n"
-                + "Zach Burnside - Object Oriented Database/Server Back End",
+                + "Eric Ashley - Graphical User Interface and Graph integration\n"
+                + "Cam Warner - Server backend and Toggl integration\n"
+                + "Thomas Rankin - Testing and documentation\n"
+                + "Mike Vokes - Server Backend and Google Calendar integration\n"
+                + "Zach Burnside - Object Oriented Database/Server Back End\n"
+                + "Eric Munson - Android GUI port",
                 "About ProjectTracker", JOptionPane.DEFAULT_OPTION);
     }//GEN-LAST:event_aboutButtonActionPerformed
 
@@ -2966,7 +2977,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void addUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserStoryButtonActionPerformed
         String userStoryName = userStoryNameTextField.getText();
-        Milestone milestone = (Milestone)userStoryMilestoneComboBox.getSelectedItem();
+        Milestone milestone = (Milestone) userStoryMilestoneComboBox.getSelectedItem();
         UserStory us = engine.createNewUserStory(userStoryName, milestone);
         if (us != null) {
             newTaskUserStoryComboBox.addItem(us);
