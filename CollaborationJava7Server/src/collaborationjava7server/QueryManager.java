@@ -87,6 +87,7 @@ class QueryManager {
         Project P = new Project(name);
         Schedule S = new Schedule();
         P.setSchedule(S);
+        S.changeProject(P);
         em.persist(P);
         em.persist(S);
         em.getTransaction().commit();
@@ -172,11 +173,9 @@ class QueryManager {
         return getByID(id, Status.class);
     }
 
-    Task createTask(String name, User u, UserStory us) {
+    Task createTask(String name) {
         em.getTransaction().begin();
         Task t = new Task(name);
-        t.changeUser(u);
-        t.changeUserStory(us);
         em.persist(t);
         em.getTransaction().commit();
         //System.out.println("Created Task " + name+", id: "+t.getID());

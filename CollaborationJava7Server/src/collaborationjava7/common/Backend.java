@@ -207,10 +207,13 @@ public class Backend implements Serializable, IBackend{
         IProjectsResource pr = cr.wrap(IProjectsResource.class);
         Project newProj = pr.create(projectName);
         newProj.changeTeam(u.getTeam());
+        u.getTeam().addProject(newProj);
         ClientResource cr2 = new ClientResource(  
            "http://"+serverAddr+":8182/collab/project/"+newProj.getID());
         IProjectResource pr2 = cr2.wrap(IProjectResource.class);
         if(pr2.store(newProj)){
+            this.saveEntity(u);
+            this.saveEntity(u.getTeam());
             cr.release();
             cr2.release();
             return newProj;
@@ -249,12 +252,11 @@ public class Backend implements Serializable, IBackend{
     }
 
     
-    private Task createTask(String taskName, User u, UserStory us)  {
+    private Task createTask(String taskName)  {
         ClientResource cr = new ClientResource(  
             "http://"+serverAddr+":8182/collab/task");  
         ITasksResource ur = cr.wrap(ITasksResource.class);
-        
-        Task t =ur.create(new Object[]{taskName,u,us});
+        Task t =ur.create(taskName);
         cr.release();
         return t;
     }
@@ -401,9 +403,13 @@ public class Backend implements Serializable, IBackend{
 
     @Override
     public Task createTask(User lead, UserStory userStory, String taskName, int estimated, int actual) {
-        Task retVal = this.createTask(taskName, lead, userStory);
+        Task retVal = this.createTask(taskName);
         retVal.setTimeEstimate(estimated);
         retVal.setTimeActual(actual);
+        lead.addTask(retVal);
+        retVal.changeUser(lead);
+        userStory.addTask(retVal);
+        retVal.changeUserStory(userStory);
         this.saveEntity(lead);
         this.saveEntity(retVal);
         this.saveEntity(userStory);

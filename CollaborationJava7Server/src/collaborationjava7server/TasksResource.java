@@ -17,11 +17,8 @@ import org.restlet.resource.ServerResource;
 public class TasksResource extends ServerResource implements ITasksResource{
 
     @Override
-    public Task create(Object[] params) {
-        String name = (String)params[0];
-        User user = (User)params[1];
-        UserStory us = (UserStory)params[2];
-        return QueryManager.getInstance().createTask(name,user,us);
+    public Task create(String name) {
+        return QueryManager.getInstance().createTask(name);
     }
     
 }

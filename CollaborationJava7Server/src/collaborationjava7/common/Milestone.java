@@ -148,4 +148,7 @@ public class Milestone implements Serializable{
     public long getID() {
         return id;
     }
+    public String getName(){
+        return name;
+    }
 }

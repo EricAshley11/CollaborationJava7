@@ -12,5 +12,5 @@ import org.restlet.resource.Post;
  */
 public interface ITasksResource {
     @Post
-    public Task create(Object[] params);
+    public Task create(String name);
 }

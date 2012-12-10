@@ -61,11 +61,7 @@ public class UserStory implements Serializable {
     
     public boolean changeMilestone(Milestone milestone) {
         if (milestone != null && !milestone.equals(this.milestone)) {
-            if(this.milestone != null)
-                this.milestone.remUserStory(this);
-            Milestone oldMilestone = this.milestone;
             this.milestone = milestone;
-            milestone.addUserStory(this);
             return true;//QueryManager.getInstance().updateObjs(new Object[]{this, oldMilestone, milestone});
         }
         return false;

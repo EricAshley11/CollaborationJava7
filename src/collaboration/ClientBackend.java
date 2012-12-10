@@ -210,4 +210,8 @@ public class ClientBackend implements IBackend {
     public Milestone createMilestone(String name, Schedule sched) {
         return remoteObj.createMilestone(name, sched);
     }
+
+    Iterable<Milestone> getMilestones(Project project) {
+        return project.getSchedule().getMilestones();
+    }
 }
