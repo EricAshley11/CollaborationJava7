@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class mainView extends javax.swing.JFrame {
 
     JTogglHelper togglHelper = null;
-    mainEngine engine = new mainEngine();
+    static mainEngine engine = new mainEngine();
     Task editingTask = null;
     /**
      * Creates new form mainView
@@ -330,6 +330,7 @@ public class mainView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         loginStatusTextBox = new javax.swing.JLabel();
         gitHubPanel1 = new collaboration.GitHubPanel();
+        userStoryPanel1 = new collaboration.UserStoryPanel();
 
         addMemberJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMemberJFrame.setTitle("Add Member - ProjectTracker");
@@ -2406,6 +2407,7 @@ public class mainView extends javax.swing.JFrame {
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl75.png")), jTogglPanel, "Toggl"); // NOI18N
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/giticon.png")), gitHubPanel1); // NOI18N
+        tabbedPane.addTab("tab7", userStoryPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2502,6 +2504,9 @@ public class mainView extends javax.swing.JFrame {
 
     private void tabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPaneMouseClicked
         engine.updateChart(progressPanel, tasksTable);
+        if(this.tabbedPane.getSelectedIndex()==6){
+            this.userStoryPanel1.updateComponents();
+        }
     }//GEN-LAST:event_tabbedPaneMouseClicked
 
     private void addMemberDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberDialogButtonActionPerformed
@@ -3318,6 +3323,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTextField togglUserField;
     private javax.swing.JComboBox userStoryMilestoneComboBox;
     private javax.swing.JTextField userStoryNameTextField;
+    private collaboration.UserStoryPanel userStoryPanel1;
     private javax.swing.JLabel usernameJLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
