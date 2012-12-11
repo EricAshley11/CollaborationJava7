@@ -12,8 +12,15 @@ package collaboration;
 
 import collaborationjava7.common.Task;
 import collaborationjava7.common.UserStory;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.AbstractListModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import javax.swing.UIManager;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -64,7 +71,6 @@ public class UserStoryPanel extends javax.swing.JPanel {
                 retVal = mainView.engine.getUserStories();
             }
             catch(Exception e){
-                System.out.println("Error getting the userStories in the list");
                 retVal = new ArrayList<UserStory>();
             }
             return retVal;
@@ -102,7 +108,41 @@ public class UserStoryPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(userStoryList);
 
         taskList.setModel(new TaskListModel());
+        taskList.setCellRenderer(new ListCellRenderer(){
+            @Override
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                JLabel label = new JLabel();
+                label.setOpaque(true);
+                if (isSelected) {
+                    label.setBackground(list.getSelectionBackground());
+                    label.setForeground(list.getSelectionForeground());
+                }
+                else {
+                    label.setBackground(list.getBackground());
+                    label.setForeground(list.getForeground());
+                }
+                label.setText(((Task)value).getName());
+                Border border = null;
+                if (cellHasFocus) {
+                    if (isSelected) {
+                        border = UIManager.getBorder("List.focusSelectedCellHighlightBorder");
+                    }
+                    if (border == null) {
+                        border = UIManager.getBorder("List.focusCellHighlightBorder");
+                    }
+                } else {
+                    border = new EmptyBorder(1, 1, 1, 1);
+                }
+                label.setBorder(border);
+                return label;
+            }
+        });
         taskList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        taskList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                taskListValueChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(taskList);
 
         jScrollPane2.setViewportView(userStoryTextBox);
@@ -169,8 +209,14 @@ public class UserStoryPanel extends javax.swing.JPanel {
 
     private void userStoryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_userStoryListValueChanged
         selectedUS = (UserStory)this.userStoryList.getSelectedValue();
-        
+        //this.userStoryTextBox.setText(selectedUS.getDescription());
+        this.taskList.setModel(new TaskListModel());
     }//GEN-LAST:event_userStoryListValueChanged
+
+    private void taskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_taskListValueChanged
+        selectedTask = (Task)this.taskList.getSelectedValue();
+        this.taskTextBox.setText(selectedTask.getDescription());
+    }//GEN-LAST:event_taskListValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
