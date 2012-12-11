@@ -25,7 +25,7 @@ public class mainView extends javax.swing.JFrame {
 
     JTogglHelper togglHelper = null;
     mainEngine engine = new mainEngine();
-
+    Task editingTask = null;
     /**
      * Creates new form mainView
      */
@@ -93,10 +93,7 @@ public class mainView extends javax.swing.JFrame {
         editProjectTextField.setText("");
         editTasksActualTextField.setText("");
         editTasksEstimatedTextField.setText("");
-        editTasksLeadTextField.setText("");
-        editTasksStatusTextField.setText("");
         editTasksTaskTextField.setText("");
-        editTasksUserStoryTextField.setText("");
         firstPasswordField.setText("");
         gCalCalendarTitleTextField.setText("");
         gCalLocationTextField.setText("");
@@ -153,12 +150,12 @@ public class mainView extends javax.swing.JFrame {
         editTasksStatusJLabel = new javax.swing.JLabel();
         editTasksEstimatedJLabel = new javax.swing.JLabel();
         editTasksActualJLabel = new javax.swing.JLabel();
-        editTasksLeadTextField = new javax.swing.JTextField();
-        editTasksUserStoryTextField = new javax.swing.JTextField();
         editTasksTaskTextField = new javax.swing.JTextField();
-        editTasksStatusTextField = new javax.swing.JTextField();
         editTasksEstimatedTextField = new javax.swing.JTextField();
         editTasksActualTextField = new javax.swing.JTextField();
+        editTaskLeadComboBox = new javax.swing.JComboBox();
+        editTaskStatusComboBox = new javax.swing.JComboBox();
+        editTaskUserStoryComboBox = new javax.swing.JComboBox();
         editProjectJFrame = new javax.swing.JFrame();
         editProjectSaveButton = new javax.swing.JButton();
         editProjectRenameJLabel = new javax.swing.JLabel();
@@ -671,6 +668,12 @@ public class mainView extends javax.swing.JFrame {
 
         editTasksActualJLabel.setText("Status");
 
+        editTaskLeadComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        editTaskStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        editTaskUserStoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout editTasksJPanelLayout = new javax.swing.GroupLayout(editTasksJPanel);
         editTasksJPanel.setLayout(editTasksJPanelLayout);
         editTasksJPanelLayout.setHorizontalGroup(
@@ -685,14 +688,14 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(editTasksTaskJLabel)
                     .addComponent(editTasksLeadJLabel))
                 .addGap(18, 18, 18)
-                .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(editTaskUserStoryComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editTaskStatusComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editTasksDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editTasksLeadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editTasksEstimatedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editTasksStatusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editTasksTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editTasksUserStoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editTasksEstimatedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(editTasksActualTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(editTasksTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(editTaskLeadComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         editTasksJPanelLayout.setVerticalGroup(
@@ -701,11 +704,11 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editTasksLeadJLabel)
-                    .addComponent(editTasksLeadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editTaskLeadComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editTasksUserStoryJLabel)
-                    .addComponent(editTasksUserStoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editTaskUserStoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editTasksTaskJLabel)
@@ -713,7 +716,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editTasksActualJLabel)
-                    .addComponent(editTasksStatusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editTaskStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editTasksStatusJLabel)
@@ -1992,7 +1995,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/team75.png")), teamPanel, "Team"); // NOI18N
@@ -2086,7 +2089,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2232,7 +2235,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteEventButton)
                     .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(calendarTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(entryTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2266,7 +2269,7 @@ public class mainView extends javax.swing.JFrame {
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 486, Short.MAX_VALUE)
+            .addGap(0, 487, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/graph75.png")), progressPanel, "Progress"); // NOI18N
@@ -2364,7 +2367,7 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(togglButton)))
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl75.png")), jTogglPanel, "Toggl"); // NOI18N
@@ -2510,12 +2513,13 @@ public class mainView extends javax.swing.JFrame {
             }
         }
         if (isAnyRowSelected) {
-            editTasksLeadTextField.setText(tasksTable.getValueAt(tasksTable.getSelectedRow(), 0).toString());
-            editTasksUserStoryTextField.setText(tasksTable.getValueAt(tasksTable.getSelectedRow(), 1).toString());
-            editTasksTaskTextField.setText(tasksTable.getValueAt(tasksTable.getSelectedRow(), 2).toString());
-            editTasksStatusTextField.setText(tasksTable.getValueAt(tasksTable.getSelectedRow(), 3).toString());
-            editTasksEstimatedTextField.setText(tasksTable.getValueAt(tasksTable.getSelectedRow(), 4).toString());
-            editTasksActualTextField.setText(tasksTable.getValueAt(tasksTable.getSelectedRow(), 5).toString());
+            editingTask = engine.getTask(tasksTable.getValueAt(tasksTable.getSelectedRow(), 2).toString());
+            engine.createProjectUsersComboBox(this.editTaskLeadComboBox,editingTask);
+            engine.createProjectUserStoriesComboBox(editTaskUserStoryComboBox,editingTask);
+            editTasksTaskTextField.setText(editingTask.getName());
+            engine.populateStatusComboBox(this.editTaskStatusComboBox,editingTask);
+            editTasksEstimatedTextField.setText(Integer.toString(editingTask.getTimeEstimate()));
+            editTasksActualTextField.setText(Integer.toString(editingTask.getTimeActual()));
             editTasksJFrame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this,
@@ -2538,12 +2542,14 @@ public class mainView extends javax.swing.JFrame {
 
     private void editTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTasksDialogButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-        model.setValueAt(editTasksLeadTextField.getText(), tasksTable.getSelectedRow(), 0);
-        model.setValueAt(editTasksUserStoryTextField.getText(), tasksTable.getSelectedRow(), 1);
-        model.setValueAt(editTasksTaskTextField.getText(), tasksTable.getSelectedRow(), 2);
-        model.setValueAt(editTasksStatusTextField.getText(), tasksTable.getSelectedRow(), 3);
-        model.setValueAt(editTasksEstimatedTextField.getText(), tasksTable.getSelectedRow(), 4);
-        model.setValueAt(editTasksActualTextField.getText(), tasksTable.getSelectedRow(), 5);
+        User u = (User)this.editTaskLeadComboBox.getSelectedItem();
+        UserStory us = (UserStory)this.editTaskUserStoryComboBox.getSelectedItem();
+        String name = this.editTasksTaskTextField.getText();
+        Status.States state = (Status.States)this.editTaskStatusComboBox.getSelectedItem();
+        int est = Integer.parseInt(this.editTasksEstimatedTextField.getText());
+        int actual = Integer.parseInt(this.editTasksActualTextField.getText());
+        engine.editTask(editingTask, name, u, us, state, est, actual);
+        engine.loadTasksTable(tasksTable);
         editTasksJFrame.setVisible(false);
     }//GEN-LAST:event_editTasksDialogButtonActionPerformed
 
@@ -2553,10 +2559,10 @@ public class mainView extends javax.swing.JFrame {
                 + "Please direct comments and suggestions to ProjectTrackerApp@gmail.com\n"
                 + "Credits:\n"
                 + "Eric Ashley - Graphical User Interface and Graph integration\n"
-                + "Cam Warner - Server backend and Toggl integration\n"
+                + "Cam Warner - Client/Server backend and Toggl integration\n"
                 + "Thomas Rankin - Testing and documentation\n"
-                + "Mike Vokes - Server Backend and Google Calendar integration\n"
-                + "Zach Burnside - Object Oriented Database/Server Back End\n"
+                + "Mike Vokes - Google Calendar integration\n"
+                + "Zach Burnside - Object Oriented Database and GitHub Integration\n"
                 + "Eric Munson - Android GUI port",
                 "About ProjectTracker", JOptionPane.DEFAULT_OPTION);
     }//GEN-LAST:event_aboutButtonActionPerformed
@@ -3116,6 +3122,9 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton editProjectSaveButton;
     private javax.swing.JTextField editProjectTextField;
     private javax.swing.JButton editTaskButton;
+    private javax.swing.JComboBox editTaskLeadComboBox;
+    private javax.swing.JComboBox editTaskStatusComboBox;
+    private javax.swing.JComboBox editTaskUserStoryComboBox;
     private javax.swing.JLabel editTasksActualJLabel;
     private javax.swing.JTextField editTasksActualTextField;
     private javax.swing.JButton editTasksDialogButton;
@@ -3124,13 +3133,10 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JFrame editTasksJFrame;
     private javax.swing.JPanel editTasksJPanel;
     private javax.swing.JLabel editTasksLeadJLabel;
-    private javax.swing.JTextField editTasksLeadTextField;
     private javax.swing.JLabel editTasksStatusJLabel;
-    private javax.swing.JTextField editTasksStatusTextField;
     private javax.swing.JLabel editTasksTaskJLabel;
     private javax.swing.JTextField editTasksTaskTextField;
     private javax.swing.JLabel editTasksUserStoryJLabel;
-    private javax.swing.JTextField editTasksUserStoryTextField;
     private javax.swing.JComboBox endTimeComboBox;
     private javax.swing.JTable entryTable;
     private javax.swing.JLabel entryTableLabel;

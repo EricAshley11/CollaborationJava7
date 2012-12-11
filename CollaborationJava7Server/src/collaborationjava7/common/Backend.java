@@ -105,7 +105,16 @@ public class Backend implements Serializable, IBackend{
             userString = userString.trim();
             ArrayList<String> userInfo = new ArrayList<String>();
             userInfo.addAll(Arrays.asList(userString.split(", ")));
-            userInfo.add(user.getTasks().size()+ " tasks pending (click to view)");
+            int taskNum = 0;
+            for(Task t : user.getTasks()){
+                for(Milestone m : p.getSchedule().getMilestones()){
+                    if(t.getUserStory().getMilestone() == m){
+                        taskNum++;
+                        break;
+                    }
+                }
+            }
+            userInfo.add(taskNum+ " tasks pending (click to view)");
             String[] strArray = new String[userFields];
             tableData[i] = userInfo.toArray(strArray);
         }
@@ -436,5 +445,22 @@ public class Backend implements Serializable, IBackend{
         this.saveEntity(sched);
         this.saveEntity(m);
         return m;
+    }
+
+    public Task editTask(Task task, String name, User u, UserStory us, Status.States state, int est, int actual) {
+        task.setName(name);
+        User oldUser = task.getUser();
+        UserStory oldUS = task.getUserStory();
+        task.changeUser(u);
+        task.changeUserStory(us);
+        task.getStatus().setState(state);
+        task.setTimeActual(actual);
+        task.setTimeEstimate(est);
+        this.saveEntity(task);
+        this.saveEntity(oldUser);
+        this.saveEntity(oldUS);
+        this.saveEntity(u);
+        this.saveEntity(us);
+        return task;
     }
 }

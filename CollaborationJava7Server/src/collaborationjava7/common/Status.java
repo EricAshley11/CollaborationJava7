@@ -13,7 +13,6 @@ import java.io.Serializable;
  */
 
 public class Status implements Serializable {
-
     public enum States {
 
         INITIAL("Initial"),
@@ -28,7 +27,7 @@ public class Status implements Serializable {
             this.displayString = displayString;
         }
 
-        public String getDisplayString() {
+        public String toString() {
             return displayString;
         }
 
@@ -53,6 +52,17 @@ public class Status implements Serializable {
         this.state = States.INITIAL;
     }
 
+    void setState(States state) {
+        this.state = state;
+    }
+    void setState(String state){
+        for(States s : States.values()){
+            if(s.toString().equals(state)){
+                this.state = s;
+                break;
+            }
+        }
+    }
     public Status nextState() {
         this.state = this.state.getNext();
         return this;
@@ -70,12 +80,12 @@ public class Status implements Serializable {
         this.blocked = !this.blocked;
         return isBlocked();
     }
-
-    public String getDisplayString() {
-        return this.state.getDisplayString();
+    public States getState(){
+        return this.state;
     }
+
     @Override
     public String toString(){
-        return this.getDisplayString();
+        return this.state.toString();
     }
 }

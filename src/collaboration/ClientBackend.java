@@ -214,4 +214,21 @@ public class ClientBackend implements IBackend {
     Iterable<Milestone> getMilestones(Project project) {
         return project.getSchedule().getMilestones();
     }
+
+    Task getTasksTableData(Project p, String taskName) {
+        for(Milestone ms : p.getSchedule().getMilestones()){
+            for(UserStory us : ms.getUserStories()){
+                for(Task t : us.getTasks()){
+                    if(t.getName().equals(taskName)){
+                        return t;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    Task editTask(Task task, String name, User u, UserStory us, Status.States state, int est, int actual) {
+        return remoteObj.editTask(task, name, u, us, state, est, actual);
+    }
 }

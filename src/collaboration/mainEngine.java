@@ -8,6 +8,7 @@ import collaborationjava7.common.*;
 import com.google.gdata.util.ServiceException;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultRowSorter;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -415,5 +416,29 @@ public class mainEngine {
         for(Milestone ms : ClientBackend.getInstance().getMilestones(selectedProj)){
             milestoneComboBox.addItem(ms);
         }
+    }
+
+    void createProjectUsersComboBox(JComboBox editTaskLeadComboBox, Task task) {
+        this.createProjectUsersComboBox(editTaskLeadComboBox);
+        editTaskLeadComboBox.setSelectedItem(task.getUser());
+    }
+
+    void createProjectUserStoriesComboBox(JComboBox editTaskUserStoryComboBox, Task task) {
+        this.createProjectUserStoriesComboBox(editTaskUserStoryComboBox);
+        editTaskUserStoryComboBox.setSelectedItem(task.getUserStory());
+    }
+
+    void populateStatusComboBox(JComboBox editTaskStatusComboBox, Task task) {
+        editTaskStatusComboBox.removeAllItems();
+        editTaskStatusComboBox.setModel(new DefaultComboBoxModel(Status.States.values()));
+        editTaskStatusComboBox.setSelectedItem(task.getStatus().getState());
+    }
+
+    Task getTask(String taskName) {
+        return ClientBackend.getInstance().getTasksTableData(this.selectedProj, taskName);
+    }
+
+    Task editTask(Task task, String name, User u, UserStory us, Status.States state,  int est, int actual) {
+        return ClientBackend.getInstance().editTask(task, name, u, us, state, est, actual);
     }
 }

@@ -70,7 +70,7 @@ public class Task implements Serializable{
         return name;
     }
 
-    public Status getState() {
+    public Status getStatus() {
         return doneStatus;
     }
 
@@ -117,7 +117,7 @@ public class Task implements Serializable{
     public String toString(){
         try{
             return user.getName()+","+this.userStory.getName()+","+this.getName()+
-                ","+this.getState().getDisplayString()+","+this.timeEstimate+","+this.timeActual;
+                ","+this.getStatus()+","+this.timeEstimate+","+this.timeActual;
         }catch(Exception e){
             System.err.println("User: "+user+"\n"+
                             "US: "+userStory+"\n"+
