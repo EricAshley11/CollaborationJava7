@@ -2698,6 +2698,8 @@ public class mainView extends javax.swing.JFrame {
             engine.setSeletedProj((Project) this.projectComboBox.getSelectedItem());
             engine.loadTeamTable(teamTable);
             engine.loadTasksTable(tasksTable);
+            this.userStoryPanel1.updateComponents();
+            
         }
     }//GEN-LAST:event_projectComboBoxItemStateChanged
 
