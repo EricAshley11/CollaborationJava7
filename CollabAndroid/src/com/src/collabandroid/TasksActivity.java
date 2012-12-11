@@ -28,6 +28,7 @@ import java.util.HashMap;
  
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -39,10 +40,18 @@ public class TasksActivity extends Activity
     private ArrayList<HashMap> list;
  
     public void onCreate(Bundle savedInstanceState)
-    { System.out.println("1");
+    { setTitle("Project Tracker: "+ClientBackend.getUser());
+    	Log.i("Tasks","Project Tracker: "+ClientBackend.getUser());
+
+    	
+    	System.out.println("1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tasks_layout);
 
+        getParent().setTitle("Project Tracker: "+ClientBackend.getName());
+    	Log.i("Tasks2","Project Tracker: "+ClientBackend.getUser());
+    	
+    	
         TableLayout table = new TableLayout(this);
         table.setStretchAllColumns(true);
         table.setShrinkAllColumns(true);
