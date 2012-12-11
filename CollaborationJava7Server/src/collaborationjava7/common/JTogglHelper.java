@@ -6,6 +6,7 @@ package collaborationjava7.common;
 
 import ch.simas.jtoggl.*;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,7 +23,7 @@ public class JTogglHelper {
     JToggl jToggl;
     ch.simas.jtoggl.User user;
     String fullName;
-    
+    boolean isLoggedIn = false;
     //---------------------------
     //required for new time entry
     final String CREATED_WITH = "Project Tracker";
@@ -40,11 +41,12 @@ public class JTogglHelper {
         this.password = password;
         this.jToggl = new JToggl(userName, password);
         user = jToggl.getCurrentUser();
-        fullName = user.getFullname();        
+        fullName = user.getFullname();  
+        isLoggedIn=true;
     }
     public String startNewTimeEntry(String description){
         this.description = description;
-        Calendar.getInstance().setTimeZone(TimeZone.getDefault());
+        //Calendar.getInstance().setTimeZone(TimeZone.getTimeZone("EST"));
         startTime = Calendar.getInstance().getTime();
         return DateFormat.getDateInstance().format(startTime);
     }
@@ -62,13 +64,20 @@ public class JTogglHelper {
         t.setCreated_with(CREATED_WITH);
         t.setDuration(duration);
         t.setDescription(description);
+        String new2 =t.toJSONString();
         try{
-            return "Created new time entry: "+jToggl.createTimeEntry(t).toString();
+            TimeEntry ret = jToggl.createTimeEntry(t);
+            String re = ret.toJSONString();
+            return String.format("Created new time entry: %s    Duration: %.2f",ret.getDescription(),getLastDurationInHours());
         }catch(Exception e){
             return "Failed to create new time entry.";
         }
     }
     
+    public double getLastDurationInHours(){
+        DecimalFormat twoPlaces = new DecimalFormat("#.##");
+        return Double.valueOf(twoPlaces.format(this.duration/3600));
+    }
     public ArrayList<String> getProjectNames(){
         List<ch.simas.jtoggl.Project> projs = jToggl.getProjects();
         ArrayList<String> retVal = new ArrayList<String>();
@@ -98,7 +107,9 @@ public class JTogglHelper {
     public String getFullName(){
         return this.fullName;
     }
-    
+    public boolean isLoggedIn(){
+        return isLoggedIn;
+    }
     public static void main(String[] args) throws InterruptedException{
         JTogglHelper jth = new JTogglHelper("user@mail.gvsu.edu", "pass");
         jth.startNewTimeEntry("test entry");

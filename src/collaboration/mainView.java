@@ -275,6 +275,14 @@ public class mainView extends javax.swing.JFrame {
         userStoryMilestoneComboBox = new javax.swing.JComboBox();
         addMilestoneButton = new javax.swing.JButton();
         userStoryNameTextField = new javax.swing.JTextField();
+        togglFrame = new javax.swing.JFrame();
+        jTogglPanel = new javax.swing.JPanel();
+        togglPasswordField = new javax.swing.JPasswordField();
+        togglUserField = new javax.swing.JTextField();
+        togglLoginButton = new javax.swing.JButton();
+        togglLoginLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         projectComboBox = new javax.swing.JComboBox();
         signOutButton = new javax.swing.JButton();
         newProjectButton = new javax.swing.JButton();
@@ -299,6 +307,10 @@ public class mainView extends javax.swing.JFrame {
         tasksTable = new javax.swing.JTable();
         filterTasksButton = new javax.swing.JButton();
         jTogglTaskButton = new javax.swing.JButton();
+        togglTaskTextField = new javax.swing.JTextField();
+        togglButton = new javax.swing.JToggleButton();
+        togglStatusTextBox = new javax.swing.JLabel();
+        togglLabel = new javax.swing.JLabel();
         schedulePanel = new javax.swing.JPanel();
         calendarPanel = new javax.swing.JPanel();
         gCalLoginButton = new javax.swing.JButton();
@@ -317,18 +329,6 @@ public class mainView extends javax.swing.JFrame {
         createEventButton = new javax.swing.JButton();
         deleteEventButton = new javax.swing.JButton();
         progressPanel = new javax.swing.JPanel();
-        jTogglPanel = new JTogglPanel();
-        togglTaskLabel = new javax.swing.JLabel();
-        togglTaskTextField = new javax.swing.JTextField();
-        togglButton = new javax.swing.JToggleButton();
-        togglStatusTextBox = new javax.swing.JLabel();
-        togglPasswordField = new javax.swing.JPasswordField();
-        togglUserField = new javax.swing.JTextField();
-        togglLoginButton = new javax.swing.JButton();
-        togglLoginLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        loginStatusTextBox = new javax.swing.JLabel();
         gitHubPanel1 = new collaboration.GitHubPanel();
         userStoryPanel1 = new collaboration.UserStoryPanel();
 
@@ -1854,6 +1854,86 @@ public class mainView extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
+        togglFrame.setTitle("Toggl Login");
+        togglFrame.setAlwaysOnTop(true);
+        togglFrame.setMinimumSize(new java.awt.Dimension(473, 186));
+        togglFrame.setResizable(false);
+
+        togglLoginButton.setText("Login");
+        togglLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglLoginButtonActionPerformed(evt);
+            }
+        });
+
+        togglLoginLabel.setText("Login with your Toggl Email and Password");
+
+        jLabel3.setText("Email");
+
+        jLabel5.setText("Password");
+
+        javax.swing.GroupLayout jTogglPanelLayout = new javax.swing.GroupLayout(jTogglPanel);
+        jTogglPanel.setLayout(jTogglPanelLayout);
+        jTogglPanelLayout.setHorizontalGroup(
+            jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jTogglPanelLayout.createSequentialGroup()
+                        .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jTogglPanelLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(togglLoginLabel))
+                    .addGroup(jTogglPanelLayout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(togglLoginButton)))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        jTogglPanelLayout.setVerticalGroup(
+            jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTogglPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(togglLoginLabel)
+                .addGap(18, 18, 18)
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
+                .addGap(6, 6, 6)
+                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(togglLoginButton)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout togglFrameLayout = new javax.swing.GroupLayout(togglFrame.getContentPane());
+        togglFrame.getContentPane().setLayout(togglFrameLayout);
+        togglFrameLayout.setHorizontalGroup(
+            togglFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(togglFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(togglFrameLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jTogglPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        togglFrameLayout.setVerticalGroup(
+            togglFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 186, Short.MAX_VALUE)
+            .addGroup(togglFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(togglFrameLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jTogglPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ProjectTracker");
         setBounds(new java.awt.Rectangle(50, 50, 0, 0));
@@ -2089,6 +2169,27 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
+        togglTaskTextField.setEnabled(false);
+        togglTaskTextField.setVisible(false);
+
+        togglButton.setBackground(java.awt.Color.green);
+        togglButton.setText("Start");
+        togglButton.setEnabled(false);
+        togglButton.setVisible(false);
+        togglButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglButtonActionPerformed(evt);
+            }
+        });
+
+        togglStatusTextBox.setText("Waiting...");
+        togglStatusTextBox.setEnabled(false);
+        togglStatusTextBox.setFocusable(false);
+        togglStatusTextBox.setVisible(false);
+
+        togglLabel.setText("Toggl Task:");
+        togglLabel.setVisible(false);
+
         javax.swing.GroupLayout tasksPanelLayout = new javax.swing.GroupLayout(tasksPanel);
         tasksPanel.setLayout(tasksPanelLayout);
         tasksPanelLayout.setHorizontalGroup(
@@ -2108,7 +2209,15 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(filterTasksButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE))
+                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                    .addGroup(tasksPanelLayout.createSequentialGroup()
+                        .addComponent(togglLabel)
+                        .addGap(26, 26, 26)
+                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(togglStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         tasksPanelLayout.setVerticalGroup(
@@ -2123,8 +2232,14 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(tasksPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(togglLabel)
+                    .addComponent(togglButton)
+                    .addComponent(togglStatusTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .addGap(4, 4, 4)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2308,104 +2423,6 @@ public class mainView extends javax.swing.JFrame {
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/graph75.png")), progressPanel, "Progress"); // NOI18N
-
-        togglTaskLabel.setText("Toggl Task");
-
-        togglTaskTextField.setEnabled(false);
-
-        togglButton.setBackground(java.awt.Color.green);
-        togglButton.setText("Start");
-        togglButton.setEnabled(false);
-        togglButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                togglButtonActionPerformed(evt);
-            }
-        });
-
-        togglStatusTextBox.setText("Waiting...");
-        togglStatusTextBox.setEnabled(false);
-
-        togglLoginButton.setText("Login");
-        togglLoginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                togglLoginButtonActionPerformed(evt);
-            }
-        });
-
-        togglLoginLabel.setText("Login with your Toggl Email and Password");
-
-        jLabel3.setText("Email");
-
-        jLabel5.setText("Password");
-
-        javax.swing.GroupLayout jTogglPanelLayout = new javax.swing.GroupLayout(jTogglPanel);
-        jTogglPanel.setLayout(jTogglPanelLayout);
-        jTogglPanelLayout.setHorizontalGroup(
-            jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jTogglPanelLayout.createSequentialGroup()
-                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(togglStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56))
-                    .addGroup(jTogglPanelLayout.createSequentialGroup()
-                        .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(togglTaskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jTogglPanelLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addGroup(jTogglPanelLayout.createSequentialGroup()
-                                        .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(loginStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jTogglPanelLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(togglLoginLabel))
-                    .addGroup(jTogglPanelLayout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(togglLoginButton)))
-                .addContainerGap(517, Short.MAX_VALUE))
-        );
-        jTogglPanelLayout.setVerticalGroup(
-            jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jTogglPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(togglLoginLabel)
-                .addGap(18, 18, 18)
-                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
-                .addGap(6, 6, 6)
-                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(togglUserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(togglPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(togglLoginButton)
-                .addGap(64, 64, 64)
-                .addComponent(togglTaskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(togglStatusTextBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jTogglPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(togglButton)))
-                .addContainerGap(215, Short.MAX_VALUE))
-        );
-
-        tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl75.png")), jTogglPanel, "Toggl"); // NOI18N
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/giticon.png")), gitHubPanel1); // NOI18N
         tabbedPane.addTab("tab7", userStoryPanel1);
 
@@ -2557,8 +2574,8 @@ public class mainView extends javax.swing.JFrame {
             engine.createProjectUserStoriesComboBox(editTaskUserStoryComboBox,editingTask);
             editTasksTaskTextField.setText(editingTask.getName());
             engine.populateStatusComboBox(this.editTaskStatusComboBox,editingTask);
-            editTasksEstimatedTextField.setText(Integer.toString(editingTask.getTimeEstimate()));
-            editTasksActualTextField.setText(Integer.toString(editingTask.getTimeActual()));
+            editTasksEstimatedTextField.setText(Double.toString(editingTask.getTimeEstimate()));
+            editTasksActualTextField.setText(Double.toString(editingTask.getTimeActual()));
             editTasksJFrame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this,
@@ -2580,16 +2597,22 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addTasksDialogButtonActionPerformed
 
     private void editTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTasksDialogButtonActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-        User u = (User)this.editTaskLeadComboBox.getSelectedItem();
-        UserStory us = (UserStory)this.editTaskUserStoryComboBox.getSelectedItem();
-        String name = this.editTasksTaskTextField.getText();
-        Status.States state = (Status.States)this.editTaskStatusComboBox.getSelectedItem();
-        int est = Integer.parseInt(this.editTasksEstimatedTextField.getText());
-        int actual = Integer.parseInt(this.editTasksActualTextField.getText());
-        engine.editTask(editingTask, name, u, us, state, est, actual);
-        engine.loadTasksTable(tasksTable);
-        editTasksJFrame.setVisible(false);
+        try{
+            DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
+            User u = (User)this.editTaskLeadComboBox.getSelectedItem();
+            UserStory us = (UserStory)this.editTaskUserStoryComboBox.getSelectedItem();
+            String name = this.editTasksTaskTextField.getText();
+            Status.States state = (Status.States)this.editTaskStatusComboBox.getSelectedItem();
+            double est = Double.parseDouble(this.editTasksEstimatedTextField.getText());
+            double actual = Double.parseDouble(this.editTasksActualTextField.getText());
+            engine.editTask(editingTask, name, u, us, state, est, actual);
+            engine.loadTasksTable(tasksTable);
+            editTasksJFrame.setVisible(false);}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,
+                    "One or more fields have an invalid entry",
+                    "Invalid Entry", JOptionPane.DEFAULT_OPTION);
+        }
     }//GEN-LAST:event_editTasksDialogButtonActionPerformed
 
     private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
@@ -2963,7 +2986,8 @@ public class mainView extends javax.swing.JFrame {
             button.setBackground(Color.red);
         } else if (command.equals("Stop")) {
             button.setText("Start");
-            this.togglHelper.endNewTimeEntry();
+            String response =this.togglHelper.endNewTimeEntry();
+            togglStatusTextBox.setText(response);
             button.setBackground(Color.green);
         }
     }//GEN-LAST:event_togglButtonActionPerformed
@@ -2973,11 +2997,21 @@ public class mainView extends javax.swing.JFrame {
             togglHelper = new JTogglHelper(this.togglUserField.getText(), String.copyValueOf(this.togglPasswordField.getPassword()));
 
             this.togglButton.setEnabled(true);
-            this.loginStatusTextBox.setEnabled(true);
+            this.togglStatusTextBox.setEnabled(true);
             this.togglTaskTextField.setEnabled(true);
-            this.loginStatusTextBox.setText("Successfully logged in as " + this.togglHelper.getFullName());
+            this.togglLabel.setEnabled(true);
+            this.togglButton.setVisible(true);
+            this.togglStatusTextBox.setVisible(true);
+            this.togglTaskTextField.setVisible(true);
+            this.togglLabel.setVisible(true);
+            JOptionPane.showMessageDialog(this,
+                    "Successfully logged in as " + this.togglHelper.getFullName(),
+                    "Success!", JOptionPane.DEFAULT_OPTION);
+            this.togglFrame.setVisible(false);
         } catch (Exception e) {
-            this.loginStatusTextBox.setText("Unable to login to Toggl");
+            JOptionPane.showMessageDialog(this,
+                    "Please check your username and password",
+                    "Unable to login to Toggl", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_togglLoginButtonActionPerformed
 
@@ -3066,19 +3100,22 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMilestoneButtonActionPerformed
 
     private void tasksTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tasksTableMouseClicked
-        if(evt.getClickCount()==2){//edits a task if it is double clicked
-            editTaskButtonActionPerformed(null);
+        if(evt.getClickCount()==2){//populates a task in toggl if it is double clicked
+            jTogglTaskButtonActionPerformed(null);
         }
     }//GEN-LAST:event_tasksTableMouseClicked
 
     private void jTogglTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTogglTaskButtonActionPerformed
         int index = tasksTable.getSelectedRow();
+        if(this.togglHelper == null || !this.togglHelper.isLoggedIn()){
+            this.togglFrame.setVisible(true);
+            this.togglFrame.setAlwaysOnTop(true);
+        }
         if(index != -1){
             Task task =engine.getTask(tasksTable.getValueAt(index, 2).toString());
-            this.tabbedPane.setSelectedIndex(4);
             this.togglTaskTextField.setText(task.getName());
         }else{
-            //TODO: throw error box
+            //TODO: maybe throw error box
         }
     }//GEN-LAST:event_jTogglTaskButtonActionPerformed
 //</editor-fold>
@@ -3276,7 +3313,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JFrame loginJFrame;
     private javax.swing.JPanel loginJPanel;
     private javax.swing.JPanel loginJPanel1;
-    private javax.swing.JLabel loginStatusTextBox;
     private javax.swing.JButton newProjectButton;
     private javax.swing.JComboBox newTaskUserStoryComboBox;
     private javax.swing.JPasswordField newTeamConfirmPasswordField;
@@ -3314,11 +3350,12 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JScrollPane teamTableScrollPane;
     private javax.swing.JComboBox themeComboBox;
     private javax.swing.JToggleButton togglButton;
+    private javax.swing.JFrame togglFrame;
+    private javax.swing.JLabel togglLabel;
     private javax.swing.JButton togglLoginButton;
     private javax.swing.JLabel togglLoginLabel;
     private javax.swing.JPasswordField togglPasswordField;
     private javax.swing.JLabel togglStatusTextBox;
-    private javax.swing.JLabel togglTaskLabel;
     private javax.swing.JTextField togglTaskTextField;
     private javax.swing.JTextField togglUserField;
     private javax.swing.JComboBox userStoryMilestoneComboBox;

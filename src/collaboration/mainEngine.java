@@ -444,7 +444,7 @@ public class mainEngine {
         return ClientBackend.getInstance().getTasksTableData(this.selectedProj, taskName);
     }
 
-    Task editTask(Task task, String name, User u, UserStory us, Status.States state,  int est, int actual) {
+    Task editTask(Task task, String name, User u, UserStory us, Status.States state,  double est, double actual) {
         return ClientBackend.getInstance().editTask(task, name, u, us, state, est, actual);
     }
     ArrayList<UserStory> getUserStories(){

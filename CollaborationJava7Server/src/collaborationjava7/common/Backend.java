@@ -411,7 +411,7 @@ public class Backend implements Serializable, IBackend{
     }
 
     @Override
-    public Task createTask(User lead, UserStory userStory, String taskName, int estimated, int actual) {
+    public Task createTask(User lead, UserStory userStory, String taskName, double estimated, double actual) {
         Task retVal = this.createTask(taskName);
         retVal.setTimeEstimate(estimated);
         retVal.setTimeActual(actual);
@@ -447,7 +447,7 @@ public class Backend implements Serializable, IBackend{
         return m;
     }
 
-    public Task editTask(Task task, String name, User u, UserStory us, Status.States state, int est, int actual) {
+    public Task editTask(Task task, String name, User u, UserStory us, Status.States state, double est, double actual) {
         task.setName(name);
         User oldUser = task.getUser();
         UserStory oldUS = task.getUserStory();

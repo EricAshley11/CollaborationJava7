@@ -14,7 +14,7 @@ public class Task implements Serializable{
 
     
     private long id;
-    private int timeEstimate, timeActual;
+    private double timeEstimate, timeActual;
     
     private User user;
     private String description, name;
@@ -74,11 +74,11 @@ public class Task implements Serializable{
         return doneStatus;
     }
 
-    public int getTimeActual() {
+    public double getTimeActual() {
         return timeActual;
     }
 
-    public int getTimeEstimate() {
+    public double getTimeEstimate() {
         return timeEstimate;
     }
 
@@ -102,11 +102,11 @@ public class Task implements Serializable{
         this.doneStatus = state;
     }
 
-    public void setTimeActual(int timeActual) {
+    public void setTimeActual(double timeActual) {
         this.timeActual = timeActual;
     }
 
-    public void setTimeEstimate(int timeEstimate) {
+    public void setTimeEstimate(double timeEstimate) {
         this.timeEstimate = timeEstimate;
     }
     

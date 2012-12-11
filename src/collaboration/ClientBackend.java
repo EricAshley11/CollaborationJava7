@@ -198,7 +198,7 @@ public class ClientBackend implements IBackend {
     }
 
     @Override
-    public Task createTask(User lead, UserStory userStory, String taskName, int estimated, int actual) {
+    public Task createTask(User lead, UserStory userStory, String taskName, double estimated, double actual) {
         return remoteObj.createTask(lead, userStory, taskName, estimated, actual);
     }
 
@@ -228,7 +228,7 @@ public class ClientBackend implements IBackend {
         return null;
     }
 
-    Task editTask(Task task, String name, User u, UserStory us, Status.States state, int est, int actual) {
+    Task editTask(Task task, String name, User u, UserStory us, Status.States state, double est, double actual) {
         return remoteObj.editTask(task, name, u, us, state, est, actual);
     }
 }
