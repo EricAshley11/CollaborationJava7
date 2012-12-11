@@ -236,9 +236,6 @@
           <Dimension value="[450, 350]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Add Member" noResource="true"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[450, 350]"/>
-        </Property>
       </Properties>
 
       <Layout>
@@ -2647,7 +2644,7 @@
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="241" max="32767" attributes="0"/>
+                              <EmptySpace pref="318" max="32767" attributes="0"/>
                               <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -2671,7 +2668,7 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="teamTableScrollPane" pref="430" max="32767" attributes="0"/>
+                      <Component id="teamTableScrollPane" pref="435" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2816,7 +2813,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="togglLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="togglTaskTextField" pref="225" max="32767" attributes="0"/>
+                              <Component id="togglTaskTextField" pref="194" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="togglButton" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -2846,7 +2843,7 @@
                           <Component id="togglTaskTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="togglLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="togglButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="togglStatusTextBox" alignment="3" pref="25" max="32767" attributes="0"/>
+                          <Component id="togglStatusTextBox" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Component id="tasksTableScrollPane" pref="401" max="32767" attributes="0"/>
@@ -3097,7 +3094,7 @@
                               <Component id="deleteEventButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="removeCalendarButton" alignment="3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="calendarTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="entryTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -3295,12 +3292,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="805" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="802" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="486" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="494" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

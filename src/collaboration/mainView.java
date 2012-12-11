@@ -2694,7 +2694,7 @@ public class mainView extends javax.swing.JFrame {
             createUserEmailTextField};
         if (engine.createUser(textFields)) {
             JOptionPane.showMessageDialog(this,
-                    "User \"" + createUserUsernameTextField.getText() + "\" bas been created",
+                    "User \"" + createUserUsernameTextField.getText() + "\" has been created",
                     "User Created", JOptionPane.DEFAULT_OPTION);
         } else {
             JOptionPane.showMessageDialog(this,
