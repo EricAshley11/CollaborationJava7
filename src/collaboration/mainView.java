@@ -2521,7 +2521,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void tabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPaneMouseClicked
         engine.updateChart(progressPanel, tasksTable);
-        if(this.tabbedPane.getSelectedIndex()==6){
+        if(this.tabbedPane.getSelectedComponent().equals(userStoryPanel1)){
             this.userStoryPanel1.updateComponents();
         }
     }//GEN-LAST:event_tabbedPaneMouseClicked
