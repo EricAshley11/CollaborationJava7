@@ -450,4 +450,8 @@ public class mainEngine {
     ArrayList<UserStory> getUserStories(){
         return ClientBackend.getInstance().getUserStories(selectedProj);
     }
+
+    void addTimeToTask(Task task, double time) {
+        ClientBackend.getInstance().addTimeToTask(task, time);
+    }
 }

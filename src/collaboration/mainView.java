@@ -1259,10 +1259,10 @@ public class mainView extends javax.swing.JFrame {
 
         gCalendarLoginPanel.setMinimumSize(new java.awt.Dimension(300, 300));
 
-        gCalUserNameLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
+        gCalUserNameLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         gCalUserNameLabel.setText("Username:");
 
-        gCalPasswordLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
+        gCalPasswordLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         gCalPasswordLabel.setText("Password:");
 
         gCalLoginScreenButton.setText("Login");
@@ -1344,21 +1344,21 @@ public class mainView extends javax.swing.JFrame {
 
         gCalendarAddCalendarPanel.setMinimumSize(new java.awt.Dimension(400, 370));
 
-        gCalAddCalendarTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18));
+        gCalAddCalendarTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         gCalAddCalendarTitleLabel.setText(" Enter Calendar Information");
         gCalAddCalendarTitleLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        gCalCalendarTitleLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
+        gCalCalendarTitleLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         gCalCalendarTitleLabel.setText("Calendar Title:");
 
         gCalCalendarDescriptionTextArea.setColumns(20);
         gCalCalendarDescriptionTextArea.setRows(5);
         jScrollPane3.setViewportView(gCalCalendarDescriptionTextArea);
 
-        gCalCalendarDescriptionLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
+        gCalCalendarDescriptionLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         gCalCalendarDescriptionLabel.setText("Calendar Description:");
 
-        gCalCalendarLocationLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
+        gCalCalendarLocationLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         gCalCalendarLocationLabel.setText("Location:");
 
         gCalAddCalendarCancelButton.setText("Cancel");
@@ -1641,7 +1641,7 @@ public class mainView extends javax.swing.JFrame {
         gCalendarAddEntryJFrame.setTitle("Add Entry");
         gCalendarAddEntryJFrame.setBounds(new java.awt.Rectangle(300, 400, 420, 430));
 
-        addEntryTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18));
+        addEntryTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
         addEntryTitleLabel.setText("Add Calendar Entry");
 
         addEntryNameLabel.setText("Entry Title:");
@@ -1988,6 +1988,7 @@ public class mainView extends javax.swing.JFrame {
 
         tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        tabbedPane.setToolTipText("");
         tabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabbedPaneMouseClicked(evt);
@@ -2077,7 +2078,7 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
                         .addComponent(filterTeamButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2095,7 +2096,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE))
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/team75.png")), teamPanel, "Team"); // NOI18N
@@ -2213,7 +2214,7 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(tasksPanelLayout.createSequentialGroup()
                         .addComponent(togglLabel)
                         .addGap(26, 26, 26)
-                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2237,9 +2238,9 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(togglLabel)
                     .addComponent(togglButton)
-                    .addComponent(togglStatusTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                    .addComponent(togglStatusTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(4, 4, 4)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2286,10 +2287,10 @@ public class mainView extends javax.swing.JFrame {
         });
         calTableScrollPane.setViewportView(calTable);
 
-        calendarTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
+        calendarTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         calendarTableLabel.setText("Your Calendars");
 
-        entryTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
+        entryTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         entryTableLabel.setText("Upcoming Events");
 
         entryTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -2306,7 +2307,7 @@ public class mainView extends javax.swing.JFrame {
         entryTable.setEnabled(false);
         entryTableScrollPane.setViewportView(entryTable);
 
-        feedLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
+        feedLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 13)); // NOI18N
         feedLabel.setText("Feed");
 
         createCalendarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add30.png"))); // NOI18N
@@ -2385,7 +2386,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteEventButton)
                     .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(calendarTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(entryTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2415,15 +2416,19 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 805, Short.MAX_VALUE)
+            .addGap(0, 802, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/graph75.png")), progressPanel, "Progress"); // NOI18N
-        tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/giticon.png")), gitHubPanel1); // NOI18N
+
+        gitHubPanel1.setToolTipText("");
+        tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/giticon.png")), gitHubPanel1, "GitHub"); // NOI18N
+
+        userStoryPanel1.setToolTipText("");
         tabbedPane.addTab("tab7", userStoryPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2460,7 +2465,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(signOutButton)
                     .addComponent(editProjectButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 492, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2984,12 +2989,16 @@ public class mainView extends javax.swing.JFrame {
         JToggleButton button = (JToggleButton) evt.getSource();
         if (command.equals("Start")) {
             this.togglHelper.startNewTimeEntry(this.togglTaskTextField.getText());
+            togglStatusTextBox.setText("Waiting...");
             button.setText("Stop");
             button.setBackground(Color.red);
         } else if (command.equals("Stop")) {
             button.setText("Start");
             String response =this.togglHelper.endNewTimeEntry();
             togglStatusTextBox.setText(response);
+            Task task =engine.getTask(this.togglTaskTextField.getText());
+            engine.addTimeToTask(task, togglHelper.getLastDurationInHours());
+            engine.loadTasksTable(tasksTable);
             button.setBackground(Color.green);
         }
     }//GEN-LAST:event_togglButtonActionPerformed

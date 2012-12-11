@@ -47,11 +47,15 @@ public class JTogglHelper {
     public String startNewTimeEntry(String description){
         this.description = description;
         //Calendar.getInstance().setTimeZone(TimeZone.getTimeZone("EST"));
-        startTime = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.HOUR_OF_DAY, 5);//Need to hard code this due to an error in JToggl
+        startTime = cal.getTime();
         return DateFormat.getDateInstance().format(startTime);
     }
     public String endNewTimeEntry(){
-        endTime = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.HOUR_OF_DAY, 5);//Need to hard code this due to an error in JToggl
+        endTime = cal.getTime();
         duration = (endTime.getTime() - startTime.getTime())/1000;
         billable = false;
         return sendTimeEntry();        
@@ -76,7 +80,7 @@ public class JTogglHelper {
     
     public double getLastDurationInHours(){
         DecimalFormat twoPlaces = new DecimalFormat("#.##");
-        return Double.valueOf(twoPlaces.format(this.duration/3600));
+        return Double.valueOf(twoPlaces.format(this.duration/3600.0));
     }
     public ArrayList<String> getProjectNames(){
         List<ch.simas.jtoggl.Project> projs = jToggl.getProjects();

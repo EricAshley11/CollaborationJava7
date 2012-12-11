@@ -463,4 +463,11 @@ public class Backend implements Serializable, IBackend{
         this.saveEntity(us);
         return task;
     }
+
+    public void addTimeToTask(Task task, double time) {
+        double oldTime = task.getTimeActual();
+        oldTime += time;
+        task.setTimeActual(oldTime);
+        this.saveEntity(task);
+    }
 }

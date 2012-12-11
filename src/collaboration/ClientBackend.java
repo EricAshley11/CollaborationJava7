@@ -231,4 +231,8 @@ public class ClientBackend implements IBackend {
     Task editTask(Task task, String name, User u, UserStory us, Status.States state, double est, double actual) {
         return remoteObj.editTask(task, name, u, us, state, est, actual);
     }
+
+    void addTimeToTask(Task task, double time) {
+        remoteObj.addTimeToTask(task, time);
+    }
 }

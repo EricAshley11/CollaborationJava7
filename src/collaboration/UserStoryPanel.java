@@ -215,7 +215,8 @@ public class UserStoryPanel extends javax.swing.JPanel {
 
     private void taskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_taskListValueChanged
         selectedTask = (Task)this.taskList.getSelectedValue();
-        this.taskTextBox.setText(selectedTask.getDescription());
+        if(this.selectedTask != null)
+            this.taskTextBox.setText(selectedTask.getDescription());
     }//GEN-LAST:event_taskListValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
