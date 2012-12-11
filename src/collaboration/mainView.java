@@ -298,6 +298,7 @@ public class mainView extends javax.swing.JFrame {
         tasksTableScrollPane = new javax.swing.JScrollPane();
         tasksTable = new javax.swing.JTable();
         filterTasksButton = new javax.swing.JButton();
+        jTogglTaskButton = new javax.swing.JButton();
         schedulePanel = new javax.swing.JPanel();
         calendarPanel = new javax.swing.JPanel();
         gCalLoginButton = new javax.swing.JButton();
@@ -2080,6 +2081,13 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
+        jTogglTaskButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/toggl30.png"))); // NOI18N
+        jTogglTaskButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTogglTaskButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tasksPanelLayout = new javax.swing.GroupLayout(tasksPanel);
         tasksPanel.setLayout(tasksPanelLayout);
         tasksPanelLayout.setHorizontalGroup(
@@ -2093,7 +2101,9 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeTaskButton)
                         .addGap(18, 18, 18)
                         .addComponent(editTaskButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTogglTaskButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                         .addComponent(filterTasksButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2103,16 +2113,17 @@ public class mainView extends javax.swing.JFrame {
         tasksPanelLayout.setVerticalGroup(
             tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tasksPanelLayout.createSequentialGroup()
-                .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addTasksButton)
-                    .addComponent(removeTaskButton)
-                    .addComponent(editTaskButton)
-                    .addComponent(filterTasksButton)
+                .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTogglTaskButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addTasksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(removeTaskButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editTaskButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(filterTasksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tasksPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2430,7 +2441,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(signOutButton)
                     .addComponent(editProjectButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3050,11 +3061,21 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMilestoneButtonActionPerformed
 
     private void tasksTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tasksTableMouseClicked
-        int selectedRow = this.tasksTable.getSelectedRow();
-        if(evt.getClickCount()==2){
+        if(evt.getClickCount()==2){//edits a task if it is double clicked
             editTaskButtonActionPerformed(null);
         }
     }//GEN-LAST:event_tasksTableMouseClicked
+
+    private void jTogglTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTogglTaskButtonActionPerformed
+        int index = tasksTable.getSelectedRow();
+        if(index != -1){
+            Task task =engine.getTask(tasksTable.getValueAt(index, 2).toString());
+            this.tabbedPane.setSelectedIndex(4);
+            this.togglTaskTextField.setText(task.getName());
+        }else{
+            //TODO: throw error box
+        }
+    }//GEN-LAST:event_jTogglTaskButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -3240,6 +3261,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel jTogglPanel;
+    private javax.swing.JButton jTogglTaskButton;
     private javax.swing.JComboBox joinExistingComboBox;
     private javax.swing.JFrame joinExistingTeamJFrame;
     private javax.swing.JButton joinExistingTeamJoinJButton;
