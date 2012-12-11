@@ -385,6 +385,9 @@ public class mainEngine {
         for (UserStory us : ClientBackend.getInstance().getUserStories(selectedProj)) {
             newTaskUserStoryComboBox.addItem(us);
         }
+        if(newTaskUserStoryComboBox.getItemCount()==0){
+            newTaskUserStoryComboBox.addItem(new UserStory("No User Stories, please add one."));
+        }
     }
 
     UserStory createNewUserStory(String newStoryName, Milestone milestone) {
@@ -415,6 +418,9 @@ public class mainEngine {
         milestoneComboBox.removeAllItems();
         for(Milestone ms : ClientBackend.getInstance().getMilestones(selectedProj)){
             milestoneComboBox.addItem(ms);
+        }
+        if(milestoneComboBox.getItemCount()==0){
+            milestoneComboBox.addItem(new Milestone("No Milestones, please add one."));
         }
     }
 
