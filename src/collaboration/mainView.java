@@ -5,6 +5,7 @@ import collaborationjava7.common.*;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -26,6 +27,7 @@ public class mainView extends javax.swing.JFrame {
     JTogglHelper togglHelper = null;
     static mainEngine engine = new mainEngine();
     Task editingTask = null;
+
     /**
      * Creates new form mainView
      */
@@ -79,7 +81,6 @@ public class mainView extends javax.swing.JFrame {
         addMemberUsernameTextField.setText("");
         addTasksActualTextField.setText("");
         addTasksEstimatedTextField.setText("");
-        addTasksStatusTextField.setText("");
         addTasksTaskTextField.setText("");
         confirmPasswordField.setText("");
         createProjectNameTextField.setText("");
@@ -126,21 +127,18 @@ public class mainView extends javax.swing.JFrame {
         editPhoneTextField = new javax.swing.JTextField();
         editEmailTextField = new javax.swing.JTextField();
         addTasksJFrame = new javax.swing.JFrame();
-        addTasksJPanel = new javax.swing.JPanel();
-        addTasksDialogButton = new javax.swing.JButton();
         addTasksLeadJLabel = new javax.swing.JLabel();
-        addTasksUserStoryJLabel = new javax.swing.JLabel();
+        newUserStoryButton = new javax.swing.JButton();
+        addTasksDialogButton = new javax.swing.JButton();
+        newTaskUserStoryComboBox = new javax.swing.JComboBox();
         addTasksTaskJLabel = new javax.swing.JLabel();
+        leadComboBox = new javax.swing.JComboBox();
+        addTasksUserStoryJLabel = new javax.swing.JLabel();
         addTasksStatusJLabel = new javax.swing.JLabel();
         addTasksEstimatedJLabel = new javax.swing.JLabel();
-        addTasksActualJLabel = new javax.swing.JLabel();
         addTasksTaskTextField = new javax.swing.JTextField();
-        addTasksStatusTextField = new javax.swing.JTextField();
         addTasksEstimatedTextField = new javax.swing.JTextField();
         addTasksActualTextField = new javax.swing.JTextField();
-        leadComboBox = new javax.swing.JComboBox();
-        newTaskUserStoryComboBox = new javax.swing.JComboBox();
-        newUserStoryButton = new javax.swing.JButton();
         editTasksJFrame = new javax.swing.JFrame();
         editTasksJPanel = new javax.swing.JPanel();
         editTasksDialogButton = new javax.swing.JButton();
@@ -472,62 +470,25 @@ public class mainView extends javax.swing.JFrame {
         addTasksJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addTasksJFrame.setTitle("Add Tasks - ProjectTracker");
         addTasksJFrame.setAlwaysOnTop(true);
-        addTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
+        addTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 450, 350));
         addTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        addTasksJFrame.setMinimumSize(new java.awt.Dimension(450, 400));
+        addTasksJFrame.setMinimumSize(new java.awt.Dimension(450, 350));
         addTasksJFrame.setName("Add Member"); // NOI18N
+        addTasksJFrame.setPreferredSize(new java.awt.Dimension(450, 350));
 
-        addTasksJPanel.setMinimumSize(new java.awt.Dimension(500, 0));
-        addTasksJPanel.setPreferredSize(new java.awt.Dimension(500, 400));
+        addTasksLeadJLabel.setText("Lead");
+
+        newUserStoryButton.setText("+");
+        newUserStoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newUserStoryButtonActionPerformed(evt);
+            }
+        });
 
         addTasksDialogButton.setText("Add Task");
         addTasksDialogButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addTasksDialogButtonActionPerformed(evt);
-            }
-        });
-
-        addTasksLeadJLabel.setText("Lead");
-
-        addTasksUserStoryJLabel.setText("User Story");
-
-        addTasksTaskJLabel.setText("Task");
-
-        addTasksStatusJLabel.setText("Estimated Comp.");
-
-        addTasksEstimatedJLabel.setText("Actual Comp.");
-
-        addTasksActualJLabel.setText("Status");
-
-        leadComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        leadComboBox.setRenderer(new ListCellRenderer(){
-            @Override
-            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                JLabel label = new JLabel();
-                label.setOpaque(true);
-                if (isSelected) {
-                    label.setBackground(list.getSelectionBackground());
-                    label.setForeground(list.getSelectionForeground());
-                }
-                else {
-                    label.setBackground(list.getBackground());
-                    label.setForeground(list.getForeground());
-                }
-
-                label.setText(((User)value).getName());
-                Border border = null;
-                if (cellHasFocus) {
-                    if (isSelected) {
-                        border = UIManager.getBorder("List.focusSelectedCellHighlightBorder");
-                    }
-                    if (border == null) {
-                        border = UIManager.getBorder("List.focusCellHighlightBorder");
-                    }
-                } else {
-                    border = new EmptyBorder(1, 1, 1, 1);
-                }
-                label.setBorder(border);
-                return label;
             }
         });
 
@@ -562,86 +523,102 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
-        newUserStoryButton.setText("+");
-        newUserStoryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newUserStoryButtonActionPerformed(evt);
+        addTasksTaskJLabel.setText("Task");
+
+        leadComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        leadComboBox.setRenderer(new ListCellRenderer(){
+            @Override
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                JLabel label = new JLabel();
+                label.setOpaque(true);
+                if (isSelected) {
+                    label.setBackground(list.getSelectionBackground());
+                    label.setForeground(list.getSelectionForeground());
+                }
+                else {
+                    label.setBackground(list.getBackground());
+                    label.setForeground(list.getForeground());
+                }
+
+                label.setText(((User)value).getName());
+                Border border = null;
+                if (cellHasFocus) {
+                    if (isSelected) {
+                        border = UIManager.getBorder("List.focusSelectedCellHighlightBorder");
+                    }
+                    if (border == null) {
+                        border = UIManager.getBorder("List.focusCellHighlightBorder");
+                    }
+                } else {
+                    border = new EmptyBorder(1, 1, 1, 1);
+                }
+                label.setBorder(border);
+                return label;
             }
         });
 
-        javax.swing.GroupLayout addTasksJPanelLayout = new javax.swing.GroupLayout(addTasksJPanel);
-        addTasksJPanel.setLayout(addTasksJPanelLayout);
-        addTasksJPanelLayout.setHorizontalGroup(
-            addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addTasksJPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addTasksStatusJLabel)
-                    .addComponent(addTasksEstimatedJLabel)
-                    .addComponent(addTasksActualJLabel)
-                    .addComponent(addTasksUserStoryJLabel)
-                    .addComponent(addTasksTaskJLabel)
-                    .addComponent(addTasksLeadJLabel))
-                .addGap(18, 18, 18)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(addTasksDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                        .addComponent(addTasksActualTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                        .addComponent(addTasksStatusTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                        .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
-                    .addGroup(addTasksJPanelLayout.createSequentialGroup()
-                        .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(leadComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 229, Short.MAX_VALUE)
-                            .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newUserStoryButton)))
-                .addContainerGap(93, Short.MAX_VALUE))
-        );
-        addTasksJPanelLayout.setVerticalGroup(
-            addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTasksJPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addTasksLeadJLabel)
-                    .addComponent(leadComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTasksUserStoryJLabel)
-                    .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newUserStoryButton))
-                .addGap(21, 21, 21)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTasksTaskJLabel)
-                    .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTasksActualJLabel)
-                    .addComponent(addTasksStatusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTasksStatusJLabel)
-                    .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(addTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTasksEstimatedJLabel)
-                    .addComponent(addTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(addTasksDialogButton)
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
+        addTasksUserStoryJLabel.setText("User Story");
+
+        addTasksStatusJLabel.setText("Estimated Comp.");
+
+        addTasksEstimatedJLabel.setText("Actual Comp.");
 
         javax.swing.GroupLayout addTasksJFrameLayout = new javax.swing.GroupLayout(addTasksJFrame.getContentPane());
         addTasksJFrame.getContentPane().setLayout(addTasksJFrameLayout);
         addTasksJFrameLayout.setHorizontalGroup(
             addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(addTasksJFrameLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addTasksStatusJLabel)
+                    .addComponent(addTasksEstimatedJLabel)
+                    .addComponent(addTasksTaskJLabel)
+                    .addComponent(addTasksUserStoryJLabel)
+                    .addComponent(addTasksLeadJLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addTasksJFrameLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(addTasksDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(addTasksJFrameLayout.createSequentialGroup()
+                            .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(leadComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(newUserStoryButton))))
+                .addGap(34, 34, 34))
         );
         addTasksJFrameLayout.setVerticalGroup(
             addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addTasksJFrameLayout.createSequentialGroup()
-                .addComponent(addTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(leadComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addTasksLeadJLabel))
+                .addGap(18, 18, 18)
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newUserStoryButton)
+                    .addComponent(addTasksUserStoryJLabel))
+                .addGap(18, 18, 18)
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addTasksTaskJLabel))
+                .addGap(18, 18, 18)
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addTasksStatusJLabel))
+                .addGap(23, 23, 23)
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addTasksEstimatedJLabel))
+                .addGap(18, 18, 18)
+                .addComponent(addTasksDialogButton)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         editTasksJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -833,6 +810,12 @@ public class mainView extends javax.swing.JFrame {
 
         spaceJlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/ProjectTracker.png"))); // NOI18N
 
+        passwordTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordTextFieldKeyPressed(evt);
+            }
+        });
+
         createUserButton.setText("Create User");
         createUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -881,7 +864,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createUserButton)
                     .addComponent(loginButton))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout loginJFrameLayout = new javax.swing.GroupLayout(loginJFrame.getContentPane());
@@ -1988,7 +1971,6 @@ public class mainView extends javax.swing.JFrame {
 
         tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        tabbedPane.setToolTipText("");
         tabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabbedPaneMouseClicked(evt);
@@ -2078,7 +2060,7 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
                         .addComponent(filterTeamButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2096,7 +2078,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE))
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/team75.png")), teamPanel, "Team"); // NOI18N
@@ -2214,7 +2196,7 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(tasksPanelLayout.createSequentialGroup()
                         .addComponent(togglLabel)
                         .addGap(26, 26, 26)
-                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2238,9 +2220,9 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(togglLabel)
                     .addComponent(togglButton)
-                    .addComponent(togglStatusTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(togglStatusTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                 .addGap(4, 4, 4)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2416,19 +2398,15 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 486, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/graph75.png")), progressPanel, "Progress"); // NOI18N
-
-        gitHubPanel1.setToolTipText("");
-        tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/giticon.png")), gitHubPanel1, "GitHub"); // NOI18N
-
-        userStoryPanel1.setToolTipText("");
+        tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/giticon.png")), gitHubPanel1); // NOI18N
         tabbedPane.addTab("tab7", userStoryPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2465,8 +2443,8 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(signOutButton)
                     .addComponent(editProjectButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 492, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(tabbedPane)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -2502,7 +2480,6 @@ public class mainView extends javax.swing.JFrame {
         engine.createProjectUsersComboBox(leadComboBox);
         engine.createProjectUserStoriesComboBox(newTaskUserStoryComboBox);
         addTasksTaskTextField.setText("");
-        addTasksStatusTextField.setText("");
         addTasksEstimatedTextField.setText("");
         addTasksActualTextField.setText("");
         addTasksJFrame.setVisible(true);
@@ -2526,7 +2503,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void tabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPaneMouseClicked
         engine.updateChart(progressPanel, tasksTable);
-        if(this.tabbedPane.getSelectedComponent().equals(userStoryPanel1)){
+        if (this.tabbedPane.getSelectedComponent().equals(userStoryPanel1)) {
             this.userStoryPanel1.updateComponents();
         }
     }//GEN-LAST:event_tabbedPaneMouseClicked
@@ -2575,10 +2552,10 @@ public class mainView extends javax.swing.JFrame {
         }
         if (isAnyRowSelected) {
             editingTask = engine.getTask(tasksTable.getValueAt(tasksTable.getSelectedRow(), 2).toString());
-            engine.createProjectUsersComboBox(this.editTaskLeadComboBox,editingTask);
-            engine.createProjectUserStoriesComboBox(editTaskUserStoryComboBox,editingTask);
+            engine.createProjectUsersComboBox(this.editTaskLeadComboBox, editingTask);
+            engine.createProjectUserStoriesComboBox(editTaskUserStoryComboBox, editingTask);
             editTasksTaskTextField.setText(editingTask.getName());
-            engine.populateStatusComboBox(this.editTaskStatusComboBox,editingTask);
+            engine.populateStatusComboBox(this.editTaskStatusComboBox, editingTask);
             editTasksEstimatedTextField.setText(Double.toString(editingTask.getTimeEstimate()));
             editTasksActualTextField.setText(Double.toString(editingTask.getTimeActual()));
             editTasksJFrame.setVisible(true);
@@ -2602,18 +2579,18 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addTasksDialogButtonActionPerformed
 
     private void editTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTasksDialogButtonActionPerformed
-        try{
+        try {
             DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-            User u = (User)this.editTaskLeadComboBox.getSelectedItem();
-            UserStory us = (UserStory)this.editTaskUserStoryComboBox.getSelectedItem();
+            User u = (User) this.editTaskLeadComboBox.getSelectedItem();
+            UserStory us = (UserStory) this.editTaskUserStoryComboBox.getSelectedItem();
             String name = this.editTasksTaskTextField.getText();
-            Status.States state = (Status.States)this.editTaskStatusComboBox.getSelectedItem();
+            Status.States state = (Status.States) this.editTaskStatusComboBox.getSelectedItem();
             double est = Double.parseDouble(this.editTasksEstimatedTextField.getText());
             double actual = Double.parseDouble(this.editTasksActualTextField.getText());
             engine.editTask(editingTask, name, u, us, state, est, actual);
             engine.loadTasksTable(tasksTable);
-            editTasksJFrame.setVisible(false);}
-        catch(Exception e){
+            editTasksJFrame.setVisible(false);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
                     "One or more fields have an invalid entry",
                     "Invalid Entry", JOptionPane.DEFAULT_OPTION);
@@ -2704,7 +2681,7 @@ public class mainView extends javax.swing.JFrame {
             engine.loadTeamTable(teamTable);
             engine.loadTasksTable(tasksTable);
             this.userStoryPanel1.updateComponents();
-            
+
         }
     }//GEN-LAST:event_projectComboBoxItemStateChanged
 
@@ -2908,7 +2885,7 @@ public class mainView extends javax.swing.JFrame {
         if (!projectTitle.isEmpty()) {
             Project newProj = engine.createProject(projectTitle);
             projectComboBox.addItem(newProj);
-            createNewProjectJFrame.setVisible(true);
+            createNewProjectJFrame.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this,
                     "Project title is required to create a new project",
@@ -2917,13 +2894,13 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_createProjectJButtonActionPerformed
 
     private void joinExistingTeamJoinJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinExistingTeamJoinJButtonActionPerformed
-        Team team =(Team) joinExistingComboBox.getSelectedItem();
-        if(team.validatePassword(String.copyValueOf(this.joinTeamPasswordField.getPassword()))){
+        Team team = (Team) joinExistingComboBox.getSelectedItem();
+        if (team.validatePassword(String.copyValueOf(this.joinTeamPasswordField.getPassword()))) {
             engine.addUserToTeam(team);
             noTeamJFrame.setVisible(false);
             joinExistingTeamJFrame.setVisible(false);
             loginButtonActionPerformed(evt);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this,
                     "Invalid password, please try again.",
                     "Invalid Password", JOptionPane.DEFAULT_OPTION);
@@ -2989,16 +2966,12 @@ public class mainView extends javax.swing.JFrame {
         JToggleButton button = (JToggleButton) evt.getSource();
         if (command.equals("Start")) {
             this.togglHelper.startNewTimeEntry(this.togglTaskTextField.getText());
-            togglStatusTextBox.setText("Waiting...");
             button.setText("Stop");
             button.setBackground(Color.red);
         } else if (command.equals("Stop")) {
             button.setText("Start");
-            String response =this.togglHelper.endNewTimeEntry();
+            String response = this.togglHelper.endNewTimeEntry();
             togglStatusTextBox.setText(response);
-            Task task =engine.getTask(this.togglTaskTextField.getText());
-            engine.addTimeToTask(task, togglHelper.getLastDurationInHours());
-            engine.loadTasksTable(tasksTable);
             button.setBackground(Color.green);
         }
     }//GEN-LAST:event_togglButtonActionPerformed
@@ -3111,24 +3084,30 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMilestoneButtonActionPerformed
 
     private void tasksTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tasksTableMouseClicked
-        if(evt.getClickCount()==2){//populates a task in toggl if it is double clicked
+        if (evt.getClickCount() == 2) {//populates a task in toggl if it is double clicked
             jTogglTaskButtonActionPerformed(null);
         }
     }//GEN-LAST:event_tasksTableMouseClicked
 
     private void jTogglTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTogglTaskButtonActionPerformed
         int index = tasksTable.getSelectedRow();
-        if(this.togglHelper == null || !this.togglHelper.isLoggedIn()){
+        if (this.togglHelper == null || !this.togglHelper.isLoggedIn()) {
             this.togglFrame.setVisible(true);
             this.togglFrame.setAlwaysOnTop(true);
         }
-        if(index != -1){
-            Task task =engine.getTask(tasksTable.getValueAt(index, 2).toString());
+        if (index != -1) {
+            Task task = engine.getTask(tasksTable.getValueAt(index, 2).toString());
             this.togglTaskTextField.setText(task.getName());
-        }else{
+        } else {
             //TODO: maybe throw error box
         }
     }//GEN-LAST:event_jTogglTaskButtonActionPerformed
+
+    private void passwordTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            loginButton.doClick();
+        }
+    }//GEN-LAST:event_passwordTextFieldKeyPressed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -3174,17 +3153,14 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel addMemberNameJLabel;
     private javax.swing.JTextField addMemberUsernameTextField;
     private javax.swing.JButton addMilestoneButton;
-    private javax.swing.JLabel addTasksActualJLabel;
     private javax.swing.JTextField addTasksActualTextField;
     private javax.swing.JButton addTasksButton;
     private javax.swing.JButton addTasksDialogButton;
     private javax.swing.JLabel addTasksEstimatedJLabel;
     private javax.swing.JTextField addTasksEstimatedTextField;
     private javax.swing.JFrame addTasksJFrame;
-    private javax.swing.JPanel addTasksJPanel;
     private javax.swing.JLabel addTasksLeadJLabel;
     private javax.swing.JLabel addTasksStatusJLabel;
-    private javax.swing.JTextField addTasksStatusTextField;
     private javax.swing.JLabel addTasksTaskJLabel;
     private javax.swing.JTextField addTasksTaskTextField;
     private javax.swing.JLabel addTasksUserStoryJLabel;
