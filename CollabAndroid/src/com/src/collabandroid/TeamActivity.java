@@ -28,6 +28,7 @@ import java.util.HashMap;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.ListView;
@@ -42,7 +43,15 @@ public class TeamActivity extends Activity
  
     public void onCreate(Bundle savedInstanceState)
     { 
+    	setTitle("Project Tracker: "+ClientBackend.getUser());
+    	Log.i("Team","Project Tracker: "+ClientBackend.getUser());
+        //setContentView(R.layout.main);
+        
     	super.onCreate(savedInstanceState);
+    	
+    	getParent().setTitle("Project Tracker: "+ClientBackend.getName());
+    	Log.i("Team2","Project Tracker: "+ClientBackend.getUser());
+    	
         TableLayout table = new TableLayout(this);
         table.setStretchAllColumns(true);
         table.setShrinkAllColumns(true);

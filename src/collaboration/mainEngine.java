@@ -131,7 +131,7 @@ public class mainEngine {
             boolean[] canEdit = new boolean[]{
                 false, false, false, false
             };
-
+            
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
@@ -140,13 +140,14 @@ public class mainEngine {
                 return canEdit[columnIndex];
             }
         });
+        teamTable.getTableHeader().setReorderingAllowed(false);
     }
 
     void loadTasksTable(JTable tasksTable) {
         tasksTable.setModel(new javax.swing.table.DefaultTableModel(
                 ClientBackend.getInstance().getTasksTableData(selectedProj),
                 new String[]{
-                    "Lead", "User Story", "Task", "Status", "Estimated Duration", "Actual Duration"
+                    "Lead", "User Story", "Task", "Status", "Estimated Duration (hr)", "Actual Duration (hr)"
                 }) {
             boolean[] canEdit = new boolean[]{
                 false, false, false, false, false, false
@@ -163,6 +164,7 @@ public class mainEngine {
                 return canEdit[columnIndex];
             }
         });
+        tasksTable.getTableHeader().setReorderingAllowed(false);
     }
 
     public boolean validCredentials(String userName, String password) {
@@ -449,25 +451,5 @@ public class mainEngine {
     }
     ArrayList<UserStory> getUserStories(){
         return ClientBackend.getInstance().getUserStories(selectedProj);
-    }
-
-    void addTimeToTask(Task task, double time) {
-        ClientBackend.getInstance().addTimeToTask(task, time);
-    }
-
-    void updateTaskDescription(Task selectedTask, String description) {
-        ClientBackend.getInstance().updateTaskDescription(selectedTask, description);
-    }
-
-    void updateUSDescription(UserStory selectedUS, String description) {
-        ClientBackend.getInstance().updateUSDescription(selectedUS, description);
-    }
-
-    ArrayList<Milestone> getMilestones() {
-        return ClientBackend.getInstance().getMilestones(selectedProj);
-    }
-
-    boolean setMilestoneDates(Milestone ms, String startText, String endText) {
-        return ClientBackend.getInstance().setMilestoneDates(ms, startText, endText);
     }
 }
