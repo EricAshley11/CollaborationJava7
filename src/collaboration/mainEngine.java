@@ -454,4 +454,20 @@ public class mainEngine {
     void addTimeToTask(Task task, double time) {
         ClientBackend.getInstance().addTimeToTask(task, time);
     }
+
+    void updateTaskDescription(Task selectedTask, String description) {
+        ClientBackend.getInstance().updateTaskDescription(selectedTask, description);
+    }
+
+    void updateUSDescription(UserStory selectedUS, String description) {
+        ClientBackend.getInstance().updateUSDescription(selectedUS, description);
+    }
+
+    ArrayList<Milestone> getMilestones() {
+        return ClientBackend.getInstance().getMilestones(selectedProj);
+    }
+
+    boolean setMilestoneDates(Milestone ms, String startText, String endText) {
+        return ClientBackend.getInstance().setMilestoneDates(ms, startText, endText);
+    }
 }

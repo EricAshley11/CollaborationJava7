@@ -20,7 +20,7 @@ public class UserStory implements Serializable {
     
     private Milestone milestone;
     private Status status;
-    private String name;
+    private String name, description;
 
     public UserStory() {
         tasks = new ArrayList<Task>();
@@ -82,5 +82,11 @@ public class UserStory implements Serializable {
     }
     public Milestone getMilestone(){
         return milestone;
+    }
+    public String getDescription(){
+        return this.description;
+    }
+    public void setDescription(String description){
+        this.description = description;
     }
 }

@@ -10,6 +10,7 @@
  */
 package collaboration;
 
+import collaborationjava7.common.Milestone;
 import collaborationjava7.common.Task;
 import collaborationjava7.common.UserStory;
 import java.awt.Component;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import javax.swing.AbstractListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
@@ -34,6 +36,7 @@ public class UserStoryPanel extends javax.swing.JPanel {
     }
     Task selectedTask=null;
     UserStory selectedUS=null;
+    Milestone selectedMS=null;
     
     
     private ArrayList<Task> getTasks(){
@@ -42,13 +45,54 @@ public class UserStoryPanel extends javax.swing.JPanel {
         }
         return new ArrayList<Task>();
     }
+    private ArrayList<Milestone> getMilestones(){
+        ArrayList<Milestone> retVal = null;
+        try{
+            retVal = mainView.engine.getMilestones();
+        }catch(Exception e){
+            retVal = new ArrayList<Milestone>();
+        }
+        return retVal;
+    }
+    
+    private ArrayList<UserStory> getUserStories() {
+        ArrayList<UserStory> retVal = null;
+        try{
+            retVal = selectedMS.getUserStories();
+        }
+        catch(Exception e){
+            retVal = new ArrayList<UserStory>();
+        }
+        return retVal;
+    }
     public void updateComponents(){
         this.userStoryList.removeAll();
         this.userStoryList.setModel(new USListModel());
         this.taskList.removeAll();
         this.taskList.setModel(new TaskListModel());
+        this.taskTextBox.setText("");
+        this.milestoneList.removeAll();
+        this.milestoneList.setModel(new MSListModel());
+        selectedMS = (Milestone)milestoneList.getSelectedValue();
+        if(selectedMS != null){
+            this.msStartTextBox.setText(selectedMS.startDateToString());
+            this.msEndTextBox.setText(selectedMS.endDateToString());
+        }
+        selectedUS =(UserStory)userStoryList.getSelectedValue();
+        if(selectedUS != null)
+            this.userStoryTextBox.setText(selectedUS.getDescription());
+        else
+            this.userStoryTextBox.setText("");
     }
     
+    private class MSListModel extends AbstractListModel{
+        ArrayList<Milestone> milestones = getMilestones();
+        public int getSize() { return milestones.size(); }
+        public Milestone getElementAt(int i) { return milestones.get(i); }
+        public void update(){
+            milestones = getMilestones();
+        }
+    }
     private class TaskListModel extends AbstractListModel{
         ArrayList<Task> tasks = getTasks();
         public int getSize() { return tasks.size(); }
@@ -63,17 +107,6 @@ public class UserStoryPanel extends javax.swing.JPanel {
         public UserStory getElementAt(int i) { return userStories.get(i); }
         public void update(){
             userStories = getUserStories();
-        }
-
-        private ArrayList<UserStory> getUserStories() {
-            ArrayList<UserStory> retVal = null;
-            try{
-                retVal = mainView.engine.getUserStories();
-            }
-            catch(Exception e){
-                retVal = new ArrayList<UserStory>();
-            }
-            return retVal;
         }
     }
     /** This method is called from within the constructor to
@@ -97,6 +130,16 @@ public class UserStoryPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        usDescriptSaveButton = new javax.swing.JButton();
+        taskDescriptSaveButton = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        milestoneList = new javax.swing.JList();
+        jLabel5 = new javax.swing.JLabel();
+        msStartTextBox = new javax.swing.JTextField();
+        msEndTextBox = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        milestoneSaveButton = new javax.swing.JButton();
 
         userStoryList.setModel(new USListModel());
         userStoryList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -138,6 +181,11 @@ public class UserStoryPanel extends javax.swing.JPanel {
             }
         });
         taskList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        taskList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taskListMouseClicked(evt);
+            }
+        });
         taskList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 taskListValueChanged(evt);
@@ -148,14 +196,79 @@ public class UserStoryPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(userStoryTextBox);
 
         jScrollPane4.setViewportView(taskTextBox);
+        taskTextBox.getAccessibleContext().setAccessibleParent(null);
 
-        jLabel1.setText("User Story");
+        jLabel1.setText("User Stories");
 
         jLabel2.setText("Description");
 
         jLabel3.setText("Tasks");
 
         jLabel4.setText("Description");
+
+        usDescriptSaveButton.setText("Save");
+        usDescriptSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usDescriptSaveButtonActionPerformed(evt);
+            }
+        });
+
+        taskDescriptSaveButton.setText("Save");
+        taskDescriptSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskDescriptSaveButtonActionPerformed(evt);
+            }
+        });
+
+        milestoneList.setModel(new MSListModel());
+        milestoneList.setCellRenderer(new ListCellRenderer(){
+            @Override
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                JLabel label = new JLabel();
+                label.setOpaque(true);
+                if (isSelected) {
+                    label.setBackground(list.getSelectionBackground());
+                    label.setForeground(list.getSelectionForeground());
+                }
+                else {
+                    label.setBackground(list.getBackground());
+                    label.setForeground(list.getForeground());
+                }
+                label.setText(((Milestone)value).getName());
+                Border border = null;
+                if (cellHasFocus) {
+                    if (isSelected) {
+                        border = UIManager.getBorder("List.focusSelectedCellHighlightBorder");
+                    }
+                    if (border == null) {
+                        border = UIManager.getBorder("List.focusCellHighlightBorder");
+                    }
+                } else {
+                    border = new EmptyBorder(1, 1, 1, 1);
+                }
+                label.setBorder(border);
+                return label;
+            }
+        });
+        milestoneList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                milestoneListValueChanged(evt);
+            }
+        });
+        jScrollPane5.setViewportView(milestoneList);
+
+        jLabel5.setText("Milestones");
+
+        jLabel6.setText("Start Date (MM/DD/YYYY)");
+
+        jLabel7.setText("End Date (MM/DD/YYYY)");
+
+        milestoneSaveButton.setText("Save");
+        milestoneSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                milestoneSaveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -165,51 +278,99 @@ public class UserStoryPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(103, 103, 103)
+                                .addComponent(usDescriptSaveButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(msStartTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                .addComponent(msEndTextBox))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(milestoneSaveButton)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(taskDescriptSaveButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(141, 141, 141))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(milestoneSaveButton)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(usDescriptSaveButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(taskDescriptSaveButton))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addComponent(msStartTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(msEndTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void userStoryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_userStoryListValueChanged
         selectedUS = (UserStory)this.userStoryList.getSelectedValue();
-        //this.userStoryTextBox.setText(selectedUS.getDescription());
+        if(selectedUS != null)
+            this.userStoryTextBox.setText(selectedUS.getDescription());
+        else
+            this.userStoryTextBox.setText("");
         this.taskList.setModel(new TaskListModel());
     }//GEN-LAST:event_userStoryListValueChanged
 
@@ -219,17 +380,70 @@ public class UserStoryPanel extends javax.swing.JPanel {
             this.taskTextBox.setText(selectedTask.getDescription());
     }//GEN-LAST:event_taskListValueChanged
 
+    private void taskDescriptSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskDescriptSaveButtonActionPerformed
+        if(selectedTask != null){
+            String description = this.taskTextBox.getText();
+            mainView.engine.updateTaskDescription(selectedTask, description);
+        }
+    }//GEN-LAST:event_taskDescriptSaveButtonActionPerformed
+
+    private void usDescriptSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usDescriptSaveButtonActionPerformed
+        if(selectedUS != null){
+            String description = this.userStoryTextBox.getText();
+            mainView.engine.updateUSDescription(selectedUS, description);
+        }
+    }//GEN-LAST:event_usDescriptSaveButtonActionPerformed
+
+    private void milestoneListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_milestoneListValueChanged
+        selectedMS = (Milestone)this.milestoneList.getSelectedValue();
+        if(selectedMS != null){
+            this.msStartTextBox.setText(selectedMS.startDateToString());
+            this.msEndTextBox.setText(selectedMS.endDateToString());
+        }else{
+            
+        }
+        this.userStoryList.setModel(new USListModel());
+    }//GEN-LAST:event_milestoneListValueChanged
+
+    private void milestoneSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_milestoneSaveButtonActionPerformed
+        if(this.selectedMS != null){
+            if(mainView.engine.setMilestoneDates(this.selectedMS, this.msStartTextBox.getText(), this.msEndTextBox.getText())){
+                this.updateComponents();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "The dates that you entered are invalid.  Please follow the correct format and ensure the start date is before the end date.", "Invalid dates", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+    }//GEN-LAST:event_milestoneSaveButtonActionPerformed
+
+    private void taskListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taskListMouseClicked
+        if(evt.getClickCount()==2){
+            
+        }
+    }//GEN-LAST:event_taskListMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JList milestoneList;
+    private javax.swing.JButton milestoneSaveButton;
+    private javax.swing.JTextField msEndTextBox;
+    private javax.swing.JTextField msStartTextBox;
+    private javax.swing.JButton taskDescriptSaveButton;
     private javax.swing.JList taskList;
     private javax.swing.JEditorPane taskTextBox;
+    private javax.swing.JButton usDescriptSaveButton;
     private javax.swing.JList userStoryList;
     private javax.swing.JEditorPane userStoryTextBox;
     // End of variables declaration//GEN-END:variables

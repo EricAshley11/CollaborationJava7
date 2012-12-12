@@ -12,10 +12,10 @@
             <basic name="name" />
             <basic name="description" />
             <basic name="isCompleted" />
-            <basic name="estimatedCompDate">
+            <basic name="endDate">
                 <temporal>DATE</temporal>    
             </basic>
-            <basic name="completeDate">
+            <basic name="startDate">
                 <temporal>DATE</temporal>    
             </basic>
             <one-to-many name="userStories" mapped-by="milestone">

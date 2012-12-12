@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import org.restlet.resource.ClientResource;
 
@@ -469,5 +470,29 @@ public class Backend implements Serializable, IBackend{
         oldTime += time;
         task.setTimeActual(oldTime);
         this.saveEntity(task);
+    }
+
+    public void updateTaskDescription(Task selectedTask, String description) {
+        selectedTask.setDescription(description);
+        this.saveEntity(selectedTask);
+    }
+
+    public void updateUSDescription(UserStory selectedUS, String description) {
+        selectedUS.setDescription(description);
+        this.saveEntity(selectedUS);
+    }
+
+    public boolean setMilestoneDates(Milestone ms, String startText, String endText) {
+        Date start = Milestone.getDateFromString(startText);
+        Date end = Milestone.getDateFromString(endText);
+        if(start == null || end == null){
+            return false;
+        }
+        if(start.after(end))
+            return false;
+        ms.setStartDate(start);
+        ms.setEndDate(end);
+        this.saveEntity(ms);
+        return true;
     }
 }

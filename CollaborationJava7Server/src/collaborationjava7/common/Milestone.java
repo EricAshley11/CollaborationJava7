@@ -2,6 +2,7 @@ package collaborationjava7.common;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -21,10 +22,10 @@ public class Milestone implements Serializable{
     boolean isCompleted;
     
     
-    Date estimatedCompDate;
+    Date startDate;
     
     
-    Date completeDate;
+    Date endDate;
 
     public Milestone() {
     }
@@ -33,16 +34,16 @@ public class Milestone implements Serializable{
         this.name = name;
         userStories = new ArrayList<UserStory>();
         isCompleted = false;
-        estimatedCompDate = null;
-        completeDate = null;
+        startDate = null;
+        endDate = null;
     }
 
-    public void setEstDate(int month, int day, int year) {
-        estimatedCompDate = new Date(year, month, day);
+    public void setStartDate(Date date) {
+        startDate = date;
     }
 
-    public void setCompDate(int month, int day, int year) {
-        completeDate = new Date(year, month, day);
+    public void setEndDate(Date date) {
+        endDate = date;
     }
 
     public boolean isComplete() {
@@ -55,31 +56,55 @@ public class Milestone implements Serializable{
     }
 
     public boolean isOnTime() {
-        return (!completeDate.after(estimatedCompDate));
+        return (!endDate.after(startDate));
     }
 
-    public String estDateToString() {
-        String date;
-        if (estimatedCompDate != null) {
-            date = getMonth(estimatedCompDate.getMonth()) + " "
-                    + estimatedCompDate.getDate() + " "
-                    + estimatedCompDate.getYear();
-        } else {
-            date = "No Date Set!";
+    public String startDateToString() {
+        return dateToString(startDate);
+    }
+
+    public String endDateToString() {
+        return dateToString(endDate);
+    }
+    
+    public static Date getDateFromString(String str){
+        Date date = null;
+        try{
+            String[] strings = str.split("/");
+            int month = Integer.parseInt(strings[0]);
+            int day = Integer.parseInt(strings[1]);
+            int year = Integer.parseInt(strings[2]);
+            date = Calendar.getInstance().getTime();
+            date.setMonth(month-1);
+            date.setDate(day);
+            date.setYear(year);
+        }catch(Exception e){
+            
         }
         return date;
     }
-
-    public String completeDateToString() {
-        String date;
-        if (completeDate != null) {
-            date = getMonth(completeDate.getMonth()) + " "
-                    + completeDate.getDate() + " "
-                    + completeDate.getYear();
+    private String dateToString(Date date){
+        String retVal;
+        if (date != null) {
+            int month = date.getMonth()+1;
+            int day = date.getDate();
+            int year = date.getYear(); 
+            String m = Integer.toString(month);
+            String d = Integer.toString(day);
+            String y = Integer.toString(year);
+            if(month < 10){
+                m = "0"+m;
+            }
+            if(day < 10){
+                d = "0"+d;
+            }
+            retVal =  m+ "/"
+                    + d+ "/"
+                    + y;
         } else {
-            date = "No completion date!";
+            retVal = "No Date Set!";
         }
-        return date;
+        return retVal;
     }
 
     public String getMonth(int month) {

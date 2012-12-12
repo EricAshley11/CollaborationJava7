@@ -211,7 +211,7 @@ public class ClientBackend implements IBackend {
         return remoteObj.createMilestone(name, sched);
     }
 
-    Iterable<Milestone> getMilestones(Project project) {
+    ArrayList<Milestone> getMilestones(Project project) {
         return project.getSchedule().getMilestones();
     }
 
@@ -234,5 +234,17 @@ public class ClientBackend implements IBackend {
 
     void addTimeToTask(Task task, double time) {
         remoteObj.addTimeToTask(task, time);
+    }
+
+    void updateTaskDescription(Task selectedTask, String description) {
+        remoteObj.updateTaskDescription(selectedTask, description);
+    }
+
+    void updateUSDescription(UserStory selectedUS, String description) {
+        remoteObj.updateUSDescription(selectedUS, description);
+    }
+
+    boolean setMilestoneDates(Milestone ms, String startText, String endText) {
+        return remoteObj.setMilestoneDates(ms, startText, endText);
     }
 }
