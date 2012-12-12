@@ -2508,7 +2508,7 @@ public class mainView extends javax.swing.JFrame {
     private void tabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPaneMouseClicked
         engine.updateChart(progressPanel, tasksTable);
         if (this.tabbedPane.getSelectedComponent().equals(userStoryPanel1)) {
-            this.userStoryPanel1.updateComponents();
+            this.userStoryPanel1.updateComponents(false);
         }
     }//GEN-LAST:event_tabbedPaneMouseClicked
 
@@ -2684,7 +2684,7 @@ public class mainView extends javax.swing.JFrame {
             engine.setSeletedProj((Project) this.projectComboBox.getSelectedItem());
             engine.loadTeamTable(teamTable);
             engine.loadTasksTable(tasksTable);
-            this.userStoryPanel1.updateComponents();
+            this.userStoryPanel1.updateComponents(true);
 
         }
     }//GEN-LAST:event_projectComboBoxItemStateChanged

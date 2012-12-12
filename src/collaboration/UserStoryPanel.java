@@ -70,7 +70,12 @@ public class UserStoryPanel extends javax.swing.JPanel {
         }
         return retVal;
     }
-    public void updateComponents(){
+    public void updateComponents(boolean reset){
+        if(reset){
+            selectedMS = null;
+            selectedUS = null;
+            selectedTask = null;
+        }
         this.userStoryList.removeAll();
         this.userStoryList.setModel(new USListModel());
         this.taskList.removeAll();
@@ -78,12 +83,15 @@ public class UserStoryPanel extends javax.swing.JPanel {
         this.taskTextBox.setText("");
         this.milestoneList.removeAll();
         this.milestoneList.setModel(new MSListModel());
-        selectedMS = (Milestone)milestoneList.getSelectedValue();
+        //selectedMS = (Milestone)milestoneList.getSelectedValue();
         if(selectedMS != null){
             this.msStartTextBox.setText(selectedMS.startDateToString());
             this.msEndTextBox.setText(selectedMS.endDateToString());
+        }else{
+            this.msStartTextBox.setText("");
+            this.msEndTextBox.setText("");
         }
-        selectedUS =(UserStory)userStoryList.getSelectedValue();
+        //selectedUS =(UserStory)userStoryList.getSelectedValue();
         if(selectedUS != null)
             this.userStoryTextBox.setText(selectedUS.getDescription());
         else
@@ -371,18 +379,22 @@ public class UserStoryPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userStoryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_userStoryListValueChanged
-        selectedUS = (UserStory)this.userStoryList.getSelectedValue();
-        if(selectedUS != null)
+        UserStory newUS = (UserStory)this.userStoryList.getSelectedValue();
+        if(newUS != null){
+            selectedUS = newUS;
             this.userStoryTextBox.setText(selectedUS.getDescription());
+        }
         else
             this.userStoryTextBox.setText("");
         this.taskList.setModel(new TaskListModel());
     }//GEN-LAST:event_userStoryListValueChanged
 
     private void taskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_taskListValueChanged
-        selectedTask = (Task)this.taskList.getSelectedValue();
-        if(this.selectedTask != null)
+        Task newTask = (Task)this.taskList.getSelectedValue();
+        if(newTask != null){
+            selectedTask = newTask;
             this.taskTextBox.setText(selectedTask.getDescription());
+        }
     }//GEN-LAST:event_taskListValueChanged
 
     private void taskDescriptSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskDescriptSaveButtonActionPerformed
@@ -400,20 +412,21 @@ public class UserStoryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_usDescriptSaveButtonActionPerformed
 
     private void milestoneListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_milestoneListValueChanged
-        selectedMS = (Milestone)this.milestoneList.getSelectedValue();
-        if(selectedMS != null){
+        Milestone newMS =(Milestone)this.milestoneList.getSelectedValue();
+        if(newMS != null){
+            selectedMS = newMS;
             this.msStartTextBox.setText(selectedMS.startDateToString());
             this.msEndTextBox.setText(selectedMS.endDateToString());
+            this.userStoryList.setModel(new USListModel());
         }else{
             
         }
-        this.userStoryList.setModel(new USListModel());
     }//GEN-LAST:event_milestoneListValueChanged
 
     private void milestoneSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_milestoneSaveButtonActionPerformed
         if(this.selectedMS != null){
             if(mainView.engine.setMilestoneDates(this.selectedMS, this.msStartTextBox.getText(), this.msEndTextBox.getText())){
-                this.updateComponents();
+                this.updateComponents(false);
             }
             else{
                 JOptionPane.showMessageDialog(this, "The dates that you entered are invalid.  Please follow the correct format and ensure the start date is before the end date.", "Invalid dates", JOptionPane.ERROR_MESSAGE);
