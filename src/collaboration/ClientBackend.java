@@ -66,8 +66,8 @@ public class ClientBackend implements IBackend {
         getInstance().saveEntity(us2);
 
 
-        Task t1 = getInstance().createTask(cam, us1, "testTask1", 1, 0);
-        Task t2 = getInstance().createTask(zach, us2, "testTask2", 2, 0);
+        Task t1 = getInstance().createTask(cam, us1, "testTask1", 1, "This is a task description for task 1.");
+        Task t2 = getInstance().createTask(zach, us2, "testTask2", 2, "This is a task description for task 2.");
     }
     //This constructor is private because we want this class to be a singleton
 
@@ -202,8 +202,8 @@ public class ClientBackend implements IBackend {
     }
 
     @Override
-    public Task createTask(User lead, UserStory userStory, String taskName, double estimated, double actual) {
-        return remoteObj.createTask(lead, userStory, taskName, estimated, actual);
+    public Task createTask(User lead, UserStory userStory, String taskName, double estimated, String description) {
+        return remoteObj.createTask(lead, userStory, taskName, estimated, description);
     }
 
     ArrayList<UserStory> getUserStories(Project project) {
@@ -232,8 +232,8 @@ public class ClientBackend implements IBackend {
         return null;
     }
 
-    Task editTask(Task task, String name, User u, UserStory us, Status.States state, double est, double actual) {
-        return remoteObj.editTask(task, name, u, us, state, est, actual);
+    Task editTask(Task task, String name, User u, UserStory us, Status.States state, double est, double actual, String description) {
+        return remoteObj.editTask(task, name, u, us, state, est, actual, description);
     }
 
     void addTimeToTask(Task task, double time) {

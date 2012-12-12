@@ -15,7 +15,7 @@ public interface IBackend {
 
     Project createProject(String projectName, User u);
 
-    Task createTask(User lead, UserStory userStory, String taskName, double estimated, double actual );
+    Task createTask(User lead, UserStory userStory, String taskName, double estimated, String description );
 
     Team createTeam(String teamName, String password);
 

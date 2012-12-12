@@ -382,8 +382,8 @@ public class mainEngine {
         }
     }
 
-    Object[] getNewTaskRow(User lead, UserStory userStory, String taskName, String estimated, String actual) {
-        Task task = ClientBackend.getInstance().createTask(lead, userStory, taskName, Integer.parseInt(estimated), Integer.parseInt(actual));
+    Object[] getNewTaskRow(User lead, UserStory userStory, String taskName, String estimated, String description) {
+        Task task = ClientBackend.getInstance().createTask(lead, userStory, taskName, Double.parseDouble(estimated), description);
         return task.toString().split(",");
     }
 
@@ -451,8 +451,8 @@ public class mainEngine {
         return ClientBackend.getInstance().getTasksTableData(this.selectedProj, taskName);
     }
 
-    Task editTask(Task task, String name, User u, UserStory us, Status.States state,  double est, double actual) {
-        return ClientBackend.getInstance().editTask(task, name, u, us, state, est, actual);
+    Task editTask(Task task, String name, User u, UserStory us, Status.States state,  double est, double actual, String description) {
+        return ClientBackend.getInstance().editTask(task, name, u, us, state, est, actual, description);
     }
     ArrayList<UserStory> getUserStories(){
         return ClientBackend.getInstance().getUserStories(selectedProj);

@@ -87,7 +87,7 @@ public class mainView extends javax.swing.JFrame {
         addEntryStartTimeTextField.setText("");
         addEntryTitleTextField.setText("");
         addMemberUsernameTextField.setText("");
-        addTasksActualTextField.setText("");
+        this.jTextArea1.setText("");
         addTasksEstimatedTextField.setText("");
         addTasksTaskTextField.setText("");
         confirmPasswordField.setText("");
@@ -149,7 +149,8 @@ public class mainView extends javax.swing.JFrame {
         addTasksEstimatedJLabel = new javax.swing.JLabel();
         addTasksTaskTextField = new javax.swing.JTextField();
         addTasksEstimatedTextField = new javax.swing.JTextField();
-        addTasksActualTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         editTasksJFrame = new javax.swing.JFrame();
         editTasksJPanel = new javax.swing.JPanel();
         editTasksDialogButton = new javax.swing.JButton();
@@ -165,6 +166,9 @@ public class mainView extends javax.swing.JFrame {
         editTaskLeadComboBox = new javax.swing.JComboBox();
         editTaskStatusComboBox = new javax.swing.JComboBox();
         editTaskUserStoryComboBox = new javax.swing.JComboBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        editTaskDescriptionTextArea = new javax.swing.JTextArea();
+        jLabel17 = new javax.swing.JLabel();
         loginJFrame = new javax.swing.JFrame();
         loginJPanel = new javax.swing.JPanel();
         usernameJLabel = new javax.swing.JLabel();
@@ -281,6 +285,9 @@ public class mainView extends javax.swing.JFrame {
         userStoryMilestoneComboBox = new javax.swing.JComboBox();
         addMilestoneButton = new javax.swing.JButton();
         userStoryNameTextField = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        addUserStoryDescriptionTextArea = new javax.swing.JTextArea();
+        jLabel18 = new javax.swing.JLabel();
         togglFrame = new javax.swing.JFrame();
         jTogglPanel = new javax.swing.JPanel();
         togglPasswordField = new javax.swing.JPasswordField();
@@ -482,8 +489,9 @@ public class mainView extends javax.swing.JFrame {
         addTasksJFrame.setAlwaysOnTop(true);
         addTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 450, 350));
         addTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        addTasksJFrame.setMinimumSize(new java.awt.Dimension(450, 350));
+        addTasksJFrame.setMinimumSize(new java.awt.Dimension(465, 380));
         addTasksJFrame.setName("Add Member"); // NOI18N
+        addTasksJFrame.setPreferredSize(new java.awt.Dimension(465, 380));
 
         addTasksLeadJLabel.setText("Lead");
 
@@ -568,9 +576,13 @@ public class mainView extends javax.swing.JFrame {
 
         addTasksUserStoryJLabel.setText("User Story");
 
-        addTasksStatusJLabel.setText("Estimated Comp.");
+        addTasksStatusJLabel.setText("Estimated Comp. Time");
 
-        addTasksEstimatedJLabel.setText("Actual Comp.");
+        addTasksEstimatedJLabel.setText("Description");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout addTasksJFrameLayout = new javax.swing.GroupLayout(addTasksJFrame.getContentPane());
         addTasksJFrame.getContentPane().setLayout(addTasksJFrameLayout);
@@ -584,22 +596,18 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addTasksTaskJLabel)
                     .addComponent(addTasksUserStoryJLabel)
                     .addComponent(addTasksLeadJLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addTasksJFrameLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(addTasksDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(addTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(addTasksJFrameLayout.createSequentialGroup()
-                            .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(leadComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(newTaskUserStoryComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(newUserStoryButton))))
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addTasksTaskTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTasksJFrameLayout.createSequentialGroup()
+                        .addComponent(newTaskUserStoryComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newUserStoryButton))
+                    .addComponent(addTasksDialogButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(leadComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addTasksJFrameLayout.setVerticalGroup(
             addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -621,13 +629,16 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTasksEstimatedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addTasksStatusJLabel))
-                .addGap(23, 23, 23)
-                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addTasksEstimatedJLabel))
+                .addGroup(addTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addTasksJFrameLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(addTasksEstimatedJLabel))
+                    .addGroup(addTasksJFrameLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(addTasksDialogButton)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         editTasksJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -635,8 +646,9 @@ public class mainView extends javax.swing.JFrame {
         editTasksJFrame.setAlwaysOnTop(true);
         editTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         editTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        editTasksJFrame.setMinimumSize(new java.awt.Dimension(450, 400));
+        editTasksJFrame.setMinimumSize(new java.awt.Dimension(570, 480));
         editTasksJFrame.setName("Add Member"); // NOI18N
+        editTasksJFrame.setPreferredSize(new java.awt.Dimension(570, 480));
 
         editTasksJPanel.setPreferredSize(new java.awt.Dimension(400, 400));
 
@@ -660,10 +672,46 @@ public class mainView extends javax.swing.JFrame {
         editTasksActualJLabel.setText("Status");
 
         editTaskLeadComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        editTaskLeadComboBox.setRenderer(new ListCellRenderer(){
+            @Override
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                JLabel label = new JLabel();
+                label.setOpaque(true);
+                if (isSelected) {
+                    label.setBackground(list.getSelectionBackground());
+                    label.setForeground(list.getSelectionForeground());
+                }
+                else {
+                    label.setBackground(list.getBackground());
+                    label.setForeground(list.getForeground());
+                }
+
+                label.setText(((User)value).getName());
+                Border border = null;
+                if (cellHasFocus) {
+                    if (isSelected) {
+                        border = UIManager.getBorder("List.focusSelectedCellHighlightBorder");
+                    }
+                    if (border == null) {
+                        border = UIManager.getBorder("List.focusCellHighlightBorder");
+                    }
+                } else {
+                    border = new EmptyBorder(1, 1, 1, 1);
+                }
+                label.setBorder(border);
+                return label;
+            }
+        });
 
         editTaskStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         editTaskUserStoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        editTaskDescriptionTextArea.setColumns(20);
+        editTaskDescriptionTextArea.setRows(5);
+        jScrollPane2.setViewportView(editTaskDescriptionTextArea);
+
+        jLabel17.setText("Description");
 
         javax.swing.GroupLayout editTasksJPanelLayout = new javax.swing.GroupLayout(editTasksJPanel);
         editTasksJPanel.setLayout(editTasksJPanelLayout);
@@ -677,17 +725,21 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(editTasksActualJLabel)
                     .addComponent(editTasksUserStoryJLabel)
                     .addComponent(editTasksTaskJLabel)
-                    .addComponent(editTasksLeadJLabel))
+                    .addComponent(editTasksLeadJLabel)
+                    .addComponent(jLabel17))
                 .addGap(18, 18, 18)
                 .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(editTaskUserStoryComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editTaskStatusComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editTasksDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editTasksEstimatedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(editTasksActualTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(editTasksTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(editTaskLeadComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addGroup(editTasksJPanelLayout.createSequentialGroup()
+                        .addGap(268, 268, 268)
+                        .addComponent(editTasksDialogButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editTasksEstimatedTextField)
+                    .addComponent(editTasksActualTextField)
+                    .addComponent(editTasksTaskTextField)
+                    .addComponent(editTaskLeadComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         editTasksJPanelLayout.setVerticalGroup(
             editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -717,23 +769,23 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(editTasksEstimatedJLabel)
                     .addComponent(editTasksActualTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(18, 18, 18)
                 .addComponent(editTasksDialogButton)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout editTasksJFrameLayout = new javax.swing.GroupLayout(editTasksJFrame.getContentPane());
         editTasksJFrame.getContentPane().setLayout(editTasksJFrameLayout);
         editTasksJFrameLayout.setHorizontalGroup(
             editTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editTasksJFrameLayout.createSequentialGroup()
-                .addComponent(editTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(editTasksJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
         );
         editTasksJFrameLayout.setVerticalGroup(
             editTasksJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editTasksJFrameLayout.createSequentialGroup()
-                .addComponent(editTasksJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 44, Short.MAX_VALUE))
+            .addComponent(editTasksJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
 
         loginJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1701,8 +1753,9 @@ public class mainView extends javax.swing.JFrame {
         addUserStoryJFrame.setAlwaysOnTop(true);
         addUserStoryJFrame.setBounds(new java.awt.Rectangle(50, 50, 350, 200));
         addUserStoryJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        addUserStoryJFrame.setMinimumSize(new java.awt.Dimension(350, 200));
+        addUserStoryJFrame.setMinimumSize(new java.awt.Dimension(415, 320));
         addUserStoryJFrame.setName("Add Member"); // NOI18N
+        addUserStoryJFrame.setPreferredSize(new java.awt.Dimension(415, 320));
 
         jLabel7.setText("User Story Name:");
 
@@ -1753,34 +1806,35 @@ public class mainView extends javax.swing.JFrame {
             }
         });
 
+        addUserStoryDescriptionTextArea.setColumns(20);
+        addUserStoryDescriptionTextArea.setRows(5);
+        jScrollPane4.setViewportView(addUserStoryDescriptionTextArea);
+
+        jLabel18.setText("Description");
+
         javax.swing.GroupLayout addUserStoryJFrameLayout = new javax.swing.GroupLayout(addUserStoryJFrame.getContentPane());
         addUserStoryJFrame.getContentPane().setLayout(addUserStoryJFrameLayout);
         addUserStoryJFrameLayout.setHorizontalGroup(
             addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
+                        .addComponent(userStoryMilestoneComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addMilestoneButton))
+                    .addComponent(userStoryNameTextField)
                     .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
                         .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
                             .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel7))
-                            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel8)))
-                        .addGap(0, 244, Short.MAX_VALUE))
-                    .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
-                                .addComponent(userStoryMilestoneComboBox, 0, 282, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addMilestoneButton))
-                            .addComponent(userStoryNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))))
+                                .addGap(268, 268, 268)
+                                .addComponent(addUserStoryButton))
+                            .addComponent(jLabel18))
+                        .addGap(0, 14, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(addUserStoryJFrameLayout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(addUserStoryButton)
-                .addContainerGap(131, Short.MAX_VALUE))
         );
         addUserStoryJFrameLayout.setVerticalGroup(
             addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1795,9 +1849,13 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(addUserStoryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userStoryMilestoneComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addMilestoneButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addUserStoryButton)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         togglFrame.setTitle("Toggl Login");
@@ -2016,18 +2074,17 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(teamPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                    .addComponent(teamTableScrollPane)
                     .addGroup(teamPanelLayout.createSequentialGroup()
                         .addComponent(addMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
-                        .addComponent(filterTeamButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+                        .addComponent(filterTeamButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         teamPanelLayout.setVerticalGroup(
             teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2036,12 +2093,13 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addMemberButton)
                     .addComponent(removeMemberButton)
                     .addComponent(editMemberButton)
-                    .addComponent(filterTeamButton)
                     .addGroup(teamPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(filterTeamButton)
+                            .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/team75.png")), teamPanel, "Team"); // NOI18N
@@ -2142,9 +2200,17 @@ public class mainView extends javax.swing.JFrame {
             tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tasksPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tasksPanelLayout.createSequentialGroup()
+                .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+                    .addGroup(tasksPanelLayout.createSequentialGroup()
+                        .addComponent(togglLabel)
+                        .addGap(26, 26, 26)
+                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(togglStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tasksPanelLayout.createSequentialGroup()
                         .addComponent(addTasksButton)
                         .addGap(18, 18, 18)
                         .addComponent(removeTaskButton)
@@ -2152,19 +2218,11 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(editTaskButton)
                         .addGap(18, 18, 18)
                         .addComponent(jTogglTaskButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                        .addComponent(filterTasksButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(filterTasksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tasksPanelLayout.createSequentialGroup()
-                        .addComponent(togglLabel)
-                        .addGap(26, 26, 26)
-                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(togglStatusTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
         );
         tasksPanelLayout.setVerticalGroup(
             tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2175,9 +2233,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(removeTaskButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editTaskButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(filterTasksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(tasksPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tasksFilterTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(togglTaskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2185,8 +2241,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(togglButton)
                     .addComponent(togglStatusTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/tasks75.png")), tasksPanel, "Tasks"); // NOI18N
@@ -2383,16 +2438,16 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 805, Short.MAX_VALUE)
+            .addGap(0, 802, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 562, Short.MAX_VALUE)
+            .addGap(0, 572, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/graph75.png")), progressPanel, "Progress"); // NOI18N
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/giticon.png")), gitHubPanel1); // NOI18N
-        tabbedPane.addTab("tab7", userStoryPanel1);
+        tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/flag75.png")), userStoryPanel1); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2466,7 +2521,7 @@ public class mainView extends javax.swing.JFrame {
         engine.createProjectUserStoriesComboBox(newTaskUserStoryComboBox);
         addTasksTaskTextField.setText("");
         addTasksEstimatedTextField.setText("");
-        addTasksActualTextField.setText("");
+        this.jTextArea1.setText("");
         addTasksJFrame.setVisible(true);
     }//GEN-LAST:event_addTasksButtonActionPerformed
 
@@ -2543,6 +2598,7 @@ public class mainView extends javax.swing.JFrame {
             engine.populateStatusComboBox(this.editTaskStatusComboBox, editingTask);
             editTasksEstimatedTextField.setText(Double.toString(editingTask.getTimeEstimate()));
             editTasksActualTextField.setText(Double.toString(editingTask.getTimeActual()));
+            this.editTaskDescriptionTextArea.setText(editingTask.getDescription());
             editTasksJFrame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this,
@@ -2554,33 +2610,16 @@ public class mainView extends javax.swing.JFrame {
     private void addTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTasksDialogButtonActionPerformed
         try {
             DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-            model.addRow(engine.getNewTaskRow(((User) leadComboBox.getSelectedItem()), (UserStory) newTaskUserStoryComboBox.getSelectedItem(), addTasksTaskTextField.getText(), addTasksEstimatedTextField.getText(), addTasksActualTextField.getText()));//new Object[]{addTasksLeadTextField.getText(), });
+            model.addRow(engine.getNewTaskRow(((User) leadComboBox.getSelectedItem()), (UserStory) newTaskUserStoryComboBox.getSelectedItem(), addTasksTaskTextField.getText(), addTasksEstimatedTextField.getText(), this.jTextArea1.getText()));//new Object[]{addTasksLeadTextField.getText(), });
             addTasksJFrame.setVisible(false);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
+            addTasksJFrame.setAlwaysOnTop(false);
+            JOptionPane.showMessageDialog(this.addTasksJFrame,
                     "One or more fields have an invalid entry",
                     "Invalid Entry", JOptionPane.DEFAULT_OPTION);
+            addTasksJFrame.setAlwaysOnTop(true);
         }
     }//GEN-LAST:event_addTasksDialogButtonActionPerformed
-
-    private void editTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTasksDialogButtonActionPerformed
-        try {
-            DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
-            User u = (User) this.editTaskLeadComboBox.getSelectedItem();
-            UserStory us = (UserStory) this.editTaskUserStoryComboBox.getSelectedItem();
-            String name = this.editTasksTaskTextField.getText();
-            Status.States state = (Status.States) this.editTaskStatusComboBox.getSelectedItem();
-            double est = Double.parseDouble(this.editTasksEstimatedTextField.getText());
-            double actual = Double.parseDouble(this.editTasksActualTextField.getText());
-            engine.editTask(editingTask, name, u, us, state, est, actual);
-            engine.loadTasksTable(tasksTable);
-            editTasksJFrame.setVisible(false);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                    "One or more fields have an invalid entry",
-                    "Invalid Entry", JOptionPane.DEFAULT_OPTION);
-        }
-    }//GEN-LAST:event_editTasksDialogButtonActionPerformed
 
     private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
         JOptionPane.showMessageDialog(this,
@@ -2795,8 +2834,8 @@ public class mainView extends javax.swing.JFrame {
         deleteEventButton.setEnabled(false);
         gCalLogoutButton.setEnabled(false);
         gCalLoginButton.setEnabled(true);
-        engine.clearTable(calTable);
-        engine.clearTable(entryTable);
+        //engine.clearTable(calTable);
+        //engine.clearTable(entryTable);
         calTable.setEnabled(false);
         entryTable.setEnabled(false);
         calendarTextArea.setText("");
@@ -2995,6 +3034,9 @@ public class mainView extends javax.swing.JFrame {
         userStoryNameTextField.setText("");
         engine.populateMilestoneComboBox(this.userStoryMilestoneComboBox);
         addUserStoryJFrame.setVisible(true);
+        addUserStoryJFrame.setAlwaysOnTop(true);
+        this.addTasksJFrame.setAlwaysOnTop(false);
+        addUserStoryJFrame.toFront();
 //        try {
 //            String userStoryName = JOptionPane.showInputDialog("New User Story Name: ");
 //            if (!userStoryName.isEmpty()) {
@@ -3038,39 +3080,55 @@ public class mainView extends javax.swing.JFrame {
 
     private void addUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserStoryButtonActionPerformed
         String userStoryName = userStoryNameTextField.getText();
-        Milestone milestone = (Milestone) userStoryMilestoneComboBox.getSelectedItem();
-        UserStory us = engine.createNewUserStory(userStoryName, milestone);
+        String description = this.addUserStoryDescriptionTextArea.getText();
+        UserStory us = null;
+        
+        if(!userStoryName.isEmpty()){
+            Milestone milestone = (Milestone) userStoryMilestoneComboBox.getSelectedItem();
+            us = engine.createNewUserStory(userStoryName, milestone);
+            engine.updateUSDescription(us, description);
+        }
         if (us != null) {
             engine.createProjectUserStoriesComboBox(this.newTaskUserStoryComboBox);
+            this.addUserStoryDescriptionTextArea.setText("");
+            this.addUserStoryJFrame.setVisible(false);
+            this.addTasksJFrame.setVisible(true);
+            this.addTasksJFrame.setAlwaysOnTop(true);
+            this.addTasksJFrame.toFront();
         } else {
-            JOptionPane.showMessageDialog(this,
+            this.addUserStoryJFrame.setAlwaysOnTop(false);
+            JOptionPane.showMessageDialog(this.addUserStoryJFrame,
                     "User story name is invalid or already taken",
                     "Input Error", JOptionPane.DEFAULT_OPTION);
+            this.addUserStoryJFrame.setAlwaysOnTop(true);
         }
     }//GEN-LAST:event_addUserStoryButtonActionPerformed
 
     private void addMilestoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMilestoneButtonActionPerformed
         try {
-            String milestoneString = JOptionPane.showInputDialog("Name of new milestone: ");
+            this.addUserStoryJFrame.setAlwaysOnTop(false);
+            String milestoneString = JOptionPane.showInputDialog(this.addUserStoryJFrame,"Name of new milestone: ");
             if (!milestoneString.isEmpty()) {
                 Milestone ms = engine.createMilestone(milestoneString);
                 if (ms != null) {
                     engine.populateMilestoneComboBox(userStoryMilestoneComboBox);
-                    JOptionPane.showMessageDialog(this,
+                    JOptionPane.showMessageDialog(this.addUserStoryJFrame,
                             milestoneString + " has been added to the project",
                             "Success", JOptionPane.DEFAULT_OPTION);
                 } else {
-                    JOptionPane.showMessageDialog(this,
+                    JOptionPane.showMessageDialog(this.addUserStoryJFrame,
                             "Milestone name is already taken or is invalid",
                             "Milestone Name Taken or Invalid", JOptionPane.DEFAULT_OPTION);
                 }
             } else {
-                JOptionPane.showMessageDialog(this,
+                JOptionPane.showMessageDialog(this.addUserStoryJFrame,
                         "Milestone name is required",
                         "Milestone Name Required", JOptionPane.DEFAULT_OPTION);
             }
         } catch (Exception e) {//do nothing if canceled
         }
+        this.addUserStoryJFrame.setAlwaysOnTop(true);
+        this.addUserStoryJFrame.toFront();
     }//GEN-LAST:event_addMilestoneButtonActionPerformed
 
     private void tasksTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tasksTableMouseClicked
@@ -3106,8 +3164,28 @@ public class mainView extends javax.swing.JFrame {
     private void entryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entryTableMouseClicked
         String entryName = entryTable.getModel().getValueAt(entryTable.getSelectedRow(), 0).toString();
         String calName = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
-        calendarTextArea.setText(engine.displayEntryInfo(calName, entryName));
+//        calendarTextArea.setText(engine.displayEntryInfo(calName, entryName));
     }//GEN-LAST:event_entryTableMouseClicked
+
+    private void editTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTasksDialogButtonActionPerformed
+        try {
+            DefaultTableModel model = (DefaultTableModel) tasksTable.getModel();
+            User u = (User) this.editTaskLeadComboBox.getSelectedItem();
+            UserStory us = (UserStory) this.editTaskUserStoryComboBox.getSelectedItem();
+            String name = this.editTasksTaskTextField.getText();
+            Status.States state = (Status.States) this.editTaskStatusComboBox.getSelectedItem();
+            double est = Double.parseDouble(this.editTasksEstimatedTextField.getText());
+            double actual = Double.parseDouble(this.editTasksActualTextField.getText());
+            String description = this.editTaskDescriptionTextArea.getText();
+            engine.editTask(editingTask, name, u, us, state, est, actual, description);
+            engine.loadTasksTable(tasksTable);
+            editTasksJFrame.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                "One or more fields have an invalid entry",
+                "Invalid Entry", JOptionPane.DEFAULT_OPTION);
+        }
+    }//GEN-LAST:event_editTasksDialogButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -3159,7 +3237,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel addMemberNameJLabel;
     private javax.swing.JTextField addMemberUsernameTextField;
     private javax.swing.JButton addMilestoneButton;
-    private javax.swing.JTextField addTasksActualTextField;
     private javax.swing.JButton addTasksButton;
     private javax.swing.JButton addTasksDialogButton;
     private javax.swing.JLabel addTasksEstimatedJLabel;
@@ -3171,6 +3248,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTextField addTasksTaskTextField;
     private javax.swing.JLabel addTasksUserStoryJLabel;
     private javax.swing.JButton addUserStoryButton;
+    private javax.swing.JTextArea addUserStoryDescriptionTextArea;
     private javax.swing.JFrame addUserStoryJFrame;
     private javax.swing.JTable calTable;
     private javax.swing.JScrollPane calTableScrollPane;
@@ -3209,6 +3287,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton editProjectButton;
     private javax.swing.JButton editServerAddrButton;
     private javax.swing.JButton editTaskButton;
+    private javax.swing.JTextArea editTaskDescriptionTextArea;
     private javax.swing.JComboBox editTaskLeadComboBox;
     private javax.swing.JComboBox editTaskStatusComboBox;
     private javax.swing.JComboBox editTaskUserStoryComboBox;
@@ -3282,6 +3361,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -3290,7 +3371,11 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel jTogglPanel;
     private javax.swing.JButton jTogglTaskButton;
     private javax.swing.JComboBox joinExistingComboBox;

@@ -233,9 +233,12 @@
           <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[450, 350]"/>
+          <Dimension value="[465, 380]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Add Member" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[465, 380]"/>
+        </Property>
       </Properties>
 
       <Layout>
@@ -250,27 +253,20 @@
                       <Component id="addTasksUserStoryJLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="addTasksLeadJLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="39" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="addTasksDialogButton" min="-2" pref="125" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="addTasksEstimatedTextField" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
+                      <Component id="addTasksTaskTextField" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="newTaskUserStoryComboBox" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="newUserStoryButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="addTasksEstimatedTextField" min="-2" pref="275" max="-2" attributes="0"/>
-                          <Component id="addTasksTaskTextField" min="-2" pref="275" max="-2" attributes="0"/>
-                          <Component id="addTasksActualTextField" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="leadComboBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="newTaskUserStoryComboBox" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="newUserStoryButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="addTasksDialogButton" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
+                      <Component id="leadComboBox" alignment="1" min="-2" pref="275" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -298,14 +294,19 @@
                       <Component id="addTasksEstimatedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="addTasksStatusJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="addTasksActualTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="addTasksEstimatedJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="addTasksEstimatedJLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="addTasksDialogButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="31" max="32767" attributes="0"/>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -374,20 +375,33 @@
         </Component>
         <Component class="javax.swing.JLabel" name="addTasksStatusJLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Estimated Comp."/>
+            <Property name="text" type="java.lang.String" value="Estimated Comp. Time"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="addTasksEstimatedJLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Actual Comp."/>
+            <Property name="text" type="java.lang.String" value="Description"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="addTasksTaskTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="addTasksEstimatedTextField">
         </Component>
-        <Component class="javax.swing.JTextField" name="addTasksActualTextField">
-        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea1">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="editTasksJFrame">
@@ -402,26 +416,23 @@
           <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[450, 400]"/>
+          <Dimension value="[570, 480]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Add Member" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[570, 480]"/>
+        </Property>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Component id="editTasksJPanel" alignment="0" min="-2" pref="477" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+              <Component id="editTasksJPanel" alignment="0" pref="570" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="editTasksJPanel" min="-2" pref="345" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
-              </Group>
+              <Component id="editTasksJPanel" alignment="0" pref="480" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -445,18 +456,23 @@
                           <Component id="editTasksUserStoryJLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="editTasksTaskJLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="editTasksLeadJLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="editTaskUserStoryComboBox" max="32767" attributes="1"/>
                           <Component id="editTaskStatusComboBox" max="32767" attributes="1"/>
-                          <Component id="editTasksDialogButton" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                          <Component id="editTasksEstimatedTextField" alignment="0" pref="275" max="32767" attributes="1"/>
-                          <Component id="editTasksActualTextField" alignment="0" pref="275" max="32767" attributes="1"/>
-                          <Component id="editTasksTaskTextField" alignment="0" pref="275" max="32767" attributes="1"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                              <Component id="editTasksDialogButton" min="-2" pref="125" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="editTasksEstimatedTextField" alignment="0" max="32767" attributes="1"/>
+                          <Component id="editTasksActualTextField" alignment="0" max="32767" attributes="1"/>
+                          <Component id="editTasksTaskTextField" alignment="0" max="32767" attributes="1"/>
                           <Component id="editTaskLeadComboBox" alignment="0" max="32767" attributes="1"/>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="71" max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -494,8 +510,13 @@
                           <Component id="editTasksActualTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="editTasksDialogButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -556,6 +577,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="editTaskLeadComboBox.setRenderer(new ListCellRenderer(){&#xa;    @Override&#xa;    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {&#xa;        JLabel label = new JLabel();&#xa;        label.setOpaque(true);&#xa;        if (isSelected) {&#xa;            label.setBackground(list.getSelectionBackground());&#xa;            label.setForeground(list.getSelectionForeground());&#xa;        }&#xa;        else {&#xa;            label.setBackground(list.getBackground());&#xa;            label.setForeground(list.getForeground());&#xa;        }&#xa;&#xa;        label.setText(((User)value).getName());&#xa;        Border border = null;&#xa;        if (cellHasFocus) {&#xa;            if (isSelected) {&#xa;                border = UIManager.getBorder(&quot;List.focusSelectedCellHighlightBorder&quot;);&#xa;            }&#xa;            if (border == null) {&#xa;                border = UIManager.getBorder(&quot;List.focusCellHighlightBorder&quot;);&#xa;            }&#xa;        } else {&#xa;            border = new EmptyBorder(1, 1, 1, 1);&#xa;        }&#xa;        label.setBorder(border);&#xa;        return label;&#xa;    }&#xa;});"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JComboBox" name="editTaskStatusComboBox">
               <Properties>
@@ -579,6 +603,26 @@
                     <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="editTaskDescriptionTextArea">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="jLabel17">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Description"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -2166,47 +2210,41 @@
           <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[350, 200]"/>
+          <Dimension value="[415, 320]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Add Member" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[415, 320]"/>
+        </Property>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="0" pref="244" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
+                      <Component id="jScrollPane4" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="userStoryMilestoneComboBox" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="addMilestoneButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="userStoryNameTextField" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="userStoryMilestoneComboBox" pref="282" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="addMilestoneButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                                  <Component id="addUserStoryButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="userStoryNameTextField" alignment="0" pref="329" max="32767" attributes="0"/>
+                              <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                  <Component id="addUserStoryButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="131" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -2224,9 +2262,13 @@
                       <Component id="userStoryMilestoneComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="addMilestoneButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="addUserStoryButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -2274,6 +2316,26 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="userStoryNameTextField">
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="addUserStoryDescriptionTextArea">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel18">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Description"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -2555,20 +2617,19 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="teamTableScrollPane" alignment="1" pref="785" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Component id="teamTableScrollPane" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="addMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="editMemberButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="241" max="32767" attributes="0"/>
-                              <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="330" max="32767" attributes="0"/>
+                              <Component id="filterTeamButton" min="-2" pref="54" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="teamFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
+                              <Component id="teamFilterTextField" min="-2" pref="238" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2579,14 +2640,16 @@
                           <Component id="addMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="removeMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="editMemberButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="teamFilterTextField" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="filterTeamButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="teamFilterTextField" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
-                      <Component id="teamTableScrollPane" min="-2" pref="487" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="teamTableScrollPane" pref="524" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2713,9 +2776,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="tasksTableScrollPane" alignment="0" pref="785" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tasksTableScrollPane" alignment="0" pref="790" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
+                              <Component id="togglLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="togglTaskTextField" pref="206" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="togglButton" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="togglStatusTextBox" min="-2" pref="399" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Component id="addTasksButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
@@ -2723,22 +2795,13 @@
                               <Component id="editTaskButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTogglTaskButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="160" max="32767" attributes="0"/>
-                              <Component id="filterTasksButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="filterTasksButton" min="-2" pref="54" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="togglLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="togglTaskTextField" pref="225" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="togglButton" min="-2" pref="70" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="togglStatusTextBox" min="-2" pref="399" max="-2" attributes="0"/>
+                              <Component id="tasksFilterTextField" min="-2" pref="238" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2751,10 +2814,7 @@
                           <Component id="removeTaskButton" alignment="0" max="32767" attributes="1"/>
                           <Component id="editTaskButton" alignment="0" max="32767" attributes="1"/>
                           <Component id="filterTasksButton" alignment="0" max="32767" attributes="1"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tasksFilterTextField" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="tasksFilterTextField" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -2764,8 +2824,7 @@
                           <Component id="togglStatusTextBox" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tasksTableScrollPane" pref="477" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="tasksTableScrollPane" min="-2" pref="489" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3240,12 +3299,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="805" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="802" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="562" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="572" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -3268,8 +3327,11 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab7">
-                <Property name="tabTitle" type="java.lang.String" value="tab7"/>
+              <JTabbedPaneConstraints tabName="">
+                <Property name="tabTitle" type="java.lang.String" value=""/>
+                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/flag75.png"/>
+                </Property>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
