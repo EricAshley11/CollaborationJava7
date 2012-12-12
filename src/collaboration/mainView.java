@@ -24,6 +24,21 @@ import javax.swing.table.DefaultTableModel;
 //<editor-fold defaultstate="collapsed" desc=" Class declaration and constructor ">
 public class mainView extends javax.swing.JFrame {
 
+    static void communicationError() {
+        String text = JOptionPane.showInputDialog(null, "Error communicating with server, please enter in your server's address.\n"+
+                "Address should not include http:// or the port number", "Server Communication Error",
+                JOptionPane.ERROR_MESSAGE);
+        if(!text.isEmpty())
+            engine.saveServerAddr(text);
+    }
+    static void noAddressFound(){
+        String text = JOptionPane.showInputDialog(null, "Please enter in your server's address.\n"+
+                "Address should not include http:// or the port number", "Change Server Address",
+                JOptionPane.INFORMATION_MESSAGE);
+        if(!text.isEmpty())
+            engine.saveServerAddr(text);
+    }
+
     JTogglHelper togglHelper = null;
     static mainEngine engine = new mainEngine();
     Task editingTask = null;
@@ -32,12 +47,6 @@ public class mainView extends javax.swing.JFrame {
      * Creates new form mainView
      */
     public mainView() {
-        try {
-        } catch (Exception e) {
-            System.out.println("Server is down");
-            System.exit(0);
-            //Runtime.getRuntime().exec(null)
-        }
         initComponents();
     }
 //</editor-fold>
@@ -171,6 +180,7 @@ public class mainView extends javax.swing.JFrame {
         spaceJlabel1 = new javax.swing.JLabel();
         themeComboBox = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        editServerAddrButton = new javax.swing.JButton();
         createUserJFrame = new javax.swing.JFrame();
         createUserJPanel = new javax.swing.JPanel();
         createUserDialogButton = new javax.swing.JButton();
@@ -799,7 +809,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createUserButton)
                     .addComponent(loginButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout loginJFrameLayout = new javax.swing.GroupLayout(loginJFrame.getContentPane());
@@ -824,7 +834,7 @@ public class mainView extends javax.swing.JFrame {
         settingsJFrame.setMinimumSize(new java.awt.Dimension(365, 345));
         settingsJFrame.setResizable(false);
 
-        saveSettingsButton.setText("Save Settings");
+        saveSettingsButton.setText("Save Theme");
         saveSettingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveSettingsButtonActionPerformed(evt);
@@ -837,24 +847,34 @@ public class mainView extends javax.swing.JFrame {
 
         jLabel1.setText("Theme:");
 
+        editServerAddrButton.setText("Edit Server Address");
+        editServerAddrButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editServerAddrButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginJPanel1Layout = new javax.swing.GroupLayout(loginJPanel1);
         loginJPanel1.setLayout(loginJPanel1Layout);
         loginJPanel1Layout.setHorizontalGroup(
             loginJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginJPanel1Layout.createSequentialGroup()
-                .addGroup(loginJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(45, 45, 45)
+                .addGroup(loginJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(loginJPanel1Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(saveSettingsButton))
-                    .addGroup(loginJPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(loginJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(loginJPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(themeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(spaceJlabel1))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(themeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(spaceJlabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginJPanel1Layout.createSequentialGroup()
+                .addContainerGap(146, Short.MAX_VALUE)
+                .addComponent(saveSettingsButton)
+                .addGap(92, 92, 92))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginJPanel1Layout.createSequentialGroup()
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addComponent(editServerAddrButton)
+                .addGap(75, 75, 75))
         );
         loginJPanel1Layout.setVerticalGroup(
             loginJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -865,9 +885,11 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(loginJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(themeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(saveSettingsButton)
-                .addGap(32, 32, 32))
+                .addGap(18, 18, 18)
+                .addComponent(editServerAddrButton)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout settingsJFrameLayout = new javax.swing.GroupLayout(settingsJFrame.getContentPane());
@@ -1175,10 +1197,10 @@ public class mainView extends javax.swing.JFrame {
 
         gCalendarLoginPanel.setMinimumSize(new java.awt.Dimension(300, 300));
 
-        gCalUserNameLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        gCalUserNameLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         gCalUserNameLabel.setText("Username:");
 
-        gCalPasswordLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        gCalPasswordLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         gCalPasswordLabel.setText("Password:");
 
         gCalLoginScreenButton.setText("Login");
@@ -1260,21 +1282,21 @@ public class mainView extends javax.swing.JFrame {
 
         gCalendarAddCalendarPanel.setMinimumSize(new java.awt.Dimension(400, 370));
 
-        gCalAddCalendarTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        gCalAddCalendarTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18));
         gCalAddCalendarTitleLabel.setText(" Enter Calendar Information");
         gCalAddCalendarTitleLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        gCalCalendarTitleLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        gCalCalendarTitleLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
         gCalCalendarTitleLabel.setText("Calendar Title:");
 
         gCalCalendarDescriptionTextArea.setColumns(20);
         gCalCalendarDescriptionTextArea.setRows(5);
         jScrollPane3.setViewportView(gCalCalendarDescriptionTextArea);
 
-        gCalCalendarDescriptionLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        gCalCalendarDescriptionLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
         gCalCalendarDescriptionLabel.setText("Calendar Description:");
 
-        gCalCalendarLocationLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        gCalCalendarLocationLabel.setFont(new java.awt.Font("Tahoma", 1, 14));
         gCalCalendarLocationLabel.setText("Location:");
 
         gCalAddCalendarCancelButton.setText("Cancel");
@@ -1515,7 +1537,7 @@ public class mainView extends javax.swing.JFrame {
         gCalendarAddEntryJFrame.setTitle("Add Entry");
         gCalendarAddEntryJFrame.setBounds(new java.awt.Rectangle(300, 400, 420, 430));
 
-        addEntryTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        addEntryTitleLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 18));
         addEntryTitleLabel.setText("Add Calendar Entry");
 
         addEntryNameLabel.setText("Entry Title:");
@@ -1951,7 +1973,7 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
                         .addComponent(filterTeamButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2087,7 +2109,7 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(tasksPanelLayout.createSequentialGroup()
                         .addComponent(togglLabel)
                         .addGap(26, 26, 26)
-                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2160,10 +2182,10 @@ public class mainView extends javax.swing.JFrame {
         });
         calTableScrollPane.setViewportView(calTable);
 
-        calendarTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        calendarTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         calendarTableLabel.setText("Your Calendars");
 
-        entryTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        entryTableLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         entryTableLabel.setText("Upcoming Events");
 
         entryTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -2180,7 +2202,7 @@ public class mainView extends javax.swing.JFrame {
         entryTable.setEnabled(false);
         entryTableScrollPane.setViewportView(entryTable);
 
-        feedLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 13)); // NOI18N
+        feedLabel.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
         feedLabel.setText("Feed");
 
         createCalendarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add30.png"))); // NOI18N
@@ -2259,7 +2281,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteEventButton)
                     .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(calendarTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(entryTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2988,6 +3010,10 @@ public class mainView extends javax.swing.JFrame {
             loginButton.doClick();
         }
     }//GEN-LAST:event_passwordTextFieldKeyPressed
+
+    private void editServerAddrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editServerAddrButtonActionPerformed
+        mainView.noAddressFound();
+    }//GEN-LAST:event_editServerAddrButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -3003,9 +3029,15 @@ public class mainView extends javax.swing.JFrame {
         /*
          * Create and display the form
          */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        
+            Thread.setDefaultUncaughtExceptionHandler(new CollabExceptionHandler());
+            System.setProperty( "sun.awt.exception.handler",CollabExceptionHandler.class.getName());
+            java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                if(!mainEngine.loadServerAddr()){
+                    mainView.noAddressFound();
+                };
                 new mainView().loginJFrame.setVisible(true);
             }
         });
@@ -3081,6 +3113,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTextField editNameTextField;
     private javax.swing.JTextField editPhoneTextField;
     private javax.swing.JButton editProjectButton;
+    private javax.swing.JButton editServerAddrButton;
     private javax.swing.JButton editTaskButton;
     private javax.swing.JComboBox editTaskLeadComboBox;
     private javax.swing.JComboBox editTaskStatusComboBox;

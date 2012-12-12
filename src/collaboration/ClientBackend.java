@@ -17,8 +17,11 @@ public class ClientBackend implements IBackend {
 
     private static ClientBackend instance = null;
     private Backend remoteObj;
-    private static String serverAddr = "localhost";
+    private static String serverAddr = "";
 
+    public static void setServerAddr(String serverAddr){
+        ClientBackend.serverAddr = serverAddr;
+    }
     public static ClientBackend getInstance() {
         if (instance == null) {
             //make a single backend for the client
@@ -29,6 +32,7 @@ public class ClientBackend implements IBackend {
 
     public static void main(String[] args) {
         //Make some test data and put it in the database
+        mainEngine.loadServerAddr();
         User cam = getInstance().createUser("cam", "abc", "616-1111", "cam@test");
         User zach = getInstance().createUser("zach", "abc", "616-2222", "zach@test");
         User ericA = getInstance().createUser("ericA", "abc", "616-3333", "erica@test");

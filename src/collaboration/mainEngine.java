@@ -6,7 +6,12 @@ package collaboration;
 
 import collaborationjava7.common.*;
 import com.google.gdata.util.ServiceException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultRowSorter;
@@ -467,5 +472,31 @@ public class mainEngine {
 
     ArrayList<Milestone> getMilestones() {
         return ClientBackend.getInstance().getMilestones(selectedProj);
+    }
+
+    static void saveServerAddr(String text) {
+        try{
+            FileWriter fw = new FileWriter("serverAddr.txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(text);
+            bw.close();
+        }catch(Exception e){
+            
+        }        
+    }
+    static boolean loadServerAddr(){
+        boolean retVal = false;
+        try{
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("serverAddr.txt")));
+            String serverAddr = br.readLine();
+            if(serverAddr.isEmpty())
+                return false;
+            ClientBackend.setServerAddr(serverAddr);
+            br.close();
+            retVal = true;
+        }catch(Exception e){
+            
+        }
+        return retVal;
     }
 }
