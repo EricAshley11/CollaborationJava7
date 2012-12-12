@@ -254,4 +254,57 @@ public class Calendar {
         }
         return flag;
     }
+    
+    public String displayEntryInfo(String calendarName, String entryName)
+            throws ServiceException, IOException {
+        String resultInfo = "";
+        
+        URL postURL = null;
+        URL feed = new URL(privateURL);
+        CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
+
+        for (int i = 0; i < result.getEntries().size(); i++) {
+            CalendarEntry calendarEntry = result.getEntries().get(i);
+            if (calendarEntry.getTitle().getPlainText().equals(calendarName)) {
+                postURL = new URL(calendarEntry.getLink(Link.Rel.ALTERNATE, Link.Type.ATOM).getHref());
+            }
+        }
+        CalendarEventFeed temp = myService.getFeed(postURL, CalendarEventFeed.class);
+        for (int i = 0; i < temp.getEntries().size(); i++) {
+            CalendarEventEntry entry = temp.getEntries().get(i);
+            if (entry.getTitle().getPlainText().equals(entryName)) {
+                resultInfo += "Title: " + entry.getTitle().getPlainText() + "\n";
+                resultInfo += "Description: " + entry.getContent().toString() + "\n";
+                List<When> times = entry.getTimes();
+                String[] startDates = times.get(0).getStartTime().toString().split("-");
+                String sDate = startDates[1] + "/" + startDates[2].substring(0, 2) + "/" + startDates[0];
+                String[] endDates = times.get(0).getEndTime().toString().split("-");
+                String eDate = endDates[1] + "/" + endDates[2].substring(0, 2) + "/" + endDates[0];
+                
+
+                String startTime = startDates[2].substring(3, 8);
+                String endTime = endDates[2].substring(3, 8);
+
+                SimpleDateFormat parseFormat = new SimpleDateFormat("HH:mm");
+                SimpleDateFormat displayFormat = new SimpleDateFormat("hh:mm a");
+                Date date1 = null;
+                Date date2 = null;
+                try {
+                    date1 = parseFormat.parse(startTime);
+                    date2 = parseFormat.parse(endTime);
+                } catch (java.text.ParseException e) {
+                }
+                
+                resultInfo += "Start Date: " + sDate + "\n";
+                resultInfo += "Start Time: " + displayFormat.format(date1) + "\n";
+                resultInfo += "Finish Time: " + displayFormat.format(date2) + "\n";
+                resultInfo += "Finish Date: " + eDate + "\n";
+            }
+        }
+        if (resultInfo.equals("")) {
+            resultInfo += "Unable to Print Information!";
+        }
+        
+        return resultInfo;
+    }
 }
