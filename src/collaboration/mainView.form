@@ -1893,7 +1893,7 @@
       <Properties>
         <Property name="title" type="java.lang.String" value="Add Entry"/>
         <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
-          <Rectangle value="[300, 400, 420, 430]"/>
+          <Rectangle value="[300, 400, 470, 450]"/>
         </Property>
       </Properties>
 
@@ -1903,35 +1903,60 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="addEntryNameLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addEntryDescriptionLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="addEntryStartTimeLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="addEntryStartTimeTextField" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="addEntryStartTimeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="addEntryEndTimeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="addEntryStartTimeTextField" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="startTimeComboBox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="addEntryDescriptionScrollPane" pref="214" max="32767" attributes="0"/>
-                                  <Component id="addEntryTitleTextField" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="addEntryNameLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addEntryDescriptionLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="addEntryEndTimeTextField" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="endTimeComboBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Component id="addEntryEndTimeLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="addEntryEndTimeTextField" min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="addEntryDescriptionScrollPane" pref="214" max="32767" attributes="0"/>
+                                      <Component id="addEntryTitleTextField" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="endTimeComboBox" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="endDateLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="startTimeComboBox" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="startDateLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="startDateTextField" max="32767" attributes="0"/>
+                                      <Component id="endDateTextField" pref="70" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -1967,17 +1992,23 @@
                       <Component id="addEntryDescriptionLabel" min="-2" max="-2" attributes="0"/>
                       <Component id="addEntryDescriptionScrollPane" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace pref="41" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="addEntryStartTimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="addEntryStartTimeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="startTimeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startDateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addEntryStartTimeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="endTimeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="addEntryEndTimeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="addEntryEndTimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="endDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="endDateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2010,11 +2041,6 @@
             <Property name="text" type="java.lang.String" value="Entry Description:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="addEntryStartTimeTextField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="12:00"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="addEntryStartTimeLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Start Time:"/>
@@ -2023,6 +2049,9 @@
         <Component class="javax.swing.JTextField" name="addEntryEndTimeTextField">
           <Properties>
             <Property name="text" type="java.lang.String" value="1:00"/>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[28, 20]"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="addEntryEndTimeLabel">
@@ -2083,6 +2112,35 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addEntryAddButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="startDateLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Start Date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="endDateLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="End Date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="startDateTextField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="endDateTextField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="(MM/DD/YYYY)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel14">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="(MM/DD/YYYY)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="addEntryStartTimeTextField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="12:00"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -3063,6 +3121,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="entryTableMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

@@ -405,10 +405,10 @@ public class mainEngine {
         return ClientBackend.getInstance().createMilestone(newMilestoneName, this.selectedProj.getSchedule());
     }
 
-    boolean addNewEntry(String calendarName, String eventTitle, String eventDescription, int startTime, int endTime) {
+    boolean addNewEntry(String calendarName, String eventTitle, String eventDescription, String startDate, String endDate, String startTime, String endTime) {
         boolean flag = false;
         try {
-            if (calendar.addEntryToCalendar(calendarName, eventTitle, eventDescription, startTime, endTime)) {
+            if (calendar.addEntryToCalendar(calendarName, eventTitle, eventDescription, startDate, endDate, startTime, endTime)) {
                 flag = true;
             }
         } catch (ServiceException | IOException e) {

@@ -10,6 +10,7 @@ import com.google.gdata.util.*;
 import java.net.*;
 import java.text.*;
 import java.io.*;
+import java.util.*;
 
 /**
  *
@@ -144,7 +145,6 @@ public class Calendar {
 
         myQuery = new CalendarQuery(postURL);
         myQuery.setMinimumStartTime(DateTime.parseDateTime(googleDF.format(currentDate)));
-        myQuery.setMaximumStartTime(DateTime.parseDateTime(googleDF.format(weekAheadDate)));
         CalendarEventFeed entryResult = myService.query(myQuery, CalendarEventFeed.class);
         String[][] entries = new String[entryResult.getEntries().size()][entryResult.getEntries().size()];
         for (int i = 0; i < entryResult.getEntries().size(); i++) {
@@ -173,7 +173,7 @@ public class Calendar {
     }
 
     public boolean addEntryToCalendar(String calendarName,
-            String eventTitle, String eventDescription, int startTime, int endTime)
+            String eventTitle, String eventDescription, String startDate, String endDate, String startTime, String endTime)
             throws ServiceException, IOException {
         boolean flag = true;
         URL postURL = null;
@@ -189,6 +189,44 @@ public class Calendar {
 
         CalendarEventEntry myEntry = new CalendarEventEntry();
 
+        String[] temp = user.split("@");
+        Person author = new Person(temp[0], null, user);
+        myEntry.getAuthors().add(author);
+        
+        temp = startDate.split("/");
+        int month = Integer.parseInt(temp[0]);
+        int day = Integer.parseInt(temp[1]);
+        int year = Integer.parseInt(temp[2]);
+        String sDate = year + "-" + month + "-" + day;
+        
+        SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat parseFormat = new SimpleDateFormat("HH:mm a");
+        Date date1 = null;
+        Date date2 = null;
+        try {
+            date1 = parseFormat.parse(startTime);
+            date2 = parseFormat.parse(endTime);
+        } catch (java.text.ParseException e) {
+        }
+        
+        temp = endDate.split("/");
+        month = Integer.parseInt(temp[0]);
+        day = Integer.parseInt(temp[1]);
+        year = Integer.parseInt(temp[2]);
+        String eDate = year + "-" + month + "-" + day;
+
+
+        myEntry.setTitle(new PlainTextConstruct(eventTitle));
+        myEntry.setContent(new PlainTextConstruct(eventDescription));
+        DateTime start = DateTime.parseDateTime(sDate + "T" + displayFormat.format(date1) + ":00-05:00");
+        DateTime end = DateTime.parseDateTime(eDate + "T" + displayFormat.format(date2) + ":00-05:00");
+        When eventTimes = new When();
+        eventTimes.setStartTime(start);
+        eventTimes.setEndTime(end);
+        myEntry.addTime(eventTimes);
+        
+        
+        CalendarEventEntry insertedEntry = myService.insert(postURL, myEntry);
 
         return flag;
     }
