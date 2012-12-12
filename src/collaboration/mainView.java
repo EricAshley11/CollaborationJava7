@@ -257,7 +257,6 @@ public class mainView extends javax.swing.JFrame {
         addEntryTitleTextField = new javax.swing.JTextField();
         addEntryNameLabel = new javax.swing.JLabel();
         addEntryDescriptionLabel = new javax.swing.JLabel();
-        addEntryStartTimeTextField = new javax.swing.JTextField();
         addEntryStartTimeLabel = new javax.swing.JLabel();
         addEntryEndTimeTextField = new javax.swing.JTextField();
         addEntryEndTimeLabel = new javax.swing.JLabel();
@@ -273,6 +272,7 @@ public class mainView extends javax.swing.JFrame {
         endDateTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        addEntryStartTimeTextField = new javax.swing.JTextField();
         addUserStoryJFrame = new javax.swing.JFrame();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -1550,12 +1550,10 @@ public class mainView extends javax.swing.JFrame {
 
         addEntryDescriptionLabel.setText("Entry Description:");
 
-        addEntryStartTimeTextField.setText("12:00");
-
         addEntryStartTimeLabel.setText("Start Time:");
 
         addEntryEndTimeTextField.setText("1:00");
-		addEntryEndTimeTextField.setMinimumSize(new java.awt.Dimension(28, 20));
+        addEntryEndTimeTextField.setMinimumSize(new java.awt.Dimension(28, 20));
 
         addEntryEndTimeLabel.setText("End Time:");
 
@@ -1589,6 +1587,9 @@ public class mainView extends javax.swing.JFrame {
         jLabel6.setText("(MM/DD/YYYY)");
 
         jLabel14.setText("(MM/DD/YYYY)");
+
+        addEntryStartTimeTextField.setText("12:00");
+
         javax.swing.GroupLayout gCalendarAddEntryJFrameLayout = new javax.swing.GroupLayout(gCalendarAddEntryJFrame.getContentPane());
         gCalendarAddEntryJFrame.getContentPane().setLayout(gCalendarAddEntryJFrameLayout);
         gCalendarAddEntryJFrameLayout.setHorizontalGroup(
@@ -1596,7 +1597,7 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(gCalendarAddEntryJFrameLayout.createSequentialGroup()
                 .addGroup(gCalendarAddEntryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(gCalendarAddEntryJFrameLayout.createSequentialGroup()
-						.addGap(35, 35, 35)
+                        .addGap(35, 35, 35)
                         .addGroup(gCalendarAddEntryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(gCalendarAddEntryJFrameLayout.createSequentialGroup()
                                 .addComponent(addEntryStartTimeLabel)
@@ -1613,7 +1614,7 @@ public class mainView extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addGroup(gCalendarAddEntryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(gCalendarAddEntryJFrameLayout.createSequentialGroup()
-                               .addGap(18, 18, 18)
+                                .addGap(18, 18, 18)
                                 .addGroup(gCalendarAddEntryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(addEntryDescriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                                     .addComponent(addEntryTitleTextField)))
@@ -1638,7 +1639,7 @@ public class mainView extends javax.swing.JFrame {
                                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(0, 29, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gCalendarAddEntryJFrameLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(147, Short.MAX_VALUE)
                         .addGroup(gCalendarAddEntryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(gCalendarAddEntryJFrameLayout.createSequentialGroup()
                                 .addComponent(addEntryAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1665,7 +1666,7 @@ public class mainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(gCalendarAddEntryJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addEntryStartTimeLabel)
-					.addComponent(startTimeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startTimeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(startDateLabel)
                     .addComponent(startDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
@@ -2002,17 +2003,17 @@ public class mainView extends javax.swing.JFrame {
         teamPanel.setLayout(teamPanelLayout);
         teamPanelLayout.setHorizontalGroup(
             teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, teamPanelLayout.createSequentialGroup()
+            .addGroup(teamPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(teamTableScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
                     .addGroup(teamPanelLayout.createSequentialGroup()
                         .addComponent(addMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
                         .addComponent(filterTeamButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2029,8 +2030,8 @@ public class mainView extends javax.swing.JFrame {
                     .addGroup(teamPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/team75.png")), teamPanel, "Team"); // NOI18N
@@ -2129,10 +2130,11 @@ public class mainView extends javax.swing.JFrame {
         tasksPanel.setLayout(tasksPanelLayout);
         tasksPanelLayout.setHorizontalGroup(
             tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tasksPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tasksPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tasksPanelLayout.createSequentialGroup()
+                .addGroup(tasksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tasksPanelLayout.createSequentialGroup()
                         .addComponent(addTasksButton)
                         .addGap(18, 18, 18)
                         .addComponent(removeTaskButton)
@@ -2144,11 +2146,10 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(filterTasksButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
-                    .addGroup(tasksPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tasksPanelLayout.createSequentialGroup()
                         .addComponent(togglLabel)
                         .addGap(26, 26, 26)
-                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                        .addComponent(togglTaskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(togglButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2173,8 +2174,8 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(togglLabel)
                     .addComponent(togglButton)
                     .addComponent(togglStatusTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(4, 4, 4)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

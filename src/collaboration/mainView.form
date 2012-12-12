@@ -1959,7 +1959,7 @@
                           <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="147" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="addEntryAddButton" min="-2" pref="105" max="-2" attributes="0"/>
@@ -2542,11 +2542,11 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="teamTableScrollPane" pref="785" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="teamTableScrollPane" alignment="1" pref="785" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="addMemberButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="removeMemberButton" min="-2" max="-2" attributes="0"/>
@@ -2575,8 +2575,8 @@
                               <Component id="teamFilterTextField" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="teamTableScrollPane" pref="504" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <Component id="teamTableScrollPane" min="-2" pref="487" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2701,10 +2701,11 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="tasksTableScrollPane" alignment="0" pref="785" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="addTasksButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="removeTaskButton" min="-2" max="-2" attributes="0"/>
@@ -2717,7 +2718,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tasksFilterTextField" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tasksTableScrollPane" pref="785" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="togglLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -2753,8 +2753,8 @@
                           <Component id="togglButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="togglStatusTextBox" alignment="3" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="tasksTableScrollPane" pref="477" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="tasksTableScrollPane" pref="475" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -3121,9 +3121,6 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="entryTableMouseClicked"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
