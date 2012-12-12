@@ -34,9 +34,14 @@ public class UserStoryPanel extends javax.swing.JPanel {
     public UserStoryPanel() {
         initComponents();
     }
+    public UserStoryPanel(mainView parent){
+        this.parent = parent;
+        initComponents();
+    }
     Task selectedTask=null;
     UserStory selectedUS=null;
     Milestone selectedMS=null;
+    mainView parent = null;
     
     
     private ArrayList<Task> getTasks(){
@@ -419,7 +424,9 @@ public class UserStoryPanel extends javax.swing.JPanel {
 
     private void taskListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taskListMouseClicked
         if(evt.getClickCount()==2){
-            
+            if(parent != null){
+                parent.filterTasks(this.selectedTask.getName());
+            }
         }
     }//GEN-LAST:event_taskListMouseClicked
 

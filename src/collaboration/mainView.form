@@ -2668,7 +2668,7 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="teamTableScrollPane" pref="435" max="32767" attributes="0"/>
+                      <Component id="teamTableScrollPane" pref="501" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2846,7 +2846,7 @@
                           <Component id="togglStatusTextBox" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="tasksTableScrollPane" pref="401" max="32767" attributes="0"/>
+                      <Component id="tasksTableScrollPane" pref="467" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -3094,7 +3094,7 @@
                               <Component id="deleteEventButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="removeCalendarButton" alignment="3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <EmptySpace pref="74" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="calendarTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="entryTableLabel" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -3297,7 +3297,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="494" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="560" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -3315,6 +3315,9 @@
           </Constraints>
         </Component>
         <Component class="collaboration.UserStoryPanel" name="userStoryPanel1">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new collaboration.UserStoryPanel(this)"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="tab7">
