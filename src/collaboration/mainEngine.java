@@ -452,4 +452,20 @@ public class mainEngine {
     ArrayList<UserStory> getUserStories(){
         return ClientBackend.getInstance().getUserStories(selectedProj);
     }
+
+    boolean setMilestoneDates(Milestone selectedMS, String startDate, String endDate) {
+        return ClientBackend.getInstance().setMilestoneDates(selectedMS, startDate, endDate);
+    }
+
+    void updateUSDescription(UserStory selectedUS, String description) {
+        ClientBackend.getInstance().updateUSDescription(selectedUS, description);
+    }
+
+    void updateTaskDescription(Task selectedTask, String description) {
+        ClientBackend.getInstance().updateTaskDescription(selectedTask, description);
+    }
+
+    ArrayList<Milestone> getMilestones() {
+        return ClientBackend.getInstance().getMilestones(selectedProj);
+    }
 }
