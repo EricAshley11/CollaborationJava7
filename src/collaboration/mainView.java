@@ -59,7 +59,6 @@ public class mainView extends javax.swing.JFrame {
             javax.swing.SwingUtilities.updateComponentTreeUI(editMemberJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(addTasksJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(editTasksJFrame);
-            javax.swing.SwingUtilities.updateComponentTreeUI(editProjectJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(settingsJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(loginJFrame);
             javax.swing.SwingUtilities.updateComponentTreeUI(createUserJFrame);
@@ -83,7 +82,6 @@ public class mainView extends javax.swing.JFrame {
         addTasksEstimatedTextField.setText("");
         addTasksTaskTextField.setText("");
         confirmPasswordField.setText("");
-        createProjectNameTextField.setText("");
         createUserEmailTextField.setText("");
         createUserNameTextField.setText("");
         createUserPhoneTextField.setText("");
@@ -91,7 +89,6 @@ public class mainView extends javax.swing.JFrame {
         editEmailTextField.setText("");
         editNameTextField.setText("");
         editPhoneTextField.setText("");
-        editProjectTextField.setText("");
         editTasksActualTextField.setText("");
         editTasksEstimatedTextField.setText("");
         editTasksTaskTextField.setText("");
@@ -159,11 +156,6 @@ public class mainView extends javax.swing.JFrame {
         editTaskLeadComboBox = new javax.swing.JComboBox();
         editTaskStatusComboBox = new javax.swing.JComboBox();
         editTaskUserStoryComboBox = new javax.swing.JComboBox();
-        editProjectJFrame = new javax.swing.JFrame();
-        editProjectSaveButton = new javax.swing.JButton();
-        editProjectRenameJLabel = new javax.swing.JLabel();
-        editProjectTextField = new javax.swing.JTextField();
-        editProjectDeleteJLabel = new javax.swing.JLabel();
         loginJFrame = new javax.swing.JFrame();
         loginJPanel = new javax.swing.JPanel();
         usernameJLabel = new javax.swing.JLabel();
@@ -211,8 +203,6 @@ public class mainView extends javax.swing.JFrame {
         filterTasksTaskJCheckBox = new javax.swing.JCheckBox();
         filterTasksEstCompletionJCheckBox = new javax.swing.JCheckBox();
         filterTasksActualCompletionJCheckBox = new javax.swing.JCheckBox();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
         gCalendarLoginJFrame = new javax.swing.JFrame();
         gCalendarLoginPanel = new javax.swing.JPanel();
         gCalUserNameTextField = new javax.swing.JTextField();
@@ -238,10 +228,6 @@ public class mainView extends javax.swing.JFrame {
         noTeamCreateNewTeamJButton = new javax.swing.JButton();
         noTeamJoinExistingTeamJButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        createNewProjectJFrame = new javax.swing.JFrame();
-        createProjectJButton = new javax.swing.JButton();
-        createProjectNameTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         createNewTeamJFrame = new javax.swing.JFrame();
         createNewTeamButton = new javax.swing.JButton();
         newTeamNameTextField = new javax.swing.JTextField();
@@ -731,61 +717,6 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(0, 44, Short.MAX_VALUE))
         );
 
-        editProjectJFrame.setTitle("Edit Project - ProjectTracker");
-        editProjectJFrame.setAlwaysOnTop(true);
-        editProjectJFrame.setBounds(new java.awt.Rectangle(50, 50, 210, 210));
-        editProjectJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        editProjectJFrame.setMinimumSize(new java.awt.Dimension(285, 205));
-        editProjectJFrame.setResizable(false);
-
-        editProjectSaveButton.setText("Save");
-        editProjectSaveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editProjectSaveButtonActionPerformed(evt);
-            }
-        });
-
-        editProjectRenameJLabel.setText("Rename Project:");
-
-        editProjectDeleteJLabel.setText("To delete this project type DELETE");
-
-        javax.swing.GroupLayout editProjectJFrameLayout = new javax.swing.GroupLayout(editProjectJFrame.getContentPane());
-        editProjectJFrame.getContentPane().setLayout(editProjectJFrameLayout);
-        editProjectJFrameLayout.setHorizontalGroup(
-            editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editProjectJFrameLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editProjectJFrameLayout.createSequentialGroup()
-                        .addComponent(editProjectTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(editProjectJFrameLayout.createSequentialGroup()
-                        .addComponent(editProjectRenameJLabel)
-                        .addGap(0, 187, Short.MAX_VALUE))))
-            .addGroup(editProjectJFrameLayout.createSequentialGroup()
-                .addGroup(editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editProjectJFrameLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(editProjectDeleteJLabel))
-                    .addGroup(editProjectJFrameLayout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(editProjectSaveButton)))
-                .addGap(0, 63, Short.MAX_VALUE))
-        );
-        editProjectJFrameLayout.setVerticalGroup(
-            editProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editProjectJFrameLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(editProjectRenameJLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editProjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editProjectDeleteJLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editProjectSaveButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         loginJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         loginJFrame.setTitle("Login - ProjectTracker");
         loginJFrame.setBounds(new java.awt.Rectangle(50, 50, 400, 350));
@@ -1237,8 +1168,6 @@ public class mainView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jScrollPane2.setViewportView(jEditorPane1);
-
         gCalendarLoginJFrame.setTitle("Google Calendar Login");
         gCalendarLoginJFrame.setBounds(new java.awt.Rectangle(400, 250, 0, 0));
         gCalendarLoginJFrame.setMaximizedBounds(new java.awt.Rectangle(350, 225, 0, 0));
@@ -1471,48 +1400,6 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(noTeamJoinExistingTeamJButton)
                     .addComponent(noTeamCreateNewTeamJButton))
                 .addContainerGap(64, Short.MAX_VALUE))
-        );
-
-        createNewProjectJFrame.setTitle("Create Project");
-        createNewProjectJFrame.setBounds(new java.awt.Rectangle(55, 55, 369, 250));
-        createNewProjectJFrame.setMinimumSize(new java.awt.Dimension(369, 250));
-        createNewProjectJFrame.setResizable(false);
-
-        createProjectJButton.setText("Create Project");
-        createProjectJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createProjectJButtonActionPerformed(evt);
-            }
-        });
-
-        createProjectNameTextField.setName(""); // NOI18N
-
-        jLabel6.setText("Project Name:");
-
-        javax.swing.GroupLayout createNewProjectJFrameLayout = new javax.swing.GroupLayout(createNewProjectJFrame.getContentPane());
-        createNewProjectJFrame.getContentPane().setLayout(createNewProjectJFrameLayout);
-        createNewProjectJFrameLayout.setHorizontalGroup(
-            createNewProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createNewProjectJFrameLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(createNewProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(createNewProjectJFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(36, 36, 36)
-                        .addComponent(createProjectNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                    .addComponent(createProjectJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        createNewProjectJFrameLayout.setVerticalGroup(
-            createNewProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createNewProjectJFrameLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(createNewProjectJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createProjectNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(createProjectJButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         createNewTeamJFrame.setTitle("Create Team");
@@ -2082,7 +1969,7 @@ public class mainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/team75.png")), teamPanel, "Team"); // NOI18N
@@ -2226,7 +2113,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(togglButton)
                     .addComponent(togglStatusTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(4, 4, 4)
-                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                .addComponent(tasksTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2372,7 +2259,7 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteEventButton)
                     .addComponent(removeCalendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(calendarTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(entryTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2402,7 +2289,7 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2616,27 +2503,33 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_aboutButtonActionPerformed
 
     private void newProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProjectButtonActionPerformed
-//        try {
-//            String projectTitle = JOptionPane.showInputDialog("Project Title");
-//            if (!projectTitle.isEmpty()) {
-//                Project newProj = engine.createProject(projectTitle);
-//                projectComboBox.addItem(newProj);
-//            } else {
-//                JOptionPane.showMessageDialog(this,
-//                        "Project title is required to create a new project",
-//                        "Title Required", JOptionPane.DEFAULT_OPTION);
-//            }
-//        } catch (Exception e) {//do nothing if canceled
-//        }
-        createProjectNameTextField.setText("");
-        createNewProjectJFrame.setVisible(true);
+        try {
+            String projectTitle = JOptionPane.showInputDialog("Project Title");
+            if (!projectTitle.isEmpty()) {
+                Project newProj = engine.createProject(projectTitle);
+                projectComboBox.addItem(newProj);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Project title is required to create a new project",
+                        "Title Required", JOptionPane.DEFAULT_OPTION);
+                newProjectButtonActionPerformed(evt);
+            }
+        } catch (Exception e) {//do nothing if canceled
+        }
     }//GEN-LAST:event_newProjectButtonActionPerformed
 
     private void editProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectButtonActionPerformed
-        editProjectJFrame.setVisible(true);
-        Object selectedProject = projectComboBox.getSelectedItem();
-        if (selectedProject != null) {
-            editProjectTextField.setText(selectedProject.toString());
+         try {
+            String editedProjectName = JOptionPane.showInputDialog("Project Title");
+            if (!editedProjectName.isEmpty()) {
+                engine.processProjectNameChanged(projectComboBox, editedProjectName);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Project title is required",
+                        "Title Required", JOptionPane.DEFAULT_OPTION);
+                editProjectButtonActionPerformed(evt);
+            }
+        } catch (Exception e) {//do nothing if canceled
         }
     }//GEN-LAST:event_editProjectButtonActionPerformed
 
@@ -2882,21 +2775,6 @@ public class mainView extends javax.swing.JFrame {
         joinExistingTeamJFrame.setVisible(true);
     }//GEN-LAST:event_noTeamJoinExistingTeamJButtonActionPerformed
 
-    private void createProjectJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProjectJButtonActionPerformed
-        String projectTitle = createProjectNameTextField.getText();
-        if (!projectTitle.isEmpty()) {
-            Project newProj = engine.createProject(projectTitle);
-            projectComboBox.addItem(newProj);
-            createNewProjectJFrame.setVisible(false);
-        } else {
-            createNewProjectJFrame.setVisible(false);
-            JOptionPane.showMessageDialog(this,
-                    "Project title is required to create a new project",
-                    "Title Required", JOptionPane.DEFAULT_OPTION);
-            createNewProjectJFrame.setVisible(true);
-        }
-    }//GEN-LAST:event_createProjectJButtonActionPerformed
-
     private void joinExistingTeamJoinJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinExistingTeamJoinJButtonActionPerformed
         Team team = (Team) joinExistingComboBox.getSelectedItem();
         if (team.validatePassword(String.copyValueOf(this.joinTeamPasswordField.getPassword()))) {
@@ -3048,12 +2926,6 @@ public class mainView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteEventButtonActionPerformed
 
-    private void editProjectSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectSaveButtonActionPerformed
-        String editedProjectName = editProjectTextField.getText();
-        engine.processProjectNameChanged(projectComboBox, editedProjectName);
-        editProjectJFrame.setVisible(false);
-    }//GEN-LAST:event_editProjectSaveButtonActionPerformed
-
     private void addUserStoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserStoryButtonActionPerformed
         String userStoryName = userStoryNameTextField.getText();
         Milestone milestone = (Milestone) userStoryMilestoneComboBox.getSelectedItem();
@@ -3183,11 +3055,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JButton createCalendarButton;
     private javax.swing.JButton createEventButton;
-    private javax.swing.JFrame createNewProjectJFrame;
     private javax.swing.JButton createNewTeamButton;
     private javax.swing.JFrame createNewTeamJFrame;
-    private javax.swing.JButton createProjectJButton;
-    private javax.swing.JTextField createProjectNameTextField;
     private javax.swing.JButton createUserButton;
     private javax.swing.JButton createUserDialogButton;
     private javax.swing.JLabel createUserEmailJLabel;
@@ -3212,11 +3081,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JTextField editNameTextField;
     private javax.swing.JTextField editPhoneTextField;
     private javax.swing.JButton editProjectButton;
-    private javax.swing.JLabel editProjectDeleteJLabel;
-    private javax.swing.JFrame editProjectJFrame;
-    private javax.swing.JLabel editProjectRenameJLabel;
-    private javax.swing.JButton editProjectSaveButton;
-    private javax.swing.JTextField editProjectTextField;
     private javax.swing.JButton editTaskButton;
     private javax.swing.JComboBox editTaskLeadComboBox;
     private javax.swing.JComboBox editTaskStatusComboBox;
@@ -3281,7 +3145,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JFrame gCalendarLoginJFrame;
     private javax.swing.JPanel gCalendarLoginPanel;
     private collaboration.GitHubPanel gitHubPanel1;
-    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3291,11 +3154,9 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel jTogglPanel;
     private javax.swing.JButton jTogglTaskButton;
@@ -3361,4 +3222,3 @@ public class mainView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 //</editor-fold>
-
