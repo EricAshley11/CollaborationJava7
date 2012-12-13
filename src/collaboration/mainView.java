@@ -2818,10 +2818,11 @@ public class mainView extends javax.swing.JFrame {
         try {
             engine.updateChart(progressPanel, tasksTable, teamMembers);
         } catch (IOException ex) {
-            Logger.getLogger(mainView.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (this.tabbedPane.getSelectedComponent().equals(userStoryPanel1)) {
             this.userStoryPanel1.updateComponents(false);
+        }else if(this.tabbedPane.getSelectedComponent().equals(this.teamPanel)){
+            engine.loadTeamTable(teamTable);
         }
     }//GEN-LAST:event_tabbedPaneMouseClicked
 
