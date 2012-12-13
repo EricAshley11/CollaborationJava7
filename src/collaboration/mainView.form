@@ -233,7 +233,7 @@
           <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[465, 380]"/>
+          <Dimension value="[465, 410]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Add Member" noResource="true"/>
       </Properties>
@@ -413,7 +413,7 @@
           <Connection code="new ImageIcon(getClass().getResource(&quot;/resources/icons/binoculars.png&quot;)).getImage()" type="code"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[570, 480]"/>
+          <Dimension value="[570, 495]"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Add Member" noResource="true"/>
       </Properties>
@@ -466,7 +466,7 @@
                           <Component id="editTaskLeadComboBox" alignment="0" max="32767" attributes="1"/>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -510,7 +510,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="editTasksDialogButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace pref="79" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -563,12 +563,7 @@
             <Component class="javax.swing.JComboBox" name="editTaskLeadComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -578,24 +573,14 @@
             <Component class="javax.swing.JComboBox" name="editTaskStatusComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="editTaskUserStoryComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -3284,11 +3269,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel26">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\Mike\Pictures\GoogleCalendar_100x100.png"/>
-                    </Property>
-                  </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="eventInformationPanel">
                   <Properties>

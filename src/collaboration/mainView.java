@@ -42,9 +42,7 @@ public class mainView extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE);
         if (text != null && !text.isEmpty()) {
             engine.saveServerAddr(text);
-        } else {
-            noAddressFound();
-        }
+        } 
     }
     JTogglHelper togglHelper = null;
     static mainEngine engine = new mainEngine();
@@ -565,7 +563,7 @@ public class mainView extends javax.swing.JFrame {
         addTasksJFrame.setAlwaysOnTop(true);
         addTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 450, 350));
         addTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        addTasksJFrame.setMinimumSize(new java.awt.Dimension(465, 380));
+        addTasksJFrame.setMinimumSize(new java.awt.Dimension(465, 410));
         addTasksJFrame.setName("Add Member"); // NOI18N
 
         addTasksLeadJLabel.setText("Lead");
@@ -721,7 +719,7 @@ public class mainView extends javax.swing.JFrame {
         editTasksJFrame.setAlwaysOnTop(true);
         editTasksJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
         editTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
-        editTasksJFrame.setMinimumSize(new java.awt.Dimension(570, 480));
+        editTasksJFrame.setMinimumSize(new java.awt.Dimension(570, 495));
         editTasksJFrame.setName("Add Member"); // NOI18N
 
         editTasksJPanel.setPreferredSize(new java.awt.Dimension(400, 400));
@@ -745,7 +743,6 @@ public class mainView extends javax.swing.JFrame {
 
         editTasksActualJLabel.setText("Status");
 
-        editTaskLeadComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         editTaskLeadComboBox.setRenderer(new ListCellRenderer(){
             @Override
             public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
@@ -776,10 +773,6 @@ public class mainView extends javax.swing.JFrame {
                 return label;
             }
         });
-
-        editTaskStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        editTaskUserStoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         editTaskDescriptionTextArea.setColumns(20);
         editTaskDescriptionTextArea.setRows(5);
@@ -813,7 +806,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(editTasksTaskTextField)
                     .addComponent(editTaskLeadComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         editTasksJPanelLayout.setVerticalGroup(
             editTasksJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -848,7 +841,7 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(jLabel17))
                 .addGap(18, 18, 18)
                 .addComponent(editTasksDialogButton)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout editTasksJFrameLayout = new javax.swing.GroupLayout(editTasksJFrame.getContentPane());
@@ -2409,8 +2402,6 @@ public class mainView extends javax.swing.JFrame {
         });
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        jLabel26.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mike\\Pictures\\GoogleCalendar_100x100.png")); // NOI18N
 
         eventInformationPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 

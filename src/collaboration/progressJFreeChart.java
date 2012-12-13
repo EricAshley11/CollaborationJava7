@@ -1,6 +1,14 @@
 package collaboration;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -21,7 +29,7 @@ public class progressJFreeChart {
     /**
      * Creates a chart
      */
-    public JFreeChart createChart(String title, JTable tasksTable, ArrayList<String> teamMembers) {
+    public JFreeChart createChart(String title, JTable tasksTable, ArrayList<String> teamMembers) throws IOException {
         JFreeChart chart = ChartFactory.createPieChart(title, // chart title
                 createDataset(tasksTable, teamMembers), // data
                 true, // include legend
@@ -32,6 +40,7 @@ public class progressJFreeChart {
         plot.setStartAngle(0);
         plot.setDirection(Rotation.CLOCKWISE);
         plot.setForegroundAlpha(0.5f);
+        plot.setBackgroundAlpha(0.0f);
         return chart;
 
     }

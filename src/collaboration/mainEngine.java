@@ -71,7 +71,7 @@ public class mainEngine {
 
     public void updateChart(JPanel progressPanel, JTable tasksTable, ArrayList<String> teamMembers) {
         progressJFreeChart progressChart = new progressJFreeChart();
-        JPanel chartPanel = new ChartPanel(progressChart.createChart("Tasks Count by Team Member", tasksTable, teamMembers));
+        JPanel chartPanel = new ChartPanel(progressChart.createChart("Total Estimated Time By Team Member (hr)", tasksTable, teamMembers));
         chartPanel.setSize(progressPanel.getSize());
         try {
             progressPanel.remove(progressPanel.getComponent(0));
