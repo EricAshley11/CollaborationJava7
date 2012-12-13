@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.src.collabandroid"
-      android:versionCode="1"
-      android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="8" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="com.src.collabandroid"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name" android:permission="android.permission.INTERNET">
-        <activity android:name=".LoginActivity"
-                  android:label="Login to your Account">
+    <uses-sdk android:minSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:permission="android.permission.INTERNET" >
+        <activity
+            android:name=".LoginActivity"
+            android:label="Login to your Account" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        
-        <activity android:name=".CollabAndroidActivity"
-                  android:label="@string/app_name">
-            <!-- <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+        <activity
+            android:name=".CollabAndroidActivity"
+            android:label="@string/app_name" >
+            -->
         </activity>
-        
-        <!--  Entry for RegisterActivity.class -->
-        <activity android:name=".RegisterActivity"
-        		  android:label="Register New Account"></activity>
-        
-        <!--  Team Activity -->
-         <activity android:name=".TeamActivity" />
-         
-        <!-- <activity android:name=".MultiColumnActivity"/> -->
-        
-        <!--  Tasks Activity -->
+
+        <!-- Entry for RegisterActivity.class -->
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Register New Account" >
+        </activity>
+
+        <!-- Team Activity -->
+        <activity android:name=".TeamActivity" />
+
+        <!-- Tasks Activity -->
         <activity android:name=".TasksActivity" />
-        
-        <!--  Calendar Activity -->
+
+        <!-- Calendar Activity -->
         <activity android:name=".CalActivity" />
 
-        <!--  Graph Activity -->
+        <!-- Graph Activity -->
         <activity android:name=".GraphActivity" />
-        
-        <!--  Invalid Activity -->
+
+        <!-- Invalid Activity -->
         <activity android:name=".InvalidActivity" />
-        
-                <!--  Projects Activity -->
+
+        <!-- Projects Activity -->
         <activity android:name=".ProjectsActivity" />
-        
     </application>
+
 </manifest>

@@ -11,67 +11,67 @@ import android.widget.TabHost.TabSpec;
 import android.util.Log;
 
 public class CollabAndroidActivity extends TabActivity {
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        
-        TabHost tabHost = getTabHost();
-        System.out.println("0");
-        // Tab for Team
-        TabSpec teamSpec = tabHost.newTabSpec("Team");
-        System.out.println("01");
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
 
-        teamSpec.setIndicator("Team", getResources().getDrawable(R.drawable.icon_team_tab));
-        System.out.println("02");
+		TabHost tabHost = getTabHost();
+		System.out.println("0");
+		// Tab for Team
+		TabSpec teamSpec = tabHost.newTabSpec("Team");
+		System.out.println("01");
 
-        Intent teamIntent = new Intent(this, TeamActivity.class);//MultiColumnActivity.class);//TeamActivity.class);
-        System.out.println("03");
+		teamSpec.setIndicator("Team",
+				getResources().getDrawable(R.drawable.icon_team_tab));
+		System.out.println("02");
 
-        teamSpec.setContent(teamIntent);
-        System.out.println("04");
+		Intent teamIntent = new Intent(this, TeamActivity.class);// MultiColumnActivity.class);//TeamActivity.class);
+		System.out.println("03");
 
-        // Tab for Tasks
-        TabSpec taskSpec = tabHost.newTabSpec("Task");
-        taskSpec.setIndicator("Task", getResources().getDrawable(R.drawable.icon_tasks_tab));
-        Intent taskIntent = new Intent(this, TasksActivity.class);
-        taskSpec.setContent(taskIntent);
-        
-      /*  // Tab for Calendar
-        TabSpec calSpec = tabHost.newTabSpec("Calendar");
-        calSpec.setIndicator("Calendar", getResources().getDrawable(R.drawable.icon_cal_tab));
-        Intent calIntent = new Intent(this, CalActivity.class);
-        calSpec.setContent(calIntent);
-        
-        // Tab for Graph
-        TabSpec graphSpec = tabHost.newTabSpec("Graphs");
-        graphSpec.setIndicator("Graphs", getResources().getDrawable(R.drawable.icon_graph_tab));
-        Intent graphIntent = new Intent(this, GraphActivity.class);
-        graphSpec.setContent(graphIntent);*/
-        
-        // Adding all TabSpec to TabHost
-        System.out.println("06");
+		teamSpec.setContent(teamIntent);
+		System.out.println("04");
 
-        tabHost.addTab(teamSpec); // Adding Team tab
-        System.out.println("07");
+		// Tab for Tasks
+		TabSpec taskSpec = tabHost.newTabSpec("Task");
+		taskSpec.setIndicator("Task",
+				getResources().getDrawable(R.drawable.icon_tasks_tab));
+		Intent taskIntent = new Intent(this, TasksActivity.class);
+		taskSpec.setContent(taskIntent);
 
-        tabHost.addTab(taskSpec); // Adding Tasks tab
-       /* tabHost.addTab(calSpec); // Adding Calendar tab
-        tabHost.addTab(graphSpec); // Adding Graph tab
-*/        //tabHost.setOnTabChangedListener(this);
-        //tabHost.clearAllTabs();
+		/*
+		 * // Tab for Calendar TabSpec calSpec = tabHost.newTabSpec("Calendar");
+		 * calSpec.setIndicator("Calendar",
+		 * getResources().getDrawable(R.drawable.icon_cal_tab)); Intent
+		 * calIntent = new Intent(this, CalActivity.class);
+		 * calSpec.setContent(calIntent);
+		 * 
+		 * // Tab for Graph TabSpec graphSpec = tabHost.newTabSpec("Graphs");
+		 * graphSpec.setIndicator("Graphs",
+		 * getResources().getDrawable(R.drawable.icon_graph_tab)); Intent
+		 * graphIntent = new Intent(this, GraphActivity.class);
+		 * graphSpec.setContent(graphIntent);
+		 */
 
-    }
-    
-    public void onTabChanged(String tabId)
-    {System.out.println();
-    Log.i("Tab Changed", "tabId = "+tabId);
-       //here i want to set the content of each tab to another intent
+		// Adding all TabSpec to TabHost
+		System.out.println("06");
 
-              // for 'tab1', change to home.class
-              // for 'tab2', change to aboutus.class
-    //how to set these?                
+		tabHost.addTab(teamSpec); // Adding Team tab
+		System.out.println("07");
 
-    }
+		tabHost.addTab(taskSpec); // Adding Tasks tab
+		/*
+		 * tabHost.addTab(calSpec); // Adding Calendar tab
+		 * tabHost.addTab(graphSpec); // Adding Graph tab
+		 */// tabHost.setOnTabChangedListener(this);
+			// tabHost.clearAllTabs();
+
+	}
+
+	public void onTabChanged(String tabId) {
+		System.out.println();
+		Log.i("Tab Changed", "tabId = " + tabId);
+
+	}
 }
