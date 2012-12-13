@@ -269,9 +269,13 @@ public class mainEngine {
                     new String[]{
                         "Calendars"
                     }) {
-                public boolean isCellEditable() {
-                    return false;
-                }
+                boolean[] canEdit = new boolean[]{
+                    false, false, false, false
+                };
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
             });
         } catch (ServiceException | IOException e) {
         }

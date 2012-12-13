@@ -1,4 +1,4 @@
-package collaboration;
+package collaborationjava7.common;
 
 import com.google.gdata.client.*;
 import com.google.gdata.client.calendar.*;
@@ -19,9 +19,7 @@ import java.util.*;
 public class Calendar {
 
     private static final String privateURL = "https://www.google.com/calendar/feeds/default/owncalendars/full";
-    //private static final String baseFeed_URL = "https://www.google.com/calendar/feeds/";
-    //private static final String eventFeed_URL = "/private/full";
-    //private static final String calendarFeed_URL = "/owncalendars/full";
+
     String user = "";
     DateFormat googleDF;
     java.util.Date currentDate;
@@ -269,12 +267,15 @@ public class Calendar {
                 postURL = new URL(calendarEntry.getLink(Link.Rel.ALTERNATE, Link.Type.ATOM).getHref());
             }
         }
+        
         CalendarEventFeed temp = myService.getFeed(postURL, CalendarEventFeed.class);
         for (int i = 0; i < temp.getEntries().size(); i++) {
             CalendarEventEntry entry = temp.getEntries().get(i);
             if (entry.getTitle().getPlainText().equals(entryName)) {
                 resultInfo += "Title: " + entry.getTitle().getPlainText() + "\n";
-                resultInfo += "Description: " + entry.getContent().toString() + "\n";
+                resultInfo += "Description: " + entry.getTextContent().getContent().getPlainText() + "\n";
+                List<Where> location = entry.getLocations();
+                resultInfo += "Location: " + location.get(0).getValueString() + "\n";
                 List<When> times = entry.getTimes();
                 String[] startDates = times.get(0).getStartTime().toString().split("-");
                 String sDate = startDates[1] + "/" + startDates[2].substring(0, 2) + "/" + startDates[0];

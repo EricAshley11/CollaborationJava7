@@ -1,0 +1,128 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-12-13 00:15:06 #1 store] 
+Database 'C:\Users\Mike\Documents\GitHub\CollaborationJava7\CollaborationJava7Server\db\ProjectDB.odb' is opened by 4192@Vokes-HP
+
+[2012-12-13 00:15:07 #2 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-12-13 00:15:07 #3 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-12-13 00:15:07 #4 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-12-13 00:15:07 #5 type] 
+Type collaborationjava7.common.Status is not enhanced.
+
+[2012-12-13 00:15:07 #6 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-12-13 00:15:07 #7 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-12-13 00:15:07 #8 type] 
+Type collaborationjava7.common.Milestone is not enhanced.
+
+[2012-12-13 00:15:07 #9 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-12-13 00:15:07 #10 type] 
+Type collaborationjava7server.Password is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-12-13 00:16:45 #1 store] 
+Database 'C:\Users\Mike\Documents\GitHub\CollaborationJava7\CollaborationJava7Server\db\ProjectDB.odb' is opened by 4276@Vokes-HP
+
+[2012-12-13 00:16:45 #2 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-12-13 00:16:45 #3 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-12-13 00:16:45 #4 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-12-13 00:16:45 #5 type] 
+Type collaborationjava7.common.Status is not enhanced.
+
+[2012-12-13 00:16:45 #6 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-12-13 00:16:45 #7 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-12-13 00:16:45 #8 type] 
+Type collaborationjava7.common.Milestone is not enhanced.
+
+[2012-12-13 00:16:45 #9 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-12-13 00:16:45 #10 type] 
+Type collaborationjava7server.Password is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-12-13 00:18:02 #1 store] 
+Database 'C:\Users\Mike\Documents\GitHub\CollaborationJava7\CollaborationJava7Server\db\ProjectDB.odb' is opened by 3984@Vokes-HP
+
+[2012-12-13 00:18:02 #2 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-12-13 00:18:02 #3 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-12-13 00:18:02 #4 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-12-13 00:18:02 #5 type] 
+Type collaborationjava7.common.Status is not enhanced.
+
+[2012-12-13 00:18:02 #6 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-12-13 00:18:02 #7 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-12-13 00:18:02 #8 type] 
+Type collaborationjava7.common.Milestone is not enhanced.
+
+[2012-12-13 00:18:02 #9 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-12-13 00:18:02 #10 type] 
+Type collaborationjava7server.Password is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-12-13 00:33:51 #1 store] 
+Database 'C:\Users\Mike\Documents\GitHub\CollaborationJava7\CollaborationJava7Server\db\ProjectDB.odb' is opened by 4460@Vokes-HP
+
+[2012-12-13 00:33:51 #2 type] 
+Type collaborationjava7.common.User is not enhanced.
+
+[2012-12-13 00:33:51 #3 type] 
+Type collaborationjava7.common.Task is not enhanced.
+
+[2012-12-13 00:33:51 #4 type] 
+Type collaborationjava7.common.Team is not enhanced.
+
+[2012-12-13 00:33:51 #5 type] 
+Type collaborationjava7.common.Status is not enhanced.
+
+[2012-12-13 00:33:51 #6 type] 
+Type collaborationjava7.common.UserStory is not enhanced.
+
+[2012-12-13 00:33:51 #7 type] 
+Type collaborationjava7.common.Project is not enhanced.
+
+[2012-12-13 00:33:51 #8 type] 
+Type collaborationjava7.common.Milestone is not enhanced.
+
+[2012-12-13 00:33:51 #9 type] 
+Type collaborationjava7.common.Schedule is not enhanced.
+
+[2012-12-13 00:33:51 #10 type] 
+Type collaborationjava7server.Password is not enhanced.
+
