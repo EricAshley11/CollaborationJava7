@@ -60,7 +60,7 @@ public class progressJFreeChart {
 //                leads.add(lead);
 //                count.add(1);
 //            } else { // IS found in list of leads
-                count[i] = count[indexOfValue] + Double.parseDouble((String) tasksTable.getValueAt(i, 4)); //increase count of times found by 1
+                count[indexOfValue] = count[indexOfValue] + Double.parseDouble((String) tasksTable.getValueAt(i, 4)); //increase count of times found by 1
 //            }
             }
         }

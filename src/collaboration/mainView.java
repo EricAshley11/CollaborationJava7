@@ -6,7 +6,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -2812,7 +2815,11 @@ public class mainView extends javax.swing.JFrame {
         for (int i = 0; i < teamTable.getRowCount(); i++) {
             teamMembers.add(teamTable.getValueAt(i, 0).toString());
         }
-        engine.updateChart(progressPanel, tasksTable, teamMembers);
+        try {
+            engine.updateChart(progressPanel, tasksTable, teamMembers);
+        } catch (IOException ex) {
+            Logger.getLogger(mainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (this.tabbedPane.getSelectedComponent().equals(userStoryPanel1)) {
             this.userStoryPanel1.updateComponents(false);
         }
@@ -2958,7 +2965,11 @@ public class mainView extends javax.swing.JFrame {
         for (int i = 0; i < teamTable.getRowCount(); i++) {
             teamMembers.add(teamTable.getValueAt(i, 0).toString());
         }
-        engine.updateChart(progressPanel, tasksTable, teamMembers);
+        try {
+            engine.updateChart(progressPanel, tasksTable, teamMembers);
+        } catch (IOException ex) {
+            Logger.getLogger(mainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formComponentResized
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed

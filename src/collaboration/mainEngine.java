@@ -69,7 +69,7 @@ public class mainEngine {
         }
     }
 
-    public void updateChart(JPanel progressPanel, JTable tasksTable, ArrayList<String> teamMembers) {
+    public void updateChart(JPanel progressPanel, JTable tasksTable, ArrayList<String> teamMembers) throws IOException {
         progressJFreeChart progressChart = new progressJFreeChart();
         JPanel chartPanel = new ChartPanel(progressChart.createChart("Total Estimated Time By Team Member (hr)", tasksTable, teamMembers));
         chartPanel.setSize(progressPanel.getSize());
