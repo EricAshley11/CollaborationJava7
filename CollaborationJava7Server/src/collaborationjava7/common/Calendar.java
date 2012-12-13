@@ -171,7 +171,8 @@ public class Calendar {
     }
 
     public boolean addEntryToCalendar(String calendarName,
-            String eventTitle, String eventDescription, String startDate, String endDate, String startTime, String endTime)
+            String eventTitle, String eventDescription, String startDate, 
+            String endDate, String startTime, String endTime, String location)
             throws ServiceException, IOException {
         boolean flag = true;
         URL postURL = null;
@@ -190,6 +191,10 @@ public class Calendar {
         String[] temp = user.split("@");
         Person author = new Person(temp[0], null, user);
         myEntry.getAuthors().add(author);
+        
+        Where location1 = new Where();
+        location1.setValueString(location);
+        myEntry.addLocation(location1);
         
         temp = startDate.split("/");
         int month = Integer.parseInt(temp[0]);
@@ -253,9 +258,9 @@ public class Calendar {
         return flag;
     }
     
-    public String displayEntryInfo(String calendarName, String entryName)
+    public String[] displayEntryInfo(String calendarName, String entryName)
             throws ServiceException, IOException {
-        String resultInfo = "";
+        String[] resultInfo = new String[7];
         
         URL postURL = null;
         URL feed = new URL(privateURL);
@@ -272,10 +277,10 @@ public class Calendar {
         for (int i = 0; i < temp.getEntries().size(); i++) {
             CalendarEventEntry entry = temp.getEntries().get(i);
             if (entry.getTitle().getPlainText().equals(entryName)) {
-                resultInfo += "Title: " + entry.getTitle().getPlainText() + "\n";
-                resultInfo += "Description: " + entry.getTextContent().getContent().getPlainText() + "\n";
+                resultInfo[0] = entry.getTitle().getPlainText();
+                resultInfo[1] = entry.getTextContent().getContent().getPlainText();
                 List<Where> location = entry.getLocations();
-                resultInfo += "Location: " + location.get(0).getValueString() + "\n";
+                resultInfo[2] = location.get(0).getValueString();
                 List<When> times = entry.getTimes();
                 String[] startDates = times.get(0).getStartTime().toString().split("-");
                 String sDate = startDates[1] + "/" + startDates[2].substring(0, 2) + "/" + startDates[0];
@@ -296,14 +301,14 @@ public class Calendar {
                 } catch (java.text.ParseException e) {
                 }
                 
-                resultInfo += "Start Date: " + sDate + "\n";
-                resultInfo += "Start Time: " + displayFormat.format(date1) + "\n";
-                resultInfo += "Finish Time: " + displayFormat.format(date2) + "\n";
-                resultInfo += "Finish Date: " + eDate + "\n";
+                resultInfo[3] = sDate;
+                resultInfo[4] = displayFormat.format(date1);
+                resultInfo[5] = displayFormat.format(date2);
+                resultInfo[6] = eDate ;
             }
         }
         if (resultInfo.equals("")) {
-            resultInfo += "Unable to Print Information!";
+             //error occurred
         }
         
         return resultInfo;

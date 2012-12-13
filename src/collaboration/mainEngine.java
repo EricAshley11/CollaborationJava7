@@ -308,8 +308,8 @@ public class mainEngine {
         return flag;
     }
     
-    String displayEntryInfo(String calName, String entryName) {
-        String result = "";
+    String[] displayEntryInfo(String calName, String entryName) {
+        String[] result = new String[7];
         try {
             result = calendar.displayEntryInfo(calName, entryName);
         } catch(ServiceException | IOException e) {
@@ -427,10 +427,10 @@ public class mainEngine {
         return ClientBackend.getInstance().createMilestone(newMilestoneName, this.selectedProj.getSchedule());
     }
 
-    boolean addNewEntry(String calendarName, String eventTitle, String eventDescription, String startDate, String endDate, String startTime, String endTime) {
+    boolean addNewEntry(String calendarName, String eventTitle, String eventDescription, String startDate, String endDate, String startTime, String endTime, String location) {
         boolean flag = false;
         try {
-            if (calendar.addEntryToCalendar(calendarName, eventTitle, eventDescription, startDate, endDate, startTime, endTime)) {
+            if (calendar.addEntryToCalendar(calendarName, eventTitle, eventDescription, startDate, endDate, startTime, endTime, location)) {
                 flag = true;
             }
         } catch (ServiceException | IOException e) {
