@@ -42,5 +42,11 @@
         <!--  Graph Activity -->
         <activity android:name=".GraphActivity" />
         
+        <!--  Invalid Activity -->
+        <activity android:name=".InvalidActivity" />
+        
+                <!--  Projects Activity -->
+        <activity android:name=".ProjectsActivity" />
+        
     </application>
 </manifest>

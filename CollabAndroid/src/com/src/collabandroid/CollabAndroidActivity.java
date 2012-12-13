@@ -5,8 +5,10 @@ import com.src.collabandroid.R;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import android.util.Log;
 
 public class CollabAndroidActivity extends TabActivity {
     /** Called when the activity is first created. */
@@ -36,7 +38,7 @@ public class CollabAndroidActivity extends TabActivity {
         Intent taskIntent = new Intent(this, TasksActivity.class);
         taskSpec.setContent(taskIntent);
         
-        // Tab for Calendar
+      /*  // Tab for Calendar
         TabSpec calSpec = tabHost.newTabSpec("Calendar");
         calSpec.setIndicator("Calendar", getResources().getDrawable(R.drawable.icon_cal_tab));
         Intent calIntent = new Intent(this, CalActivity.class);
@@ -46,7 +48,7 @@ public class CollabAndroidActivity extends TabActivity {
         TabSpec graphSpec = tabHost.newTabSpec("Graphs");
         graphSpec.setIndicator("Graphs", getResources().getDrawable(R.drawable.icon_graph_tab));
         Intent graphIntent = new Intent(this, GraphActivity.class);
-        graphSpec.setContent(graphIntent);
+        graphSpec.setContent(graphIntent);*/
         
         // Adding all TabSpec to TabHost
         System.out.println("06");
@@ -55,8 +57,21 @@ public class CollabAndroidActivity extends TabActivity {
         System.out.println("07");
 
         tabHost.addTab(taskSpec); // Adding Tasks tab
-        tabHost.addTab(calSpec); // Adding Calendar tab
+       /* tabHost.addTab(calSpec); // Adding Calendar tab
         tabHost.addTab(graphSpec); // Adding Graph tab
+*/        //tabHost.setOnTabChangedListener(this);
+        //tabHost.clearAllTabs();
+
+    }
+    
+    public void onTabChanged(String tabId)
+    {System.out.println();
+    Log.i("Tab Changed", "tabId = "+tabId);
+       //here i want to set the content of each tab to another intent
+
+              // for 'tab1', change to home.class
+              // for 'tab2', change to aboutus.class
+    //how to set these?                
 
     }
 }
