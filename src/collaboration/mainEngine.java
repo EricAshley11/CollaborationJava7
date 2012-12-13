@@ -294,6 +294,15 @@ public class mainEngine {
         }
         return flag;
     }
+    
+    String displayEntryInfo(String calName, String entryName) {
+        String result = "";
+        try {
+            result = calendar.displayEntryInfo(calName, entryName);
+        } catch(ServiceException | IOException e) {
+        }
+        return result;
+    }
 
     void setSeletedProj(Project proj) {
         this.selectedProj = proj;
