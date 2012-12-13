@@ -276,6 +276,16 @@ public class mainEngine {
         } catch (ServiceException | IOException e) {
         }
     }
+    
+    void clearTable(JTable table) {
+        table.setModel(new javax.swing.table.DefaultTableModel(
+                    new String[0][0],
+                    new String[0]) {
+                public boolean isCellEditable() {
+                    return false;
+                }
+            });
+    }
 
     public boolean deleteCalendar(String name) {
         boolean flag = false;

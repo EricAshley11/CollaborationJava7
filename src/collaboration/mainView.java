@@ -2823,8 +2823,8 @@ public class mainView extends javax.swing.JFrame {
         deleteEventButton.setEnabled(false);
         gCalLogoutButton.setEnabled(false);
         gCalLoginButton.setEnabled(true);
-        //engine.clearTable(calTable);
-        //engine.clearTable(entryTable);
+        engine.clearTable(calTable);
+        engine.clearTable(entryTable);
         calTable.setEnabled(false);
         entryTable.setEnabled(false);
         calendarTextArea.setText("");
@@ -2867,6 +2867,7 @@ public class mainView extends javax.swing.JFrame {
     private void calTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calTableMouseClicked
         String name = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
         engine.loadCalendarEntryTable(entryTable, name);
+        calendarTextArea.setText("");
     }//GEN-LAST:event_calTableMouseClicked
 
     private void createCalendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCalendarButtonActionPerformed
@@ -3153,7 +3154,7 @@ public class mainView extends javax.swing.JFrame {
     private void entryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entryTableMouseClicked
         String entryName = entryTable.getModel().getValueAt(entryTable.getSelectedRow(), 0).toString();
         String calName = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
-//        calendarTextArea.setText(engine.displayEntryInfo(calName, entryName));
+        calendarTextArea.setText(engine.displayEntryInfo(calName, entryName));
     }//GEN-LAST:event_entryTableMouseClicked
 
     private void editTasksDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTasksDialogButtonActionPerformed
