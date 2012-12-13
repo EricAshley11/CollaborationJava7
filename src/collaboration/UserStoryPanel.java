@@ -215,6 +215,7 @@ public class UserStoryPanel extends javax.swing.JPanel {
         userStoryTextBox.setPreferredSize(new java.awt.Dimension(260, 254));
         jScrollPane2.setViewportView(userStoryTextBox);
 
+        taskTextBox.setEditable(false);
         taskTextBox.setMinimumSize(new java.awt.Dimension(260, 254));
         taskTextBox.setPreferredSize(new java.awt.Dimension(260, 254));
         jScrollPane4.setViewportView(taskTextBox);
@@ -278,7 +279,7 @@ public class UserStoryPanel extends javax.swing.JPanel {
             }
         });
 
-        editUSButton.setText("Edit User Story");
+        editUSButton.setText("Save  Description");
         editUSButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editUSButtonActionPerformed(evt);
@@ -286,6 +287,11 @@ public class UserStoryPanel extends javax.swing.JPanel {
         });
 
         editTeskButton.setText("Edit Task");
+        editTeskButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editTeskButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -365,12 +371,11 @@ public class UserStoryPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(milestoneSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane4))
-                        .addContainerGap(24, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane4)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(editTeskButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(editTeskButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -436,6 +441,12 @@ public class UserStoryPanel extends javax.swing.JPanel {
             
         }
     }//GEN-LAST:event_editUSButtonActionPerformed
+
+    private void editTeskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTeskButtonActionPerformed
+        if(parent != null){
+            parent.editTask(this.selectedTask.getName());
+        }
+    }//GEN-LAST:event_editTeskButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editTeskButton;

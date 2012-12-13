@@ -198,12 +198,11 @@ public class mainEngine {
         //textFields[0] is createUserUsernameTextField
         //textFields[1] is firstPasswordField
         //textFields[2] is confirmPasswordField
-        //textFields[3] is createUserNameTextField
-        //textFields[4] is createUserPhoneTextField
-        //textFields[5] is createUserEmailTextField
+        //textFields[3] is createUserPhoneTextField
+        //textFields[4] is createUserEmailTextField
         if (textFields[1].getText().equals(textFields[2].getText())) {
             ClientBackend.getInstance().createUser(textFields[0].getText(), textFields[1].getText(),
-                    textFields[4].getText(), textFields[5].getText());
+                    textFields[3].getText(), textFields[4].getText());
             return true;
         }
         return false;
@@ -503,6 +502,7 @@ public class mainEngine {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(text);
             bw.close();
+            loadServerAddr();
         }catch(Exception e){
             
         }        
@@ -512,7 +512,7 @@ public class mainEngine {
         try{
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("serverAddr.txt")));
             String serverAddr = br.readLine();
-            if(serverAddr.isEmpty())
+            if(serverAddr != null && serverAddr.isEmpty())
                 return false;
             ClientBackend.setServerAddr(serverAddr);
             br.close();

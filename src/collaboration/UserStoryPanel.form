@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
@@ -112,14 +112,13 @@
                           <Component id="jScrollPane3" max="32767" attributes="1"/>
                           <Component id="jScrollPane4" alignment="0" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                       <Component id="editTeskButton" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -200,6 +199,7 @@
       <SubComponents>
         <Component class="javax.swing.JEditorPane" name="taskTextBox">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 254]"/>
             </Property>
@@ -284,7 +284,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="editUSButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit User Story"/>
+        <Property name="text" type="java.lang.String" value="Save  Description"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editUSButtonActionPerformed"/>
@@ -294,6 +294,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Task"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editTeskButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

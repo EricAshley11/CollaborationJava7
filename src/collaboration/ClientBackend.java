@@ -17,10 +17,9 @@ public class ClientBackend implements IBackend {
 
     private static ClientBackend instance = null;
     private Backend remoteObj;
-    private static String serverAddr = "";
 
     public static void setServerAddr(String serverAddr){
-        ClientBackend.serverAddr = serverAddr;
+        Backend.setServerAddr(serverAddr);
     }
     public static ClientBackend getInstance() {
         if (instance == null) {
@@ -78,7 +77,7 @@ public class ClientBackend implements IBackend {
         //ClientResource cr = new ClientResource(  
         //    "http://"+serverAddr+":8182/collab/backend");  
         //IBackendResource br = cr.wrap(IBackendResource.class);
-        remoteObj = new Backend(serverAddr);//br.retrieve(serverAddr);
+        remoteObj = new Backend();//br.retrieve(serverAddr);
             /*
          System.out.println("Got the object from the server.");
          } catch (Exception e) {

@@ -19,15 +19,20 @@ import org.restlet.resource.ClientResource;
 public class Backend implements Serializable, IBackend{
     boolean testing = false; //Temporary bool to get dummy data if we are testing
     boolean createdDummyProjects = false;//used to ensure we aren't making dupe projects
-    String serverAddr;
+    private static String serverAddr = "";
     ArrayList<Project> dummyProjects;
 
     public Backend(String serverAddr) {
-        this.serverAddr = serverAddr;
+        Backend.serverAddr = serverAddr;
         //retrieveProjects(testUser);//Used to test dummy data
     }
+    public Backend(){
+        
+    }
 
-    
+    public static void setServerAddr(String addr){
+        Backend.serverAddr = addr;
+    }
     @Override
     public void removeProject(Project project) {    
         throw new UnsupportedOperationException("");
