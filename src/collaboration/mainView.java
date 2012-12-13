@@ -205,7 +205,6 @@ public class mainView extends javax.swing.JFrame {
         filterTeamJPanel = new javax.swing.JPanel();
         filterTeamSaveButton = new javax.swing.JButton();
         filterTeamUsernameJCheckBox = new javax.swing.JCheckBox();
-        filterTeamFullNameJCheckBox = new javax.swing.JCheckBox();
         filterTeamEmailJCheckBox = new javax.swing.JCheckBox();
         filterTeamPhoneJCheckBox = new javax.swing.JCheckBox();
         filterTasksJFrame = new javax.swing.JFrame();
@@ -491,7 +490,6 @@ public class mainView extends javax.swing.JFrame {
         addTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
         addTasksJFrame.setMinimumSize(new java.awt.Dimension(465, 380));
         addTasksJFrame.setName("Add Member"); // NOI18N
-        addTasksJFrame.setPreferredSize(new java.awt.Dimension(465, 380));
 
         addTasksLeadJLabel.setText("Lead");
 
@@ -648,7 +646,6 @@ public class mainView extends javax.swing.JFrame {
         editTasksJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
         editTasksJFrame.setMinimumSize(new java.awt.Dimension(570, 480));
         editTasksJFrame.setName("Add Member"); // NOI18N
-        editTasksJFrame.setPreferredSize(new java.awt.Dimension(570, 480));
 
         editTasksJPanel.setPreferredSize(new java.awt.Dimension(400, 400));
 
@@ -1096,7 +1093,7 @@ public class mainView extends javax.swing.JFrame {
         filterTeamJFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         filterTeamJFrame.setTitle("Filter Team On...");
         filterTeamJFrame.setAlwaysOnTop(true);
-        filterTeamJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 250));
+        filterTeamJFrame.setBounds(new java.awt.Rectangle(50, 50, 250, 230));
         filterTeamJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
         filterTeamJFrame.setMinimumSize(new java.awt.Dimension(189, 153));
         filterTeamJFrame.setName("Add Member"); // NOI18N
@@ -1111,9 +1108,6 @@ public class mainView extends javax.swing.JFrame {
         filterTeamUsernameJCheckBox.setSelected(true);
         filterTeamUsernameJCheckBox.setText("Username");
 
-        filterTeamFullNameJCheckBox.setSelected(true);
-        filterTeamFullNameJCheckBox.setText("Full Name");
-
         filterTeamEmailJCheckBox.setSelected(true);
         filterTeamEmailJCheckBox.setText("Email");
 
@@ -1124,18 +1118,17 @@ public class mainView extends javax.swing.JFrame {
         filterTeamJPanel.setLayout(filterTeamJPanelLayout);
         filterTeamJPanelLayout.setHorizontalGroup(
             filterTeamJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(filterTeamJPanelLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(filterTeamSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filterTeamJPanelLayout.createSequentialGroup()
                 .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(filterTeamJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filterTeamUsernameJCheckBox)
-                    .addComponent(filterTeamFullNameJCheckBox)
+                    .addComponent(filterTeamEmailJCheckBox)
                     .addComponent(filterTeamPhoneJCheckBox)
-                    .addComponent(filterTeamEmailJCheckBox))
+                    .addComponent(filterTeamUsernameJCheckBox))
                 .addGap(81, 81, 81))
+            .addGroup(filterTeamJPanelLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(filterTeamSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         filterTeamJPanelLayout.setVerticalGroup(
             filterTeamJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1143,14 +1136,12 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(filterTeamUsernameJCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(filterTeamFullNameJCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(filterTeamPhoneJCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(filterTeamEmailJCheckBox)
                 .addGap(18, 18, 18)
                 .addComponent(filterTeamSaveButton)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout filterTeamJFrameLayout = new javax.swing.GroupLayout(filterTeamJFrame.getContentPane());
@@ -1488,8 +1479,9 @@ public class mainView extends javax.swing.JFrame {
         );
 
         createNewTeamJFrame.setTitle("Create Team");
-        createNewTeamJFrame.setBounds(new java.awt.Rectangle(55, 55, 377, 158));
-        createNewTeamJFrame.setMinimumSize(new java.awt.Dimension(377, 158));
+        createNewTeamJFrame.setBounds(new java.awt.Rectangle(55, 55, 377, 200));
+        createNewTeamJFrame.setMinimumSize(new java.awt.Dimension(377, 200));
+        createNewTeamJFrame.setPreferredSize(new java.awt.Dimension(328, 158));
 
         createNewTeamButton.setText("Create Team");
         createNewTeamButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1511,19 +1503,19 @@ public class mainView extends javax.swing.JFrame {
         createNewTeamJFrameLayout.setHorizontalGroup(
             createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createNewTeamJFrameLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(createNewTeamButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, createNewTeamJFrameLayout.createSequentialGroup()
+                    .addComponent(createNewTeamButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(createNewTeamJFrameLayout.createSequentialGroup()
                         .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel9)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newTeamNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(newTeamPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                .addComponent(newTeamConfirmPasswordField)))))
+                            .addComponent(newTeamNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                            .addComponent(newTeamPasswordField)
+                            .addComponent(newTeamConfirmPasswordField))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         createNewTeamJFrameLayout.setVerticalGroup(
@@ -1537,13 +1529,13 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(newTeamPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(createNewTeamJFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(newTeamConfirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(createNewTeamButton)
-                .addContainerGap())
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         joinExistingTeamJFrame.setTitle("Join or Create Team");
@@ -1755,7 +1747,6 @@ public class mainView extends javax.swing.JFrame {
         addUserStoryJFrame.setIconImage(new ImageIcon(getClass().getResource("/resources/icons/binoculars.png")).getImage());
         addUserStoryJFrame.setMinimumSize(new java.awt.Dimension(415, 320));
         addUserStoryJFrame.setName("Add Member"); // NOI18N
-        addUserStoryJFrame.setPreferredSize(new java.awt.Dimension(415, 320));
 
         jLabel7.setText("User Story Name:");
 
@@ -2081,7 +2072,7 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(removeMemberButton)
                         .addGap(18, 18, 18)
                         .addComponent(editMemberButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
                         .addComponent(filterTeamButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -2093,13 +2084,11 @@ public class mainView extends javax.swing.JFrame {
                     .addComponent(addMemberButton)
                     .addComponent(removeMemberButton)
                     .addComponent(editMemberButton)
-                    .addGroup(teamPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(filterTeamButton)
-                            .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(teamPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(filterTeamButton)
+                        .addComponent(teamFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
+                .addComponent(teamTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/team75.png")), teamPanel, "Team"); // NOI18N
@@ -2218,7 +2207,7 @@ public class mainView extends javax.swing.JFrame {
                         .addComponent(editTaskButton)
                         .addGap(18, 18, 18)
                         .addComponent(jTogglTaskButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
                         .addComponent(filterTasksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tasksFilterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2438,7 +2427,7 @@ public class mainView extends javax.swing.JFrame {
         progressPanel.setLayout(progressPanelLayout);
         progressPanelLayout.setHorizontalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2764,7 +2753,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void filterTeamSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTeamSaveButtonActionPerformed
         boolean[] checkedBoxes = {filterTeamUsernameJCheckBox.isSelected(),
-            filterTeamFullNameJCheckBox.isSelected(),
+//            filterTeamFullNameJCheckBox.isSelected(),
             filterTeamPhoneJCheckBox.isSelected(),
             filterTeamEmailJCheckBox.isSelected()
         };
@@ -3322,7 +3311,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JCheckBox filterTasksUserStoryJCheckBox;
     private javax.swing.JButton filterTeamButton;
     private javax.swing.JCheckBox filterTeamEmailJCheckBox;
-    private javax.swing.JCheckBox filterTeamFullNameJCheckBox;
     private javax.swing.JFrame filterTeamJFrame;
     private javax.swing.JPanel filterTeamJPanel;
     private javax.swing.JCheckBox filterTeamPhoneJCheckBox;
