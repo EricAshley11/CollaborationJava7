@@ -116,6 +116,38 @@ public class mainView extends javax.swing.JFrame {
         tasksFilterTextField.setText("");
         teamFilterTextField.setText("");
         usernameTextField.setText("");
+        userNameLabel.setText("");
+        gCalShareCalLabel.setText("");
+        gCalShareComboBox.removeAllItems();
+        createCalendarButton.setEnabled(false);
+        removeCalendarButton.setEnabled(false);
+        createEventButton.setEnabled(false);
+        deleteEventButton.setEnabled(false);
+        gCalLogoutButton.setEnabled(false);
+        gCalLoginButton.setEnabled(true);
+        eventNameTextField.setEnabled(false);
+        eventDescriptionTextArea.setEnabled(false);
+        eventLocationTextField.setEnabled(false);
+        entryStartTimeTextField.setEnabled(false);
+        eventEndTimeTextField.setEnabled(false);
+        entryStartDateTextField.setEnabled(false);
+        entryEndDateTextField.setEnabled(false);
+        eventNameTextField.setText("");
+        eventDescriptionTextArea.setText("");
+        eventLocationTextField.setText("");
+        entryStartTimeTextField.setText("");
+        eventEndTimeTextField.setText("");
+        entryStartDateTextField.setText("");
+        entryEndDateTextField.setText("");
+        engine.clearTable(calTable);
+        engine.clearTable(entryTable);
+        calTable.setEnabled(false);
+        entryTable.setEnabled(false);
+        gCalShareCalLabel.setEnabled(false);
+        gCalShareComboBox.setEnabled(false);
+        readOnlyRadioButton.setEnabled(false);
+        readWriteRadioButton.setEnabled(false);
+        gCalShareButton.setEnabled(false);
     }
     public void filterTasks(String tasks){
             tabbedPane.setSelectedComponent(this.tasksPanel); //tasks pane
@@ -353,7 +385,7 @@ public class mainView extends javax.swing.JFrame {
         deleteEventButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        eventInformationPanel = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         eventNameTextField = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -373,6 +405,15 @@ public class mainView extends javax.swing.JFrame {
         userNameLabel = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        gCalSharePanel = new javax.swing.JPanel();
+        gCalShareComboBox = new javax.swing.JComboBox();
+        jLabel29 = new javax.swing.JLabel();
+        readOnlyRadioButton = new javax.swing.JRadioButton();
+        readWriteRadioButton = new javax.swing.JRadioButton();
+        gCalShareCalLabel = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        gCalShareButton = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
         progressPanel = new javax.swing.JPanel();
         gitHubPanel1 = new collaboration.GitHubPanel();
         userStoryPanel1 = new collaboration.UserStoryPanel(this);
@@ -2366,7 +2407,7 @@ public class mainView extends javax.swing.JFrame {
 
         jLabel26.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mike\\Pictures\\GoogleCalendar_100x100.png")); // NOI18N
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        eventInformationPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel19.setText("Event Name:");
 
@@ -2399,35 +2440,35 @@ public class mainView extends javax.swing.JFrame {
 
         jLabel23.setText("End Time:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout eventInformationPanelLayout = new javax.swing.GroupLayout(eventInformationPanel);
+        eventInformationPanel.setLayout(eventInformationPanelLayout);
+        eventInformationPanelLayout.setHorizontalGroup(
+            eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventInformationPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(eventInformationPanelLayout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(eventInformationPanelLayout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addGap(18, 18, 18)
                         .addComponent(eventNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(eventInformationPanelLayout.createSequentialGroup()
+                        .addGroup(eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel21)
                             .addComponent(jLabel22)
                             .addComponent(jLabel25))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(eventInformationPanelLayout.createSequentialGroup()
                                 .addComponent(eventEndTimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(entryEndDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(eventInformationPanelLayout.createSequentialGroup()
                                 .addComponent(entryStartTimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel24)
@@ -2436,30 +2477,30 @@ public class mainView extends javax.swing.JFrame {
                             .addComponent(eventLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        eventInformationPanelLayout.setVerticalGroup(
+            eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventInformationPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(eventInformationPanelLayout.createSequentialGroup()
+                        .addGroup(eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
                             .addComponent(eventNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(eventLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entryStartTimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(entryStartDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24)
                     .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(eventInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eventEndTimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(entryEndDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25)
@@ -2475,60 +2516,131 @@ public class mainView extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel27.setText("Event Information");
 
+        gCalSharePanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        gCalShareComboBox.setEnabled(false);
+
+        jLabel29.setText("Member to add:");
+
+        readOnlyRadioButton.setText("Read Only");
+        readOnlyRadioButton.setEnabled(false);
+
+        readWriteRadioButton.setText("Read/Write");
+        readWriteRadioButton.setEnabled(false);
+
+        gCalShareCalLabel.setEnabled(false);
+
+        jLabel30.setText("Calendar:");
+
+        gCalShareButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/add30.png"))); // NOI18N
+        gCalShareButton.setEnabled(false);
+        gCalShareButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gCalShareButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout gCalSharePanelLayout = new javax.swing.GroupLayout(gCalSharePanel);
+        gCalSharePanel.setLayout(gCalSharePanelLayout);
+        gCalSharePanelLayout.setHorizontalGroup(
+            gCalSharePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gCalSharePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(gCalSharePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(gCalSharePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(gCalSharePanelLayout.createSequentialGroup()
+                        .addComponent(readOnlyRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addComponent(readWriteRadioButton))
+                    .addComponent(gCalShareCalLabel)
+                    .addComponent(gCalShareComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gCalShareButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        gCalSharePanelLayout.setVerticalGroup(
+            gCalSharePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gCalSharePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(gCalSharePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gCalShareCalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addGap(21, 21, 21)
+                .addGroup(gCalSharePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(gCalShareComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(gCalSharePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(gCalSharePanelLayout.createSequentialGroup()
+                        .addGroup(gCalSharePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(readOnlyRadioButton)
+                            .addComponent(readWriteRadioButton))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(gCalShareButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel28.setText("Share Calendar");
+
         javax.swing.GroupLayout calendarPanelLayout = new javax.swing.GroupLayout(calendarPanel);
         calendarPanel.setLayout(calendarPanelLayout);
         calendarPanelLayout.setHorizontalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(calendarPanelLayout.createSequentialGroup()
+                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, calendarPanelLayout.createSequentialGroup()
                         .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gCalLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gCalLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel26)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(calendarPanelLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(createCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createSequentialGroup()
-                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, calendarPanelLayout.createSequentialGroup()
+                            .addComponent(calendarTableLabel)
+                            .addComponent(calTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createSequentialGroup()
                                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(calendarTableLabel)
-                                    .addComponent(calTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createSequentialGroup()
-                                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createSequentialGroup()
-                                                .addComponent(entryTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(36, 36, 36))
-                                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                                .addComponent(entryTableLabel)
-                                                .addGap(132, 132, 132)))
-                                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(calendarPanelLayout.createSequentialGroup()
-                                                .addComponent(loggedInLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(userNameLabel))
-                                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel27))
-                                        .addGap(1, 1, 1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createSequentialGroup()
+                                            .addComponent(entryTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(36, 36, 36))
+                                        .addGroup(calendarPanelLayout.createSequentialGroup()
+                                            .addComponent(entryTableLabel)
+                                            .addGap(132, 132, 132)))
                                     .addGroup(calendarPanelLayout.createSequentialGroup()
                                         .addGap(26, 26, 26)
                                         .addComponent(createEventButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(deleteEventButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(1051, 1051, 1051))))
+                                        .addComponent(deleteEventButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(56, 56, 56)))
+                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(calendarPanelLayout.createSequentialGroup()
+                                        .addComponent(loggedInLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(userNameLabel))
+                                    .addComponent(eventInformationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel27)
+                                    .addComponent(gCalSharePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(calendarPanelLayout.createSequentialGroup()
+                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(calendarPanelLayout.createSequentialGroup()
+                                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(gCalLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gCalLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel26))
+                            .addGroup(calendarPanelLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(createCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(removeCalendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28))))
+                .addGap(1051, 1051, 1051))
         );
         calendarPanelLayout.setVerticalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2550,7 +2662,7 @@ public class mainView extends javax.swing.JFrame {
                             .addComponent(removeCalendarButton)
                             .addComponent(deleteEventButton)
                             .addComponent(createCalendarButton))
-                        .addGap(15, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(calendarTableLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(entryTableLabel, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -2561,14 +2673,18 @@ public class mainView extends javax.swing.JFrame {
                             .addComponent(userNameLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gCalSharePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(calTableScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                                 .addComponent(entryTableScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(eventInformationPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(81, 81, 81))))
         );
 
@@ -2977,6 +3093,14 @@ public class mainView extends javax.swing.JFrame {
             calTable.getTableHeader().setReorderingAllowed(false);
             entryTable.setEnabled(true);
             entryTable.getTableHeader().setReorderingAllowed(false);
+            ButtonGroup group = new ButtonGroup();
+            group.add(readOnlyRadioButton);
+            group.add(readWriteRadioButton);
+            group.setSelected(readOnlyRadioButton.getModel(), true);
+        
+            if (!ClientBackend.getInstance().getAllTeams().isEmpty()) {
+                engine.createUserComboBox(gCalShareComboBox, projectComboBox);
+            }
         } else {
             gCalendarLoginJFrame.setVisible(false);
             gCalUserNameTextField.setText("");
@@ -2987,6 +3111,8 @@ public class mainView extends javax.swing.JFrame {
 
     private void gCalLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalLogoutButtonActionPerformed
         userNameLabel.setText("");
+        gCalShareCalLabel.setText("");
+        gCalShareComboBox.removeAllItems();
         createCalendarButton.setEnabled(false);
         removeCalendarButton.setEnabled(false);
         createEventButton.setEnabled(false);
@@ -3011,6 +3137,12 @@ public class mainView extends javax.swing.JFrame {
         engine.clearTable(entryTable);
         calTable.setEnabled(false);
         entryTable.setEnabled(false);
+        gCalShareCalLabel.setEnabled(false);
+        gCalShareComboBox.setEnabled(false);
+        readOnlyRadioButton.setEnabled(false);
+        readWriteRadioButton.setEnabled(false);
+        gCalShareButton.setEnabled(false);
+        
     }//GEN-LAST:event_gCalLogoutButtonActionPerformed
 
     private void gCalAddCalendarCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalAddCalendarCancelButtonActionPerformed
@@ -3050,6 +3182,13 @@ public class mainView extends javax.swing.JFrame {
     private void calTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calTableMouseClicked
         String name = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
         engine.loadCalendarEntryTable(entryTable, name);
+        gCalShareCalLabel.setEditable(false);
+        gCalShareCalLabel.setText(name);
+        gCalShareCalLabel.setEnabled(true);
+        gCalShareComboBox.setEnabled(true);
+        gCalShareButton.setEnabled(true);
+        readOnlyRadioButton.setEnabled(true);
+        readWriteRadioButton.setEnabled(true);
         eventNameTextField.setText("");
         eventDescriptionTextArea.setText("");
         eventLocationTextField.setText("");
@@ -3073,6 +3212,12 @@ public class mainView extends javax.swing.JFrame {
             if (engine.deleteCalendar(name)) {
                 engine.loadCalendarTable(calTable);
                 engine.clearTable(entryTable);
+                gCalShareCalLabel.setText("");
+                gCalShareCalLabel.setEnabled(false);
+                gCalShareComboBox.setEnabled(false);
+                readOnlyRadioButton.setEnabled(false);
+                readWriteRadioButton.setEnabled(false);
+                gCalShareButton.setEnabled(false);
                 JOptionPane.showMessageDialog(this, "Calendar " + name + " Was Deleted.");
             } else {
                 JOptionPane.showMessageDialog(this, "Calendar " + name + " Was Unable To Be Deleted.");
@@ -3378,6 +3523,26 @@ public class mainView extends javax.swing.JFrame {
                 "Invalid Entry", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_editTasksDialogButtonActionPerformed
+
+    private void gCalShareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalShareButtonActionPerformed
+        String calName = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
+        if (gCalShareComboBox.getItemCount() != 0 && (!gCalShareCalLabel.getText().equals(""))) {
+            User u = ClientBackend.getInstance().getUser((String)gCalShareComboBox.getSelectedItem());
+            int access = 1;
+            if (readOnlyRadioButton.isSelected()) {
+                access = 0;
+            }
+            try {
+                if (engine.shareCalendar(calName, engine.getUser(), u.getEmail(), access)) {
+                    JOptionPane.showMessageDialog(calendarPanel, "User added to calendar.", "User Added", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(calendarPanel, "Unable to add user.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(calendarPanel, "No Calendar Selected.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_gCalShareButtonActionPerformed
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc=" public static void main(String args[]) ">
 
@@ -3503,6 +3668,7 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JScrollPane entryTableScrollPane;
     private javax.swing.JTextArea eventDescriptionTextArea;
     private javax.swing.JTextField eventEndTimeTextField;
+    private javax.swing.JPanel eventInformationPanel;
     private javax.swing.JTextField eventLocationTextField;
     private javax.swing.JTextField eventNameTextField;
     private javax.swing.JCheckBox filterTasksActualCompletionJCheckBox;
@@ -3539,6 +3705,10 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton gCalLogoutButton;
     private javax.swing.JPasswordField gCalPasswordField;
     private javax.swing.JLabel gCalPasswordLabel;
+    private javax.swing.JButton gCalShareButton;
+    private javax.swing.JTextField gCalShareCalLabel;
+    private javax.swing.JComboBox gCalShareComboBox;
+    private javax.swing.JPanel gCalSharePanel;
     private javax.swing.JLabel gCalUserNameLabel;
     private javax.swing.JTextField gCalUserNameTextField;
     private javax.swing.JFrame gCalendarAddCalendarJFrame;
@@ -3567,14 +3737,16 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3608,6 +3780,8 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JPanel progressPanel;
     private javax.swing.JComboBox projectComboBox;
+    private javax.swing.JRadioButton readOnlyRadioButton;
+    private javax.swing.JRadioButton readWriteRadioButton;
     private javax.swing.JButton removeCalendarButton;
     private javax.swing.JButton removeMemberButton;
     private javax.swing.JButton removeTaskButton;

@@ -233,10 +233,43 @@ public class Calendar {
 
         return flag;
     }
+    
+    public boolean shareCalendar(String calendarName, String user, String addedUser, int access) 
+            throws ServiceException, IOException {
+        boolean flag = true;
+
+        Link link = new Link();
+        AclRole role = new AclRole();
+        if (access == 0) {
+            role = CalendarAclRole.READ;
+        } else if(access == 1) {
+            role = CalendarAclRole.EDITOR;
+        }
+        
+        URL postURL = null;
+        URL feed = new URL(privateURL);
+        CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
+
+        for (int i = 0; i < result.getEntries().size(); i++) {
+            CalendarEntry calendarEntry = result.getEntries().get(i);
+            if (calendarEntry.getTitle().getPlainText().equals(calendarName)) {
+                link = calendarEntry.getLink(
+                        AclNamespace.LINK_REL_ACCESS_CONTROL_LIST, Link.Type.ATOM);  
+            }
+        }
+        
+        AclEntry entry = new AclEntry();
+        entry.setScope(new AclScope(AclScope.Type.USER, addedUser));
+        entry.setRole(role);
+        URL aclUrl =  new URL(link.getHref());
+        AclEntry insertedEntry = myService.insert(aclUrl, entry);
+        
+        return flag;
+    }
 
     public boolean deleteEntryFromCalendar(String calendarName, String entryName)
             throws ServiceException, IOException {
-        boolean flag = true;
+        boolean flag = false;
         URL postURL = null;
         URL feed = new URL(privateURL);
         CalendarFeed result = myService.getFeed(feed, CalendarFeed.class);
@@ -312,5 +345,9 @@ public class Calendar {
         }
         
         return resultInfo;
+    }
+    
+    public String getUser() {
+        return user;
     }
 }

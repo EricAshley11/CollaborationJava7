@@ -273,8 +273,8 @@ public class mainEngine {
                 };
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
-            }
+                    return canEdit[columnIndex];
+                }
             });
         } catch (ServiceException | IOException e) {
         }
@@ -316,6 +316,19 @@ public class mainEngine {
         }
         return result;
     }
+    
+    boolean shareCalendar(String calName, String user, String addedUser, int access) {
+        boolean flag = true;
+        try {
+            calendar.shareCalendar(calName, user, addedUser, access);
+        } catch (Exception e) {
+        }
+        return flag;
+    }
+    
+    String getUser() {
+        return calendar.getUser();
+    }
 
     void setSeletedProj(Project proj) {
         this.selectedProj = proj;
@@ -326,10 +339,14 @@ public class mainEngine {
             entryTable.setModel(new javax.swing.table.DefaultTableModel(
                     calendar.getEntryData(name),
                     new String[]{
-                        "Entries"
+                        "Events"
                     }) {
-                public boolean isCellEditable() {
-                    return false;
+                boolean[] canEdit = new boolean[]{
+                    false, false, false, false
+                };
+                @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
                 }
             });
         } catch (ServiceException | IOException e) {
@@ -375,6 +392,16 @@ public class mainEngine {
 //            retVal[i] = teamList.get(i).getName();
 //        }
 //        return retVal;
+    }
+    
+    JComboBox<User> createUserComboBox(JComboBox userBox, JComboBox projComboBox) {
+        userBox.removeAllItems();
+        Project proj = (Project) projComboBox.getSelectedItem();
+        for (int i = 0; i < ClientBackend.getInstance().retrieveUsers(proj).size(); i++) {
+            User u = ClientBackend.getInstance().retrieveUsers(proj).get(i);
+            userBox.addItem(u.getName());
+        }
+        return userBox;
     }
 
     boolean loginTeam(Team team, String password) {
