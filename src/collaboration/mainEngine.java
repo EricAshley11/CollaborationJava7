@@ -30,7 +30,7 @@ import org.jfree.chart.ChartPanel;
  */
 public class mainEngine {
 
-    private int[] selectedTeamColumns = {0, 1, 2, 3};
+    private int[] selectedTeamColumns = {0, 1, 2};
     private int[] selectedTasksColumns = {0, 1, 2, 3, 4, 5};
     private Calendar calendar;
     private User user;
@@ -62,7 +62,7 @@ public class mainEngine {
                 place++;
             }
         }
-        if (checkedBoxes.length == 4) { //teamTable
+        if (checkedBoxes.length == 3) { //teamTable
             selectedTeamColumns = selectedColumns;
         } else {
             selectedTasksColumns = selectedColumns;
