@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
@@ -32,15 +32,12 @@
                               <Component id="usDescriptSaveButton" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" alignment="1" min="-2" pref="199" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="milestoneSaveButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="msStartTextBox" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="msEndTextBox" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="jLabel7" alignment="0" max="32767" attributes="1"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="milestoneSaveButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="0" max="32767" attributes="1"/>
+                              <Component id="msStartTextBox" alignment="0" max="32767" attributes="1"/>
+                              <Component id="msEndTextBox" alignment="0" max="32767" attributes="1"/>
+                              <Component id="jLabel7" alignment="0" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>

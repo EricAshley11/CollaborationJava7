@@ -15,11 +15,12 @@ import javax.swing.JOptionPane;
  * @author akie
  */
 public class GitHubPanel extends javax.swing.JPanel {
-
+        GitHubManager GHM;
     /**
      * Creates new form GitHubPanel
      */
     public GitHubPanel() {
+        GHM = new GitHubManager();
         initComponents();
     }
 
@@ -40,14 +41,9 @@ public class GitHubPanel extends javax.swing.JPanel {
         GitHubBranches = new javax.swing.JButton();
         GitHubContribute = new javax.swing.JButton();
         GitHubGetIssues = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        GitHubRepoName2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        GitHubRepoOwner2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         GitHubUsername = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        GitHubPassword = new javax.swing.JTextField();
         GitHubIssueTitle = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -56,6 +52,8 @@ public class GitHubPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         GitHubResultPane = new javax.swing.JTextPane();
         GitHubIssueReport = new javax.swing.JButton();
+        GitHubPassword = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(805, 486));
         setPreferredSize(new java.awt.Dimension(805, 486));
@@ -92,30 +90,30 @@ public class GitHubPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Repo Name");
-
-        jLabel4.setText("Repo Owner Name");
-
         jLabel5.setText("Username");
 
         jLabel6.setText("Password");
 
-        jLabel7.setText("Issue Title");
+        jLabel7.setText("Bug Title");
 
-        jLabel8.setText("Issue Body");
+        jLabel8.setText("Bug Description");
 
         GitHubIssueBody.setColumns(20);
         GitHubIssueBody.setRows(5);
         jScrollPane1.setViewportView(GitHubIssueBody);
 
+        GitHubResultPane.setEditable(false);
         jScrollPane2.setViewportView(GitHubResultPane);
 
-        GitHubIssueReport.setText("Report Issue");
+        GitHubIssueReport.setText("Report Bug");
         GitHubIssueReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GitHubIssueReportActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabel3.setText("GitHub");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,24 +122,18 @@ public class GitHubPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(GitHubRepoName2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(GitHubIssueTitle, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GitHubUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(GitHubRepoOwner2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel6)
+                        .addGap(194, 194, 194))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(GitHubNewsFeed)
+                        .addComponent(jScrollPane1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(GitHubBranches)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(GitHubContribute)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(GitHubGetIssues))
+                        .addComponent(GitHubIssueReport))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(GitHubRepoName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,121 +141,126 @@ public class GitHubPanel extends javax.swing.JPanel {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(GitHubRepoOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(GitHubRepoOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(GitHubBranches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(GitHubNewsFeed, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(GitHubContribute, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(GitHubGetIssues, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(GitHubIssueTitle, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(GitHubUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(GitHubPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(GitHubIssueReport)))
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addComponent(GitHubPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane2))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GitHubContribute)
+                    .addComponent(GitHubBranches)
+                    .addComponent(GitHubRepoOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GitHubRepoName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GitHubGetIssues)
+                    .addComponent(GitHubNewsFeed))
+                .addGap(95, 95, 95)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(GitHubRepoName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GitHubRepoOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(GitHubNewsFeed)
-                            .addComponent(GitHubBranches)
-                            .addComponent(GitHubContribute)
-                            .addComponent(GitHubGetIssues))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(GitHubRepoName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(GitHubRepoOwner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(GitHubUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(GitHubPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7)
-                                .addGap(9, 9, 9)
-                                .addComponent(GitHubIssueTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(GitHubIssueReport))
-                        .addContainerGap(371, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2)))
+                            .addComponent(GitHubUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(GitHubPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addGap(9, 9, 9)
+                        .addComponent(GitHubIssueTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(GitHubIssueReport))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void GitHubNewsFeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubNewsFeedActionPerformed
-        GitHubManager GHM = new GitHubManager();
+
+        String text = "";
         try {
-            GitHubResultPane.setText(GHM.newsFeed(GitHubRepoName.getText(),GitHubRepoOwner.getText()));
-        } catch (IOException ex) {
-            Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
+             text = GHM.newsFeed(GitHubRepoName.getText(),GitHubRepoOwner.getText());
+        } catch (Exception ex) {
+            text = "Error retrieving the newsfeed";
         }
+        GitHubResultPane.setText(text);
         
     }//GEN-LAST:event_GitHubNewsFeedActionPerformed
 
     private void GitHubBranchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubBranchesActionPerformed
-        GitHubManager GHM = new GitHubManager();
+        String text = "";
         try {
-            GitHubResultPane.setText(GHM.getBranches(GitHubRepoName.getText(),GitHubRepoOwner.getText()));
-        } catch (IOException ex) {
-            Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
+            text = GHM.getBranches(GitHubRepoName.getText(),GitHubRepoOwner.getText());
+        } catch (Exception ex) {
+            text = "Error retrieving the branches";
         }
+        GitHubResultPane.setText(text);
     }//GEN-LAST:event_GitHubBranchesActionPerformed
 
     private void GitHubContributeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubContributeActionPerformed
-        GitHubManager GHM = new GitHubManager();
+        String text = "";
         try {
-            GitHubResultPane.setText(GHM.getContributors(GitHubRepoName.getText(),GitHubRepoOwner.getText()));
-        } catch (IOException ex) {
-            Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
+            text = GHM.getContributors(GitHubRepoName.getText(),GitHubRepoOwner.getText());
+        } catch (Exception ex) {
+            text = "Error retrieving the contributors";
         }
+        GitHubResultPane.setText(text);
     }//GEN-LAST:event_GitHubContributeActionPerformed
 
     private void GitHubGetIssuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubGetIssuesActionPerformed
-        GitHubManager GHM = new GitHubManager();
+        String text = "";
         try {
-            GitHubResultPane.setText(GHM.getIssues(GitHubRepoName.getText(),GitHubRepoOwner.getText()));
-        } catch (IOException ex) {
-            Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
+            text = GHM.getIssues(GitHubRepoName.getText(),GitHubRepoOwner.getText());
+        } catch (Exception ex) {
+            text = "Error retrieving the bug report";
         }
+        GitHubResultPane.setText(text);
     }//GEN-LAST:event_GitHubGetIssuesActionPerformed
 
     private void GitHubIssueReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GitHubIssueReportActionPerformed
-        GitHubManager GHM = new GitHubManager();
+        String text = "";
         try {
-            GHM.createIssue(GitHubUsername.getText(),GitHubPassword.getText(),GitHubRepoName2.getText()
-                    ,GitHubRepoOwner2.getText(),GitHubIssueTitle.getText(),GitHubIssueBody.getText());
-        } catch (IOException ex) {
-            Logger.getLogger(GitHubPanel.class.getName()).log(Level.SEVERE, null, ex);
+            GHM.createIssue(GitHubUsername.getText(),GitHubPassword.getText(),GitHubRepoName.getText()
+                    ,GitHubRepoOwner.getText(),GitHubIssueTitle.getText(),GitHubIssueBody.getText());
+            JOptionPane.showMessageDialog(this, "Success: Bug sent To GitHub");
+            GitHubGetIssuesActionPerformed(null);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Please check the repo name, owner, and your credentials","Error",JOptionPane.ERROR_MESSAGE);
         }
-        JOptionPane.showMessageDialog(GitHubContribute, "Sent To GitHub");
+        
     }//GEN-LAST:event_GitHubIssueReportActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,17 +271,14 @@ public class GitHubPanel extends javax.swing.JPanel {
     private javax.swing.JButton GitHubIssueReport;
     private javax.swing.JTextField GitHubIssueTitle;
     private javax.swing.JButton GitHubNewsFeed;
-    private javax.swing.JTextField GitHubPassword;
+    private javax.swing.JPasswordField GitHubPassword;
     private javax.swing.JTextField GitHubRepoName;
-    private javax.swing.JTextField GitHubRepoName2;
     private javax.swing.JTextField GitHubRepoOwner;
-    private javax.swing.JTextField GitHubRepoOwner2;
     private javax.swing.JTextPane GitHubResultPane;
     private javax.swing.JTextField GitHubUsername;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

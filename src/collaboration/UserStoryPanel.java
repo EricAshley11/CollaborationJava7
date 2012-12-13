@@ -80,7 +80,6 @@ public class UserStoryPanel extends javax.swing.JPanel {
         this.userStoryList.setModel(new USListModel());
         this.taskList.removeAll();
         this.taskList.setModel(new TaskListModel());
-        this.taskTextBox.setText("");
         this.milestoneList.removeAll();
         this.milestoneList.setModel(new MSListModel());
         //selectedMS = (Milestone)milestoneList.getSelectedValue();
@@ -96,6 +95,10 @@ public class UserStoryPanel extends javax.swing.JPanel {
             this.userStoryTextBox.setText(selectedUS.getDescription());
         else
             this.userStoryTextBox.setText("");
+        if(selectedTask != null)
+            this.taskTextBox.setText(selectedTask.getDescription());
+        else
+            this.taskTextBox.setText("");
     }
     
     private class MSListModel extends AbstractListModel{
@@ -377,6 +380,7 @@ public class UserStoryPanel extends javax.swing.JPanel {
         if(newUS != null){
             selectedUS = newUS;
             this.userStoryTextBox.setText(selectedUS.getDescription());
+            this.taskTextBox.setText("");
         }
         else
             this.userStoryTextBox.setText("");
@@ -407,11 +411,16 @@ public class UserStoryPanel extends javax.swing.JPanel {
 
     private void milestoneListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_milestoneListValueChanged
         Milestone newMS =(Milestone)this.milestoneList.getSelectedValue();
-        if(newMS != null){
+        if(newMS != null && newMS != selectedMS){
             selectedMS = newMS;
             this.msStartTextBox.setText(selectedMS.startDateToString());
             this.msEndTextBox.setText(selectedMS.endDateToString());
+            this.taskTextBox.setText("");
+            this.userStoryTextBox.setText("");
+            this.selectedTask = null;
+            this.selectedUS = null;
             this.userStoryList.setModel(new USListModel());
+            this.taskList.setModel(new TaskListModel());
         }else{
             
         }
