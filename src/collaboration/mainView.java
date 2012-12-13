@@ -3343,6 +3343,11 @@ public class mainView extends javax.swing.JFrame {
         } else if (command.equals("Stop")) {
             button.setText("Start");
             String response = this.togglHelper.endNewTimeEntry();
+            double time = this.togglHelper.getLastDurationInHours();
+            Task task = engine.getTask(this.togglTaskTextField.getText());
+            if(task != null)
+                ClientBackend.getInstance().addTimeToTask(task, time);
+            engine.loadTasksTable(tasksTable);
             togglStatusTextBox.setText(response);
             button.setBackground(Color.green);
         }
