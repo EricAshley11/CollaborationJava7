@@ -21,9 +21,9 @@ public class progressJFreeChart {
     /**
      * Creates a chart
      */
-    public JFreeChart createChart(String title, JTable tasksTable) {
+    public JFreeChart createChart(String title, JTable tasksTable, ArrayList<String> teamMembers) {
         JFreeChart chart = ChartFactory.createPieChart(title, // chart title
-                createDataset(tasksTable), // data
+                createDataset(tasksTable, teamMembers), // data
                 true, // include legend
                 true,
                 false);
@@ -39,26 +39,27 @@ public class progressJFreeChart {
     /**
      * Creates a sample dataset
      */
-    private PieDataset createDataset(JTable tasksTable) {
+    private PieDataset createDataset(JTable tasksTable, ArrayList<String> teamMembers) {
         String lead;
-        ArrayList<String> leads = new ArrayList<String>();
-        ArrayList<Integer> count = new ArrayList<Integer>();
+        ArrayList<String> leads = teamMembers;
+        double[] count = new double[leads.size()];
         for (int i = 0; i < tasksTable.getRowCount(); i++) {
-            lead = (String) tasksTable.getValueAt(i, 0);
-            //System.out.println(lead);
-            int indexOfValue = leads.indexOf((Object) lead);
-            if (indexOfValue == -1) { // IS NOT found in list of leads
-                leads.add(lead);
-                count.add(1);
-            } else { // IS found in list of leads
-                count.set(indexOfValue, count.get(indexOfValue) + 1); //increase count of times found by 1
+            if (!tasksTable.getValueAt(i, 3).equals("Complete")) {
+                lead = (String) tasksTable.getValueAt(i, 0);
+                int indexOfValue = leads.indexOf((Object) lead);
+//            if (indexOfValue == -1) { // IS NOT found in list of leads
+//                leads.add(lead);
+//                count.add(1);
+//            } else { // IS found in list of leads
+                count[i] = count[indexOfValue] + Double.parseDouble((String) tasksTable.getValueAt(i, 4)); //increase count of times found by 1
+//            }
             }
         }
         DefaultPieDataset result = new DefaultPieDataset();
-        for(int i=0; i<leads.size();i++){
-            result.setValue(leads.get(i), count.get(i));
+        for (int i = 0; i < leads.size(); i++) {
+            result.setValue(leads.get(i), count[i]);
         }
-//        result.setValue("Cam", 95);
+//        result.setValue("test", 0);
 //        result.setValue("Eric", 4);
 //        result.setValue("Everyone else", 1);
         return result;

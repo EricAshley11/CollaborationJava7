@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -25,24 +26,26 @@ import javax.swing.table.DefaultTableModel;
 public class mainView extends javax.swing.JFrame {
 
     static void communicationError() {
-        String text = JOptionPane.showInputDialog(null, "Error communicating with server, please enter in your server's address.\n"+
-                "Address should not include http:// or the port number", "Server Communication Error",
+        String text = JOptionPane.showInputDialog(null, "Error communicating with server, please enter in your server's address.\n"
+                + "Address should not include http:// or the port number", "Server Communication Error",
                 JOptionPane.ERROR_MESSAGE);
-        if(text != null && !text.isEmpty())
+        if (text != null && !text.isEmpty()) {
             engine.saveServerAddr(text);
-        else
+        } else {
             communicationError();
-    }
-    static void noAddressFound(){
-        String text = JOptionPane.showInputDialog(null, "Please enter in your server's address.\n"+
-                "Address should not include http:// or the port number", "Change Server Address",
-                JOptionPane.INFORMATION_MESSAGE);
-        if(text != null && !text.isEmpty())
-            engine.saveServerAddr(text);
-        else
-            noAddressFound();
+        }
     }
 
+    static void noAddressFound() {
+        String text = JOptionPane.showInputDialog(null, "Please enter in your server's address.\n"
+                + "Address should not include http:// or the port number", "Change Server Address",
+                JOptionPane.INFORMATION_MESSAGE);
+        if (text != null && !text.isEmpty()) {
+            engine.saveServerAddr(text);
+        } else {
+            noAddressFound();
+        }
+    }
     JTogglHelper togglHelper = null;
     static mainEngine engine = new mainEngine();
     Task editingTask = null;
@@ -149,21 +152,23 @@ public class mainView extends javax.swing.JFrame {
         readWriteRadioButton.setEnabled(false);
         gCalShareButton.setEnabled(false);
     }
-    public void filterTasks(String tasks){
-            tabbedPane.setSelectedComponent(this.tasksPanel); //tasks pane
-            tasksFilterTextField.setText(tasks);
-            engine.filterTable(tasksTable, tasksFilterTextField.getText());
+
+    public void filterTasks(String tasks) {
+        tabbedPane.setSelectedComponent(this.tasksPanel); //tasks pane
+        tasksFilterTextField.setText(tasks);
+        engine.filterTable(tasksTable, tasksFilterTextField.getText());
     }
-    public void editTask(String taskName){
-            editingTask = engine.getTask(taskName);
-            engine.createProjectUsersComboBox(this.editTaskLeadComboBox, editingTask);
-            engine.createProjectUserStoriesComboBox(editTaskUserStoryComboBox, editingTask);
-            editTasksTaskTextField.setText(editingTask.getName());
-            engine.populateStatusComboBox(this.editTaskStatusComboBox, editingTask);
-            editTasksEstimatedTextField.setText(Double.toString(editingTask.getTimeEstimate()));
-            editTasksActualTextField.setText(Double.toString(editingTask.getTimeActual()));
-            this.editTaskDescriptionTextArea.setText(editingTask.getDescription());
-            editTasksJFrame.setVisible(true);
+
+    public void editTask(String taskName) {
+        editingTask = engine.getTask(taskName);
+        engine.createProjectUsersComboBox(this.editTaskLeadComboBox, editingTask);
+        engine.createProjectUserStoriesComboBox(editTaskUserStoryComboBox, editingTask);
+        editTasksTaskTextField.setText(editingTask.getName());
+        engine.populateStatusComboBox(this.editTaskStatusComboBox, editingTask);
+        editTasksEstimatedTextField.setText(Double.toString(editingTask.getTimeEstimate()));
+        editTasksActualTextField.setText(Double.toString(editingTask.getTimeActual()));
+        this.editTaskDescriptionTextArea.setText(editingTask.getDescription());
+        editTasksJFrame.setVisible(true);
     }
 //</editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -2812,7 +2817,11 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_removeMemberButtonActionPerformed
 
     private void tabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPaneMouseClicked
-        engine.updateChart(progressPanel, tasksTable);
+        ArrayList<String> teamMembers = new ArrayList<String>();
+        for (int i = 0; i < teamTable.getRowCount(); i++) {
+            teamMembers.add(teamTable.getValueAt(i, 0).toString());
+        }
+        engine.updateChart(progressPanel, tasksTable, teamMembers);
         if (this.tabbedPane.getSelectedComponent().equals(userStoryPanel1)) {
             this.userStoryPanel1.updateComponents(false);
         }
@@ -2914,7 +2923,7 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_newProjectButtonActionPerformed
 
     private void editProjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProjectButtonActionPerformed
-         try {
+        try {
             String editedProjectName = JOptionPane.showInputDialog("Project Title");
             if (!editedProjectName.isEmpty()) {
                 engine.processProjectNameChanged(projectComboBox, editedProjectName);
@@ -2954,7 +2963,11 @@ public class mainView extends javax.swing.JFrame {
     }//GEN-LAST:event_loginJFrameComponentShown
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-        engine.updateChart(progressPanel, tasksTable);
+        ArrayList<String> teamMembers = new ArrayList<String>();
+        for (int i = 0; i < teamTable.getRowCount(); i++) {
+            teamMembers.add(teamTable.getValueAt(i, 0).toString());
+        }
+        engine.updateChart(progressPanel, tasksTable, teamMembers);
     }//GEN-LAST:event_formComponentResized
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
@@ -3025,7 +3038,7 @@ public class mainView extends javax.swing.JFrame {
 
     private void filterTeamSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTeamSaveButtonActionPerformed
         boolean[] checkedBoxes = {filterTeamUsernameJCheckBox.isSelected(),
-//            filterTeamFullNameJCheckBox.isSelected(),
+            //            filterTeamFullNameJCheckBox.isSelected(),
             filterTeamPhoneJCheckBox.isSelected(),
             filterTeamEmailJCheckBox.isSelected()
         };
@@ -3097,7 +3110,7 @@ public class mainView extends javax.swing.JFrame {
             group.add(readOnlyRadioButton);
             group.add(readWriteRadioButton);
             group.setSelected(readOnlyRadioButton.getModel(), true);
-        
+
             if (!ClientBackend.getInstance().getAllTeams().isEmpty()) {
                 engine.createUserComboBox(gCalShareComboBox, projectComboBox);
             }
@@ -3142,7 +3155,7 @@ public class mainView extends javax.swing.JFrame {
         readOnlyRadioButton.setEnabled(false);
         readWriteRadioButton.setEnabled(false);
         gCalShareButton.setEnabled(false);
-        
+
     }//GEN-LAST:event_gCalLogoutButtonActionPerformed
 
     private void gCalAddCalendarCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalAddCalendarCancelButtonActionPerformed
@@ -3293,10 +3306,10 @@ public class mainView extends javax.swing.JFrame {
                 String name = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
                 if (engine.addNewEntry(name, addEntryTitleTextField.getText(), addEntryDescriptionTextArea.getText(),
                         startDateTextField.getText(), endDateTextField.getText(),
-                        addEntryStartTimeTextField.getText() + " " + startTimeComboBox.getSelectedItem(), 
+                        addEntryStartTimeTextField.getText() + " " + startTimeComboBox.getSelectedItem(),
                         addEntryEndTimeTextField.getText() + " " + endTimeComboBox.getSelectedItem(), locationTextField.getText())) {
-                    JOptionPane.showMessageDialog(this, "Entry: " + addEntryTitleTextField.getText() + 
-                            " Was Created\nIn Calendar: " + name);
+                    JOptionPane.showMessageDialog(this, "Entry: " + addEntryTitleTextField.getText()
+                            + " Was Created\nIn Calendar: " + name);
                     gCalendarAddEntryJFrame.setVisible(false);
                     addEntryTitleTextField.setText("");
                     addEntryDescriptionTextArea.setText("");
@@ -3380,11 +3393,11 @@ public class mainView extends javax.swing.JFrame {
 
     private void createEventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventButtonActionPerformed
         if (calTable.isColumnSelected(0)) {
-			gCalendarAddEntryJFrame.setVisible(true);
-			addEntryTitleTextField.setText("");
-			addEntryDescriptionTextArea.setText("");
-			addEntryStartTimeTextField.setText("");
-			addEntryEndTimeTextField.setText("");
+            gCalendarAddEntryJFrame.setVisible(true);
+            addEntryTitleTextField.setText("");
+            addEntryDescriptionTextArea.setText("");
+            addEntryStartTimeTextField.setText("");
+            addEntryEndTimeTextField.setText("");
         } else {
             JOptionPane.showMessageDialog(this, "No Calendar Selected.");
         }
@@ -3409,8 +3422,8 @@ public class mainView extends javax.swing.JFrame {
         String userStoryName = userStoryNameTextField.getText();
         String description = this.addUserStoryDescriptionTextArea.getText();
         UserStory us = null;
-        
-        if(!userStoryName.isEmpty()){
+
+        if (!userStoryName.isEmpty()) {
             Milestone milestone = (Milestone) userStoryMilestoneComboBox.getSelectedItem();
             us = engine.createNewUserStory(userStoryName, milestone);
             engine.updateUSDescription(us, description);
@@ -3434,7 +3447,7 @@ public class mainView extends javax.swing.JFrame {
     private void addMilestoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMilestoneButtonActionPerformed
         try {
             this.addUserStoryJFrame.setAlwaysOnTop(false);
-            String milestoneString = JOptionPane.showInputDialog(this.addUserStoryJFrame,"Name of new milestone: ");
+            String milestoneString = JOptionPane.showInputDialog(this.addUserStoryJFrame, "Name of new milestone: ");
             if (!milestoneString.isEmpty()) {
                 Milestone ms = engine.createMilestone(milestoneString);
                 if (ms != null) {
@@ -3519,15 +3532,15 @@ public class mainView extends javax.swing.JFrame {
             editTasksJFrame.setVisible(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
-                "One or more fields have an invalid entry",
-                "Invalid Entry", JOptionPane.DEFAULT_OPTION);
+                    "One or more fields have an invalid entry",
+                    "Invalid Entry", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_editTasksDialogButtonActionPerformed
 
     private void gCalShareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gCalShareButtonActionPerformed
         String calName = calTable.getModel().getValueAt(calTable.getSelectedRow(), 0).toString();
         if (gCalShareComboBox.getItemCount() != 0 && (!gCalShareCalLabel.getText().equals(""))) {
-            User u = ClientBackend.getInstance().getUser((String)gCalShareComboBox.getSelectedItem());
+            User u = ClientBackend.getInstance().getUser((String) gCalShareComboBox.getSelectedItem());
             int access = 1;
             if (readOnlyRadioButton.isSelected()) {
                 access = 0;
@@ -3558,13 +3571,13 @@ public class mainView extends javax.swing.JFrame {
         /*
          * Create and display the form
          */
-        
-            Thread.setDefaultUncaughtExceptionHandler(new CollabExceptionHandler());
-            System.setProperty( "sun.awt.exception.handler",CollabExceptionHandler.class.getName());
-            java.awt.EventQueue.invokeLater(new Runnable() {
+
+        Thread.setDefaultUncaughtExceptionHandler(new CollabExceptionHandler());
+        System.setProperty("sun.awt.exception.handler", CollabExceptionHandler.class.getName());
+        java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                if(!mainEngine.loadServerAddr()){
+                if (!mainEngine.loadServerAddr()) {
                     mainView.noAddressFound();
                 };
                 new mainView().loginJFrame.setVisible(true);

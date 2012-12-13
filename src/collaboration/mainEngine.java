@@ -69,9 +69,9 @@ public class mainEngine {
         }
     }
 
-    public void updateChart(JPanel progressPanel, JTable tasksTable) {
+    public void updateChart(JPanel progressPanel, JTable tasksTable, ArrayList<String> teamMembers) {
         progressJFreeChart progressChart = new progressJFreeChart();
-        JPanel chartPanel = new ChartPanel(progressChart.createChart("Tasks Count by Team Member", tasksTable));
+        JPanel chartPanel = new ChartPanel(progressChart.createChart("Tasks Count by Team Member", tasksTable, teamMembers));
         chartPanel.setSize(progressPanel.getSize());
         try {
             progressPanel.remove(progressPanel.getComponent(0));
@@ -136,7 +136,7 @@ public class mainEngine {
             boolean[] canEdit = new boolean[]{
                 false, false, false, false
             };
-            
+
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
@@ -271,6 +271,7 @@ public class mainEngine {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false
                 };
+
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
@@ -279,15 +280,15 @@ public class mainEngine {
         } catch (ServiceException | IOException e) {
         }
     }
-    
+
     void clearTable(JTable table) {
         table.setModel(new javax.swing.table.DefaultTableModel(
-                    new String[0][0],
-                    new String[0]) {
-                public boolean isCellEditable() {
-                    return false;
-                }
-            });
+                new String[0][0],
+                new String[0]) {
+            public boolean isCellEditable() {
+                return false;
+            }
+        });
     }
 
     public boolean deleteCalendar(String name) {
@@ -307,16 +308,16 @@ public class mainEngine {
         }
         return flag;
     }
-    
+
     String[] displayEntryInfo(String calName, String entryName) {
         String[] result = new String[7];
         try {
             result = calendar.displayEntryInfo(calName, entryName);
-        } catch(ServiceException | IOException e) {
+        } catch (ServiceException | IOException e) {
         }
         return result;
     }
-    
+
     boolean shareCalendar(String calName, String user, String addedUser, int access) {
         boolean flag = true;
         try {
@@ -325,7 +326,7 @@ public class mainEngine {
         }
         return flag;
     }
-    
+
     String getUser() {
         return calendar.getUser();
     }
@@ -344,9 +345,10 @@ public class mainEngine {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false
                 };
+
                 @Override
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
                 }
             });
         } catch (ServiceException | IOException e) {
@@ -393,7 +395,7 @@ public class mainEngine {
 //        }
 //        return retVal;
     }
-    
+
     JComboBox<User> createUserComboBox(JComboBox userBox, JComboBox projComboBox) {
         userBox.removeAllItems();
         Project proj = (Project) projComboBox.getSelectedItem();
@@ -441,7 +443,7 @@ public class mainEngine {
         for (UserStory us : ClientBackend.getInstance().getUserStories(selectedProj)) {
             newTaskUserStoryComboBox.addItem(us);
         }
-        if(newTaskUserStoryComboBox.getItemCount()==0){
+        if (newTaskUserStoryComboBox.getItemCount() == 0) {
             newTaskUserStoryComboBox.addItem(new UserStory("No User Stories, please add one."));
         }
     }
@@ -472,10 +474,10 @@ public class mainEngine {
 
     void populateMilestoneComboBox(JComboBox milestoneComboBox) {
         milestoneComboBox.removeAllItems();
-        for(Milestone ms : ClientBackend.getInstance().getMilestones(selectedProj)){
+        for (Milestone ms : ClientBackend.getInstance().getMilestones(selectedProj)) {
             milestoneComboBox.addItem(ms);
         }
-        if(milestoneComboBox.getItemCount()==0){
+        if (milestoneComboBox.getItemCount() == 0) {
             milestoneComboBox.addItem(new Milestone("No Milestones, please add one."));
         }
     }
@@ -500,10 +502,11 @@ public class mainEngine {
         return ClientBackend.getInstance().getTasksTableData(this.selectedProj, taskName);
     }
 
-    Task editTask(Task task, String name, User u, UserStory us, Status.States state,  double est, double actual, String description) {
+    Task editTask(Task task, String name, User u, UserStory us, Status.States state, double est, double actual, String description) {
         return ClientBackend.getInstance().editTask(task, name, u, us, state, est, actual, description);
     }
-    ArrayList<UserStory> getUserStories(){
+
+    ArrayList<UserStory> getUserStories() {
         return ClientBackend.getInstance().getUserStories(selectedProj);
     }
 
@@ -524,28 +527,28 @@ public class mainEngine {
     }
 
     static void saveServerAddr(String text) {
-        try{
+        try {
             FileWriter fw = new FileWriter("serverAddr.txt");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(text);
             bw.close();
             loadServerAddr();
-        }catch(Exception e){
-            
-        }        
+        } catch (Exception e) {
+        }
     }
-    static boolean loadServerAddr(){
+
+    static boolean loadServerAddr() {
         boolean retVal = false;
-        try{
+        try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("serverAddr.txt")));
             String serverAddr = br.readLine();
-            if(serverAddr != null && serverAddr.isEmpty())
+            if (serverAddr != null && serverAddr.isEmpty()) {
                 return false;
+            }
             ClientBackend.setServerAddr(serverAddr);
             br.close();
             retVal = true;
-        }catch(Exception e){
-            
+        } catch (Exception e) {
         }
         return retVal;
     }
